@@ -15,7 +15,7 @@ export class TabsPage {
 
   ionViewWillEnter() {
     this.notificationService.scheduleNotifications();
-    this.themeService.setTheme();
+    this.themeService.applyTheme();
   }
 
 }

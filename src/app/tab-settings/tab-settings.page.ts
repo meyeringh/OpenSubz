@@ -85,7 +85,7 @@ export class TabSettingsPage {
   listenForSettingsFormChanges(): void {
     this.settingsForm.valueChanges.subscribe(value => {
       this.saveSettingsToStorage();
-      this.themeService.setTheme();
+      this.themeService.applyTheme();
     });
   }
 

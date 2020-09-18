@@ -8,9 +8,9 @@ export class ThemeService {
 
   constructor(public storageService: StorageService) { }
 
-  setTheme() {
+  applyTheme() {
     this.storageService.retrieveSettingsFromStorage().then(settings => {
-      if (settings.forceDarkMode) {
+      if (settings && settings.forceDarkMode) {
         document.body.classList.add('dark');
       } else {
         document.body.classList.remove('dark');
