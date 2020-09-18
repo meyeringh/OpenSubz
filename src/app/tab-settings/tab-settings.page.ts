@@ -105,26 +105,13 @@ export class TabSettingsPage {
   async retrieveSettingsFromStorage() {
     this.retrievedSettings = await this.storageService.retrieveSettingsFromStorage();
 
-    if (this.retrievedSettings.hasOwnProperty('hideTotalCostsInOverview')) {
-      this.settingsForm.patchValue({
-        hideTotalCostsInOverview: this.retrievedSettings.hideTotalCostsInOverview,
-      });
-    }
-    if (this.retrievedSettings.hasOwnProperty('forceDarkMode')) {
-      this.settingsForm.patchValue({
-        forceDarkMode: this.retrievedSettings.forceDarkMode,
-      });
-    }
-    if (this.retrievedSettings.hasOwnProperty('currency')) {
-      this.settingsForm.patchValue({
-        currency: this.retrievedSettings.currency,
-      });
-    }
-    if (this.retrievedSettings.hasOwnProperty('notificationBeforeCancelationPeriodInDays')) {
-      this.settingsForm.patchValue({
-        notificationBeforeCancelationPeriodInDays: this.retrievedSettings.notificationBeforeCancelationPeriodInDays,
-      });
-    }
+    Object.keys(this.settingsForm.controls).forEach(key => {
+      if (this.retrievedSettings.hasOwnProperty(key)) {
+        this.settingsForm.patchValue({
+          [key]: this.retrievedSettings[key]
+        });
+      }
+    });
 
     this.listenForSettingsFormChanges();
   }

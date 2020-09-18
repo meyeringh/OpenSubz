@@ -145,7 +145,7 @@ export class ModalAddSubscriptionComponent {
   fillFormWithExistingEntry(): void {
     Object.keys(this.subscriptionForm.controls).forEach(key => {
       this.subscriptionForm.patchValue({
-        [key]: this.existingSubscription[key],
+        [key]: this.existingSubscription[key]
       });
     });
   }
