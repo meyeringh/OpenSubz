@@ -38,11 +38,12 @@ The app is quite minimal but offers the most important features.
 
 ```
 git pull https://codeberg.org/epinez/Subz.git
+cd Subz
 npm i
 ionic capacitor build android
 ```
 
-Then open the Android Studio project under `android/`, run build and enjoy!
+Then open the Android Studio project under `android/` and run a build. You could also run it in a browser with `ionic serve`. Enjoy!
 
 ## Contributing
 
