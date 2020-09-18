@@ -33,6 +33,7 @@ export class TabSettingsPage {
 
   ionViewWillEnter() {
     this.retrieveSettingsFromStorage();
+    this.listenForThemeChanges();
   }
 
   async showLicense() {
@@ -82,9 +83,15 @@ export class TabSettingsPage {
     await alert.present();
   }
 
+  // Gets called by this.retrieveSettingsFromStorage()
   listenForSettingsFormChanges(): void {
     this.settingsForm.valueChanges.subscribe(value => {
       this.saveSettingsToStorage();
+    });
+  }
+
+  listenForThemeChanges(): void {
+    this.settingsForm.controls.forceDarkMode.valueChanges.subscribe(value => {
       this.themeService.applyTheme();
     });
   }
