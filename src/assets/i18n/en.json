@@ -1,0 +1,67 @@
+{
+    "APP": {
+        "NAME": "Subz"
+    },
+    "GENERAL": {
+        "CANCEL": "Cancel",
+        "OK": "OK",
+        "DONE": "Done"
+    },
+    "TABS": {
+        "OVERVIEW": {
+            "OVERVIEW": "Overview",
+            "SEARCH_FOR_NAME_AND_DESCRIPTION": "Search for name or description",
+            "TOTAL_COSTS": "Total Costs",
+            "ADD_SUBSCRIPTION": "Add subscription",
+            "UPDATE_SUBSCRIPTION": "Update subscription",
+            "NAME": "Name",
+            "DESCRIPTION": "Description",
+            "COSTS": "Costs",
+            "BILLING_START": "Billing start",
+            "BILLING_EVERY": "Billing every",
+            "MINIMUM_CONTRACT_DURATION": "Contract duration",
+            "MINIMUM_CONTRACT_DURATION_SHORT": "CD",
+            "EXTENSION_AFTER_MINIMUM_CONTRACT_DURATION": "Extension after CD",
+            "CANCELATION_PERIOD": "Cancelation Period",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Notification before cancelation period in days",
+            "TILE_COLOR": "Tile color",
+            "REMOVE_SUBSCRIPTION": "Remove subscription",
+            "REMOVE_SUBSCRIPTION_ALERT_HEADER": "Are you sure?",
+            "REMOVE_SUBSCRIPTION_ALERT_MESSAGE": "Should the subscription really be removed?",
+            "SORT_BY": "Sort by",
+            "COSTS_PER_PERIOD": "Costs per period",
+            "NEXT_PAYMENT": "Next payment",
+            "NEXT_SUBSCRIPTION_EXTENSION": "Next contract extension",
+            "DAYS_UNTIL_NEXT_BILLING_HELPER": "days until next billing",
+            "DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_HELPER": "days until last possible cancelation within its period",
+            "CALENDAR_INTERVALS": {
+                "DAYS": "Days",
+                "WEEKS": "Weeks",
+                "MONTHS": "Months",
+                "YEARS": "Years"
+            }
+        },
+        "SETTINGS": {
+            "SETTINGS": "Settings",
+            "UI": "User interface",
+            "HIDE_TOTAL_COSTS_IN_OVERVIEW": "Hide total costs in overview",
+            "DARK_MODE": "Dark-Mode",
+            "DARK_MODE_HELPER": "Automatically on some devices",
+            "CURRENCY": "Currency",
+            "TEMPLATES": "Templates",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Notification before cancelation period in days",
+            "GENERAL_INFORMATION": "General information",
+            "LICENSE": "License",
+            "ABOUT": "About",
+            "ABOUT_TEXT": "By Christian Flaßkamp<br><br>Privacy-friendly app for managing subscriptions and contracts with notification feature.",
+            "DATA_MANAGEMENT": "Data management",
+            "BACKUP": "Backup",
+            "COPY_TO_CLIPBOARD": "Copy to clipboard",
+            "RESTORE": "Restore",
+            "BACKUP_DATA": "Backup-Data",
+            "RESTORE_BACKUP": "Restore Backup",
+            "RESTORE_BACKUP_ERROR": "Error while reading data from backup!",
+            "RESTORE_BACKUP_SUCCESS": "The data has been restored successfully!"
+        }
+    }
+}

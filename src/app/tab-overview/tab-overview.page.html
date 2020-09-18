@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      {{ 'TABS.OVERVIEW.OVERVIEW' | translate }}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary" (click)="changeChoosenBillingInterval()">
+        <ion-icon slot="icon-only" md="swap-horizontal"></ion-icon>
+      </ion-button>
+      <ion-button color="primary" (click)="isSearchbarEnabled = !isSearchbarEnabled; subscriptionSearchFilter = ''">
+        <ion-icon slot="icon-only" md="search"></ion-icon>
+      </ion-button>
+      <ion-button color="primary" (click)="showSortingAlert()">
+        <ion-icon slot="icon-only" md="filter"></ion-icon>
+      </ion-button>
+      <ion-button color="primary" (click)="presentAddSubscriptionModal()">
+        <ion-icon slot="icon-only" md="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-card *ngIf="isSearchbarEnabled">
+    <ion-card-content class="ion-no-padding">
+      <ion-searchbar class="searchbar-integrate" placeholder="{{ 'TABS.OVERVIEW.SEARCH_FOR_NAME_AND_DESCRIPTION' | translate }}" [(ngModel)]="subscriptionSearchFilter"></ion-searchbar>
+    </ion-card-content>
+  </ion-card>
+
+  <ng-container *ngIf="!retrievedSettings?.hideTotalCostsInOverview">
+
+    <ion-card color="primary">
+      <ion-card-content>
+
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-no-padding">
+            <ion-col class="ion-no-padding">
+              {{ 'TABS.OVERVIEW.TOTAL_COSTS' | translate }}
+            </ion-col>
+            <ion-col class="ion-no-padding" size="auto">
+              <b>{{ subscriptions | searchSubscriptions:subscriptionSearchFilter | totalCostByBillingInterval:selectedBillingInterval.name | number:'1.2-2' }} {{ retrievedSettings?.currency }} / {{ selectedBillingInterval?.friendlyName | titlecase | slice:0:1 }}</b>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-card-content>
+    </ion-card>
+
+    <hr>
+
+  </ng-container>
+
+  <ng-container *ngFor="let entry of subscriptions | searchSubscriptions:subscriptionSearchFilter | sortSubscriptions:sortSubscriptionsBy; let i = index">
+    <app-subscription-card [subscription]="entry" [selectedBillingInterval]="selectedBillingInterval" [currency]="retrievedSettings?.currency" (click)="presentUpdateSubscriptionModal(entry)"></app-subscription-card>
+  </ng-container>
+
+</ion-content>

@@ -1,0 +1,16 @@
+{
+  "appId": "com.flasskamp.subz",
+  "appName": "Subz",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "backgroundColor": "#1f1f1f",
+      "spinnerColor": "#9faec2",
+      "showSpinner": true,
+      "launchAutoHide": true
+    }
+  },
+  "cordova": {}
+}

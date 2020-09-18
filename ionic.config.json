@@ -1,0 +1,7 @@
+{
+  "name": "Subz",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

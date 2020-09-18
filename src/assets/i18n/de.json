@@ -1,0 +1,67 @@
+{
+    "APP": {
+        "NAME": "Subz"
+    },
+    "GENERAL": {
+        "CANCEL": "Abbrechen",
+        "OK": "OK",
+        "DONE": "Fertig"
+    },
+    "TABS": {
+        "OVERVIEW": {
+            "OVERVIEW": "Übersicht",
+            "SEARCH_FOR_NAME_AND_DESCRIPTION": "Suche nach Name oder Beschreibung",
+            "TOTAL_COSTS": "Gesamtkosten",
+            "ADD_SUBSCRIPTION": "Abonnement hinzufügen",
+            "UPDATE_SUBSCRIPTION": "Abonnement bearbeiten",
+            "NAME": "Name",
+            "DESCRIPTION": "Beschreibung",
+            "COSTS": "Kosten",
+            "BILLING_START": "Abrechnungsbeginn",
+            "BILLING_EVERY": "Abrechnung alle",
+            "MINIMUM_CONTRACT_DURATION": "Vertragslaufzeit",
+            "MINIMUM_CONTRACT_DURATION_SHORT": "VL",
+            "EXTENSION_AFTER_MINIMUM_CONTRACT_DURATION": "Verlängerung nach VL",
+            "CANCELATION_PERIOD": "Kündigungsfrist",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Erinnerung vor Kündigungsfrist in Tagen",
+            "TILE_COLOR": "Kachelfarbe",
+            "REMOVE_SUBSCRIPTION": "Abonnement entfernen",
+            "REMOVE_SUBSCRIPTION_ALERT_HEADER": "Abonnement wirklich entfernen?",
+            "REMOVE_SUBSCRIPTION_ALERT_MESSAGE": "Soll das Abonnement wirklich entfernt werden?",
+            "SORT_BY": "Sortieren nach",
+            "COSTS_PER_PERIOD": "Kosten pro Periode",
+            "NEXT_PAYMENT": "Nächste Zahlung",
+            "NEXT_SUBSCRIPTION_EXTENSION": "Nächste Vertragsverlängerung",
+            "DAYS_UNTIL_NEXT_BILLING_HELPER": "Tage bis zur nächsten Abrechnung",
+            "DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_HELPER": "Tage bis zur letztmöglichen Kündigung innerhalb der Frist",
+            "CALENDAR_INTERVALS": {
+                "DAYS": "Tage",
+                "WEEKS": "Wochen",
+                "MONTHS": "Monate",
+                "YEARS": "Jahre"
+            }
+        },
+        "SETTINGS": {
+            "SETTINGS": "Einstellungen",
+            "UI": "Benutzeroberfläche",
+            "HIDE_TOTAL_COSTS_IN_OVERVIEW": "Gesamtkosten in Übersicht ausblenden",
+            "DARK_MODE": "Dark-Mode",
+            "DARK_MODE_HELPER": "Auf manchen Geräten automatisch",
+            "CURRENCY": "Währung",
+            "TEMPLATES": "Vorlagen",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Erinnerung vor Kündigungsfrist in Tagen",
+            "GENERAL_INFORMATION": "Generelle Informationen",
+            "LICENSE": "Lizenz",
+            "ABOUT": "Über",
+            "ABOUT_TEXT": "Von Christian Flaßkamp<br><br>Datenschutzfreundliche Verwaltung für Abonnements und Verträge mit Erinnerungsfunktion.",
+            "DATA_MANAGEMENT": "Datenverwaltung",
+            "BACKUP": "Datensicherung",
+            "COPY_TO_CLIPBOARD": "In Zwischenablage kopieren",
+            "RESTORE": "Datenwiederherstellung",
+            "BACKUP_DATA": "Backup-Daten",
+            "RESTORE_BACKUP": "Backup zurückspielen",
+            "RESTORE_BACKUP_ERROR": "Fehler beim Einlesen der Daten aus dem Backup!",
+            "RESTORE_BACKUP_SUCCESS": "Die Daten wurden erfolgreich wiederhergestellt!"
+        }
+    }
+}
