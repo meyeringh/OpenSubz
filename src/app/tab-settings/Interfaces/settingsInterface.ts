@@ -1,6 +1,6 @@
 export interface ISettings {
-    hideTotalCostsInOverview: boolean;
-    forceDarkMode: boolean;
-    currency: string;
+    hideTotalCostsInOverview?: boolean;
+    forceDarkMode?: boolean;
+    currency?: string;
     notificationBeforeCancelationPeriodInDays?: number;
 }

@@ -21,7 +21,7 @@ export class StorageService {
     if (entries.value) {
       return JSON.parse(entries.value);
     } else {
-      return null;
+      return [];
     }
   }
 
@@ -37,7 +37,7 @@ export class StorageService {
     if (settingsString.value) {
       return JSON.parse(settingsString.value);
     } else {
-      return null;
+      return {};
     }
   }
 

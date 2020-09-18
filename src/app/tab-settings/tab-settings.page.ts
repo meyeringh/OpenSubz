@@ -105,31 +105,28 @@ export class TabSettingsPage {
   async retrieveSettingsFromStorage() {
     this.retrievedSettings = await this.storageService.retrieveSettingsFromStorage();
 
-    if (this.retrievedSettings) {
-      if (this.retrievedSettings.hasOwnProperty('hideTotalCostsInOverview')) {
-        this.settingsForm.patchValue({
-          hideTotalCostsInOverview: this.retrievedSettings.hideTotalCostsInOverview,
-        });
-      }
-      if (this.retrievedSettings.hasOwnProperty('forceDarkMode')) {
-        this.settingsForm.patchValue({
-          forceDarkMode: this.retrievedSettings.forceDarkMode,
-        });
-      }
-      if (this.retrievedSettings.hasOwnProperty('currency')) {
-        this.settingsForm.patchValue({
-          currency: this.retrievedSettings.currency,
-        });
-      }
-      if (this.retrievedSettings.hasOwnProperty('notificationBeforeCancelationPeriodInDays')) {
-        this.settingsForm.patchValue({
-          notificationBeforeCancelationPeriodInDays: this.retrievedSettings.notificationBeforeCancelationPeriodInDays,
-        });
-      }
-      this.listenForSettingsFormChanges();
-    } else {
-      this.listenForSettingsFormChanges();
+    if (this.retrievedSettings.hasOwnProperty('hideTotalCostsInOverview')) {
+      this.settingsForm.patchValue({
+        hideTotalCostsInOverview: this.retrievedSettings.hideTotalCostsInOverview,
+      });
     }
+    if (this.retrievedSettings.hasOwnProperty('forceDarkMode')) {
+      this.settingsForm.patchValue({
+        forceDarkMode: this.retrievedSettings.forceDarkMode,
+      });
+    }
+    if (this.retrievedSettings.hasOwnProperty('currency')) {
+      this.settingsForm.patchValue({
+        currency: this.retrievedSettings.currency,
+      });
+    }
+    if (this.retrievedSettings.hasOwnProperty('notificationBeforeCancelationPeriodInDays')) {
+      this.settingsForm.patchValue({
+        notificationBeforeCancelationPeriodInDays: this.retrievedSettings.notificationBeforeCancelationPeriodInDays,
+      });
+    }
+
+    this.listenForSettingsFormChanges();
   }
 
   async backup() {
