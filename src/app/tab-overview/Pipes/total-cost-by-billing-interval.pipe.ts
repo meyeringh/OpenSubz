@@ -10,10 +10,13 @@ export class TotalCostByBillingIntervalPipe implements PipeTransform {
 
   constructor(private costByBillingIntervalPipe: CostByBillingIntervalPipe) {}
 
-  transform(se: ISubscription[], selectedBillingIntervalName: string): number {
+  transform(subscriptions: ISubscription[], selectedBillingIntervalName: string): number {
     let totalCost = 0;
-    for (const entry of se) {
-      totalCost += this.costByBillingIntervalPipe.transform(entry, selectedBillingIntervalName);
+
+    if (subscriptions === undefined || subscriptions === null) { return totalCost; }
+
+    for (const subscription of subscriptions) {
+      totalCost += this.costByBillingIntervalPipe.transform(subscription, selectedBillingIntervalName);
     }
 
     return totalCost;
