@@ -60,7 +60,7 @@
             "GENERAL_INFORMATION": "Generelle Informationen",
             "LICENSE": "Lizenz",
             "ABOUT": "Über",
-            "ABOUT_TEXT": "Von Christian Flaßkamp<br><br>Datenschutzfreundliche Verwaltung für Abonnements und Verträge mit Erinnerungsfunktion.",
+            "ABOUT_TEXT": "Von Christian Flaßkamp<br><br>Datenschutzfreundliche Verwaltung für Abonnements und Verträge mit Erinnerungsfunktion.<br><br>Der Quellcode ist auf <a href='https://codeberg.org/epinez/Subz'>Codeberg</a> zu finden.",
             "DATA_MANAGEMENT": "Datenverwaltung",
             "BACKUP": "Datensicherung",
             "COPY_TO_CLIPBOARD": "In Zwischenablage kopieren",

@@ -60,7 +60,7 @@
             "GENERAL_INFORMATION": "General information",
             "LICENSE": "License",
             "ABOUT": "About",
-            "ABOUT_TEXT": "By Christian Flaßkamp<br><br>Privacy-friendly app for managing subscriptions and contracts with notification feature.",
+            "ABOUT_TEXT": "By Christian Flaßkamp<br><br>Privacy-friendly app for managing subscriptions and contracts with notification feature. <br><br>The source code can be found on <a href='https://codeberg.org/epinez/Subz'>Codeberg</a>.",
             "DATA_MANAGEMENT": "Data management",
             "BACKUP": "Backup",
             "COPY_TO_CLIPBOARD": "Copy to clipboard",
