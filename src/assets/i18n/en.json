@@ -39,7 +39,14 @@
                 "WEEKS": "Weeks",
                 "MONTHS": "Months",
                 "YEARS": "Years"
-            }
+            },
+            "NO_SUBSCRIPTION_HEADER": "Hello there!",
+            "NO_SUBSCRIPTION_TEXT": "Subscriptions can be added using the plus button on the upper right side of the display. The other features in the menu bar are disabled until two subscriptions have been added. Have fun with Subz!",
+            "MENU_BUTTONS_HELPER_HEADER": "Help for menu bar",
+            "CHANGE_CHOOSEN_BILLING_INTERVAL_HELPER": "Change the displayed interval of subscription costs between yearly, monthly, weekly and daily.",
+            "SEARCH_HELPER": "Show only subscriptions where the search text matches with name or description.",
+            "SORT_HELPER": "Sort subscriptions by name, costs, next billing or next contract extension.",
+            "ADD_SUBSCRIPTION_HELPER": "Add new subscriptions."
         },
         "SETTINGS": {
             "SETTINGS": "Settings",
