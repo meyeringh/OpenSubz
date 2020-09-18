@@ -36,7 +36,7 @@ export class TabOverviewPage {
   ionViewWillEnter() {
     this.setupCalendarIntervalTranslation();
     this.retrieveSettingsFromStorage();
-    this.retrieveEntriesFromStorage();
+    this.retrieveSubscriptionsFromStorage();
   }
 
   setupCalendarIntervalTranslation(): void {
@@ -55,31 +55,33 @@ export class TabOverviewPage {
   }
 
   addEntry(entry: ISubscription): void {
+    console.log(entry);
     let id = '';
+
     do { id = uuid.v4(); } while (this.subscriptions.some(se => se.id === id));
 
     entry.id = id;
 
     this.subscriptions.push(entry);
-    this.saveEntriesToStorage();
+    this.saveSubscriptionsToStorage();
   }
 
   updateEntry(entry: ISubscription): void {
     const index = this.subscriptions.findIndex(se => se.id === entry.id);
     this.subscriptions[index] = entry;
-    this.saveEntriesToStorage();
+    this.saveSubscriptionsToStorage();
   }
 
   deleteEntry(entry: ISubscription): void {
     this.subscriptions = this.subscriptions.filter(se => se.id !== entry.id);
-    this.saveEntriesToStorage();
+    this.saveSubscriptionsToStorage();
   }
 
-  async saveEntriesToStorage() {
+  async saveSubscriptionsToStorage() {
     await this.storageService.saveSubscriptionsToStorage(this.subscriptions);
   }
 
-  async retrieveEntriesFromStorage() {
+  async retrieveSubscriptionsFromStorage() {
     this.subscriptions = await this.storageService.retrieveSubscriptionsFromStorage();
   }
 
