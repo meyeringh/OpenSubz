@@ -10,10 +10,12 @@ export class ThemeService {
 
   applyTheme() {
     this.storageService.retrieveSettingsFromStorage().then(settings => {
-      if (settings && settings.forceDarkMode) {
-        document.body.classList.add('dark');
-      } else {
-        document.body.classList.remove('dark');
+      if (settings.hasOwnProperty('forceDarkMode')) {
+        if (settings.forceDarkMode) {
+          document.body.classList.add('dark');
+        } else {
+          document.body.classList.remove('dark');
+        }
       }
     });
   }

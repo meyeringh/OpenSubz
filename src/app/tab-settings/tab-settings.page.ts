@@ -6,6 +6,7 @@ import { ISettings } from './Interfaces/settingsInterface';
 import { StorageService } from '../Services/storage.service';
 import { ThemeService } from '../Services/theme.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tab-settings',
@@ -16,6 +17,7 @@ export class TabSettingsPage {
   settingsForm: FormGroup;
   retrievedSettings: ISettings;
   currencyList = ['€', '$', '¥', '£', '₤', '₡', '₦', '₹', '₩', '₪', '₫', '₭', '₮', '₱', '₲', '₴', '₵', '₸', '₺', '₼', '₾'];
+  settingsFormChangeSubscription: Subscription;
 
   constructor(
     public alertController: AlertController,
@@ -33,7 +35,10 @@ export class TabSettingsPage {
 
   ionViewWillEnter() {
     this.retrieveSettingsFromStorage();
-    this.listenForThemeChanges();
+  }
+
+  ionViewWillLeave() {
+    this.settingsFormChangeSubscription.unsubscribe();
   }
 
   async showLicense() {
@@ -85,14 +90,8 @@ export class TabSettingsPage {
 
   // Gets called by this.retrieveSettingsFromStorage()
   listenForSettingsFormChanges(): void {
-    this.settingsForm.valueChanges.subscribe(value => {
+    this.settingsFormChangeSubscription = this.settingsForm.valueChanges.subscribe(value => {
       this.saveSettingsToStorage();
-    });
-  }
-
-  listenForThemeChanges(): void {
-    this.settingsForm.controls.forceDarkMode.valueChanges.subscribe(value => {
-      this.themeService.applyTheme();
     });
   }
 
@@ -100,6 +99,8 @@ export class TabSettingsPage {
     if (this.settingsForm.valid) {
       this.storageService.saveSettingsToStorage(this.settingsForm.value);
     }
+    // Called here because otherwise there would be timing issues
+    this.themeService.applyTheme();
   }
 
   async retrieveSettingsFromStorage() {
@@ -113,6 +114,7 @@ export class TabSettingsPage {
       }
     });
 
+    // Called here because otherwise it would be overwritten
     this.listenForSettingsFormChanges();
   }
 
