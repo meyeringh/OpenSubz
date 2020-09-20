@@ -84,7 +84,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ng-container *ngIf="!retrievedSettings?.hideTotalCostsInOverview">
+  <ng-container *ngIf="!settings?.hideTotalCostsInOverview">
 
     <ion-card color="primary">
       <ion-card-content>
@@ -95,7 +95,7 @@
               {{ 'TABS.OVERVIEW.TOTAL_COSTS' | translate }}
             </ion-col>
             <ion-col class="ion-no-padding" size="auto">
-              <b>{{ subscriptions | searchSubscriptions:subscriptionSearchFilter | totalCostByBillingInterval:selectedBillingInterval | number:'1.2-2' }} {{ retrievedSettings?.currency }} / {{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.'+selectedBillingInterval | translate | titlecase | slice:0:1 }}</b>
+              <b>{{ subscriptions | searchSubscriptions:subscriptionSearchFilter | totalCostByBillingInterval:selectedBillingInterval | number:'1.2-2' }} {{ settings?.currency }} / {{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.'+selectedBillingInterval | translate | titlecase | slice:0:1 }}</b>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -108,7 +108,7 @@
   </ng-container>
 
   <ng-container *ngFor="let entry of subscriptions | searchSubscriptions:subscriptionSearchFilter | sortSubscriptions:sortSubscriptionsBy; let i = index">
-    <app-subscription-card [subscription]="entry" [selectedBillingInterval]="selectedBillingInterval" [currency]="retrievedSettings?.currency" (click)="presentUpdateSubscriptionModal(entry)"></app-subscription-card>
+    <app-subscription-card [subscription]="entry" [selectedBillingInterval]="selectedBillingInterval" [currency]="settings?.currency" (click)="presentUpdateSubscriptionModal(entry)"></app-subscription-card>
   </ng-container>
 
 </ion-content>
