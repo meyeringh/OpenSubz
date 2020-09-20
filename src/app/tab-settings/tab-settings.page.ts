@@ -34,7 +34,9 @@ export class TabSettingsPage {
   }
 
   ionViewWillEnter() {
-    this.retrieveSettingsFromStorage();
+    this.retrieveSettingsFromStorage().then(value => {
+      this.listenForSettingsFormChanges();
+    });
   }
 
   ionViewWillLeave() {
@@ -95,15 +97,15 @@ export class TabSettingsPage {
     });
   }
 
-  async saveSettingsToStorage() {
+  async saveSettingsToStorage(): Promise<void> {
     if (this.settingsForm.valid) {
-      this.storageService.saveSettingsToStorage(this.settingsForm.value);
+      this.storageService.saveSettingsToStorage(this.settingsForm.value).then(value => {
+        this.themeService.applyTheme();
+      });
     }
-    // Called here because otherwise there would be timing issues
-    this.themeService.applyTheme();
   }
 
-  async retrieveSettingsFromStorage() {
+  async retrieveSettingsFromStorage(): Promise<void> {
     this.retrievedSettings = await this.storageService.retrieveSettingsFromStorage();
 
     Object.keys(this.settingsForm.controls).forEach(key => {
@@ -113,12 +115,9 @@ export class TabSettingsPage {
         });
       }
     });
-
-    // Called here because otherwise it would be overwritten
-    this.listenForSettingsFormChanges();
   }
 
-  async backup() {
+  async backup(): Promise<void> {
     const alertStrings: any = {};
 
     this.translateService.get('GENERAL.CANCEL').subscribe(CANCEL => {
@@ -153,7 +152,7 @@ export class TabSettingsPage {
     await alert.present();
   }
 
-  async restore() {
+  async restore(): Promise<void> {
     const alertStrings: any = {};
 
     this.translateService.get('GENERAL.CANCEL').subscribe(CANCEL => {
