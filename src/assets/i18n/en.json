@@ -5,7 +5,9 @@
     "GENERAL": {
         "CANCEL": "Cancel",
         "OK": "OK",
-        "DONE": "Done"
+        "DONE": "Done",
+        "ASC": "Ascending",
+        "DESC": "Descending"
     },
     "TABS": {
         "OVERVIEW": {

@@ -19,7 +19,7 @@ export class TabOverviewPage {
   selectedBillingInterval: string;
   settings: ISettings;
   subscriptionSearchFilter = '';
-  sortSubscriptionsBy = 'nextBillingAsc';
+  sortSubscriptionsBy: string;
 
   constructor(
     public alertController: AlertController,
@@ -145,11 +145,11 @@ export class TabOverviewPage {
     this.translateService.get('TABS.OVERVIEW.NEXT_SUBSCRIPTION_EXTENSION').subscribe(NEXT_SUBSCRIPTION_EXTENSION => {
       alertStrings.nextSubscriptionExtension = NEXT_SUBSCRIPTION_EXTENSION;
     });
-    this.translateService.get('GENERAL.CANCEL').subscribe(CANCEL => {
-      alertStrings.cancel = CANCEL;
+    this.translateService.get('GENERAL.ASC').subscribe(ASC => {
+      alertStrings.asc = ASC;
     });
-    this.translateService.get('GENERAL.OK').subscribe(OK => {
-      alertStrings.ok = OK;
+    this.translateService.get('GENERAL.DESC').subscribe(DESC => {
+      alertStrings.desc = DESC;
     });
 
     const alert = await this.alertController.create({
@@ -157,71 +157,44 @@ export class TabOverviewPage {
       header: alertStrings.header,
       inputs: [
         {
-          name: 'nameAsc',
+          name: 'name',
           type: 'radio',
-          label: alertStrings.name + ' ↑',
-          value: 'nameAsc',
-          checked: this.sortSubscriptionsBy === 'nameAsc'
+          label: alertStrings.name,
+          value: 'name',
+          checked: this.sortSubscriptionsBy.startsWith('name')
         },
         {
-          name: 'nameDesc',
+          name: 'cost',
           type: 'radio',
-          label: alertStrings.name + ' ↓',
-          value: 'nameDesc',
-          checked: this.sortSubscriptionsBy === 'nameDesc'
+          label: alertStrings.costsPerPeriod,
+          value: 'cost',
+          checked: this.sortSubscriptionsBy.startsWith('cost')
         },
         {
-          name: 'costAsc',
+          name: 'nextBilling',
           type: 'radio',
-          label: alertStrings.costsPerPeriod + ' ↑',
-          value: 'costAsc',
-          checked: this.sortSubscriptionsBy === 'costAsc'
+          label: alertStrings.nextPayment,
+          value: 'nextBilling',
+          checked: this.sortSubscriptionsBy.startsWith('nextBilling')
         },
         {
-          name: 'costDesc',
+          name: 'nextContractExtension',
           type: 'radio',
-          label: alertStrings.costsPerPeriod + ' ↓',
-          value: 'costDesc',
-          checked: this.sortSubscriptionsBy === 'costDesc'
+          label: alertStrings.nextSubscriptionExtension,
+          value: 'nextContractExtension',
+          checked: this.sortSubscriptionsBy.startsWith('nextContractExtension')
         },
-        {
-          name: 'nextBillingAsc',
-          type: 'radio',
-          label: alertStrings.nextPayment + ' ↑',
-          value: 'nextBillingAsc',
-          checked: this.sortSubscriptionsBy === 'nextBillingAsc'
-        },
-        {
-          name: 'nextBillingDesc',
-          type: 'radio',
-          label: alertStrings.nextPayment + ' ↓',
-          value: 'nextBillingDesc',
-          checked: this.sortSubscriptionsBy === 'nextBillingDesc'
-        },
-        {
-          name: 'nextContractExtensionAsc',
-          type: 'radio',
-          label: alertStrings.nextSubscriptionExtension + ' ↑',
-          value: 'nextContractExtensionAsc',
-          checked: this.sortSubscriptionsBy === 'nextContractExtensionAsc'
-        },
-        {
-          name: 'nextContractExtensionDesc',
-          type: 'radio',
-          label: alertStrings.nextSubscriptionExtension + ' ↓',
-          value: 'nextContractExtensionDesc',
-          checked: this.sortSubscriptionsBy === 'nextContractExtensionDesc'
-        }
       ],
       buttons: [
         {
-          text: alertStrings.cancel,
-          role: 'cancel',
-          cssClass: 'secondary'
-        }, {
-          text: alertStrings.ok,
+          text: alertStrings.asc + ' ↑',
           handler: (sortBy) => {
-            this.sortSubscriptions(sortBy);
+            this.sortSubscriptions(sortBy + 'Asc');
+          },
+        }, {
+          text: alertStrings.desc + ' ↓',
+          handler: (sortBy) => {
+            this.sortSubscriptions(sortBy + 'Desc');
           }
         }
       ]
