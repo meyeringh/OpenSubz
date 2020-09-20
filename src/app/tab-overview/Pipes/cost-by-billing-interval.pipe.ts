@@ -10,19 +10,19 @@ export class CostByBillingIntervalPipe implements PipeTransform {
     let costPerDay: number;
 
     switch (se.billingInterval) {
-      case 'day': {
+      case 'DAYS': {
         costPerDay = se.cost / se.billingEvery;
         break;
       }
-      case 'week': {
+      case 'WEEKS': {
         costPerDay = se.cost / se.billingEvery / 7;
         break;
       }
-      case 'month': {
+      case 'MONTHS': {
         costPerDay = se.cost / se.billingEvery / 30;
         break;
       }
-      case 'year': {
+      case 'YEARS': {
         costPerDay = se.cost / se.billingEvery / 365;
         break;
       }
@@ -32,16 +32,16 @@ export class CostByBillingIntervalPipe implements PipeTransform {
     }
 
     switch (selectedBillingIntervalName) {
-      case 'day': {
+      case 'DAYS': {
         return costPerDay;
       }
-      case 'week': {
+      case 'WEEKS': {
         return costPerDay * 7;
       }
-      case 'month': {
+      case 'MONTHS': {
         return costPerDay * 30;
       }
-      case 'year': {
+      case 'YEARS': {
         return costPerDay * 365;
       }
       default: {

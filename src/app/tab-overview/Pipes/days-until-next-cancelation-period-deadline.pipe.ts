@@ -22,19 +22,19 @@ export class DaysUntilNextCancelationPeriodDeadlinePipe implements PipeTransform
     let lastPossibleCancelationDate = billingStart;
 
     switch (subscription.minimumContractDurationInterval) {
-      case 'day': {
+      case 'DAYS': {
         // lastPossibleCancelationDate = lastPossibleCancelationDate + subscription.minimumContractDuration (Date.setDate)
         return 0;
       }
-      case 'week': {
+      case 'WEEKS': {
         // lastPossibleCancelationDate = lastPossibleCancelationDate + subscription.minimumContractDuration (Date.setDate * 7)
         return 0;
       }
-      case 'month': {
+      case 'MONTHS': {
         // lastPossibleCancelationDate = lastPossibleCancelationDate + subscription.minimumContractDuration (Date.setMonth)
         return 0;
       }
-      case 'year': {
+      case 'YEARS': {
         // lastPossibleCancelationDate = lastPossibleCancelationDate + subscription.minimumContractDuration (Date.setFullYear)
         return 0;
       }
@@ -52,19 +52,19 @@ export class DaysUntilNextCancelationPeriodDeadlinePipe implements PipeTransform
         //
 
         switch (subscription.extensionAfterMinimumContractDurationInterval) {
-          case 'day': {
+          case 'DAYS': {
 // lastPossibleCancelationDate = lastPossibleCancelationDate + subscription.extensionAfterMinimumContractDurationEvery (Date.setDate)
             return 0;
           }
-          case 'week': {
+          case 'WEEKS': {
 // lastPossibleCancelationDate = lastPossibleCancelationDate + subscription.extensionAfterMinimumContractDurationEvery (Date.setDate * 7)
             return 0;
           }
-          case 'month': {
+          case 'MONTHS': {
 // lastPossibleCancelationDate = lastPossibleCancelationDate + subscription.extensionAfterMinimumContractDurationEvery (Date.setMonth)
             return 0;
           }
-          case 'year': {
+          case 'YEARS': {
 // lastPossibleCancelationDate = lastPossibleCancelationDate + subscription.extensionAfterMinimumContractDurationEvery (Date.setFullYear)
             return 0;
           }

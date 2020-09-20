@@ -53,8 +53,8 @@
 
             <ion-item>
               <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" class="select-full-width" name="billingInterval" formControlName="billingInterval" placeholder="Intervall">
-                <ng-container *ngFor="let interval of billingIntervalList">
-                  <ion-select-option [value]="interval.name">{{ interval.friendlyName }}</ion-select-option>
+                <ng-container *ngFor="let interval of availableBillingIntervals">
+                  <ion-select-option [value]="interval">{{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.'+interval | translate }}</ion-select-option>
                 </ng-container>
               </ion-select>
             </ion-item>
@@ -77,8 +77,8 @@
 
             <ion-item>
               <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" class="select-full-width" name="minimumContractDurationInterval" formControlName="minimumContractDurationInterval" placeholder="Intervall">
-                <ng-container *ngFor="let interval of billingIntervalList">
-                  <ion-select-option [value]="interval.name">{{ interval.friendlyName }}</ion-select-option>
+                <ng-container *ngFor="let interval of availableBillingIntervals">
+                  <ion-select-option [value]="interval">{{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.'+interval | translate }}</ion-select-option>
                 </ng-container>
               </ion-select>
             </ion-item>
@@ -101,8 +101,8 @@
 
             <ion-item>
               <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" class="select-full-width" name="extensionAfterMinimumContractDurationInterval" formControlName="extensionAfterMinimumContractDurationInterval" placeholder="Intervall">
-                <ng-container *ngFor="let interval of billingIntervalList">
-                  <ion-select-option [value]="interval.name">{{ interval.friendlyName }}</ion-select-option>
+                <ng-container *ngFor="let interval of availableBillingIntervals">
+                  <ion-select-option [value]="interval">{{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.'+interval | translate }}</ion-select-option>
                 </ng-container>
               </ion-select>
             </ion-item>
@@ -125,8 +125,8 @@
 
             <ion-item>
               <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" class="select-full-width" name="cancelationPeriodInterval" formControlName="cancelationPeriodInterval" placeholder="Intervall">
-                <ng-container *ngFor="let interval of billingIntervalList">
-                  <ion-select-option [value]="interval.name">{{ interval.friendlyName }}</ion-select-option>
+                <ng-container *ngFor="let interval of availableBillingIntervals">
+                  <ion-select-option [value]="interval">{{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.'+interval | translate }}</ion-select-option>
                 </ng-container>
               </ion-select>
             </ion-item>
@@ -140,11 +140,11 @@
         <ion-input type="number" name="notificationBeforeCancelationPeriodInDays" formControlName="notificationBeforeCancelationPeriodInDays"></ion-input>
       </ion-item>
 
-      <ion-item [color]="subscriptionForm.value.color">
+      <ion-item [color]="subscriptionForm.value">
         <ion-label>{{ 'TABS.OVERVIEW.TILE_COLOR' | translate }}</ion-label>
         <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" name="color" formControlName="color" placeholder="Farbe">
-          <ng-container *ngFor="let color of cardColorList">
-            <ion-select-option [value]="color.name">{{ color.friendlyName }}</ion-select-option>
+          <ng-container *ngFor="let color of colors">
+            <ion-select-option [value]="color">{{ color }}</ion-select-option>
           </ng-container>
         </ion-select>
       </ion-item>

@@ -13,7 +13,7 @@ export class DaysUntilNextBillingPipe implements PipeTransform {
     const nextBillingDate = billingStart;
 
     switch (se.billingInterval) {
-      case 'day': {
+      case 'DAYS': {
         while (this.dateDiffInDays(today, nextBillingDate) <= 0) {
           nextBillingDate.setDate(nextBillingDate.getDate() + se.billingEvery);
         }
@@ -22,7 +22,7 @@ export class DaysUntilNextBillingPipe implements PipeTransform {
 
         return this.dateDiffInDays(today, nextBillingDate);
       }
-      case 'week': {
+      case 'WEEKS': {
         while (this.dateDiffInDays(today, nextBillingDate) <= 0) {
           nextBillingDate.setDate(nextBillingDate.getDate() + (se.billingEvery * 7));
         }
@@ -31,7 +31,7 @@ export class DaysUntilNextBillingPipe implements PipeTransform {
 
         return this.dateDiffInDays(today, nextBillingDate);
       }
-      case 'month': {
+      case 'MONTHS': {
         while (this.dateDiffInDays(today, nextBillingDate) <= 0) {
           nextBillingDate.setMonth(nextBillingDate.getMonth() + se.billingEvery);
         }
@@ -40,7 +40,7 @@ export class DaysUntilNextBillingPipe implements PipeTransform {
 
         return this.dateDiffInDays(today, nextBillingDate);
       }
-      case 'year': {
+      case 'YEARS': {
         while (this.dateDiffInDays(today, nextBillingDate) <= 0) {
           nextBillingDate.setFullYear(nextBillingDate.getFullYear() + se.billingEvery);
         }

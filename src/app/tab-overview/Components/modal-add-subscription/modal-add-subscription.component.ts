@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { ISubscriptionColor } from '../../Interfaces/subscriptionColorInterface';
-import { ISubscriptionBillingInterval } from '../../Interfaces/subscriptionBillingIntervalInterface';
 import { ISettings } from '../../../tab-settings/Interfaces/settingsInterface';
 import { ISubscription } from '../../Interfaces/subscriptionInterface';
 import { StorageService } from 'src/app/Services/storage.service';
 import { TranslateService } from '@ngx-translate/core';
+import { billingIntervals } from '../../BILLING_INTERVALS';
+import { subscriptionColors } from '../../SUBSCRIPTION_COLORS';
 
 @Component({
   selector: 'app-modal-add-subscription',
@@ -15,26 +15,11 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ModalAddSubscriptionComponent {
   subscriptionForm: FormGroup;
-  cardColorList: ISubscriptionColor[] = [
-    { name: 'primary', friendlyName: 'Primär' },
-    { name: 'secondary', friendlyName: 'Sekundär' },
-    { name: 'tertiary', friendlyName: 'Tertiär' },
-    { name: 'success', friendlyName: 'Grün' },
-    { name: 'warning', friendlyName: 'Gelb' },
-    { name: 'danger', friendlyName: 'Rot' },
-    { name: 'light', friendlyName: 'Angepasst' },
-    { name: 'medium', friendlyName: 'Medium' },
-    { name: 'dark', friendlyName: 'Kontrast' }
-  ];
-  billingIntervalList: ISubscriptionBillingInterval[] = [
-    { name: 'day', friendlyName: 'Tage' },
-    { name: 'week', friendlyName: 'Wochen' },
-    { name: 'month', friendlyName: 'Monate' },
-    { name: 'year', friendlyName: 'Jahre' },
-  ];
+  availableBillingIntervals = billingIntervals;
+  colors = subscriptionColors;
   currentDate: Date;
   retrievedSettings: ISettings;
-  existingSubscription: ISubscription; // If passed, the component is used for updating an existing subscription entry
+  existingSubscription?: ISubscription; // If passed, the component is used for updating an existing subscription entry
 
   constructor(
     public alertController: AlertController,
@@ -48,13 +33,13 @@ export class ModalAddSubscriptionComponent {
       cost: ['', Validators.required],
       billingStart: ['', Validators.required],
       billingEvery: [1, Validators.required],
-      billingInterval: ['year', Validators.required],
+      billingInterval: ['YEARS', Validators.required],
       minimumContractDuration: ['2', Validators.required],
-      minimumContractDurationInterval: ['year', Validators.required],
+      minimumContractDurationInterval: ['YEARS', Validators.required],
       extensionAfterMinimumContractDurationEvery: ['6', Validators.required],
-      extensionAfterMinimumContractDurationInterval: ['month', Validators.required],
+      extensionAfterMinimumContractDurationInterval: ['MONTHS', Validators.required],
       cancelationPeriodEvery: [3],
-      cancelationPeriodInterval: ['month'],
+      cancelationPeriodInterval: ['MONTHS'],
       notificationBeforeCancelationPeriodInDays: [30],
       color: ['medium', Validators.required]
     });

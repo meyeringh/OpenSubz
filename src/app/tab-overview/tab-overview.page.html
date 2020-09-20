@@ -95,7 +95,7 @@
               {{ 'TABS.OVERVIEW.TOTAL_COSTS' | translate }}
             </ion-col>
             <ion-col class="ion-no-padding" size="auto">
-              <b>{{ subscriptions | searchSubscriptions:subscriptionSearchFilter | totalCostByBillingInterval:selectedBillingInterval.name | number:'1.2-2' }} {{ retrievedSettings?.currency }} / {{ selectedBillingInterval?.friendlyName | titlecase | slice:0:1 }}</b>
+              <b>{{ subscriptions | searchSubscriptions:subscriptionSearchFilter | totalCostByBillingInterval:selectedBillingInterval | number:'1.2-2' }} {{ retrievedSettings?.currency }} / {{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.'+selectedBillingInterval | translate | titlecase | slice:0:1 }}</b>
             </ion-col>
           </ion-row>
         </ion-grid>

@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { ModalAddSubscriptionComponent } from './Components/modal-add-subscription/modal-add-subscription.component';
 import { ISubscription } from './Interfaces/subscriptionInterface';
-import { ISubscriptionBillingInterval } from './Interfaces/subscriptionBillingIntervalInterface';
 import { ISettings } from '../tab-settings/Interfaces/settingsInterface';
 import { StorageService } from '../Services/storage.service';
 import * as uuid from 'uuid';
 import { TranslateService } from '@ngx-translate/core';
+import { billingIntervals } from './BILLING_INTERVALS';
 
 @Component({
   selector: 'app-tab-overview',
@@ -15,13 +15,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class TabOverviewPage {
   subscriptions: ISubscription[] = [];
-  availableBillingIntervals: ISubscriptionBillingInterval[] = [
-    { name: 'year', friendlyName: undefined },
-    { name: 'month', friendlyName: undefined },
-    { name: 'week', friendlyName: undefined },
-    { name: 'day', friendlyName: undefined }
-  ];
-  selectedBillingInterval: ISubscriptionBillingInterval = this.availableBillingIntervals[1]; // Month
+  availableBillingIntervals = billingIntervals;
+  selectedBillingInterval = this.availableBillingIntervals[1]; // month
   retrievedSettings: ISettings;
   subscriptionSearchFilter = '';
   sortSubscriptionsBy = 'nextBillingAsc';
@@ -34,24 +29,8 @@ export class TabOverviewPage {
 
   // Gets fired every page view so that settings which were made during runtime, etc. are immediately there
   ionViewWillEnter() {
-    this.setupCalendarIntervalTranslation();
     this.retrieveSettingsFromStorage();
     this.retrieveSubscriptionsFromStorage();
-  }
-
-  setupCalendarIntervalTranslation(): void {
-    this.translateService.get('TABS.OVERVIEW.CALENDAR_INTERVALS.YEARS').subscribe(YEARS => {
-      this.availableBillingIntervals[0].friendlyName = YEARS;
-    });
-    this.translateService.get('TABS.OVERVIEW.CALENDAR_INTERVALS.MONTHS').subscribe(MONTHS => {
-      this.availableBillingIntervals[1].friendlyName = MONTHS;
-    });
-    this.translateService.get('TABS.OVERVIEW.CALENDAR_INTERVALS.WEEKS').subscribe(WEEKS => {
-      this.availableBillingIntervals[2].friendlyName = WEEKS;
-    });
-    this.translateService.get('TABS.OVERVIEW.CALENDAR_INTERVALS.DAYS').subscribe(DAYS => {
-      this.availableBillingIntervals[3].friendlyName = DAYS;
-    });
   }
 
   addEntry(entry: ISubscription): void {
