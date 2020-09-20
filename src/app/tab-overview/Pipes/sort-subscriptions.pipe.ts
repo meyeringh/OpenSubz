@@ -27,10 +27,10 @@ export class SortSubscriptionsPipe implements PipeTransform {
       }
       case 'costAsc': {
         return entries.sort((a, b) => {
-          if (this.costByBillingIntervalPipe.transform(a, 'day') < this.costByBillingIntervalPipe.transform(b, 'day')){
+          if (this.costByBillingIntervalPipe.transform(a, 'DAYS') < this.costByBillingIntervalPipe.transform(b, 'DAYS')){
             return -1;
           }
-          if (this.costByBillingIntervalPipe.transform(a, 'day') > this.costByBillingIntervalPipe.transform(b, 'day')){
+          if (this.costByBillingIntervalPipe.transform(a, 'DAYS') > this.costByBillingIntervalPipe.transform(b, 'DAYS')){
             return 1;
           }
           return 0;
@@ -38,10 +38,10 @@ export class SortSubscriptionsPipe implements PipeTransform {
       }
       case 'costDesc': {
         return entries.sort((a, b) => {
-          if (this.costByBillingIntervalPipe.transform(a, 'day') > this.costByBillingIntervalPipe.transform(b, 'day')){
+          if (this.costByBillingIntervalPipe.transform(a, 'DAYS') > this.costByBillingIntervalPipe.transform(b, 'DAYS')){
             return -1;
           }
-          if (this.costByBillingIntervalPipe.transform(a, 'day') < this.costByBillingIntervalPipe.transform(b, 'day')){
+          if (this.costByBillingIntervalPipe.transform(a, 'DAYS') < this.costByBillingIntervalPipe.transform(b, 'DAYS')){
             return 1;
           }
           return 0;
