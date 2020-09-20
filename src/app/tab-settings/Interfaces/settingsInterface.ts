@@ -3,4 +3,5 @@ export interface ISettings {
     forceDarkMode?: boolean;
     currency?: string;
     notificationBeforeCancelationPeriodInDays?: number;
+    defaultBillingInterval?: string;
 }

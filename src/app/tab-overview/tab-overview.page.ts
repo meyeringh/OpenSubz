@@ -16,8 +16,8 @@ import { billingIntervals } from './BILLING_INTERVALS';
 export class TabOverviewPage {
   subscriptions: ISubscription[] = [];
   availableBillingIntervals = billingIntervals;
-  selectedBillingInterval = this.availableBillingIntervals[1]; // month
-  retrievedSettings: ISettings;
+  selectedBillingInterval: string;
+  settings: ISettings;
   subscriptionSearchFilter = '';
   sortSubscriptionsBy = 'nextBillingAsc';
 
@@ -113,10 +113,17 @@ export class TabOverviewPage {
       const index = this.availableBillingIntervals.findIndex(element => element === this.selectedBillingInterval);
       this.selectedBillingInterval = this.availableBillingIntervals[index + 1];
     }
+    this.settings.defaultBillingInterval = this.selectedBillingInterval;
+    this.saveSettingsToStorage();
   }
 
   async retrieveSettingsFromStorage() {
-    this.retrievedSettings = await this.storageService.retrieveSettingsFromStorage();
+    this.settings = await this.storageService.retrieveSettingsFromStorage();
+    this.selectedBillingInterval = this.settings.defaultBillingInterval || 'MONTHS';
+  }
+
+  async saveSettingsToStorage() {
+    this.storageService.saveSettingsToStorage(this.settings);
   }
 
   async showSortingAlert() {
