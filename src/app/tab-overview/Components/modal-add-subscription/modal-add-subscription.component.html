@@ -140,7 +140,7 @@
         <ion-input type="number" name="notificationBeforeCancelationPeriodInDays" formControlName="notificationBeforeCancelationPeriodInDays"></ion-input>
       </ion-item>
 
-      <ion-item [color]="subscriptionForm.value">
+      <ion-item [color]="subscriptionForm.value.color">
         <ion-label>{{ 'TABS.OVERVIEW.TILE_COLOR' | translate }}</ion-label>
         <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" name="color" formControlName="color" placeholder="Farbe">
           <ng-container *ngFor="let color of colors">
