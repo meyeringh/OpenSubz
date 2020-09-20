@@ -120,6 +120,7 @@ export class TabOverviewPage {
   async retrieveSettingsFromStorage() {
     this.settings = await this.storageService.retrieveSettingsFromStorage();
     this.selectedBillingInterval = this.settings.defaultBillingInterval || 'MONTHS';
+    this.sortSubscriptionsBy = this.settings.defaultSortBy || 'nextBillingAsc';
   }
 
   async saveSettingsToStorage() {
@@ -231,7 +232,8 @@ export class TabOverviewPage {
 
   sortSubscriptions(sortBy: string) {
     this.sortSubscriptionsBy = sortBy;
-    // ToDo: Persistence
+    this.settings.defaultSortBy = sortBy;
+    this.saveSettingsToStorage();
   }
 
 }

@@ -4,4 +4,5 @@ export interface ISettings {
     currency?: string;
     notificationBeforeCancelationPeriodInDays?: number;
     defaultBillingInterval?: string;
+    defaultSortBy?: string;
 }
