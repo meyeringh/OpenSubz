@@ -3,52 +3,58 @@ import { ISubscription } from '../Interfaces/subscriptionInterface';
 import { DaysUntilNextBillingPipe } from './days-until-next-billing.pipe';
 import { DaysUntilNextCancelationPeriodDeadlinePipe } from './days-until-next-cancelation-period-deadline.pipe';
 import { CostByBillingIntervalPipe } from './cost-by-billing-interval.pipe';
+import { billingIntervals } from '../BILLING_INTERVALS';
 
 @Pipe({
   name: 'sortSubscriptions'
 })
 export class SortSubscriptionsPipe implements PipeTransform {
+  availableBillingIntervals = billingIntervals;
 
   constructor(
     private costByBillingIntervalPipe: CostByBillingIntervalPipe,
     private daysUntilNextBillingPipe: DaysUntilNextBillingPipe,
     private daysUntilNextCancelationPeriodDeadlinePipe: DaysUntilNextCancelationPeriodDeadlinePipe) {}
 
-  transform(entries: ISubscription[], filterBy: string): ISubscription[] {
-    if (!entries) { return null; }
-    if (filterBy === undefined || filterBy === '') { return entries; }
+  transform(subscriptions: ISubscription[], filterBy: string): ISubscription[] {
+    if (!subscriptions) { return null; }
+    if (filterBy === undefined || filterBy === '') { return subscriptions; }
 
     switch (filterBy) {
       case 'nameAsc': {
-        return entries.sort(this.sortByNameAsc);
+        return subscriptions.sort(this.sortByNameAsc);
       }
       case 'nameDesc': {
-        return entries.sort(this.sortByNameDesc);
+        return subscriptions.sort(this.sortByNameDesc);
       }
       case 'costAsc': {
-        return entries.sort((a, b) => {
-          if (this.costByBillingIntervalPipe.transform(a, 'DAYS') < this.costByBillingIntervalPipe.transform(b, 'DAYS')){
+        return subscriptions.sort((a, b) => {
+          if (this.costByBillingIntervalPipe.transform(a, this.availableBillingIntervals[0]) <
+          this.costByBillingIntervalPipe.transform(b, this.availableBillingIntervals[0])){
             return -1;
           }
-          if (this.costByBillingIntervalPipe.transform(a, 'DAYS') > this.costByBillingIntervalPipe.transform(b, 'DAYS')){
+          if (this.costByBillingIntervalPipe.transform(a, this.availableBillingIntervals[0]) >
+          this.costByBillingIntervalPipe.transform(b, this.availableBillingIntervals[0])){
             return 1;
           }
           return 0;
         });
       }
       case 'costDesc': {
-        return entries.sort((a, b) => {
-          if (this.costByBillingIntervalPipe.transform(a, 'DAYS') > this.costByBillingIntervalPipe.transform(b, 'DAYS')){
+        return subscriptions.sort((a, b) => {
+          if (this.costByBillingIntervalPipe.transform(a, this.availableBillingIntervals[0]) >
+          this.costByBillingIntervalPipe.transform(b, this.availableBillingIntervals[0])){
             return -1;
           }
-          if (this.costByBillingIntervalPipe.transform(a, 'DAYS') < this.costByBillingIntervalPipe.transform(b, 'DAYS')){
+          if (this.costByBillingIntervalPipe.transform(a, this.availableBillingIntervals[0]) <
+          this.costByBillingIntervalPipe.transform(b, this.availableBillingIntervals[0])){
             return 1;
           }
           return 0;
         });
       }
       case 'nextBillingAsc': {
-        return entries.sort((a, b) => {
+        return subscriptions.sort((a, b) => {
           if (this.daysUntilNextBillingPipe.transform(a) < this.daysUntilNextBillingPipe.transform(b)){
             return -1;
           }
@@ -59,7 +65,7 @@ export class SortSubscriptionsPipe implements PipeTransform {
         });
       }
       case 'nextBillingDesc': {
-        return entries.sort((a, b) => {
+        return subscriptions.sort((a, b) => {
           if (this.daysUntilNextBillingPipe.transform(a) > this.daysUntilNextBillingPipe.transform(b)){
             return -1;
           }
@@ -70,7 +76,7 @@ export class SortSubscriptionsPipe implements PipeTransform {
         });
       }
       case 'nextContractExtensionAsc': {
-        return entries.sort((a, b) => {
+        return subscriptions.sort((a, b) => {
           if (this.daysUntilNextCancelationPeriodDeadlinePipe.transform(a) < this.daysUntilNextCancelationPeriodDeadlinePipe.transform(b)){
             return -1;
           }
@@ -81,7 +87,7 @@ export class SortSubscriptionsPipe implements PipeTransform {
         });
       }
       case 'nextContractExtensionDesc': {
-        return entries.sort((a, b) => {
+        return subscriptions.sort((a, b) => {
           if (this.daysUntilNextCancelationPeriodDeadlinePipe.transform(a) > this.daysUntilNextCancelationPeriodDeadlinePipe.transform(b)){
             return -1;
           }
@@ -92,7 +98,7 @@ export class SortSubscriptionsPipe implements PipeTransform {
         });
       }
       default: {
-        return entries;
+        return subscriptions;
       }
     }
   }

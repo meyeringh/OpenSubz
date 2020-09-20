@@ -6,24 +6,24 @@ import { ISubscription } from '../Interfaces/subscriptionInterface';
 })
 export class CostByBillingIntervalPipe implements PipeTransform {
 
-  transform(se: ISubscription, selectedBillingIntervalName: string): number {
+  transform(subscription: ISubscription, selectedBillingIntervalName: string): number {
     let costPerDay: number;
 
-    switch (se.billingInterval) {
+    switch (subscription.billingInterval) {
       case 'DAYS': {
-        costPerDay = se.cost / se.billingEvery;
+        costPerDay = subscription.cost / subscription.billingEvery;
         break;
       }
       case 'WEEKS': {
-        costPerDay = se.cost / se.billingEvery / 7;
+        costPerDay = subscription.cost / subscription.billingEvery / 7;
         break;
       }
       case 'MONTHS': {
-        costPerDay = se.cost / se.billingEvery / 30;
+        costPerDay = subscription.cost / subscription.billingEvery / 30;
         break;
       }
       case 'YEARS': {
-        costPerDay = se.cost / se.billingEvery / 365;
+        costPerDay = subscription.cost / subscription.billingEvery / 365;
         break;
       }
       default: {
