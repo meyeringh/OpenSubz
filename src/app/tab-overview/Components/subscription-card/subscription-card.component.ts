@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { ISubscription } from '../../Interfaces/subscriptionInterface';
-import { ISubscriptionBillingInterval } from '../../Interfaces/subscriptionBillingIntervalInterface';
 import { ToastController } from '@ionic/angular';
 import { DaysUntilNextBillingPipe } from '../../Pipes/days-until-next-billing.pipe';
 import { DaysUntilNextCancelationPeriodDeadlinePipe } from '../../Pipes/days-until-next-cancelation-period-deadline.pipe';
@@ -13,7 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class SubscriptionCardComponent {
   @Input() subscription: ISubscription;
-  @Input() selectedBillingInterval: ISubscriptionBillingInterval;
+  @Input() selectedBillingInterval: string;
   @Input() currency: string;
 
   constructor(
