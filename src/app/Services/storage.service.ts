@@ -71,11 +71,25 @@ export class StorageService {
 
       if (backupObject.hasOwnProperty('subscriptions')) {
         const subscriptions: ISubscription[] = backupObject.subscriptions;
+        let isValid = true;
 
         for (const subscription of subscriptions) {
-          // ToDo: Validation with subscription.hasOwnProperty and typeof(subscription.attribute)
+          // See: subscriptionInterface.ts
+          // ToDo: More validation
+
+          // Mandatory fields
+          isValid = 'id' in subscription && typeof subscription.id === 'string' &&
+                    'name' in subscription && typeof subscription.name === 'string' &&
+                    'cost' in subscription && typeof subscription.cost === 'number';
+
+          // Optional fields
+          if ('description' in subscription) { isValid = typeof subscription.description === 'string'; }
         }
-        this.saveSubscriptionsToStorage(subscriptions);
+        if (isValid) {
+          this.saveSubscriptionsToStorage(subscriptions);
+        } else {
+          throw Error;
+        }
       }
 
       if (backupObject.hasOwnProperty('settings')) {
