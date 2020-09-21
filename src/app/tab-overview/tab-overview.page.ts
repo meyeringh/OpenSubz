@@ -37,7 +37,7 @@ export class TabOverviewPage {
     console.log(entry);
     let id = '';
 
-    do { id = uuid.v4(); } while (this.subscriptions.some(se => se.id === id));
+    do { id = uuid.v4(); } while (this.subscriptions.some(subscription => subscription.id === id));
 
     entry.id = id;
 
@@ -46,13 +46,13 @@ export class TabOverviewPage {
   }
 
   updateEntry(entry: ISubscription): void {
-    const index = this.subscriptions.findIndex(se => se.id === entry.id);
+    const index = this.subscriptions.findIndex(subscription => subscription.id === entry.id);
     this.subscriptions[index] = entry;
     this.saveSubscriptionsToStorage();
   }
 
   deleteEntry(entry: ISubscription): void {
-    this.subscriptions = this.subscriptions.filter(se => se.id !== entry.id);
+    this.subscriptions = this.subscriptions.filter(subscription => subscription.id !== entry.id);
     this.saveSubscriptionsToStorage();
   }
 
