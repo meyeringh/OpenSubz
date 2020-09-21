@@ -19,10 +19,12 @@ export class CostByBillingIntervalPipe implements PipeTransform {
         break;
       }
       case 'MONTHS': {
+        if (selectedBillingIntervalName === 'YEARS') { return subscription.cost / subscription.billingEvery * 12; }
         costPerDay = subscription.cost / subscription.billingEvery / 30;
         break;
       }
       case 'YEARS': {
+        if (selectedBillingIntervalName === 'MONTHS') { return subscription.cost / subscription.billingEvery / 12; }
         costPerDay = subscription.cost / subscription.billingEvery / 365;
         break;
       }
