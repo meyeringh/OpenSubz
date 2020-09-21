@@ -144,7 +144,7 @@
         <ion-label>{{ 'TABS.OVERVIEW.TILE_COLOR' | translate }}</ion-label>
         <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" name="color" formControlName="color" placeholder="Farbe">
           <ng-container *ngFor="let color of colors">
-            <ion-select-option [value]="color">{{ color }}</ion-select-option>
+            <ion-select-option [value]="color">{{ 'TABS.OVERVIEW.COLORS.'+color | uppercase | translate }}</ion-select-option>
           </ng-container>
         </ion-select>
       </ion-item>

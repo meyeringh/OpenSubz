@@ -48,7 +48,14 @@
             "CHANGE_CHOOSEN_BILLING_INTERVAL_HELPER": "Wechsel des Anzeigeintervals der Abonnementkosten zwischen jährlich, monatlich, wöchentlich und täglich.",
             "SEARCH_HELPER": "Zeige nur Abonnements an, deren Name oder Beschreibung dem Suchtext entsprechen.",
             "SORT_HELPER": "Sortiere die Abonnements nach Name, Kosten, nächste Zahlung oder nächste Vertragsverlängerung.",
-            "ADD_SUBSCRIPTION_HELPER": "Füge neue Abonnements hinzu."
+            "ADD_SUBSCRIPTION_HELPER": "Füge neue Abonnements hinzu.",
+            "COLORS": {
+                "BLUE": "Blau",
+                "GREEN": "Grün",
+                "YELLOW": "Gelb",
+                "RED": "Rot",
+                "GREY": "Grau"
+            }
         },
         "SETTINGS": {
             "SETTINGS": "Einstellungen",

@@ -48,7 +48,14 @@
             "CHANGE_CHOOSEN_BILLING_INTERVAL_HELPER": "Change the displayed interval of subscription costs between yearly, monthly, weekly and daily.",
             "SEARCH_HELPER": "Show only subscriptions where the search text matches with name or description.",
             "SORT_HELPER": "Sort subscriptions by name, costs, next billing or next contract extension.",
-            "ADD_SUBSCRIPTION_HELPER": "Add new subscriptions."
+            "ADD_SUBSCRIPTION_HELPER": "Add new subscriptions.",
+            "COLORS": {
+                "BLUE": "Blue",
+                "GREEN": "Green",
+                "YELLOW": "Yellow",
+                "RED": "Red",
+                "GREY": "Grey"
+            }
         },
         "SETTINGS": {
             "SETTINGS": "Settings",
