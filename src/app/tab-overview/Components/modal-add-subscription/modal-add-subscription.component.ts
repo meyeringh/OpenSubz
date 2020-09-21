@@ -41,7 +41,7 @@ export class ModalAddSubscriptionComponent {
       cancelationPeriodEvery: [3],
       cancelationPeriodInterval: ['MONTHS'],
       notificationBeforeCancelationPeriodInDays: [30],
-      color: ['blue', Validators.required]
+      color: ['BLUE', Validators.required]
     });
   }
 

@@ -13,5 +13,5 @@ export interface ISubscription {
     cancelationPeriodEvery: number;
     cancelationPeriodInterval: 'DAYS' | 'WEEKS' | 'MONTHS' | 'YEARS';
     notificationBeforeCancelationPeriodInDays?: number;
-    color: 'medium' | 'danger' | 'primary' | 'success' | 'warning';
+    color: 'BLUE' | 'GREEN' | 'YELLOW' | 'RED' | 'GREY';
 }

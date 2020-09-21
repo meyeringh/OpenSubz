@@ -1,1 +1,1 @@
-export const subscriptionColors = ['blue', 'green', 'yellow', 'red', 'grey'];
+export const subscriptionColors = ['BLUE', 'GREEN', 'YELLOW', 'RED', 'GREY'];
