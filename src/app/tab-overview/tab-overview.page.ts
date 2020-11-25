@@ -20,6 +20,7 @@ export class TabOverviewPage {
   settings: ISettings;
   subscriptionSearchFilter = '';
   sortSubscriptionsBy: string;
+  isSearchbarEnabled = false;
 
   constructor(
     public alertController: AlertController,
@@ -34,7 +35,6 @@ export class TabOverviewPage {
   }
 
   addEntry(entry: ISubscription): void {
-    console.log(entry);
     let id = '';
 
     do { id = uuid.v4(); } while (this.subscriptions.some(subscription => subscription.id === id));
