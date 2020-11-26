@@ -211,4 +211,11 @@ export class TabSettingsPage {
     document.body.removeChild(selBox);
   }
 
+  async showHelpTextsInOverview(): Promise<void> {
+    this.retrievedSettings.hideOverviewHelperTextGeneral = false;
+    this.retrievedSettings.hideOverviewHelperTextMenuBar = false;
+
+    this.storageService.saveSettingsToStorage(this.retrievedSettings);
+  }
+
 }

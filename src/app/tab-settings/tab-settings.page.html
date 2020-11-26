@@ -37,6 +37,10 @@
           </ng-container>
         </ion-select>
       </ion-item>
+
+      <ion-item button (click)="showHelpTextsInOverview()">
+        <ion-label>{{ 'TABS.SETTINGS.SHOW_HELP_TEXTS_IN_OVERVIEW' | translate }}</ion-label>
+      </ion-item>
     </ion-list>
 
     <ion-list>
@@ -55,10 +59,10 @@
         {{ 'TABS.SETTINGS.GENERAL_INFORMATION' | translate }}
       </ion-list-header>
 
-      <ion-item (click)="showLicense()">
+      <ion-item button (click)="showLicense()">
         <ion-label>{{ 'TABS.SETTINGS.LICENSE' | translate }}</ion-label>
       </ion-item>
-      <ion-item (click)="showAbout()">
+      <ion-item button (click)="showAbout()">
         <ion-label>{{ 'TABS.SETTINGS.ABOUT' | translate }}</ion-label>
       </ion-item>
     </ion-list>
@@ -69,10 +73,10 @@
       {{ 'TABS.SETTINGS.DATA_MANAGEMENT' | translate }}
     </ion-list-header>
 
-    <ion-item (click)="backup()">
+    <ion-item button (click)="backup()">
       <ion-label>{{ 'TABS.SETTINGS.BACKUP' | translate }}</ion-label>
     </ion-item>
-    <ion-item (click)="restore()">
+    <ion-item button (click)="restore()">
       <ion-label>{{ 'TABS.SETTINGS.RESTORE' | translate }}</ion-label>
     </ion-item>
   </ion-list>

@@ -63,11 +63,12 @@
         "SETTINGS": {
             "SETTINGS": "Settings",
             "UI": "User interface",
-            "HIDE_TOTAL_COSTS_IN_OVERVIEW": "Hide total costs in overview",
+            "HIDE_TOTAL_COSTS_IN_OVERVIEW": "Hide total costs in the overview",
             "HIDE_TOTAL_COSTS_IN_OVERVIEW_HELPER": "Otherwise displayed with at least two subscriptions",
             "DARK_MODE": "Dark-Mode",
             "DARK_MODE_HELPER": "Automatically on some devices",
             "CURRENCY": "Currency",
+            "SHOW_HELP_TEXTS_IN_OVERVIEW": "Show help in the overview again",
             "TEMPLATES": "Templates",
             "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Notification before cancelation period in days",
             "GENERAL_INFORMATION": "General information",

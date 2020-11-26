@@ -5,4 +5,6 @@ export interface ISettings {
     notificationBeforeCancelationPeriodInDays?: number;
     defaultBillingInterval?: string;
     defaultSortBy?: string;
+    hideOverviewHelperTextGeneral?: boolean;
+    hideOverviewHelperTextMenuBar?: boolean;
 }

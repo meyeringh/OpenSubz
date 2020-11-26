@@ -212,4 +212,12 @@ export class TabOverviewPage {
     this.saveSettingsToStorage();
   }
 
+  dismissHelperText(attributeName: string): void {
+    if (attributeName === "hideOverviewHelperTextGeneral") { this.settings.hideOverviewHelperTextGeneral = true; }
+    else if (attributeName === "hideOverviewHelperTextMenuBar") { this.settings.hideOverviewHelperTextMenuBar = true; }
+    else return;
+
+    this.saveSettingsToStorage();
+  }
+
 }
