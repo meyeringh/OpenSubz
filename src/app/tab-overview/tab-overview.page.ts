@@ -7,6 +7,7 @@ import { StorageService } from '../Services/storage.service';
 import * as uuid from 'uuid';
 import { TranslateService } from '@ngx-translate/core';
 import { billingIntervals } from './BILLING_INTERVALS';
+import { NotificationService } from '../Services/notification.service';
 
 @Component({
   selector: 'app-tab-overview',
@@ -26,7 +27,8 @@ export class TabOverviewPage {
     public alertController: AlertController,
     public modalController: ModalController,
     public storageService: StorageService,
-    public translateService: TranslateService) {}
+    public translateService: TranslateService,
+    public notificationService: NotificationService) {}
 
   // Gets fired every page view so that settings which were made during runtime, etc. are immediately there
   ionViewWillEnter() {
@@ -57,7 +59,8 @@ export class TabOverviewPage {
   }
 
   async saveSubscriptionsToStorage() {
-    await this.storageService.saveSubscriptionsToStorage(this.subscriptions);
+    await this.storageService.saveSubscriptionsToStorage(this.subscriptions)
+      .then(() => { this.notificationService.scheduleNotifications(); });
   }
 
   async retrieveSubscriptionsFromStorage() {
