@@ -16,8 +16,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
-    <form [formGroup]="subscriptionForm">
+  <form [formGroup]="subscriptionForm">
+    <ion-list>
+      <ion-list-header class="list-header">
+        {{ 'TABS.OVERVIEW.GENERAL_INFORMATION' | translate }}
+      </ion-list-header>
 
       <ion-item>
         <ion-label>{{ 'TABS.OVERVIEW.NAME' | translate }}</ion-label>
@@ -33,6 +36,19 @@
         <ion-label>{{ 'TABS.OVERVIEW.COSTS' | translate }}</ion-label>
         <ion-input style="text-align: end" type="number" name="cost" value="3" formControlName="cost"></ion-input>
       </ion-item>
+
+      <ion-item [color]="subscriptionForm.value.color | lowercase">
+        <ion-label>{{ 'TABS.OVERVIEW.TILE_COLOR' | translate }}</ion-label>
+        <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" name="color" formControlName="color" placeholder="Farbe">
+          <ng-container *ngFor="let color of colors">
+            <ion-select-option [value]="color">{{ 'TABS.OVERVIEW.COLORS.'+color | uppercase | translate }}</ion-select-option>
+          </ng-container>
+        </ion-select>
+      </ion-item>
+
+      <ion-list-header class="list-header" style="margin-top: 1rem;">
+        {{ 'TABS.OVERVIEW.DATE_RELEVANT_INFORMATION' | translate }}
+      </ion-list-header>
 
       <ion-item>
         <ion-label>{{ 'TABS.OVERVIEW.BILLING_START' | translate }}</ion-label>
@@ -140,17 +156,8 @@
         <ion-input type="number" name="notificationBeforeCancelationPeriodInDays" formControlName="notificationBeforeCancelationPeriodInDays"></ion-input>
       </ion-item>
 
-      <ion-item [color]="subscriptionForm.value.color | lowercase">
-        <ion-label>{{ 'TABS.OVERVIEW.TILE_COLOR' | translate }}</ion-label>
-        <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" name="color" formControlName="color" placeholder="Farbe">
-          <ng-container *ngFor="let color of colors">
-            <ion-select-option [value]="color">{{ 'TABS.OVERVIEW.COLORS.'+color | uppercase | translate }}</ion-select-option>
-          </ng-container>
-        </ion-select>
-      </ion-item>
-
-    </form>
-  </ion-card>
+    </ion-list>
+  </form>
 
   <ion-button *ngIf="existingSubscription" expand="block" size="large" color="danger" style="padding-left: 8px; padding-right: 8px; font-size: medium;" (click)="showDeleteConfirmationModal()">{{ 'TABS.OVERVIEW.REMOVE_SUBSCRIPTION' | translate }}</ion-button>
 </ion-content>
