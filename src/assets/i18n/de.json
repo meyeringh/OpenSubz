@@ -64,6 +64,7 @@
             "SETTINGS": "Einstellungen",
             "UI": "Benutzeroberfläche",
             "HIDE_TOTAL_COSTS_IN_OVERVIEW": "Gesamtkosten in Übersicht ausblenden",
+            "HIDE_TOTAL_COSTS_IN_OVERVIEW_HELPER": "Anzeige sonst erst ab zwei Abonnements",
             "DARK_MODE": "Dark-Mode",
             "DARK_MODE_HELPER": "Auf manchen Geräten automatisch",
             "CURRENCY": "Währung",

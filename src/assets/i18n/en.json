@@ -64,6 +64,7 @@
             "SETTINGS": "Settings",
             "UI": "User interface",
             "HIDE_TOTAL_COSTS_IN_OVERVIEW": "Hide total costs in overview",
+            "HIDE_TOTAL_COSTS_IN_OVERVIEW_HELPER": "Otherwise displayed with at least two subscriptions",
             "DARK_MODE": "Dark-Mode",
             "DARK_MODE_HELPER": "Automatically on some devices",
             "CURRENCY": "Currency",

@@ -14,7 +14,10 @@
       </ion-list-header>
 
       <ion-item>
-        <ion-label>{{ 'TABS.SETTINGS.HIDE_TOTAL_COSTS_IN_OVERVIEW' | translate }}</ion-label>
+        <ion-label>
+          <h2>{{ 'TABS.SETTINGS.HIDE_TOTAL_COSTS_IN_OVERVIEW' | translate }}</h2>
+          <ion-note>{{ 'TABS.SETTINGS.HIDE_TOTAL_COSTS_IN_OVERVIEW_HELPER' | translate }}</ion-note>
+        </ion-label>
         <ion-checkbox name="hideTotalCostsInOverview" formControlName="hideTotalCostsInOverview" slot="end"></ion-checkbox>
       </ion-item>
 

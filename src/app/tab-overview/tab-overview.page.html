@@ -84,7 +84,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ng-container *ngIf="!settings?.hideTotalCostsInOverview">
+  <ng-container *ngIf="!settings?.hideTotalCostsInOverview && subscriptions.length >= 2">
 
     <ion-card color="primary">
       <ion-card-content>
