@@ -12,7 +12,7 @@
     "TABS": {
         "OVERVIEW": {
             "OVERVIEW": "Overview",
-            "SEARCH_FOR_NAME_AND_DESCRIPTION": "Search for name or description",
+            "SEARCH_FOR_NAME_AND_DESCRIPTION": "Name or description",
             "TOTAL_COSTS": "Total Costs",
             "ADD_SUBSCRIPTION": "Add subscription",
             "UPDATE_SUBSCRIPTION": "Update subscription",
