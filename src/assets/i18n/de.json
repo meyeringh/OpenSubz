@@ -25,6 +25,7 @@
             "MINIMUM_CONTRACT_DURATION_SHORT": "VL",
             "EXTENSION_AFTER_MINIMUM_CONTRACT_DURATION": "Verlängerung nach VL",
             "CANCELATION_PERIOD": "Kündigungsfrist",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_ACTIVE": "Erinnerung vor Kündigungsfrist ist aktiv",
             "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Erinnerung vor Kündigungsfrist in Tagen",
             "TILE_COLOR": "Kachelfarbe",
             "REMOVE_SUBSCRIPTION": "Abonnement entfernen",

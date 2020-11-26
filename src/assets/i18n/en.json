@@ -25,6 +25,7 @@
             "MINIMUM_CONTRACT_DURATION_SHORT": "CD",
             "EXTENSION_AFTER_MINIMUM_CONTRACT_DURATION": "Extension after CD",
             "CANCELATION_PERIOD": "Cancelation Period",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_ACTIVE": "Notification before cancelation period is active",
             "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Notification before cancelation period in days",
             "TILE_COLOR": "Tile color",
             "REMOVE_SUBSCRIPTION": "Remove subscription",

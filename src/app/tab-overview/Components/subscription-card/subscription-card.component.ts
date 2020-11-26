@@ -23,6 +23,7 @@ export class SubscriptionCardComponent {
 
   explainDaysUntilNextBilling(event: Event, subscription: ISubscription) {
     event.stopPropagation();
+
     this.translateService.get('TABS.OVERVIEW.DAYS_UNTIL_NEXT_BILLING_HELPER').subscribe(DAYS_UNTIL_NEXT_BILLING_HELPER => {
       this.toastMessage(this.daysUntilNextBillingPipe.transform(subscription) + ' ' + DAYS_UNTIL_NEXT_BILLING_HELPER);
     });
@@ -35,6 +36,15 @@ export class SubscriptionCardComponent {
       DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_HELPER => {
       this.toastMessage(this.daysUntilNextCancelationPeriodDeadlinePipe.transform(
         subscription) + ' ' + DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_HELPER);
+    });
+  }
+
+  explainDaysUntilAlarmForNextCancelationPeriodDeadline(event: Event, subscription: ISubscription) {
+    event.stopPropagation();
+
+    this.translateService.get('TABS.OVERVIEW.NOTIFICATION_BEFORE_CANCELATION_PERIOD_ACTIVE').subscribe(
+      NOTIFICATION_BEFORE_CANCELATION_PERIOD_ACTIVE => {
+      this.toastMessage(NOTIFICATION_BEFORE_CANCELATION_PERIOD_ACTIVE);
     });
   }
 
