@@ -5,6 +5,9 @@ import { ISubscription } from '../tab-overview/Interfaces/subscriptionInterface'
 
 const { LocalNotifications } = Plugins;
 
+// Should delete pending notifications and schedule all notifications for existing subscriptions
+// Gets triggered on entering the tab screen and persisting subscriptions
+
 @Injectable({
   providedIn: 'root'
 })
