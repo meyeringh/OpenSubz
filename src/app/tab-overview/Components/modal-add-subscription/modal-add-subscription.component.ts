@@ -40,7 +40,7 @@ export class ModalAddSubscriptionComponent {
       extensionAfterMinimumContractDurationInterval: ['MONTHS', Validators.required],
       cancelationPeriodEvery: [3],
       cancelationPeriodInterval: ['MONTHS'],
-      notificationBeforeCancelationPeriodInDays: [30],
+      notificationBeforeCancelationPeriodInDays: [null],
       color: ['BLUE', Validators.required]
     });
   }
