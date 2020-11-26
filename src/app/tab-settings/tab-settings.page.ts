@@ -26,15 +26,15 @@ export class TabSettingsPage {
     public themeService: ThemeService,
     public translateService: TranslateService) {
     this.settingsForm = this.formBuilder.group({
-      hideTotalCostsInOverview: ['false'],
-      forceDarkMode: ['false'],
+      hideTotalCostsInOverview: [false],
+      forceDarkMode: [false],
       currency: ['€'],
       notificationBeforeCancelationPeriodInDays: ['']
     });
   }
 
   ionViewWillEnter() {
-    this.retrieveSettingsFromStorage().then(value => {
+    this.retrieveSettingsFromStorage().then(() => {
       this.listenForSettingsFormChanges();
     });
   }
@@ -44,7 +44,7 @@ export class TabSettingsPage {
   }
 
   async showLicense() {
-    const alertStrings: any = {};
+    const alertStrings = {"ok": "", "header": ""};
 
     this.translateService.get('GENERAL.OK').subscribe(OK => {
       alertStrings.ok = OK;
@@ -65,7 +65,7 @@ export class TabSettingsPage {
   }
 
   async showAbout() {
-    const alertStrings: any = {};
+    const alertStrings = {"ok": "", "header": "", "message": ""};
 
     this.translateService.get('GENERAL.OK').subscribe(OK => {
       alertStrings.ok = OK;
@@ -90,16 +90,17 @@ export class TabSettingsPage {
     await alert.present();
   }
 
-  // Gets called by this.retrieveSettingsFromStorage()
   listenForSettingsFormChanges(): void {
-    this.settingsFormChangeSubscription = this.settingsForm.valueChanges.subscribe(value => {
+    this.settingsFormChangeSubscription = this.settingsForm.valueChanges.subscribe(() => {
       this.saveSettingsToStorage();
     });
   }
 
   async saveSettingsToStorage(): Promise<void> {
     if (this.settingsForm.valid) {
-      this.storageService.saveSettingsToStorage(this.settingsForm.value).then(value => {
+      const settings: ISettings = Object.assign(this.retrievedSettings, this.settingsForm.value);
+
+      this.storageService.saveSettingsToStorage(settings).then(() => {
         this.themeService.applyTheme();
       });
     }
