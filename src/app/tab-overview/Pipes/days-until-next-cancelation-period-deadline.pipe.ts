@@ -9,76 +9,26 @@ export class DaysUntilNextCancelationPeriodDeadlinePipe implements PipeTransform
 
   constructor() {}
 
-  // lastPossibleCancelationDate = billingStart + minimumContractDuration mit Interval
-  // IF lastPossibleCancelationDate - cancelationPeriodEvery mit Interval ----> Vor heute?
-  //    WENN JA: Datum gefunden!!!
-  //    WENN NEIN:
-  // do (lastPossibleCancelationDate = lastPossibleCancelationDate + extensionAfterMinimumContractDurationEvery mit Interval)
-  // while { lastPossibleCancelationDate - cancelationPeriodEvery mit Interval IST vor heute }
-
   transform(subscription: ISubscription): number {
     const today = new Date();
     const billingStart = new Date(subscription.billingStart);
-    let lastPossibleCancelationDate = billingStart;
+    
+    // Calculate at first: billingStart + minimumContractDuration
+    let lastPossibleCancelationDate = this.calculateDates(billingStart, '+', subscription.minimumContractDuration, subscription.minimumContractDurationInterval);
 
-    switch (subscription.minimumContractDurationInterval) {
-      case 'DAYS': {
-        // lastPossibleCancelationDate = lastPossibleCancelationDate + subscription.minimumContractDuration (Date.setDate)
-        return 0;
-      }
-      case 'WEEKS': {
-        // lastPossibleCancelationDate = lastPossibleCancelationDate + subscription.minimumContractDuration (Date.setDate * 7)
-        return 0;
-      }
-      case 'MONTHS': {
-        // lastPossibleCancelationDate = lastPossibleCancelationDate + subscription.minimumContractDuration (Date.setMonth)
-        return 0;
-      }
-      case 'YEARS': {
-        // lastPossibleCancelationDate = lastPossibleCancelationDate + subscription.minimumContractDuration (Date.setFullYear)
-        return 0;
-      }
-      default: {
-        return undefined;
-      }
+    // If lastPossibleCancelationDate - cancelationPeriod before today we have found our date
+    lastPossibleCancelationDate = this.calculateDates(lastPossibleCancelationDate, '-', subscription.cancelationPeriodEvery, subscription.cancelationPeriodInterval);
+    if (this.dateDiffInDays(today, lastPossibleCancelationDate) > 0) {
+      return this.dateDiffInDays(today, lastPossibleCancelationDate);
     }
-
-    // Not sure which parameter first, not sure wether <= oder >0
-    if (this.dateDiffInDays(today, lastPossibleCancelationDate) <= 0) {
-      // DATE found!!!
-      // return this.dateDiffInDays(today, lastPossibleCancelationDate)
-    } else {
+    else {
       do {
-        //
-
-        switch (subscription.extensionAfterMinimumContractDurationInterval) {
-          case 'DAYS': {
-// lastPossibleCancelationDate = lastPossibleCancelationDate + subscription.extensionAfterMinimumContractDurationEvery (Date.setDate)
-            return 0;
-          }
-          case 'WEEKS': {
-// lastPossibleCancelationDate = lastPossibleCancelationDate + subscription.extensionAfterMinimumContractDurationEvery (Date.setDate * 7)
-            return 0;
-          }
-          case 'MONTHS': {
-// lastPossibleCancelationDate = lastPossibleCancelationDate + subscription.extensionAfterMinimumContractDurationEvery (Date.setMonth)
-            return 0;
-          }
-          case 'YEARS': {
-// lastPossibleCancelationDate = lastPossibleCancelationDate + subscription.extensionAfterMinimumContractDurationEvery (Date.setFullYear)
-            return 0;
-          }
-          default: {
-            return undefined;
-          }
-        }
-
-
-
-      } while (//this.dateDiffInDays(today, lastPossibleCancelationDate - cancelationPeriod) <= 0);
-      false);
-      // return datediff
+        // Add contract extension to date
+        lastPossibleCancelationDate = this.calculateDates(lastPossibleCancelationDate, '+', subscription.extensionAfterMinimumContractDurationEvery, subscription.extensionAfterMinimumContractDurationInterval);
+      } while(this.dateDiffInDays(today, this.calculateDates(lastPossibleCancelationDate, '-', subscription.cancelationPeriodEvery, subscription.cancelationPeriodInterval)) < 0);
     }
+
+    return this.dateDiffInDays(today, lastPossibleCancelationDate);
   }
 
   dateDiffInDays(a: Date, b: Date): number {
@@ -86,5 +36,46 @@ export class DaysUntilNextCancelationPeriodDeadlinePipe implements PipeTransform
     const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
 
     return Math.floor((utc2 - utc1) / this.MS_PER_DAY);
+  }
+
+  /**
+   * Adds or substracts days/weeks/months/years to/from a specified date
+   * @param startDate The base date from which the calculation begins
+   * @param operation Whether you want to add ("+") or substract ("-") the time
+   * @param value How much of the intervalType you want to add or substract
+   * @param intervalType "DAYS" || "WEEKS" || "MONTHS" || "YEARS"
+   * @returns startDate + / - value of intervalType
+   */
+  calculateDates(startDate: Date, operation: string, value: number, intervalType: string): Date {
+    let date = new Date(startDate);
+
+    function calculate(a: number, operator: string, b: number): number {
+      if (operator === '+') { return a + b; }
+      else if (operator === '-') { return a - b; }
+    }
+
+    switch (intervalType) {
+      case 'DAYS': {
+        date.setDate(calculate(date.getDate(), operation, Number(value)));
+        break;
+      }
+      case 'WEEKS': {
+        date.setDate(calculate(date.getDate(), operation, Number(value * 7)));
+        break;
+      }
+      case 'MONTHS': {
+        date.setMonth(calculate(date.getMonth(), operation, Number(value)));
+        break;
+      }
+      case 'YEARS': {
+        date.setFullYear(calculate(date.getFullYear(), operation, Number(value)));
+        break;
+      }
+      default: {
+        return undefined;
+      }
+    }
+
+    return date;
   }
 }
