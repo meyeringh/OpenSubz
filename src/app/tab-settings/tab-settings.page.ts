@@ -26,7 +26,6 @@ export class TabSettingsPage {
     public themeService: ThemeService,
     public translateService: TranslateService) {
     this.settingsForm = this.formBuilder.group({
-      hideTotalCostsInOverview: false,
       forceDarkMode: false,
       currency: '€',
       notificationBeforeCancelationPeriodInDays: null
