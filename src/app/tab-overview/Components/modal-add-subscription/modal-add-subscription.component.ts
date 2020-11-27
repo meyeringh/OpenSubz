@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ISettings } from '../../../tab-settings/Interfaces/settingsInterface';
@@ -13,13 +13,13 @@ import { subscriptionColors } from '../../SUBSCRIPTION_COLORS';
   templateUrl: './modal-add-subscription.component.html',
   styleUrls: ['./modal-add-subscription.component.scss'],
 })
-export class ModalAddSubscriptionComponent {
+export class ModalAddSubscriptionComponent implements OnInit {
   subscriptionForm: FormGroup;
   availableBillingIntervals = billingIntervals;
   colors = subscriptionColors;
   currentDate: Date;
   retrievedSettings: ISettings;
-  existingSubscription?: ISubscription; // If passed, the component is used for updating an existing subscription entry
+  @Input() existingSubscription?: ISubscription; // If passed, the component is used for updating an existing subscription entry
 
   constructor(
     public alertController: AlertController,
@@ -45,19 +45,16 @@ export class ModalAddSubscriptionComponent {
     });
   }
 
-  ionViewWillEnter() {
+  ngOnInit() {
     this.currentDate = new Date();
 
-    // setTimeout as a workaround for ExpressionChangedAfterItHasBeenCheckedError
-    setTimeout(() => {
-      if (!this.existingSubscription) {
-        this.retrieveSettingsFromStorage();
-      }
-      // Update existing subscription
-      else {
-        this.fillFormWithExistingEntry();
-      }
-    }, 0);
+    if (!this.existingSubscription) {
+      this.retrieveSettingsFromStorage();
+    }
+    // Update existing subscription
+    else {
+      this.fillFormWithExistingEntry();
+    }
   }
 
   // For new entry and updating existing entry
