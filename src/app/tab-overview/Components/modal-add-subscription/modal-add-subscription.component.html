@@ -5,7 +5,7 @@
       <ng-template #updateMode>{{ 'TABS.OVERVIEW.UPDATE_SUBSCRIPTION' | translate }}</ng-template>
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button color="primary" (click)="save()" [disabled]="!subscriptionForm.valid">
+      <ion-button color="primary" (click)="save()">
         <ion-icon slot="icon-only" md="save"></ion-icon>
       </ion-button>
       <ion-button color="primary" (click)="dismiss()">
@@ -52,7 +52,7 @@
 
       <ion-item>
         <ion-label>{{ 'TABS.OVERVIEW.BILLING_START' | translate }}</ion-label>
-        <ion-datetime cancelText="{{ 'GENERAL.CANCEL' | translate }}" doneText="{{ 'GENERAL.DONE' | translate }}" displayFormat="DD.MM.YYYY" value="{{ currentDate | date:'yyyy-MM-dd' }}" name="billingStart" formControlName="billingStart"></ion-datetime>
+        <ion-datetime cancelText="{{ 'GENERAL.CANCEL' | translate }}" doneText="{{ 'GENERAL.DONE' | translate }}" displayFormat="DD.MM.YYYY" name="billingStart" formControlName="billingStart"></ion-datetime>
       </ion-item>
 
       <ion-grid class="ion-no-padding">

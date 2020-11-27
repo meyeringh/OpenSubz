@@ -17,7 +17,6 @@ export class ModalAddSubscriptionComponent implements OnInit {
   subscriptionForm: FormGroup;
   availableBillingIntervals = billingIntervals;
   colors = subscriptionColors;
-  currentDate: Date;
   retrievedSettings: ISettings;
   @Input() existingSubscription?: ISubscription; // If passed, the component is used for updating an existing subscription entry
 
@@ -31,7 +30,7 @@ export class ModalAddSubscriptionComponent implements OnInit {
       name: ['', Validators.required],
       description: [''],
       cost: ['', Validators.required],
-      billingStart: ['', Validators.required],
+      billingStart: [new Date().toISOString().slice(0,10), Validators.required],
       billingEvery: [1, Validators.required],
       billingInterval: ['YEARS', Validators.required],
       minimumContractDuration: ['2', Validators.required],
@@ -46,8 +45,6 @@ export class ModalAddSubscriptionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentDate = new Date();
-
     if (!this.existingSubscription) {
       this.retrieveSettingsFromStorage();
     }
@@ -67,6 +64,10 @@ export class ModalAddSubscriptionComponent implements OnInit {
       }
 
       this.modalController.dismiss({entry: subscription});
+    } else {
+      Object.values(this.subscriptionForm.controls).forEach(control => {
+        control.markAsTouched();
+      });
     }
   }
 
