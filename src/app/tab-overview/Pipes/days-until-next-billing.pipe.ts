@@ -57,10 +57,7 @@ export class DaysUntilNextBillingPipe implements PipeTransform {
 
   // Difference between two Date objects in days (always positive)
   absDateDiffInDays(a: Date, b: Date): number {
-    const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
-    const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
-
-    return Math.abs(Math.floor((utc2 - utc1) / this.MS_PER_DAY));
+    return Math.abs(this.dateDiffInDays(a, b));
   }
 
   dateDiffInDays(a: Date, b: Date): number {
