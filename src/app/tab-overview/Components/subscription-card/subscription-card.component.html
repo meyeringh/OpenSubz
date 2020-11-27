@@ -7,7 +7,7 @@
           {{ subscription.name }}
         </ion-col>
         <ion-col class="ion-no-padding" size="auto">
-          <b>{{ subscription | costByBillingInterval:selectedBillingInterval | number:'1.2-2' }} {{ currency }} / {{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.'+selectedBillingInterval | translate | titlecase | slice:0:1 }}</b>
+          <b>{{ subscription | costByBillingInterval:selectedBillingInterval | number:'1.2-2' }} {{ currency || '€' }} / {{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.'+selectedBillingInterval | translate | titlecase | slice:0:1 }}</b>
         </ion-col>
       </ion-row>
       <ion-row class="ion-no-padding">
