@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ModalController, AlertController } from '@ionic/angular';
+import { Component, ViewChild } from '@angular/core';
+import { ModalController, AlertController, IonSearchbar } from '@ionic/angular';
 import { ModalAddSubscriptionComponent } from './Components/modal-add-subscription/modal-add-subscription.component';
 import { ISubscription } from './Interfaces/subscriptionInterface';
 import { ISettings } from '../tab-settings/Interfaces/settingsInterface';
@@ -15,6 +15,8 @@ import { NotificationService } from '../Services/notification.service';
   styleUrls: ['tab-overview.page.scss']
 })
 export class TabOverviewPage {
+  @ViewChild('searchSubscriptions', {static: false}) searchSubscriptions: IonSearchbar;
+
   subscriptions: ISubscription[] = [];
   availableBillingIntervals = billingIntervals;
   selectedBillingInterval: string;
@@ -218,6 +220,16 @@ export class TabOverviewPage {
     else return;
 
     this.saveSettingsToStorage();
+  }
+
+  toggleSearchbarVisibility() {
+    this.subscriptionSearchFilter = '';
+    this.isSearchbarEnabled = !this.isSearchbarEnabled;
+    if (this.isSearchbarEnabled) {
+      setTimeout(() => {
+        this.searchSubscriptions.setFocus();
+      }, 100);
+    }
   }
 
 }

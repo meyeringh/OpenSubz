@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ModalController, AlertController } from '@ionic/angular';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ModalController, AlertController, IonInput } from '@ionic/angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ISettings } from '../../../tab-settings/Interfaces/settingsInterface';
 import { ISubscription } from '../../Interfaces/subscriptionInterface';
@@ -14,11 +14,13 @@ import { subscriptionColors } from '../../SUBSCRIPTION_COLORS';
   styleUrls: ['./modal-add-subscription.component.scss'],
 })
 export class ModalAddSubscriptionComponent implements OnInit {
+  @Input() existingSubscription?: ISubscription; // If passed, the component is used for updating an existing subscription entry
+  @ViewChild('nameInput') nameInput: IonInput;
+
   subscriptionForm: FormGroup;
   availableBillingIntervals = billingIntervals;
   colors = subscriptionColors;
   retrievedSettings: ISettings;
-  @Input() existingSubscription?: ISubscription; // If passed, the component is used for updating an existing subscription entry
 
   constructor(
     public alertController: AlertController,
@@ -47,11 +49,19 @@ export class ModalAddSubscriptionComponent implements OnInit {
 
   ngOnInit() {
     if (!this.existingSubscription) {
-      this.retrieveSettingsFromStorage();
+      this.retrieveSettingsFromStorage().then(() => {
+        this.fillNotificationBeforeCancelationPeriodInDays();
+      });
     }
     // Update existing subscription
     else {
       this.fillFormWithExistingEntry();
+    }
+  }
+
+  ionViewDidEnter() {
+    if (!this.existingSubscription) {
+      this.focusNameInput();
     }
   }
 
@@ -119,11 +129,6 @@ export class ModalAddSubscriptionComponent implements OnInit {
 
   async retrieveSettingsFromStorage() {
     this.retrievedSettings = await this.storageService.retrieveSettingsFromStorage();
-    if (this.retrievedSettings) {
-      this.subscriptionForm.patchValue({
-        notificationBeforeCancelationPeriodInDays: this.retrievedSettings.notificationBeforeCancelationPeriodInDays,
-      });
-    }
   }
 
   fillFormWithExistingEntry(): void {
@@ -132,6 +137,20 @@ export class ModalAddSubscriptionComponent implements OnInit {
         [key]: this.existingSubscription[key]
       });
     });
+  }
+
+  fillNotificationBeforeCancelationPeriodInDays(): void {
+    if (this.retrievedSettings) {
+      this.subscriptionForm.patchValue({
+        notificationBeforeCancelationPeriodInDays: this.retrievedSettings.notificationBeforeCancelationPeriodInDays,
+      });
+    }
+  }
+
+  focusNameInput(): void {
+    setTimeout(() => {
+      this.nameInput.setFocus();
+    }, 100);
   }
 
 }

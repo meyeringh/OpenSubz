@@ -9,7 +9,7 @@
       </ng-container>
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button [disabled]="subscriptions.length < 2" color="primary" (click)="isSearchbarEnabled = !isSearchbarEnabled; subscriptionSearchFilter = ''" shape="round" [fill]="isSearchbarEnabled ? 'outline' : 'clear'">
+      <ion-button [disabled]="subscriptions.length < 2" color="primary" (click)="toggleSearchbarVisibility()" shape="round" [fill]="isSearchbarEnabled ? 'outline' : 'clear'">
         <ion-icon slot="icon-only" md="search"></ion-icon>
       </ion-button>
       <ion-button [disabled]="subscriptions.length < 2" color="primary" (click)="changeChoosenBillingInterval()">
@@ -29,7 +29,7 @@
 
   <ion-card *ngIf="isSearchbarEnabled">
     <ion-card-content class="ion-no-padding">
-      <ion-searchbar class="searchbar-integrate" placeholder="{{ 'TABS.OVERVIEW.SEARCH_FOR_NAME_AND_DESCRIPTION' | translate }}" [(ngModel)]="subscriptionSearchFilter"></ion-searchbar>
+      <ion-searchbar #searchSubscriptions class="searchbar-integrate" placeholder="{{ 'TABS.OVERVIEW.SEARCH_FOR_NAME_AND_DESCRIPTION' | translate }}" [(ngModel)]="subscriptionSearchFilter"></ion-searchbar>
     </ion-card-content>
   </ion-card>
 
