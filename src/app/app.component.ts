@@ -5,6 +5,9 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TranslateService } from '@ngx-translate/core';
 
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -29,6 +32,9 @@ export class AppComponent {
   }
 
   setupInternationalisation() {
+    // Register all suported locales other than english (en)
+    registerLocaleData(localeDe);
+
     this.translateService.setDefaultLang('en');
     const browserLang = this.translateService.getBrowserLang();
     this.translateService.use(browserLang.match(/en|de/) ? browserLang : 'en');
