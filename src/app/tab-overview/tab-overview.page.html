@@ -9,11 +9,11 @@
       </ng-container>
     </ion-title>
     <ion-buttons slot="end">
+      <ion-button [disabled]="subscriptions.length < 2" color="primary" (click)="isSearchbarEnabled = !isSearchbarEnabled; subscriptionSearchFilter = ''" shape="round" [fill]="isSearchbarEnabled ? 'outline' : 'clear'">
+        <ion-icon slot="icon-only" md="search"></ion-icon>
+      </ion-button>
       <ion-button [disabled]="subscriptions.length < 2" color="primary" (click)="changeChoosenBillingInterval()">
         <ion-icon slot="icon-only" md="swap-horizontal"></ion-icon>
-      </ion-button>
-      <ion-button [disabled]="subscriptions.length < 2" color="primary" (click)="isSearchbarEnabled = !isSearchbarEnabled; subscriptionSearchFilter = ''">
-        <ion-icon slot="icon-only" md="search"></ion-icon>
       </ion-button>
       <ion-button [disabled]="subscriptions.length < 2" color="primary" (click)="showSortingAlert()">
         <ion-icon slot="icon-only" md="filter"></ion-icon>
@@ -55,19 +55,19 @@
       <ion-grid class="ion-no-padding">
         <ion-row class="ion-no-padding ion-align-items-center">
           <ion-col class="ion-no-padding" size="auto">
-            <ion-fab-button size="small"><ion-icon md="swap-horizontal"></ion-icon></ion-fab-button>
+            <ion-fab-button size="small"><ion-icon md="search"></ion-icon></ion-fab-button>
           </ion-col>
           <ion-col class="ion-no-padding" style="margin-left: 1rem;">
-            {{ 'TABS.OVERVIEW.CHANGE_CHOOSEN_BILLING_INTERVAL_HELPER' | translate }}
+            {{ 'TABS.OVERVIEW.SEARCH_HELPER' | translate }}
           </ion-col>
         </ion-row>
 
         <ion-row class="ion-no-padding ion-align-items-center">
           <ion-col class="ion-no-padding" size="auto">
-            <ion-fab-button size="small"><ion-icon md="search"></ion-icon></ion-fab-button>
+            <ion-fab-button size="small"><ion-icon md="swap-horizontal"></ion-icon></ion-fab-button>
           </ion-col>
           <ion-col class="ion-no-padding" style="margin-left: 1rem;">
-            {{ 'TABS.OVERVIEW.SEARCH_HELPER' | translate }}
+            {{ 'TABS.OVERVIEW.CHANGE_CHOOSEN_BILLING_INTERVAL_HELPER' | translate }}
           </ion-col>
         </ion-row>
 
