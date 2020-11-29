@@ -11,10 +11,10 @@ export class DaysUntilNextCancelationPeriodDeadlinePipe implements PipeTransform
 
   transform(subscription: ISubscription): number {
     const today = new Date();
-    const billingStart = new Date(subscription.billingStart);
+    const contractStart = new Date(subscription.contractStart);
     
-    // Calculate at first: billingStart + minimumContractDuration
-    let lastPossibleCancelationDate = this.calculateDates(billingStart, '+', subscription.minimumContractDuration, subscription.minimumContractDurationInterval);
+    // Calculate at first: contractStart + minimumContractDuration
+    let lastPossibleCancelationDate = this.calculateDates(contractStart, '+', subscription.minimumContractDuration, subscription.minimumContractDurationInterval);
 
     // If lastPossibleCancelationDate - cancelationPeriod before today we have found our date
     lastPossibleCancelationDate = this.calculateDates(lastPossibleCancelationDate, '-', subscription.cancelationPeriodEvery, subscription.cancelationPeriodInterval);

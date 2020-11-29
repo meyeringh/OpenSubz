@@ -30,17 +30,18 @@ export class ModalAddSubscriptionComponent implements OnInit {
       name: ['', Validators.required],
       description: [''],
       cost: ['', Validators.required],
+      color: ['BLUE', Validators.required],
       billingStart: [new Date().toISOString().slice(0,10), Validators.required],
       billingEvery: [1, Validators.required],
-      billingInterval: ['YEARS', Validators.required],
+      billingInterval: ['MONTHS', Validators.required],
+      contractStart: [new Date().toISOString().slice(0,10), Validators.required],
       minimumContractDuration: ['2', Validators.required],
       minimumContractDurationInterval: ['YEARS', Validators.required],
       extensionAfterMinimumContractDurationEvery: ['6', Validators.required],
       extensionAfterMinimumContractDurationInterval: ['MONTHS', Validators.required],
       cancelationPeriodEvery: [3],
       cancelationPeriodInterval: ['MONTHS'],
-      notificationBeforeCancelationPeriodInDays: [null],
-      color: ['BLUE', Validators.required]
+      notificationBeforeCancelationPeriodInDays: [null]
     });
   }
 

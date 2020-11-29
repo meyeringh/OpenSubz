@@ -47,7 +47,7 @@
       </ion-item>
 
       <ion-list-header class="list-header" style="margin-top: 1rem;">
-        {{ 'TABS.OVERVIEW.DATE_RELEVANT_INFORMATION' | translate }}
+        {{ 'TABS.OVERVIEW.BILLING' | translate }}
       </ion-list-header>
 
       <ion-item>
@@ -78,6 +78,15 @@
           </ion-col>
         </ion-row>
       </ion-grid>
+
+      <ion-list-header class="list-header" style="margin-top: 1rem;">
+        {{ 'TABS.OVERVIEW.CONTRACT' | translate }}
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>{{ 'TABS.OVERVIEW.CONTRACT_START' | translate }}</ion-label>
+        <ion-datetime cancelText="{{ 'GENERAL.CANCEL' | translate }}" doneText="{{ 'GENERAL.DONE' | translate }}" displayFormat="DD.MM.YYYY" name="billingStart" formControlName="contractStart"></ion-datetime>
+      </ion-item>
 
       <ion-grid class="ion-no-padding">
         <ion-row class="ion-no-padding">
