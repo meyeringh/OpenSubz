@@ -15,7 +15,7 @@ The app is quite minimal but offers the most important features.
 
 ### Functional
 
-- Add subscriptions and details like costs, billing interval, conract durations and cancelation period
+- Add subscriptions and details like costs, billing interval, contract durations and cancelation period
 - Show all subscriptions and their costs
 - Show days until next billing
 - Switch subscription cost overview to daily, weekly, monthly and yearly
@@ -40,7 +40,7 @@ The app is quite minimal but offers the most important features.
 git pull https://codeberg.org/epinez/Subz.git
 cd Subz
 npm i
-ionic capacitor build android
+ionic capacitor build android --prod
 ```
 
 Then open the Android Studio project under `android/` and run a build. You could also run it in a browser with `ionic serve`. Enjoy!
