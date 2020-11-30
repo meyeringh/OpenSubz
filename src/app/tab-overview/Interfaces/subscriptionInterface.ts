@@ -1,5 +1,5 @@
 export interface ISubscription {
-    id: string; // uuid, unique
+    id: number; // Begins with 1, unique
     name: string;
     description?: string;
     cost: number;

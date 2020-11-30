@@ -85,5 +85,9 @@
             "RESTORE_BACKUP_ERROR": "Error while reading data from backup!",
             "RESTORE_BACKUP_SUCCESS": "The data has been restored successfully!"
         }
+    },
+    "NOTIFICATIONS": {
+        "NOTIFICATION_TITLE": "Cancelation period is soon reached",
+        "NOTIFICATION_BODY": "The cancelation period of $NAME$ is due on $DATE$."
     }
 }

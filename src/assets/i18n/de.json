@@ -85,5 +85,9 @@
             "RESTORE_BACKUP_ERROR": "Fehler beim Einlesen der Daten aus dem Backup!",
             "RESTORE_BACKUP_SUCCESS": "Die Daten wurden erfolgreich wiederhergestellt!"
         }
+    },
+    "NOTIFICATIONS": {
+        "NOTIFICATION_TITLE": "Kündigungsfrist bald erreicht",
+        "NOTIFICATION_BODY": "Die Kündigungsfrist von $NAME$ ist am $DATE$ erreicht."
     }
 }

@@ -39,10 +39,8 @@ export class TabOverviewPage {
   }
 
   addEntry(entry: ISubscription): void {
-    let id = '';
-
-    do { id = uuid.v4(); } while (this.subscriptions.some(subscription => subscription.id === id));
-
+    let id = 1;
+    while (this.subscriptions.some(subscription => subscription.id === id)) { id++; }
     entry.id = id;
 
     this.subscriptions.push(entry);

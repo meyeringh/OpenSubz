@@ -14,6 +14,7 @@ import { StorageService } from './Services/storage.service';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { NextCancelationPeriodDeadlinePipe } from './tab-overview/Pipes/next-cancelation-period-deadline.pipe';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient): TranslateHttpLoader {
@@ -42,7 +43,8 @@ export function HttpLoaderFactory(httpClient: HttpClient): TranslateHttpLoader {
     LocalNotifications,
     NotificationService,
     StorageService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    NextCancelationPeriodDeadlinePipe
   ],
   bootstrap: [AppComponent]
 })
