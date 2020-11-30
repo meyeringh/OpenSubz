@@ -22,7 +22,7 @@ export class SubscriptionCardComponent {
     private nextBillingPipe: NextBillingPipe,
     private nextCancelationPeriodDeadlinePipe: NextCancelationPeriodDeadlinePipe,
     private notificationTimeForNextCancelationPeriodDeadlinePipe: NotificationTimeForNextCancelationPeriodDeadlinePipe,
-    private translateService: TranslateService) { }
+    public translateService: TranslateService) { }
 
   explainNextBilling(event: Event, subscription: ISubscription) {
     event.stopPropagation();
