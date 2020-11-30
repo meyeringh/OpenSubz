@@ -8,9 +8,9 @@ import { SubscriptionCardComponent } from './Components/subscription-card/subscr
 
 import { TabOverviewPageRoutingModule } from './tab-overview-routing.module';
 
-import { DaysUntilNextBillingPipe } from './Pipes/days-until-next-billing.pipe';
-import { DaysUntilNextCancelationPeriodDeadlinePipe } from './Pipes/days-until-next-cancelation-period-deadline.pipe';
-import { DaysUntilNotificationForNextCancelationPeriodDeadlinePipe } from './Pipes/days-until-notification-for-next-cancelation-period-deadline.pipe';
+import { NextBillingPipe } from './Pipes/next-billing.pipe';
+import { NextCancelationPeriodDeadlinePipe } from './Pipes/next-cancelation-period-deadline.pipe';
+import { NotificationTimeForNextCancelationPeriodDeadlinePipe } from './Pipes/notification-time-for-next-cancelation-period-deadline.pipe';
 import { SearchSubscriptionsPipe } from './Pipes/search-subscriptions.pipe';
 import { SortSubscriptionsPipe } from './Pipes/sort-subscriptions.pipe';
 import { CostByBillingIntervalPipe } from './Pipes/cost-by-billing-interval.pipe';
@@ -30,9 +30,9 @@ import { TranslateModule } from '@ngx-translate/core';
     TabOverviewPage,
     ModalAddSubscriptionComponent,
     SubscriptionCardComponent,
-    DaysUntilNextBillingPipe,
-    DaysUntilNextCancelationPeriodDeadlinePipe,
-    DaysUntilNotificationForNextCancelationPeriodDeadlinePipe,
+    NextBillingPipe,
+    NextCancelationPeriodDeadlinePipe,
+    NotificationTimeForNextCancelationPeriodDeadlinePipe,
     SearchSubscriptionsPipe,
     SortSubscriptionsPipe,
     CostByBillingIntervalPipe,
@@ -42,9 +42,10 @@ import { TranslateModule } from '@ngx-translate/core';
     ModalAddSubscriptionComponent
   ],
   providers: [
-    DaysUntilNextBillingPipe,
-    DaysUntilNextCancelationPeriodDeadlinePipe,
-    CostByBillingIntervalPipe
+    NextBillingPipe,
+    NextCancelationPeriodDeadlinePipe,
+    CostByBillingIntervalPipe,
+    NotificationTimeForNextCancelationPeriodDeadlinePipe
   ]
 })
 export class TabOverviewPageModule {}

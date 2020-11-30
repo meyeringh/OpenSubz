@@ -2,14 +2,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { ISubscription } from '../Interfaces/subscriptionInterface';
 
 @Pipe({
-  name: 'daysUntilNextCancelationPeriodDeadline'
+  name: 'nextCancelationPeriodDeadline'
 })
-export class DaysUntilNextCancelationPeriodDeadlinePipe implements PipeTransform {
+export class NextCancelationPeriodDeadlinePipe implements PipeTransform {
   MS_PER_DAY = 1000 * 60 * 60 * 24;
 
   constructor() {}
 
-  transform(subscription: ISubscription): number {
+  transform(subscription: ISubscription): {dueDate: Date, inDaysFromToday: number} {
     const today = new Date();
     const contractStart = new Date(subscription.contractStart);
     
@@ -19,7 +19,7 @@ export class DaysUntilNextCancelationPeriodDeadlinePipe implements PipeTransform
     // If lastPossibleCancelationDate - cancelationPeriod before today we have found our date
     lastPossibleCancelationDate = this.calculateDates(lastPossibleCancelationDate, '-', subscription.cancelationPeriodEvery, subscription.cancelationPeriodInterval);
     if (this.dateDiffInDays(today, lastPossibleCancelationDate) > 0) {
-      return this.dateDiffInDays(today, lastPossibleCancelationDate);
+      return { dueDate: lastPossibleCancelationDate, inDaysFromToday: this.dateDiffInDays(today, lastPossibleCancelationDate) }
     }
     else {
       do {
@@ -28,7 +28,7 @@ export class DaysUntilNextCancelationPeriodDeadlinePipe implements PipeTransform
       } while(this.dateDiffInDays(today, this.calculateDates(lastPossibleCancelationDate, '-', subscription.cancelationPeriodEvery, subscription.cancelationPeriodInterval)) < 0);
     }
 
-    return this.dateDiffInDays(today, lastPossibleCancelationDate);
+    return { dueDate: lastPossibleCancelationDate, inDaysFromToday: this.dateDiffInDays(today, lastPossibleCancelationDate) }
   }
 
   dateDiffInDays(a: Date, b: Date): number {

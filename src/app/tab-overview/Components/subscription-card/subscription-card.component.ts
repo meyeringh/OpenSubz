@@ -1,14 +1,17 @@
 import { Component, Input } from '@angular/core';
 import { ISubscription } from '../../Interfaces/subscriptionInterface';
 import { ToastController } from '@ionic/angular';
-import { DaysUntilNextBillingPipe } from '../../Pipes/days-until-next-billing.pipe';
-import { DaysUntilNextCancelationPeriodDeadlinePipe } from '../../Pipes/days-until-next-cancelation-period-deadline.pipe';
+import { NextBillingPipe } from '../../Pipes/next-billing.pipe';
+import { NextCancelationPeriodDeadlinePipe } from '../../Pipes/next-cancelation-period-deadline.pipe';
 import { TranslateService } from '@ngx-translate/core';
+import { DatePipe } from '@angular/common';
+import { NotificationTimeForNextCancelationPeriodDeadlinePipe } from '../../Pipes/notification-time-for-next-cancelation-period-deadline.pipe';
 
 @Component({
   selector: 'app-subscription-card',
   templateUrl: './subscription-card.component.html',
   styleUrls: ['./subscription-card.component.scss'],
+  providers: [DatePipe]
 })
 export class SubscriptionCardComponent {
   @Input() subscription: ISubscription;
@@ -16,35 +19,44 @@ export class SubscriptionCardComponent {
   @Input() currency: string;
 
   constructor(
-    public toastController: ToastController,
-    public daysUntilNextBillingPipe: DaysUntilNextBillingPipe,
-    public daysUntilNextCancelationPeriodDeadlinePipe: DaysUntilNextCancelationPeriodDeadlinePipe,
-    public translateService: TranslateService) { }
+    private toastController: ToastController,
+    private nextBillingPipe: NextBillingPipe,
+    private nextCancelationPeriodDeadlinePipe: NextCancelationPeriodDeadlinePipe,
+    private notificationTimeForNextCancelationPeriodDeadlinePipe: NotificationTimeForNextCancelationPeriodDeadlinePipe,
+    private translateService: TranslateService,
+    private datePipe: DatePipe = new DatePipe(translateService.currentLang)) { }
 
-  explainDaysUntilNextBilling(event: Event, subscription: ISubscription) {
+  explainNextBilling(event: Event, subscription: ISubscription) {
     event.stopPropagation();
 
-    this.translateService.get('TABS.OVERVIEW.DAYS_UNTIL_NEXT_BILLING_HELPER').subscribe(DAYS_UNTIL_NEXT_BILLING_HELPER => {
-      this.toastMessage(this.daysUntilNextBillingPipe.transform(subscription) + ' ' + DAYS_UNTIL_NEXT_BILLING_HELPER);
+    const nextBillingInDays = this.nextBillingPipe.transform(subscription).inDaysFromToday;
+    const nextBillingDate = this.datePipe.transform(this.nextBillingPipe.transform(subscription).dueDate);
+
+    this.translateService.get('TABS.OVERVIEW.DAYS_UNTIL_NEXT_BILLING_ON_HELPER').subscribe(DAYS_UNTIL_NEXT_BILLING_ON_HELPER => {
+      this.toastMessage(nextBillingInDays + ' ' + DAYS_UNTIL_NEXT_BILLING_ON_HELPER + ' ' + nextBillingDate);
     });
   }
 
-  explainDaysUntilNextCancelationPeriodDeadline(event: Event, subscription: ISubscription) {
+  explainNextCancelationPeriodDeadline(event: Event, subscription: ISubscription) {
     event.stopPropagation();
 
-    this.translateService.get('TABS.OVERVIEW.DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_HELPER').subscribe(
-      DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_HELPER => {
-      this.toastMessage(this.daysUntilNextCancelationPeriodDeadlinePipe.transform(
-        subscription) + ' ' + DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_HELPER);
+    const nextCancelationPeriodDeadlineInDays = this.nextCancelationPeriodDeadlinePipe.transform(subscription).inDaysFromToday;
+    const nextCancelationPeriodDeadlineDate = this.datePipe.transform(this.nextCancelationPeriodDeadlinePipe.transform(subscription).dueDate);
+
+    this.translateService.get('TABS.OVERVIEW.DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_ON_HELPER').subscribe(
+      DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_ON_HELPER => {
+      this.toastMessage(nextCancelationPeriodDeadlineInDays + ' ' + DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_ON_HELPER + ' ' + nextCancelationPeriodDeadlineDate);
     });
   }
 
-  explainDaysUntilAlarmForNextCancelationPeriodDeadline(event: Event, subscription: ISubscription) {
+  explainAlarmForNextCancelationPeriodDeadline(event: Event, subscription: ISubscription) {
     event.stopPropagation();
 
-    this.translateService.get('TABS.OVERVIEW.NOTIFICATION_BEFORE_CANCELATION_PERIOD_ACTIVE').subscribe(
-      NOTIFICATION_BEFORE_CANCELATION_PERIOD_ACTIVE => {
-      this.toastMessage(NOTIFICATION_BEFORE_CANCELATION_PERIOD_ACTIVE);
+    const alarmForNextCancelationPeriodDeadlineDate = this.datePipe.transform(this.notificationTimeForNextCancelationPeriodDeadlinePipe.transform(subscription).dueDate);
+
+    this.translateService.get('TABS.OVERVIEW.NOTIFICATION_BEFORE_CANCELATION_PERIOD_ON').subscribe(
+      NOTIFICATION_BEFORE_CANCELATION_PERIOD_ON => {
+      this.toastMessage(NOTIFICATION_BEFORE_CANCELATION_PERIOD_ON + ' ' + alarmForNextCancelationPeriodDeadlineDate);
     });
   }
 

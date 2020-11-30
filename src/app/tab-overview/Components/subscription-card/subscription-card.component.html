@@ -12,17 +12,17 @@
       </ion-row>
       <ion-row class="ion-no-padding">
         <ion-col class="ion-no-padding">
-          <ion-chip size="small" (click)="explainDaysUntilNextBilling($event, subscription)">
+          <ion-chip size="small" (click)="explainNextBilling($event, subscription)">
             <ion-icon name="card" color="light"></ion-icon>
-            <ion-label color="light">{{ subscription | daysUntilNextBilling }} {{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.DAYS' | translate | titlecase | slice:0:1 }}</ion-label>
+            <ion-label color="light">{{ (subscription | nextBilling).inDaysFromToday }} {{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.DAYS' | translate | titlecase | slice:0:1 }}</ion-label>
           </ion-chip>
 
-          <ion-chip size="small" (click)="explainDaysUntilNextCancelationPeriodDeadline($event, subscription)" *ngIf="subscription.cancelationPeriodEvery !== 0">
+          <ion-chip size="small" (click)="explainNextCancelationPeriodDeadline($event, subscription)" *ngIf="subscription.cancelationPeriodEvery !== 0">
             <ion-icon name="warning" color="light"></ion-icon>
-            <ion-label color="light">{{ subscription | daysUntilNextCancelationPeriodDeadline }} {{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.DAYS' | translate | titlecase | slice:0:1 }}</ion-label>
+            <ion-label color="light">{{ (subscription | nextCancelationPeriodDeadline).inDaysFromToday }} {{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.DAYS' | translate | titlecase | slice:0:1 }}</ion-label>
           </ion-chip>
 
-          <ion-chip size="small" (click)="explainDaysUntilAlarmForNextCancelationPeriodDeadline($event, subscription)" *ngIf="subscription.notificationBeforeCancelationPeriodInDays">
+          <ion-chip size="small" (click)="explainAlarmForNextCancelationPeriodDeadline($event, subscription)" *ngIf="subscription.notificationBeforeCancelationPeriodInDays">
             <ion-icon name="notifications" color="light" style="margin-inline-end: -4px;"></ion-icon>
             <ion-label color="light"></ion-label>
           </ion-chip>

@@ -2,12 +2,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { ISubscription } from '../Interfaces/subscriptionInterface';
 
 @Pipe({
-  name: 'daysUntilNextBilling'
+  name: 'nextBilling'
 })
-export class DaysUntilNextBillingPipe implements PipeTransform {
+export class NextBillingPipe implements PipeTransform {
   MS_PER_DAY = 1000 * 60 * 60 * 24;
 
-  transform(se: ISubscription, overNext?: boolean): number {
+  transform(se: ISubscription): {dueDate: Date, inDaysFromToday: number} {
     const today = new Date();
     const billingStart = new Date(se.billingStart);
     const nextBillingDate = billingStart;
@@ -18,41 +18,35 @@ export class DaysUntilNextBillingPipe implements PipeTransform {
           nextBillingDate.setDate(nextBillingDate.getDate() + se.billingEvery);
         }
 
-        if (overNext) { nextBillingDate.setDate(nextBillingDate.getDate() + se.billingEvery); }
-
-        return this.dateDiffInDays(today, nextBillingDate);
+        break;
       }
       case 'WEEKS': {
         while (this.dateDiffInDays(today, nextBillingDate) <= 0) {
           nextBillingDate.setDate(nextBillingDate.getDate() + (se.billingEvery * 7));
         }
 
-        if (overNext) { nextBillingDate.setDate(nextBillingDate.getDate() + (se.billingEvery * 7)); }
-
-        return this.dateDiffInDays(today, nextBillingDate);
+        break;
       }
       case 'MONTHS': {
         while (this.dateDiffInDays(today, nextBillingDate) <= 0) {
           nextBillingDate.setMonth(nextBillingDate.getMonth() + se.billingEvery);
         }
 
-        if (overNext) { nextBillingDate.setMonth(nextBillingDate.getMonth() + se.billingEvery); }
-
-        return this.dateDiffInDays(today, nextBillingDate);
+        break;
       }
       case 'YEARS': {
         while (this.dateDiffInDays(today, nextBillingDate) <= 0) {
           nextBillingDate.setFullYear(nextBillingDate.getFullYear() + se.billingEvery);
         }
 
-        if (overNext) { nextBillingDate.setFullYear(nextBillingDate.getFullYear() + se.billingEvery); }
-
-        return this.dateDiffInDays(today, nextBillingDate);
+        break;
       }
       default: {
         return undefined;
       }
     }
+
+    return { dueDate: nextBillingDate, inDaysFromToday: this.dateDiffInDays(today, nextBillingDate) }
   }
 
   // Difference between two Date objects in days (always positive)

@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { ISubscription } from '../Interfaces/subscriptionInterface';
-import { DaysUntilNextBillingPipe } from './days-until-next-billing.pipe';
-import { DaysUntilNextCancelationPeriodDeadlinePipe } from './days-until-next-cancelation-period-deadline.pipe';
+import { NextBillingPipe } from './next-billing.pipe';
+import { NextCancelationPeriodDeadlinePipe } from './next-cancelation-period-deadline.pipe';
 import { CostByBillingIntervalPipe } from './cost-by-billing-interval.pipe';
 import { billingIntervals } from '../BILLING_INTERVALS';
 
@@ -13,8 +13,8 @@ export class SortSubscriptionsPipe implements PipeTransform {
 
   constructor(
     private costByBillingIntervalPipe: CostByBillingIntervalPipe,
-    private daysUntilNextBillingPipe: DaysUntilNextBillingPipe,
-    private daysUntilNextCancelationPeriodDeadlinePipe: DaysUntilNextCancelationPeriodDeadlinePipe) {}
+    private nextBillingPipe: NextBillingPipe,
+    private nextCancelationPeriodDeadlinePipe: NextCancelationPeriodDeadlinePipe) {}
 
   transform(subscriptions: ISubscription[], filterBy: string): ISubscription[] {
     if (!subscriptions) { return null; }
@@ -55,10 +55,10 @@ export class SortSubscriptionsPipe implements PipeTransform {
       }
       case 'nextBillingAsc': {
         return subscriptions.sort((a, b) => {
-          if (this.daysUntilNextBillingPipe.transform(a) < this.daysUntilNextBillingPipe.transform(b)){
+          if (this.nextBillingPipe.transform(a) < this.nextBillingPipe.transform(b)){
             return -1;
           }
-          if (this.daysUntilNextBillingPipe.transform(a) > this.daysUntilNextBillingPipe.transform(b)){
+          if (this.nextBillingPipe.transform(a) > this.nextBillingPipe.transform(b)){
             return 1;
           }
           return 0;
@@ -66,10 +66,10 @@ export class SortSubscriptionsPipe implements PipeTransform {
       }
       case 'nextBillingDesc': {
         return subscriptions.sort((a, b) => {
-          if (this.daysUntilNextBillingPipe.transform(a) > this.daysUntilNextBillingPipe.transform(b)){
+          if (this.nextBillingPipe.transform(a) > this.nextBillingPipe.transform(b)){
             return -1;
           }
-          if (this.daysUntilNextBillingPipe.transform(a) < this.daysUntilNextBillingPipe.transform(b)){
+          if (this.nextBillingPipe.transform(a) < this.nextBillingPipe.transform(b)){
             return 1;
           }
           return 0;
@@ -77,10 +77,10 @@ export class SortSubscriptionsPipe implements PipeTransform {
       }
       case 'nextContractExtensionAsc': {
         return subscriptions.sort((a, b) => {
-          if (this.daysUntilNextCancelationPeriodDeadlinePipe.transform(a) < this.daysUntilNextCancelationPeriodDeadlinePipe.transform(b)){
+          if (this.nextCancelationPeriodDeadlinePipe.transform(a) < this.nextCancelationPeriodDeadlinePipe.transform(b)){
             return -1;
           }
-          if (this.daysUntilNextCancelationPeriodDeadlinePipe.transform(a) > this.daysUntilNextCancelationPeriodDeadlinePipe.transform(b)){
+          if (this.nextCancelationPeriodDeadlinePipe.transform(a) > this.nextCancelationPeriodDeadlinePipe.transform(b)){
             return 1;
           }
           return 0;
@@ -88,10 +88,10 @@ export class SortSubscriptionsPipe implements PipeTransform {
       }
       case 'nextContractExtensionDesc': {
         return subscriptions.sort((a, b) => {
-          if (this.daysUntilNextCancelationPeriodDeadlinePipe.transform(a) > this.daysUntilNextCancelationPeriodDeadlinePipe.transform(b)){
+          if (this.nextCancelationPeriodDeadlinePipe.transform(a) > this.nextCancelationPeriodDeadlinePipe.transform(b)){
             return -1;
           }
-          if (this.daysUntilNextCancelationPeriodDeadlinePipe.transform(a) < this.daysUntilNextCancelationPeriodDeadlinePipe.transform(b)){
+          if (this.nextCancelationPeriodDeadlinePipe.transform(a) < this.nextCancelationPeriodDeadlinePipe.transform(b)){
             return 1;
           }
           return 0;
