@@ -7,42 +7,44 @@ import { ISubscription } from '../Interfaces/subscriptionInterface';
 export class NextBillingPipe implements PipeTransform {
   MS_PER_DAY = 1000 * 60 * 60 * 24;
 
-  transform(se: ISubscription): {dueDate: Date, inDaysFromToday: number} {
+  transform(subscription: ISubscription): {dueDate: Date, inDaysFromToday: number} {
     const today = new Date();
-    const billingStart = new Date(se.billingStart);
+    const billingStart = new Date(subscription.billingStart);
     const nextBillingDate = billingStart;
 
-    switch (se.billingInterval) {
+    if (subscription.billingEvery === 0) { return null; }
+
+    switch (subscription.billingInterval) {
       case 'DAYS': {
         while (this.dateDiffInDays(today, nextBillingDate) <= 0) {
-          nextBillingDate.setDate(nextBillingDate.getDate() + se.billingEvery);
+          nextBillingDate.setDate(nextBillingDate.getDate() + subscription.billingEvery);
         }
 
         break;
       }
       case 'WEEKS': {
         while (this.dateDiffInDays(today, nextBillingDate) <= 0) {
-          nextBillingDate.setDate(nextBillingDate.getDate() + (se.billingEvery * 7));
+          nextBillingDate.setDate(nextBillingDate.getDate() + (subscription.billingEvery * 7));
         }
 
         break;
       }
       case 'MONTHS': {
         while (this.dateDiffInDays(today, nextBillingDate) <= 0) {
-          nextBillingDate.setMonth(nextBillingDate.getMonth() + se.billingEvery);
+          nextBillingDate.setMonth(nextBillingDate.getMonth() + subscription.billingEvery);
         }
 
         break;
       }
       case 'YEARS': {
         while (this.dateDiffInDays(today, nextBillingDate) <= 0) {
-          nextBillingDate.setFullYear(nextBillingDate.getFullYear() + se.billingEvery);
+          nextBillingDate.setFullYear(nextBillingDate.getFullYear() + subscription.billingEvery);
         }
 
         break;
       }
       default: {
-        return undefined;
+        return null;
       }
     }
 

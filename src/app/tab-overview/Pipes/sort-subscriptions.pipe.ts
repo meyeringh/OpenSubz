@@ -18,7 +18,7 @@ export class SortSubscriptionsPipe implements PipeTransform {
 
   transform(subscriptions: ISubscription[], filterBy: string): ISubscription[] {
     if (!subscriptions) { return null; }
-    if (filterBy === undefined || filterBy === '') { return subscriptions; }
+    if (!filterBy) { return subscriptions; }
 
     switch (filterBy) {
       case 'nameAsc': {

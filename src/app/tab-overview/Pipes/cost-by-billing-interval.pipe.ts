@@ -9,6 +9,8 @@ export class CostByBillingIntervalPipe implements PipeTransform {
   transform(subscription: ISubscription, selectedBillingIntervalName: string): number {
     let costPerDay: number;
 
+    if (subscription.billingEvery === 0) { return 0; }
+
     switch (subscription.billingInterval) {
       case 'DAYS': {
         costPerDay = subscription.cost / subscription.billingEvery;
@@ -29,7 +31,7 @@ export class CostByBillingIntervalPipe implements PipeTransform {
         break;
       }
       default: {
-        return undefined;
+        return null;
       }
     }
 
@@ -47,7 +49,7 @@ export class CostByBillingIntervalPipe implements PipeTransform {
         return costPerDay * 365;
       }
       default: {
-        return undefined;
+        return null;
       }
     }
   }

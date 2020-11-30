@@ -34,9 +34,10 @@ export class NotificationService {
         // Access all pending notifications, check whether each one should be there or delete it (if notificationBeforeCancelationPeriodInDays has been changed to empty after there has something already scheduled)
 
         // Next iteration if there shouldn't be any notification set for current subscription
-        if (notificationBeforeCancelationPeriodInDays === null || notificationBeforeCancelationPeriodInDays === undefined || notificationBeforeCancelationPeriodInDays === 0) {
-          continue;
-        }
+        if (!notificationBeforeCancelationPeriodInDays) { continue; }
+
+        // Next iteration if there isn't any deadline
+        if (!this.nextCancelationPeriodDeadlinePipe.transform(subscription)) { continue; }
 
         const nextCancelationPeriodDeadlineDate = new DatePipe(this.translateService.currentLang).transform(this.nextCancelationPeriodDeadlinePipe.transform(subscription).dueDate);
         // const scheduleAt = new Date(nextCancelationPeriodDeadlineDate - notificationBeforeCancelationPeriodInDays * 1000 * 60 * 60 * 24);

@@ -13,7 +13,7 @@ export class TotalCostByBillingIntervalPipe implements PipeTransform {
   transform(subscriptions: ISubscription[], selectedBillingIntervalName: string): number {
     let totalCost = 0;
 
-    if (subscriptions === undefined || subscriptions === null) { return totalCost; }
+    if (!subscriptions) { return totalCost; }
 
     for (const subscription of subscriptions) {
       totalCost += this.costByBillingIntervalPipe.transform(subscription, selectedBillingIntervalName);

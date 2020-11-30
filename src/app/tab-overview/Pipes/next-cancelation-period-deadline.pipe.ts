@@ -23,6 +23,10 @@ export class NextCancelationPeriodDeadlinePipe implements PipeTransform {
     }
     else {
       do {
+        // Break iteration if there is no contract extension after minimum contract duration
+        if (subscription.extensionAfterMinimumContractDurationEvery === 0 || subscription.extensionAfterMinimumContractDurationEvery === null) {
+          return null;
+        }
         // Add contract extension to date
         lastPossibleCancelationDate = this.calculateDates(lastPossibleCancelationDate, '+', subscription.extensionAfterMinimumContractDurationEvery, subscription.extensionAfterMinimumContractDurationInterval);
       } while(this.dateDiffInDays(today, this.calculateDates(lastPossibleCancelationDate, '-', subscription.cancelationPeriodEvery, subscription.cancelationPeriodInterval)) < 0);
@@ -72,7 +76,7 @@ export class NextCancelationPeriodDeadlinePipe implements PipeTransform {
         break;
       }
       default: {
-        return undefined;
+        return null;
       }
     }
 
