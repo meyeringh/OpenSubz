@@ -3,7 +3,7 @@ import { NextCancelationPeriodDeadlinePipe } from './next-cancelation-period-dea
 import { ISubscription } from '../Interfaces/subscriptionInterface';
 
 @Pipe({
-  name: 'NotificationTimeForNextCancelationPeriodDeadline'
+  name: 'notificationTimeForNextCancelationPeriodDeadline'
 })
 export class NotificationTimeForNextCancelationPeriodDeadlinePipe implements PipeTransform {
 
@@ -12,6 +12,7 @@ export class NotificationTimeForNextCancelationPeriodDeadlinePipe implements Pip
   transform(subscription: ISubscription): { dueDate: Date, inDaysFromToday: number } {
     const notifyInDaysPrior = subscription.notificationBeforeCancelationPeriodInDays;
     if (notifyInDaysPrior) {
+      if (!this.nextCancelationPeriodDeadlinePipe.transform(subscription)) { return null; }
       const dueDate = this.nextCancelationPeriodDeadlinePipe.transform(subscription).dueDate;
       dueDate.setDate(dueDate.getDate() - notifyInDaysPrior)
 
