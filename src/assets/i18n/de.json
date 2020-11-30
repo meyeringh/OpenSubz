@@ -28,7 +28,7 @@
             "MINIMUM_CONTRACT_DURATION": "Mindestvertragslaufzeit",
             "EXTENSION_AFTER_MINIMUM_CONTRACT_DURATION": "Vertragsverlängerung um",
             "CANCELATION_PERIOD": "Kündigungsfrist",
-            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_ON": "Erinnerung rechtzeig vor der Kündigungsfrist am",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_STARTS_ON": "Erinnerung vor der Kündigungsfrist frühestens am",
             "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Erinnerung vor Kündigungsfrist in Tagen",
             "TILE_COLOR": "Kachelfarbe",
             "REMOVE_SUBSCRIPTION": "Abonnement entfernen",

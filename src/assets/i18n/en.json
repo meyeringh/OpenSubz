@@ -28,7 +28,7 @@
             "MINIMUM_CONTRACT_DURATION": "Contract duration",
             "EXTENSION_AFTER_MINIMUM_CONTRACT_DURATION": "Contract extension",
             "CANCELATION_PERIOD": "Cancelation Period",
-            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_ON": "Notification before cancelation period on",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_STARTS_ON": "Notification before cancelation period earliest on",
             "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Notification before cancelation period in days",
             "TILE_COLOR": "Tile color",
             "REMOVE_SUBSCRIPTION": "Remove subscription",

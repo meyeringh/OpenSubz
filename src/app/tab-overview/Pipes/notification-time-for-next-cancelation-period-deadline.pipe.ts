@@ -9,10 +9,15 @@ export class NotificationTimeForNextCancelationPeriodDeadlinePipe implements Pip
 
   constructor(private nextCancelationPeriodDeadlinePipe: NextCancelationPeriodDeadlinePipe) {}
 
-  // ToDo: Think of negative parameters and return the corresponding Date
-  transform(se: ISubscription): {dueDate: Date, inDaysFromToday: number} {
-    if (se.notificationBeforeCancelationPeriodInDays !== undefined) {
-      return { dueDate: new Date(), inDaysFromToday: this.nextCancelationPeriodDeadlinePipe.transform(se).inDaysFromToday - se.notificationBeforeCancelationPeriodInDays };
+  transform(se: ISubscription): { dueDate: Date, inDaysFromToday: number } {
+    const notifyInDaysPrior = se.notificationBeforeCancelationPeriodInDays;
+    if (notifyInDaysPrior !== undefined || notifyInDaysPrior !== null || notifyInDaysPrior !== 0) {
+      const dueDate = this.nextCancelationPeriodDeadlinePipe.transform(se).dueDate;
+      dueDate.setDate(dueDate.getDate() - notifyInDaysPrior)
+
+      const inDaysFromToday = this.nextCancelationPeriodDeadlinePipe.transform(se).inDaysFromToday - notifyInDaysPrior;
+
+      return { dueDate: dueDate, inDaysFromToday: inDaysFromToday };
     } else { return undefined; }
   }
 
