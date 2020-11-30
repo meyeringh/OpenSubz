@@ -28,7 +28,7 @@
           </ion-chip>
         </ion-col>
         <ion-col class="ion-no-padding" style="margin: auto;" size="auto">
-          <small>{{ subscription.cost | number : '1.2-2': translateService.currentLang }} {{ currency }} / {{ subscription.billingEvery }} {{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.'+subscription.billingInterval | translate | titlecase | slice:0:1 }}</small>
+          <small>{{ subscription.cost | number : '1.2-2': translateService.currentLang }} {{ currency || '€' }} / {{ subscription.billingEvery }} {{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.'+subscription.billingInterval | translate | titlecase | slice:0:1 }}</small>
         </ion-col>
       </ion-row>
     </ion-grid>
