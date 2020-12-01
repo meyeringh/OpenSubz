@@ -251,7 +251,10 @@ export class TabSettingsPage {
         text: alertStrings.restoreBackup,
         cssClass: 'secondary',
         handler: async (inputs) => {
-          await this.storageService.restoreAllData(inputs.restore);
+          await this.storageService.restoreAllData(inputs.restore).then(() => {
+            this.ionViewWillEnter();
+            this.themeService.applyTheme();
+          });
         }
       }]
     });

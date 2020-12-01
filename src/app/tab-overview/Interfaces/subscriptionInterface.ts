@@ -1,3 +1,4 @@
+// Don't forget to apply changes to the validation in storage.service.restoreAllData() corresponding to the changes here
 export interface ISubscription {
     id: number; // Begins with 1, unique
     name: string;

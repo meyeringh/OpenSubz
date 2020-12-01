@@ -113,36 +113,51 @@ export class StorageService {
         throw Error;
       }
 
-      if (backupObject.hasOwnProperty('subscriptions')) {
-        const subscriptions: ISubscription[] = backupObject.subscriptions;
-        let isValid = true;
+      // SUBSCRIPTIONS
+      const subscriptions: ISubscription[] = backupObject.subscriptions;
+      let isValid = true;
 
-        for (const subscription of subscriptions) {
-          // See: subscriptionInterface.ts
-          // ToDo: More validation
+      for (const subscription of subscriptions) {
+        // Mandatory fields
+        isValid = 'id' in subscription && typeof subscription.id === 'number' &&
+                  'name' in subscription && typeof subscription.name === 'string' &&
+                  'cost' in subscription && typeof subscription.cost === 'number' &&
+                  'color' in subscription && typeof subscription.color === 'string' &&
+                  'billingStart' in subscription && typeof subscription.billingStart === 'string' &&
+                  'billingEvery' in subscription && typeof subscription.billingEvery === 'number' &&
+                  'billingInterval' in subscription && typeof subscription.billingInterval === 'string' &&
+                  'contractStart' in subscription && typeof subscription.contractStart === 'string' &&
+                  'minimumContractDuration' in subscription && typeof subscription.minimumContractDuration === 'number' &&
+                  'minimumContractDurationInterval' in subscription && typeof subscription.minimumContractDurationInterval === 'string' &&
+                  'extensionAfterMinimumContractDurationEvery' in subscription && typeof subscription.extensionAfterMinimumContractDurationEvery === 'number';
+                  'extensionAfterMinimumContractDurationInterval' in subscription && typeof subscription.extensionAfterMinimumContractDurationInterval === 'string' &&
+                  'cancelationPeriodEvery' in subscription && typeof subscription.cancelationPeriodEvery === 'number' &&
+                  'cancelationPeriodInterval' in subscription && typeof subscription.cancelationPeriodInterval === 'string';
+        if (!isValid) { throw Error; }
 
-          // Mandatory fields
-          isValid = 'id' in subscription && typeof subscription.id === 'string' &&
-                    'name' in subscription && typeof subscription.name === 'string' &&
-                    'cost' in subscription && typeof subscription.cost === 'number';
-
-          // Optional fields
-          if ('description' in subscription) { isValid = typeof subscription.description === 'string'; }
-        }
-        if (isValid) {
-          this.saveSubscriptionsToStorage(subscriptions);
-        } else {
-          throw Error;
+        // Optional fields
+        if ('description' in subscription) { this.throwErrorHelper(typeof subscription.description !== 'string'); }
+        if ('notificationBeforeCancelationPeriodInDays' in subscription) {
+          this.throwErrorHelper(typeof subscription.notificationBeforeCancelationPeriodInDays !== 'number' && typeof subscription.notificationBeforeCancelationPeriodInDays !== 'object');
         }
       }
+      
+      // SETTINGS
+      const settings: ISettings = backupObject.settings;
 
-      if (backupObject.hasOwnProperty('settings')) {
-        const settings: ISettings = backupObject.settings;
-
-        // ToDo: Validation of all settings properties
-
-        this.saveSettingsToStorage(settings);
+      if ('forceDarkMode' in settings) { this.throwErrorHelper(typeof settings.forceDarkMode !== 'boolean') }
+      if ('currency' in settings) { this.throwErrorHelper(typeof settings.currency !== 'string') }
+      if ('notificationBeforeCancelationPeriodInDays' in settings) {
+        // Can be null, so it can be an object
+        this.throwErrorHelper(typeof settings.notificationBeforeCancelationPeriodInDays !== 'number' && typeof settings.notificationBeforeCancelationPeriodInDays !== 'object');
       }
+      if ('defaultBillingInterval' in settings) { this.throwErrorHelper(typeof settings.defaultBillingInterval !== 'string') }
+      if ('defaultSortBy' in settings) { this.throwErrorHelper(typeof settings.defaultSortBy !== 'string') }
+      if ('hideOverviewHelperTextGeneral' in settings) { this.throwErrorHelper(typeof settings.hideOverviewHelperTextGeneral !== 'boolean') }
+      if ('hideOverviewHelperTextMenuBar' in settings) { this.throwErrorHelper(typeof settings.hideOverviewHelperTextMenuBar !== 'boolean') }
+
+      this.saveSubscriptionsToStorage(subscriptions);
+      this.saveSettingsToStorage(settings);
 
       this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_SUCCESS').subscribe(RESTORE_BACKUP_SUCCESS => {
         this.toastMessage(RESTORE_BACKUP_SUCCESS);
@@ -152,6 +167,10 @@ export class StorageService {
         this.toastMessage(RESTORE_BACKUP_ERROR);
       });
     }
+  }
+
+  throwErrorHelper(boolVar: boolean) {
+    if (boolVar) { throw Error; }
   }
 
   async toastMessage(toastMessage: string) {
