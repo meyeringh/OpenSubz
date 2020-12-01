@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Plugins } from '@capacitor/core';
+import { Plugins, FilesystemDirectory, FilesystemEncoding } from '@capacitor/core';
 import { ISubscription } from '../tab-overview/Interfaces/subscriptionInterface';
 import { ISettings } from '../tab-settings/Interfaces/settingsInterface';
 import { ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 
 const { Storage } = Plugins;
+const { Filesystem } = Plugins;
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +49,7 @@ export class StorageService {
     });
   }
 
-  async backupAllData() {
+  async getAllData(): Promise<string> {
     const entries = await this.retrieveSubscriptionsFromStorage();
     const set = await this.retrieveSettingsFromStorage();
 
@@ -58,6 +59,28 @@ export class StorageService {
     };
 
     return JSON.stringify(backup);
+  }
+
+  async backupAllDataAndroid() {
+    const backup = await this.getAllData();
+
+    try {
+      await Filesystem.writeFile({
+        path: 'subz-backup.json',
+        data: backup,
+        directory: FilesystemDirectory.Documents,
+        encoding: FilesystemEncoding.UTF8
+      })
+      
+      this.translateService.get('TABS.SETTINGS.BACKUP_SUCCESS').subscribe(BACKUP_SUCCESS => {
+        this.toastMessage(BACKUP_SUCCESS + ' Documents/subz-backup.json');
+      });
+
+    } catch(e) {
+      this.translateService.get('TABS.SETTINGS.BACKUP_ERROR').subscribe(BACKUP_ERROR => {
+        this.toastMessage(BACKUP_ERROR);
+      });
+    }
   }
 
   async restoreAllData(backup: string) {
@@ -100,22 +123,14 @@ export class StorageService {
         this.saveSettingsToStorage(settings);
       }
 
-      this.presentRestoreSuccessfulToast();
+      this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_SUCCESS').subscribe(RESTORE_BACKUP_SUCCESS => {
+        this.toastMessage(RESTORE_BACKUP_SUCCESS);
+      });
     } catch (exception) {
-      this.presentRestoreErrorToast();
+      this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_ERROR').subscribe(RESTORE_BACKUP_ERROR => {
+        this.toastMessage(RESTORE_BACKUP_ERROR);
+      });
     }
-  }
-
-  async presentRestoreSuccessfulToast() {
-    this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_SUCCESS').subscribe(RESTORE_BACKUP_SUCCESS => {
-      this.toastMessage(RESTORE_BACKUP_SUCCESS);
-    });
-  }
-
-  async presentRestoreErrorToast() {
-    this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_ERROR').subscribe(RESTORE_BACKUP_ERROR => {
-      this.toastMessage(RESTORE_BACKUP_ERROR);
-    });
   }
 
   async toastMessage(toastMessage: string) {

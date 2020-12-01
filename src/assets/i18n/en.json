@@ -78,6 +78,8 @@
             "ABOUT_TEXT": "By Christian Flaßkamp<br><br>Privacy-friendly app for managing subscriptions and contracts with notification feature. <br><br>The source code can be found on <a href='https://codeberg.org/epinez/Subz'>Codeberg</a>.",
             "DATA_MANAGEMENT": "Data management",
             "BACKUP": "Backup",
+            "BACKUP_ERROR": "Error while creating backup!",
+            "BACKUP_SUCCESS": "Backup saved to",
             "COPY_TO_CLIPBOARD": "Copy to clipboard",
             "RESTORE": "Restore",
             "BACKUP_DATA": "Backup-Data",

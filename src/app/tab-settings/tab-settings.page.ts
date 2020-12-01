@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController, Platform } from '@ionic/angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { licenseText } from './Helpers/mit-license-text';
 import { ISettings } from './Interfaces/settingsInterface';
@@ -20,11 +20,13 @@ export class TabSettingsPage {
   settingsFormChangeSubscription: Subscription;
 
   constructor(
+    private toastController: ToastController,
     public alertController: AlertController,
     private formBuilder: FormBuilder,
     private storageService: StorageService,
     public themeService: ThemeService,
-    public translateService: TranslateService) {
+    public translateService: TranslateService,
+    private platform: Platform) {
     this.settingsForm = this.formBuilder.group({
       forceDarkMode: false,
       currency: '€',
@@ -118,6 +120,17 @@ export class TabSettingsPage {
   }
 
   async backup(): Promise<void> {
+    this.platform.ready().then(() => {
+      if (this.platform.is('android')) {
+        this.storageService.backupAllDataAndroid();
+      }
+      else if (this.platform.is('mobileweb')) {
+        this.backupWeb();
+      }
+    });
+  }
+
+  async backupWeb(): Promise<void> {
     const alertStrings: any = {};
 
     this.translateService.get('GENERAL.CANCEL').subscribe(CANCEL => {
@@ -133,7 +146,7 @@ export class TabSettingsPage {
     const alert = await this.alertController.create({
       cssClass: 'alert-full-width',
       header: alertStrings.header,
-      message: await this.storageService.backupAllData(),
+      message: await this.storageService.getAllData(),
       buttons: [
         {
           text: alertStrings.cancel,
@@ -144,7 +157,7 @@ export class TabSettingsPage {
           text: alertStrings.copyToClipboard,
           cssClass: 'secondary',
           handler: async () => {
-            this.copyTextToClipboard(await this.storageService.backupAllData());
+            this.copyTextToClipboard(await this.storageService.getAllData());
         }
       }]
     });

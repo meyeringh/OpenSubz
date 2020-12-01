@@ -78,6 +78,8 @@
             "ABOUT_TEXT": "Von Christian Flaßkamp<br><br>Datenschutzfreundliche Verwaltung für Abonnements und Verträge mit Erinnerungsfunktion.<br><br>Der Quellcode ist auf <a href='https://codeberg.org/epinez/Subz'>Codeberg</a> zu finden.",
             "DATA_MANAGEMENT": "Datenverwaltung",
             "BACKUP": "Datensicherung",
+            "BACKUP_ERROR": "Fehler bei der Erstellung des Backups!",
+            "BACKUP_SUCCESS": "Backup gespeichert nach",
             "COPY_TO_CLIPBOARD": "In Zwischenablage kopieren",
             "RESTORE": "Datenwiederherstellung",
             "BACKUP_DATA": "Backup-Daten",
