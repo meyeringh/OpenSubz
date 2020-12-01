@@ -20,7 +20,6 @@ export class TabSettingsPage {
   settingsFormChangeSubscription: Subscription;
 
   constructor(
-    private toastController: ToastController,
     public alertController: AlertController,
     private formBuilder: FormBuilder,
     private storageService: StorageService,
@@ -166,6 +165,57 @@ export class TabSettingsPage {
   }
 
   async restore(): Promise<void> {
+    this.platform.ready().then(() => {
+      if (this.platform.is('android')) {
+        this.restoreAndroid();
+      }
+      else if (this.platform.is('mobileweb')) {
+        this.restoreWeb();
+      }
+    });
+  }
+
+  async restoreAndroid(): Promise<void> {
+    const alertStrings: any = {};
+
+    this.translateService.get('GENERAL.CANCEL').subscribe(CANCEL => {
+      alertStrings.cancel = CANCEL;
+    });
+    this.translateService.get('GENERAL.OK').subscribe(OK => {
+      alertStrings.ok = OK;
+    });
+    this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_ALERT_HEADER').subscribe(RESTORE_BACKUP_ALERT_HEADER => {
+      alertStrings.header = RESTORE_BACKUP_ALERT_HEADER;
+    });
+    this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_ALERT_MESSAGE').subscribe(RESTORE_BACKUP_ALERT_MESSAGE => {
+      alertStrings.message = RESTORE_BACKUP_ALERT_MESSAGE;
+    });
+
+    const alert = await this.alertController.create({
+      cssClass: 'alert-full-width',
+      header: alertStrings.header,
+      message: alertStrings.message,
+      buttons: [
+        {
+          text: alertStrings.cancel,
+          role: 'cancel',
+          cssClass: 'secondary'
+        }, {
+          text: alertStrings.ok,
+          handler: () => {
+            this.storageService.restoreAllDataAndroid().then(() => {
+              this.ionViewWillEnter();
+              this.themeService.applyTheme();
+            });
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async restoreWeb(): Promise<void> {
     const alertStrings: any = {};
 
     this.translateService.get('GENERAL.CANCEL').subscribe(CANCEL => {

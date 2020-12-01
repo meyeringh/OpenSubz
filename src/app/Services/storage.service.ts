@@ -83,6 +83,27 @@ export class StorageService {
     }
   }
 
+  async restoreAllDataAndroid() {
+    try {
+      await Filesystem.readFile({
+        path: 'subz-backup.json',
+        directory: FilesystemDirectory.Documents,
+        encoding: FilesystemEncoding.UTF8
+      }).then((fileReadResult) => {
+        this.restoreAllData(fileReadResult.data);
+      });
+
+      this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_SUCCESS').subscribe(RESTORE_BACKUP_SUCCESS => {
+        this.toastMessage(RESTORE_BACKUP_SUCCESS);
+      });
+
+    } catch(e) {
+      this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_ERROR_ANDROID').subscribe(RESTORE_BACKUP_ERROR_ANDROID => {
+        this.toastMessage(RESTORE_BACKUP_ERROR_ANDROID);
+      });
+    }
+  }
+
   async restoreAllData(backup: string) {
     let backupObject: { subscriptions: ISubscription[], settings: ISettings };
     try {
