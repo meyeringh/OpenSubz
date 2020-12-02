@@ -22,7 +22,7 @@ The app is quite minimal but offers the most important features.
 - Modify and delete subscriptions
 - Search for specific subscriptions
 - Sort subscriptions by name, costs, etc.
-- Optional reminder for reaching cancelation period of subscriptions (tbd)
+- Optional reminder for reaching cancelation period of subscriptions
 
 ### Settings
 
