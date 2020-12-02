@@ -37,7 +37,7 @@ The app is quite minimal but offers the most important features.
 ## Building
 
 ```
-git pull https://codeberg.org/epinez/Subz.git
+git clone https://codeberg.org/epinez/Subz.git
 cd Subz
 npm i
 ionic capacitor build android --prod
