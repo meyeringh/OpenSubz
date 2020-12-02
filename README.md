@@ -3,10 +3,10 @@
 Subscription and contract management app for Android based on Ionic.
 
 <p float="left">
-  <img src="./screenshots/no-subscriptions.png" width="24%"/>
-  <img src="./screenshots/add-subscription.png" width="24%"/>
-  <img src="./screenshots/overview.png" width="24%"/>
-  <img src="./screenshots/settings.png" width="24%"/>
+  <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="24%"/>
+  <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="24%"/>
+  <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="24%"/>
+  <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" width="24%"/>
 </p>
 
 ## Features

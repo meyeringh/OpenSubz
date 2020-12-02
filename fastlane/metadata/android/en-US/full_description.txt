@@ -1,0 +1,10 @@
+Keep and eye on your subscriptions and contracts. Let you remind of cancelation periods.
+
+* Add subscriptions and details like costs, billing interval, contract durations and cancelation period
+* Show all subscriptions and their costs
+* Show days until next billing
+* Switch subscription cost overview to daily, weekly, monthly and yearly
+* Modify and delete subscriptions
+* Search for specific subscriptions
+* Sort subscriptions by name, costs, etc.
+* Optional reminder for reaching cancelation period of subscriptions

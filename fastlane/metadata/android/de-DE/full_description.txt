@@ -1,0 +1,10 @@
+Behalte deine Abonnements und Verträge im Blick. Lass dich vor dem Erreichen einer Kündigungsfrist erinnern.
+
+* Füge Abonnements und Details, wie Kosten, Zahlungsintervall, Vertragslaufzeit und Kündigungsfrist hinzu
+* Zeige alle Abonnements und deren Kosten an
+* Zeige die Tage bis zur nächsten Abrechnung an
+* Wechsel die Übersicht der Abonnementkosten zu täglich, wöchentlich, monatlich und jährlich
+* Ändere und Lösche Abonnements
+* Suche nach bestimmten Abonnements
+* Sortiere Abonnements nach Name, Kosten, etc.
+* Optionale Erinnerung vor dem Erreichen einer Kündigungsfrist
