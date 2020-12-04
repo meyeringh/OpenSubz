@@ -1,0 +1,97 @@
+{
+    "APP": {
+        "NAME": "Subz"
+    },
+    "GENERAL": {
+        "CANCEL": "Abbrechen",
+        "OK": "OK",
+        "DONE": "Fertig",
+        "ASC": "Aufsteigend",
+        "DESC": "Absteigend"
+    },
+    "TABS": {
+        "OVERVIEW": {
+            "OVERVIEW": "Übersicht",
+            "SEARCH_FOR_NAME_AND_DESCRIPTION": "Name oder Beschreibung",
+            "TOTAL_COSTS": "Gesamtkosten",
+            "ADD_SUBSCRIPTION": "Abonnement hinzufügen",
+            "UPDATE_SUBSCRIPTION": "Abonnement bearbeiten",
+            "GENERAL_INFORMATION": "Allgemeine Angaben",
+            "NAME": "Name",
+            "DESCRIPTION": "Beschreibung",
+            "COSTS": "Kosten",
+            "BILLING": "Abrechnung",
+            "BILLING_START": "Abrechnungsbeginn",
+            "BILLING_EVERY": "Abrechnung alle",
+            "CONTRACT": "Vertrag",
+            "CONTRACT_START": "Vertragsbeginn",
+            "MINIMUM_CONTRACT_DURATION": "Mindestvertragslaufzeit",
+            "EXTENSION_AFTER_MINIMUM_CONTRACT_DURATION": "Vertragsverlängerung um",
+            "CANCELATION_PERIOD": "Kündigungsfrist",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_STARTS_ON": "Erinnerung vor der Kündigungsfrist frühestens am",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Erinnerung vor Kündigungsfrist in Tagen",
+            "TILE_COLOR": "Kachelfarbe",
+            "REMOVE_SUBSCRIPTION": "Abonnement entfernen",
+            "REMOVE_SUBSCRIPTION_ALERT_HEADER": "Abonnement wirklich entfernen?",
+            "REMOVE_SUBSCRIPTION_ALERT_MESSAGE": "Soll das Abonnement wirklich entfernt werden?",
+            "SORT_BY": "Sortieren nach",
+            "COSTS_PER_PERIOD": "Kosten pro Periode",
+            "NEXT_PAYMENT": "Nächste Zahlung",
+            "NEXT_SUBSCRIPTION_EXTENSION": "Nächste Vertragsverlängerung",
+            "DAYS_UNTIL_NEXT_BILLING_ON_HELPER": "Tage bis zur nächsten Abrechnung am",
+            "DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_ON_HELPER": "Tage bis zur letztmöglichen Kündigung innerhalb der Kündigungsfrist am",
+            "CALENDAR_INTERVALS": {
+                "DAYS": "Tage",
+                "WEEKS": "Wochen",
+                "MONTHS": "Monate",
+                "YEARS": "Jahre"
+            },
+            "NO_SUBSCRIPTION_HEADER": "Hallo, wie geht's denn so?",
+            "NO_SUBSCRIPTION_TEXT": "Neue Abonnements können durch Tippen auf das Plus oben rechts auf dem Bildschirm hinzugefügt werden. Die restlichen Funktionen im Menü sind deaktiviert bis mindestens zwei Abos hinzugefügt wurden.",
+            "MENU_BUTTONS_HELPER_HEADER": "Hilfe zur Menüleiste",
+            "CHANGE_CHOOSEN_BILLING_INTERVAL_HELPER": "Wechsel des Anzeigeintervalls der Abonnementkosten zwischen jährlich, monatlich, wöchentlich und täglich.",
+            "SEARCH_HELPER": "Zeige nur Abonnements an, deren Name oder Beschreibung dem Suchtext entsprechen.",
+            "SORT_HELPER": "Sortiere die Abonnements nach Name, Kosten, nächste Zahlung oder nächste Vertragsverlängerung.",
+            "ADD_SUBSCRIPTION_HELPER": "Füge neue Abonnements hinzu.",
+            "COLORS": {
+                "BLUE": "Blau",
+                "GREEN": "Grün",
+                "YELLOW": "Gelb",
+                "RED": "Rot",
+                "GREY": "Grau"
+            }
+        },
+        "SETTINGS": {
+            "SETTINGS": "Einstellungen",
+            "UI": "Benutzeroberfläche",
+            "HIDE_TOTAL_COSTS_IN_OVERVIEW": "Gesamtkosten in Übersicht ausblenden",
+            "HIDE_TOTAL_COSTS_IN_OVERVIEW_HELPER": "Anzeige sonst erst ab zwei Abonnements",
+            "DARK_MODE": "Dark-Mode",
+            "DARK_MODE_HELPER": "Auf manchen Geräten automatisch",
+            "CURRENCY": "Währung",
+            "SHOW_HELP_TEXTS_IN_OVERVIEW": "Hilfe in der Übersicht wieder anzeigen",
+            "TEMPLATES": "Vorlagen",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Erinnerung vor Kündigungsfrist in Tagen",
+            "GENERAL_INFORMATION": "Generelle Informationen",
+            "LICENSE": "Lizenz",
+            "ABOUT": "Über",
+            "ABOUT_TEXT": "Von Christian Flaßkamp<br><br>Datenschutzfreundliche Verwaltung für Abonnements und Verträge mit Erinnerungsfunktion.<br><br>Der Quellcode ist auf <a href='https://codeberg.org/epinez/Subz'>Codeberg</a> zu finden.",
+            "DATA_MANAGEMENT": "Datenverwaltung",
+            "BACKUP": "Datensicherung",
+            "BACKUP_ERROR": "Fehler bei der Erstellung des Backups!",
+            "BACKUP_SUCCESS": "Backup gespeichert nach",
+            "COPY_TO_CLIPBOARD": "In Zwischenablage kopieren",
+            "RESTORE": "Datenwiederherstellung",
+            "BACKUP_DATA": "Backup-Daten",
+            "RESTORE_BACKUP_ALERT_HEADER": "Backup wirklich wiederherstellen?",
+            "RESTORE_BACKUP_ALERT_MESSAGE": "Soll das Backup wirklich wiederhergestellt werden? Dadurch werden alle vorhandenen Daten überschrieben.",
+            "RESTORE_BACKUP_ERROR": "Fehler beim Einlesen der Daten aus dem Backup!",
+            "RESTORE_BACKUP_ERROR_ANDROID": "Fehler beim Zurückspielen des Backups. Ist die Backup-Datei Documents/subz-backup.json vorhanden?",
+            "RESTORE_BACKUP_SUCCESS": "Die Daten wurden erfolgreich wiederhergestellt!"
+        }
+    },
+    "NOTIFICATIONS": {
+        "NOTIFICATION_TITLE": "Kündigungsfrist bald erreicht",
+        "NOTIFICATION_BODY": "Die Kündigungsfrist von $NAME$ ist am $DATE$ erreicht."
+    }
+}

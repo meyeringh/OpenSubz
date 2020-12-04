@@ -1,0 +1,98 @@
+{
+    "APP": {
+        "NAME": "Subz"
+    },
+    "GENERAL": {
+        "CANCEL": "Cancel",
+        "OK": "OK",
+        "DONE": "Done",
+        "ASC": "Ascending",
+        "DESC": "Descending"
+    },
+    "TABS": {
+        "OVERVIEW": {
+            "OVERVIEW": "Overview",
+            "SEARCH_FOR_NAME_AND_DESCRIPTION": "Name or description",
+            "TOTAL_COSTS": "Total Costs",
+            "ADD_SUBSCRIPTION": "Add subscription",
+            "UPDATE_SUBSCRIPTION": "Update subscription",
+            "GENERAL_INFORMATION": "General information",
+            "NAME": "Name",
+            "DESCRIPTION": "Description",
+            "COSTS": "Costs",
+            "BILLING": "Billing",
+            "BILLING_START": "Billing start",
+            "BILLING_EVERY": "Billing every",
+            "CONTRACT": "Contract",
+            "CONTRACT_START": "Inception of treaty",
+            "MINIMUM_CONTRACT_DURATION": "Contract duration",
+            "EXTENSION_AFTER_MINIMUM_CONTRACT_DURATION": "Contract extension",
+            "CANCELATION_PERIOD": "Cancelation Period",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_STARTS_ON": "Notification before cancelation period earliest on",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Notification before cancelation period in days",
+            "TILE_COLOR": "Tile color",
+            "REMOVE_SUBSCRIPTION": "Remove subscription",
+            "REMOVE_SUBSCRIPTION_ALERT_HEADER": "Are you sure?",
+            "REMOVE_SUBSCRIPTION_ALERT_MESSAGE": "Should the subscription really be removed?",
+            "SORT_BY": "Sort by",
+            "COSTS_PER_PERIOD": "Costs per period",
+            "NEXT_PAYMENT": "Next payment",
+            "NEXT_SUBSCRIPTION_EXTENSION": "Next contract extension",
+            "DAYS_UNTIL_NEXT_BILLING_ON_HELPER": "days until next billing on",
+            "DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_ON_HELPER": "days until last possible cancelation within its period on",
+            "CALENDAR_INTERVALS": {
+                "DAYS": "Days",
+                "WEEKS": "Weeks",
+                "MONTHS": "Months",
+                "YEARS": "Years"
+            },
+            "NO_SUBSCRIPTION_HEADER": "Hello there!",
+            "NO_SUBSCRIPTION_TEXT": "Subscriptions can be added using the plus button on the upper right side of the display. The other features in the menu bar are disabled until two subscriptions have been added. Have fun with Subz!",
+            "MENU_BUTTONS_HELPER_HEADER": "Help for menu bar",
+            "CHANGE_CHOOSEN_BILLING_INTERVAL_HELPER": "Change the displayed interval of subscription costs between yearly, monthly, weekly and daily.",
+            "SEARCH_HELPER": "Show only subscriptions where the search text matches with name or description.",
+            "SORT_HELPER": "Sort subscriptions by name, costs, next billing or next contract extension.",
+            "ADD_SUBSCRIPTION_HELPER": "Add new subscriptions.",
+            "COLORS": {
+                "BLUE": "Blue",
+                "GREEN": "Green",
+                "YELLOW": "Yellow",
+                "RED": "Red",
+                "GREY": "Grey"
+            }
+        },
+        "SETTINGS": {
+            "SETTINGS": "Settings",
+            "UI": "User interface",
+            "HIDE_TOTAL_COSTS_IN_OVERVIEW": "Hide total costs in the overview",
+            "HIDE_TOTAL_COSTS_IN_OVERVIEW_HELPER": "Otherwise displayed with at least two subscriptions",
+            "DARK_MODE": "Dark-Mode",
+            "DARK_MODE_HELPER": "Automatically on some devices",
+            "CURRENCY": "Currency",
+            "SHOW_HELP_TEXTS_IN_OVERVIEW": "Show help in the overview again",
+            "TEMPLATES": "Templates",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Notification before cancelation period in days",
+            "GENERAL_INFORMATION": "General information",
+            "LICENSE": "License",
+            "ABOUT": "About",
+            "ABOUT_TEXT": "By Christian Flaßkamp<br><br>Privacy-friendly app for managing subscriptions and contracts with notification feature. <br><br>The source code can be found on <a href='https://codeberg.org/epinez/Subz'>Codeberg</a>.",
+            "DATA_MANAGEMENT": "Data management",
+            "BACKUP": "Backup",
+            "BACKUP_ERROR": "Error while creating backup!",
+            "BACKUP_SUCCESS": "Backup saved to",
+            "COPY_TO_CLIPBOARD": "Copy to clipboard",
+            "RESTORE": "Restore",
+            "BACKUP_DATA": "Backup-Data",
+            "RESTORE_BACKUP_ALERT_HEADER": "Restore backup?",
+            "RESTORE_BACKUP_ALERT_MESSAGE": "Should the backup really be restored? This would clear all present data.",
+            "RESTORE_BACKUP": "Restore Backup",
+            "RESTORE_BACKUP_ERROR": "Error while reading data from backup!",
+            "RESTORE_BACKUP_ERROR_ANDROID": "Error while reading data from backup!. Is the backup file Documents/subz-backup.json present?",
+            "RESTORE_BACKUP_SUCCESS": "The data has been restored successfully!"
+        }
+    },
+    "NOTIFICATIONS": {
+        "NOTIFICATION_TITLE": "Cancelation period is soon reached",
+        "NOTIFICATION_BODY": "The cancelation period of $NAME$ is due on $DATE$."
+    }
+}
