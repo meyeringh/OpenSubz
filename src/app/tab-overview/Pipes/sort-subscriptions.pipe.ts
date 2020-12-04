@@ -55,10 +55,10 @@ export class SortSubscriptionsPipe implements PipeTransform {
       }
       case 'nextBillingAsc': {
         return subscriptions.sort((a, b) => {
-          if (this.nextBillingPipe.transform(a) < this.nextBillingPipe.transform(b)){
+          if (this.nextBillingPipe.transform(a).inDaysFromToday < this.nextBillingPipe.transform(b).inDaysFromToday){
             return -1;
           }
-          if (this.nextBillingPipe.transform(a) > this.nextBillingPipe.transform(b)){
+          if (this.nextBillingPipe.transform(a).inDaysFromToday > this.nextBillingPipe.transform(b).inDaysFromToday){
             return 1;
           }
           return 0;
@@ -66,10 +66,10 @@ export class SortSubscriptionsPipe implements PipeTransform {
       }
       case 'nextBillingDesc': {
         return subscriptions.sort((a, b) => {
-          if (this.nextBillingPipe.transform(a) > this.nextBillingPipe.transform(b)){
+          if (this.nextBillingPipe.transform(a).inDaysFromToday > this.nextBillingPipe.transform(b).inDaysFromToday){
             return -1;
           }
-          if (this.nextBillingPipe.transform(a) < this.nextBillingPipe.transform(b)){
+          if (this.nextBillingPipe.transform(a).inDaysFromToday < this.nextBillingPipe.transform(b).inDaysFromToday){
             return 1;
           }
           return 0;
@@ -77,10 +77,10 @@ export class SortSubscriptionsPipe implements PipeTransform {
       }
       case 'nextContractExtensionAsc': {
         return subscriptions.sort((a, b) => {
-          if (this.nextCancelationPeriodDeadlinePipe.transform(a) < this.nextCancelationPeriodDeadlinePipe.transform(b)){
+          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday < this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
             return -1;
           }
-          if (this.nextCancelationPeriodDeadlinePipe.transform(a) > this.nextCancelationPeriodDeadlinePipe.transform(b)){
+          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday > this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
             return 1;
           }
           return 0;
@@ -88,10 +88,10 @@ export class SortSubscriptionsPipe implements PipeTransform {
       }
       case 'nextContractExtensionDesc': {
         return subscriptions.sort((a, b) => {
-          if (this.nextCancelationPeriodDeadlinePipe.transform(a) > this.nextCancelationPeriodDeadlinePipe.transform(b)){
+          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday > this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
             return -1;
           }
-          if (this.nextCancelationPeriodDeadlinePipe.transform(a) < this.nextCancelationPeriodDeadlinePipe.transform(b)){
+          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday < this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
             return 1;
           }
           return 0;
