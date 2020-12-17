@@ -25,7 +25,14 @@ npm-debug.log*
 /.vscode
 /coverage
 /dist
-/node_modules
+
 /platforms
 /plugins
 /www
+
+# Add subfolder only for fdroid build
+
+node_modules/*
+!node_modules/@capacitor
+node_modules/@capacitor/*
+!node_modules/@capacitor/android
