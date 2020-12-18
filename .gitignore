@@ -36,3 +36,4 @@ node_modules/*
 !node_modules/@capacitor
 node_modules/@capacitor/*
 !node_modules/@capacitor/android
+node_modules/@capacitor/android/capacitor/build
