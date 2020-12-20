@@ -7,7 +7,7 @@ Subscription and contract management app for Android based on Ionic.
   <a href="https://f-droid.org/packages/com.flasskamp.subz"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="75"></a>
 </p>
 
-<p float="left">
+<p align="center">
   <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="24%"/>
   <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="24%"/>
   <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="24%"/>
