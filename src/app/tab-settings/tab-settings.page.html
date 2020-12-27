@@ -23,7 +23,7 @@
 
       <ion-item>
         <ion-label>{{ 'TABS.SETTINGS.CURRENCY' | translate }}</ion-label>
-        <ion-select cancelText="ABBRECHEN" name="currency" formControlName="currency" placeholder="Währung">
+        <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" name="currency" formControlName="currency">
           <ng-container *ngFor="let currency of currencyList">
             <ion-select-option [value]="currency">{{ currency }}</ion-select-option>
           </ng-container>
