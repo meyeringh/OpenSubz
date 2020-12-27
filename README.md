@@ -41,6 +41,15 @@ The app is quite minimal but offers the most important features.
 
 ## Building
 
+### Prerequisites
+
+- Node: Install the packages `nodejs` and `npm` or get it from: https://nodejs.org
+- Git: Install the `git` package or get it from: https://git-scm.com/download
+- Ionic: `[sudo] npm install -g @ionic/cli`
+- Android Studio / SDK: Get it from: https://developer.android.com/studio
+
+### Build the app
+
 ```
 git clone https://codeberg.org/epinez/Subz.git
 cd Subz
@@ -48,7 +57,7 @@ npm i
 ionic capacitor build android --prod
 ```
 
-Then open the Android Studio project under `android/` and run a build. You could also run it in a browser with `ionic serve`. Enjoy!
+If Android Studio did not start by itself, start it manually and open the project under `android/` and run a build. You could also run it in a browser with `ionic serve`. Enjoy!
 
 ## Contributing
 
