@@ -4,7 +4,6 @@ import { ModalAddSubscriptionComponent } from './Components/modal-add-subscripti
 import { ISubscription } from './Interfaces/subscriptionInterface';
 import { ISettings } from '../tab-settings/Interfaces/settingsInterface';
 import { StorageService } from '../Services/storage.service';
-import * as uuid from 'uuid';
 import { TranslateService } from '@ngx-translate/core';
 import { billingIntervals } from './BILLING_INTERVALS';
 import { NotificationService } from '../Services/notification.service';

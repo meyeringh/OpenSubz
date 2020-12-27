@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AlertController, ToastController, Platform } from '@ionic/angular';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { AlertController, Platform } from '@ionic/angular';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { licenseText } from './Helpers/mit-license-text';
 import { ISettings } from './Interfaces/settingsInterface';
 import { StorageService } from '../Services/storage.service';
