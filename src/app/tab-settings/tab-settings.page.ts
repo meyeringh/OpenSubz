@@ -7,6 +7,7 @@ import { StorageService } from '../Services/storage.service';
 import { ThemeService } from '../Services/theme.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { AppVersion } from '@ionic-native/app-version/ngx';
 
 @Component({
   selector: 'app-tab-settings',
@@ -25,7 +26,8 @@ export class TabSettingsPage {
     private storageService: StorageService,
     public themeService: ThemeService,
     public translateService: TranslateService,
-    private platform: Platform) {
+    private platform: Platform,
+    private appVersion: AppVersion) {
     this.settingsForm = this.formBuilder.group({
       forceDarkMode: false,
       currency: '€',
@@ -53,15 +55,7 @@ export class TabSettingsPage {
       alertStrings.header = LICENSE;
     });
 
-    const alert = await this.alertController.create({
-      cssClass: 'alert-full-width',
-      header: alertStrings.header,
-      subHeader: 'MIT',
-      message: licenseText,
-      buttons: [{ text: alertStrings.ok }]
-    });
-
-    await alert.present();
+    this.showAlertHelper(alertStrings.header, 'MIT', licenseText, alertStrings.ok);
   }
 
   async showAbout() {
@@ -80,15 +74,30 @@ export class TabSettingsPage {
       alertStrings.message = ABOUT_TEXT;
     });
 
+    this.platform.ready().then(() => {
+      if (this.platform.is('android')) {
+        this.appVersion.getVersionNumber().then(appVersion => {
+          alertStrings.message = 'v' + appVersion + '<br><br>' + alertStrings.message;
+        }).then(() => {
+          this.showAlertHelper(alertStrings.header, null, alertStrings.message, alertStrings.ok);
+        });
+      } else {
+        this.showAlertHelper(alertStrings.header, null, alertStrings.message, alertStrings.ok);
+      }
+    });
+  }
+
+  async showAlertHelper(header: string, subHeader: string, message: string, ok: string) {
     const alert = await this.alertController.create({
       cssClass: 'alert-full-width',
-      header: alertStrings.header,
-      message: alertStrings.message,
-      buttons: [{ text: alertStrings.ok }]
+      header: header,
+      subHeader: subHeader,
+      message: message,
+      buttons: [{ text: ok }]
     });
 
     await alert.present();
-  }
+  } 
 
   listenForSettingsFormChanges(): void {
     this.settingsFormChangeSubscription = this.settingsForm.valueChanges.subscribe(() => {
