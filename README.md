@@ -54,10 +54,12 @@ The app is quite minimal but offers the most important features.
 git clone https://codeberg.org/epinez/Subz.git
 cd Subz
 npm i
-ionic capacitor build android --prod
+ionic build --prod
+npx cap sync
+npx cap open android
 ```
 
-If Android Studio did not start by itself, start it manually and open the project under `android/` and run a build. You could also run it in a browser with `ionic serve`. Enjoy!
+Now you can run a build within Android Studio. You could also run it in a browser with `ionic serve`. Enjoy!
 
 ## Contributing
 
