@@ -8,6 +8,7 @@ import { ThemeService } from '../Services/theme.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { AppVersion } from '@ionic-native/app-version/ngx';
+import { currencies } from './CURRENCIES';
 
 @Component({
   selector: 'app-tab-settings',
@@ -17,7 +18,7 @@ import { AppVersion } from '@ionic-native/app-version/ngx';
 export class TabSettingsPage {
   settingsForm: FormGroup;
   retrievedSettings: ISettings;
-  currencyList = ['€', '$', '¥', '£', '₤', '₡', '₦', '₹', '₩', '₪', '₫', '₭', '₮', '₱', '₲', '₴', '₵', '₸', '₺', '₼', '₾'];
+  currencyList = currencies;
   settingsFormChangeSubscription: Subscription;
 
   constructor(
