@@ -59,6 +59,20 @@
                 "YELLOW": "Yellow",
                 "RED": "Red",
                 "GREY": "Grey"
+            },
+            "MONTH_SHORT_NAMES": {
+                "JANUARY": "Jan",
+                "FEBRUARY": "Feb",
+                "MARCH": "Mar",
+                "APRIL": "Apr",
+                "MAI": "May",
+                "JUNE": "Jun",
+                "JULY": "Jul",
+                "AUGUST": "Aug",
+                "SEPTEMBER": "Sep",
+                "OCTOBER": "Oct",
+                "NOVEMBER": "Nov",
+                "DECEMBER": "Dec"
             }
         },
         "SETTINGS": {

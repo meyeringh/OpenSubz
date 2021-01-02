@@ -21,6 +21,7 @@ export class ModalAddSubscriptionComponent implements OnInit {
   availableBillingIntervals = billingIntervals;
   colors = subscriptionColors;
   retrievedSettings: ISettings;
+  monthShortNames: string[] = [this.translateService.instant('TABS.OVERVIEW.MONTH_SHORT_NAMES.JANUARY'), this.translateService.instant('TABS.OVERVIEW.MONTH_SHORT_NAMES.FEBRUARY'), this.translateService.instant('TABS.OVERVIEW.MONTH_SHORT_NAMES.MARCH'), this.translateService.instant('TABS.OVERVIEW.MONTH_SHORT_NAMES.APRIL'), this.translateService.instant('TABS.OVERVIEW.MONTH_SHORT_NAMES.MAI'), this.translateService.instant('TABS.OVERVIEW.MONTH_SHORT_NAMES.JUNE'), this.translateService.instant('TABS.OVERVIEW.MONTH_SHORT_NAMES.JULY'), this.translateService.instant('TABS.OVERVIEW.MONTH_SHORT_NAMES.AUGUST'), this.translateService.instant('TABS.OVERVIEW.MONTH_SHORT_NAMES.SEPTEMBER'), this.translateService.instant('TABS.OVERVIEW.MONTH_SHORT_NAMES.OCTOBER'), this.translateService.instant('TABS.OVERVIEW.MONTH_SHORT_NAMES.NOVEMBER'), this.translateService.instant('TABS.OVERVIEW.MONTH_SHORT_NAMES.DECEMBER')];
 
   constructor(
     public alertController: AlertController,
