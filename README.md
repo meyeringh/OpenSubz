@@ -69,3 +69,7 @@ Feel free to help me improving Subz in any possible way! These are some examples
 - **Tell others about Subz**: I wanted to create something which not only helps me but also others. Everybody knows the struggle of forgetting to cancel a contract in time. I want that to be a problem of the past, so please help me to help others and tell them about Subz!
 - **Translate**: Subz is not localized in your language? You are welcome to add it! Currently I haven't setup any localization service; instead the language files have to be edited or created manually. There is one JSON-file for each language. You can see the available languages [here](https://codeberg.org/epinez/Subz/src/branch/main/src/assets/i18n). Feel free to create a pull request for any new language/updates or if you are not familiar with that you could also file an issue with the JSON content and your language code mentioned. If the JSON file isn't complete, please delete any non translated strings, they will be defaulted to english during runtime.
 - **Start coding**: Are you familiar with Typescript, HTML, SCSS, Angular or Ionic? You are more than welcome to contribute to the code! Please file issues first and reference to them in the commit like `Fixes bad behaviour xy, closes #1`. Of course you could also update the documentary, etc.
+
+## Thanks to
+
+- [mondstern](https://codeberg.org/mondstern) for his beautiful acrylic painting of the Subz logo
