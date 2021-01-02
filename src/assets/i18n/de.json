@@ -60,19 +60,19 @@
                 "RED": "Rot",
                 "GREY": "Grau"
             },
-            "MONTH_SHORT_NAMES": {
-                "JANUARY": "Jan",
-                "FEBRUARY": "Feb",
-                "MARCH": "Mär",
-                "APRIL": "Apr",
+            "MONTH_NAMES": {
+                "JANUARY": "Januar",
+                "FEBRUARY": "Februar",
+                "MARCH": "März",
+                "APRIL": "April",
                 "MAI": "Mai",
-                "JUNE": "Jun",
-                "JULY": "Jul",
-                "AUGUST": "Aug",
-                "SEPTEMBER": "Sep",
-                "OCTOBER": "Okt",
-                "NOVEMBER": "Nov",
-                "DECEMBER": "Dez"
+                "JUNE": "Juni",
+                "JULY": "Juli",
+                "AUGUST": "August",
+                "SEPTEMBER": "September",
+                "OCTOBER": "Oktober",
+                "NOVEMBER": "November",
+                "DECEMBER": "Dezember"
             }
         },
         "SETTINGS": {
