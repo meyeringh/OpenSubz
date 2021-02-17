@@ -30,6 +30,15 @@
         </ion-select>
       </ion-item>
 
+      <ion-item>
+        <ion-label>{{ 'TABS.SETTINGS.DATE_FORMAT' | translate }}</ion-label>
+        <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" name="dateFormat" formControlName="dateFormat">
+          <ng-container *ngFor="let dateFormat of dateFormatList">
+            <ion-select-option [value]="dateFormat">{{ dateFormat }}</ion-select-option>
+          </ng-container>
+        </ion-select>
+      </ion-item>
+
       <ion-item button (click)="showHelpTextsInOverview()">
         <ion-label>{{ 'TABS.SETTINGS.SHOW_HELP_TEXTS_IN_OVERVIEW' | translate }}</ion-label>
       </ion-item>

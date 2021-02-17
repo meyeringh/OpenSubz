@@ -52,7 +52,7 @@
 
       <ion-item>
         <ion-label>{{ 'TABS.OVERVIEW.BILLING_START' | translate }}</ion-label>
-        <ion-datetime cancelText="{{ 'GENERAL.CANCEL' | translate }}" doneText="{{ 'GENERAL.DONE' | translate }}" displayFormat="D. MMMM YYYY" name="billingStart" formControlName="billingStart" monthNames="{{ monthNames }}"></ion-datetime>
+        <ion-datetime cancelText="{{ 'GENERAL.CANCEL' | translate }}" doneText="{{ 'GENERAL.DONE' | translate }}" displayFormat="{{ retrievedSettings?.dateFormat || dateFormatList[0] }}" name="billingStart" formControlName="billingStart" monthNames="{{ monthNames }}"></ion-datetime>
       </ion-item>
 
       <ion-grid class="ion-no-padding">
@@ -85,7 +85,7 @@
 
       <ion-item>
         <ion-label>{{ 'TABS.OVERVIEW.CONTRACT_START' | translate }}</ion-label>
-        <ion-datetime cancelText="{{ 'GENERAL.CANCEL' | translate }}" doneText="{{ 'GENERAL.DONE' | translate }}" displayFormat="D. MMMM YYYY" name="billingStart" formControlName="contractStart" monthNames="{{ monthNames }}"></ion-datetime>
+        <ion-datetime cancelText="{{ 'GENERAL.CANCEL' | translate }}" doneText="{{ 'GENERAL.DONE' | translate }}" displayFormat="{{ retrievedSettings?.dateFormat || dateFormatList[0] }}" name="billingStart" formControlName="contractStart" monthNames="{{ monthNames }}"></ion-datetime>
       </ion-item>
 
       <ion-grid class="ion-no-padding">

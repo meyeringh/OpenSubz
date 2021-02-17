@@ -83,6 +83,7 @@
             "DARK_MODE": "Dark-Mode",
             "DARK_MODE_HELPER": "Auf manchen Geräten automatisch",
             "CURRENCY": "Währung",
+            "DATE_FORMAT": "Datumsformat",
             "SHOW_HELP_TEXTS_IN_OVERVIEW": "Hilfe in der Übersicht wieder anzeigen",
             "TEMPLATES": "Vorlagen",
             "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Erinnerung vor Kündigungsfrist in Tagen",

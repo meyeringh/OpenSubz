@@ -83,6 +83,7 @@
             "DARK_MODE": "Dark-Mode",
             "DARK_MODE_HELPER": "Automatically on some devices",
             "CURRENCY": "Currency",
+            "DATE_FORMAT": "Date format",
             "SHOW_HELP_TEXTS_IN_OVERVIEW": "Show help in the overview again",
             "TEMPLATES": "Templates",
             "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Notification before cancelation period in days",

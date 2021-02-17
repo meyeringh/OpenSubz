@@ -9,6 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { currencies } from './CURRENCIES';
+import { dateFormats } from './DATE_FORMATS';
 
 @Component({
   selector: 'app-tab-settings',
@@ -19,6 +20,7 @@ export class TabSettingsPage {
   settingsForm: FormGroup;
   retrievedSettings: ISettings;
   currencyList = currencies;
+  dateFormatList = dateFormats;
   settingsFormChangeSubscription: Subscription;
 
   constructor(
@@ -31,7 +33,8 @@ export class TabSettingsPage {
     private appVersion: AppVersion) {
     this.settingsForm = this.formBuilder.group({
       forceDarkMode: false,
-      currency: '€',
+      currency: this.currencyList[0],
+      dateFormat: this.dateFormatList[0],
       notificationBeforeCancelationPeriodInDays: null
     });
   }

@@ -7,6 +7,7 @@ import { StorageService } from 'src/app/Services/storage.service';
 import { TranslateService } from '@ngx-translate/core';
 import { billingIntervals } from '../../BILLING_INTERVALS';
 import { subscriptionColors } from '../../SUBSCRIPTION_COLORS';
+import { dateFormats } from '../../../tab-settings/DATE_FORMATS';
 
 @Component({
   selector: 'app-modal-add-subscription',
@@ -22,6 +23,7 @@ export class ModalAddSubscriptionComponent implements OnInit {
   colors = subscriptionColors;
   retrievedSettings: ISettings;
   monthNames: string[] = [this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.JANUARY'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.FEBRUARY'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.MARCH'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.APRIL'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.MAI'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.JUNE'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.JULY'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.AUGUST'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.SEPTEMBER'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.OCTOBER'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.NOVEMBER'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.DECEMBER')];
+  dateFormatList = dateFormats;
 
   constructor(
     public alertController: AlertController,
@@ -145,6 +147,9 @@ export class ModalAddSubscriptionComponent implements OnInit {
       this.subscriptionForm.patchValue({
         notificationBeforeCancelationPeriodInDays: this.retrievedSettings.notificationBeforeCancelationPeriodInDays,
       });
+
+      console.log(JSON.stringify(this.retrievedSettings));
+
     }
   }
 
