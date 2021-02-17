@@ -83,14 +83,14 @@ export class StorageService {
     }
   }
 
-  async restoreAllDataAndroid() {
+  async restoreAllDataAndroid(mergeWithCurrent?: boolean) {
     try {
       await Filesystem.readFile({
         path: 'subz-backup.json',
         directory: FilesystemDirectory.Documents,
         encoding: FilesystemEncoding.UTF8
       }).then((fileReadResult) => {
-        this.restoreAllData(fileReadResult.data);
+        this.restoreAllData(fileReadResult.data, mergeWithCurrent);
       });
 
       this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_SUCCESS').subscribe(RESTORE_BACKUP_SUCCESS => {
@@ -104,7 +104,7 @@ export class StorageService {
     }
   }
 
-  async restoreAllData(backup: string) {
+  async restoreAllData(backup: string, mergeWithCurrent?: boolean) {
     let backupObject: { subscriptions: ISubscription[], settings: ISettings };
     try {
       backupObject = JSON.parse(backup);
@@ -114,7 +114,7 @@ export class StorageService {
       }
 
       // SUBSCRIPTIONS
-      const subscriptions: ISubscription[] = backupObject.subscriptions;
+      let subscriptions: ISubscription[] = backupObject.subscriptions;
       let isValid = true;
 
       for (const subscription of subscriptions) {
@@ -147,6 +147,7 @@ export class StorageService {
 
       if ('forceDarkMode' in settings) { this.throwErrorHelper(typeof settings.forceDarkMode !== 'boolean') }
       if ('currency' in settings) { this.throwErrorHelper(typeof settings.currency !== 'string') }
+      if ('dateFormat' in settings) { this.throwErrorHelper(typeof settings.dateFormat !== 'string') }
       if ('notificationBeforeCancelationPeriodInDays' in settings) {
         // Can be null, so it can be an object
         this.throwErrorHelper(typeof settings.notificationBeforeCancelationPeriodInDays !== 'number' && typeof settings.notificationBeforeCancelationPeriodInDays !== 'object');
@@ -155,6 +156,13 @@ export class StorageService {
       if ('defaultSortBy' in settings) { this.throwErrorHelper(typeof settings.defaultSortBy !== 'string') }
       if ('hideOverviewHelperTextGeneral' in settings) { this.throwErrorHelper(typeof settings.hideOverviewHelperTextGeneral !== 'boolean') }
       if ('hideOverviewHelperTextMenuBar' in settings) { this.throwErrorHelper(typeof settings.hideOverviewHelperTextMenuBar !== 'boolean') }
+
+      // Keep current subscriptions and merge them with the backup
+      // ToDo: ID handling
+      if (mergeWithCurrent) {
+        const currentSubscriptions = await this.retrieveSubscriptionsFromStorage();
+        // subscriptions = subscriptions.concat(currentSubscriptions);
+      }
 
       this.saveSubscriptionsToStorage(subscriptions);
       this.saveSettingsToStorage(settings);
