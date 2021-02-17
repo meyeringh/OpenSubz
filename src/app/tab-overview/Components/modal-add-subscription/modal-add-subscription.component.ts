@@ -24,6 +24,7 @@ export class ModalAddSubscriptionComponent implements OnInit {
   retrievedSettings: ISettings;
   monthNames: string[] = [this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.JANUARY'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.FEBRUARY'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.MARCH'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.APRIL'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.MAI'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.JUNE'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.JULY'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.AUGUST'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.SEPTEMBER'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.OCTOBER'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.NOVEMBER'), this.translateService.instant('TABS.OVERVIEW.MONTH_NAMES.DECEMBER')];
   dateFormatList = dateFormats;
+  currentYear = new Date().getFullYear();
 
   constructor(
     public alertController: AlertController,
@@ -147,9 +148,6 @@ export class ModalAddSubscriptionComponent implements OnInit {
       this.subscriptionForm.patchValue({
         notificationBeforeCancelationPeriodInDays: this.retrievedSettings.notificationBeforeCancelationPeriodInDays,
       });
-
-      console.log(JSON.stringify(this.retrievedSettings));
-
     }
   }
 
