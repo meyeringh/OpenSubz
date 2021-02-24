@@ -63,30 +63,50 @@ export class TabSettingsPage {
   }
 
   async showAbout() {
-    const alertStrings = {"ok": "", "header": "", "message": ""};
-
-    this.translateService.get('GENERAL.OK').subscribe(OK => {
-      alertStrings.ok = OK;
+    let ALERT_OK = "";
+    let ALERT_HEADER = "";
+    let ALERT_MESSAGE = "";
+    let VERSION = "";
+    let APP_DESCRIPTION = "";
+    
+    this.translateService.get('GENERAL.OK').subscribe(GENERAL_OK => {
+      ALERT_OK = GENERAL_OK;
     });
     this.translateService.get('TABS.SETTINGS.ABOUT').subscribe(ABOUT => {
-      alertStrings.header = ABOUT;
+      ALERT_HEADER = ABOUT;
     });
     this.translateService.get('APP.NAME').subscribe(APP_NAME => {
-      alertStrings.header += ' ' + APP_NAME;
+      ALERT_HEADER += ' ' + APP_NAME;
     });
-    this.translateService.get('TABS.SETTINGS.ABOUT_TEXT').subscribe(ABOUT_TEXT => {
-      alertStrings.message = ABOUT_TEXT;
+    this.translateService.get('TABS.SETTINGS.ABOUT_VERSION').subscribe(ABOUT_VERSION => {
+      VERSION = ABOUT_VERSION;
+    });
+    this.translateService.get('APP.SHORT_DESCRIPTION').subscribe(APP_SHORT_DESCRIPTION => {
+      APP_DESCRIPTION += '<p>' + APP_SHORT_DESCRIPTION + '</p>';
+    });
+    this.translateService.get('TABS.SETTINGS.ABOUT_AUTHOR').subscribe(ABOUT_AUTHOR => {
+      ALERT_MESSAGE += '<h4>' + ABOUT_AUTHOR + '</h4> Christian Flaßkamp';
+    });
+    this.translateService.get('TABS.SETTINGS.ABOUT_SOURCECODE').subscribe(ABOUT_SOURCECODE => {
+      ALERT_MESSAGE += '<h4>' + ABOUT_SOURCECODE + '</h4> <a href="https://codeberg.org/epinez/Subz">https://codeberg.org/epinez/Subz</a>';
+    });
+    this.translateService.get('TABS.SETTINGS.ABOUT_REPORT_ISSUES').subscribe(ABOUT_REPORT_ISSUES => {
+      ALERT_MESSAGE += '<h4>' + ABOUT_REPORT_ISSUES + '</h4> <a href="https://codeberg.org/epinez/Subz/issues">https://codeberg.org/epinez/Subz/issues</a>';
+    });
+    this.translateService.get('TABS.SETTINGS.ABOUT_CONTACT').subscribe(ABOUT_CONTACT => {
+      ALERT_MESSAGE += '<h4>' + ABOUT_CONTACT + '</h4> <a href="mailto:subz@flasskamp.com">subz@flasskamp.com</a>';
     });
 
     this.platform.ready().then(() => {
       if (this.platform.is('android')) {
         this.appVersion.getVersionNumber().then(appVersion => {
-          alertStrings.message = 'v' + appVersion + '<br><br>' + alertStrings.message;
+          ALERT_MESSAGE = APP_DESCRIPTION + '<h4>' + VERSION + '</h4> v' + appVersion + ALERT_MESSAGE;
         }).then(() => {
-          this.showAlertHelper(alertStrings.header, null, alertStrings.message, alertStrings.ok);
+          this.showAlertHelper(ALERT_HEADER, null, ALERT_MESSAGE, ALERT_OK);
         });
       } else {
-        this.showAlertHelper(alertStrings.header, null, alertStrings.message, alertStrings.ok);
+        ALERT_MESSAGE = APP_DESCRIPTION + ALERT_MESSAGE;
+        this.showAlertHelper(ALERT_HEADER, null, ALERT_MESSAGE, ALERT_OK);
       }
     });
   }

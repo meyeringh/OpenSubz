@@ -1,6 +1,7 @@
 {
     "APP": {
-        "NAME": "Subz"
+        "NAME": "Subz",
+        "SHORT_DESCRIPTION": "Datenschutzfreundliche Verwaltung für Abonnements und Verträge mit Erinnerungsfunktion."
     },
     "GENERAL": {
         "CANCEL": "Abbrechen",
@@ -90,7 +91,11 @@
             "GENERAL_INFORMATION": "Generelle Informationen",
             "LICENSE": "Lizenz",
             "ABOUT": "Über",
-            "ABOUT_TEXT": "Von Christian Flaßkamp<br><br>Datenschutzfreundliche Verwaltung für Abonnements und Verträge mit Erinnerungsfunktion.<br><br>Der Quellcode ist auf <a href='https://codeberg.org/epinez/Subz'>Codeberg</a> zu finden.",
+            "ABOUT_VERSION": "Version",
+            "ABOUT_AUTHOR": "Autor",
+            "ABOUT_SOURCECODE": "Quelltext",
+            "ABOUT_REPORT_ISSUES": "Fehler melden",
+            "ABOUT_CONTACT": "Kontakt",
             "DATA_MANAGEMENT": "Datenverwaltung",
             "BACKUP": "Datensicherung",
             "BACKUP_ERROR": "Fehler bei der Erstellung des Backups!",
@@ -100,6 +105,7 @@
             "BACKUP_DATA": "Backup-Daten",
             "RESTORE_BACKUP_ALERT_HEADER": "Backup wirklich wiederherstellen?",
             "RESTORE_BACKUP_ALERT_MESSAGE": "Soll das Backup wirklich wiederhergestellt werden? Dadurch werden alle vorhandenen Daten überschrieben.",
+            "RESTORE_BACKUP": "Backup wiederherstellen",
             "RESTORE_BACKUP_ERROR": "Fehler beim Einlesen der Daten aus dem Backup!",
             "RESTORE_BACKUP_ERROR_ANDROID": "Fehler beim Zurückspielen des Backups. Ist die Backup-Datei Documents/subz-backup.json vorhanden?",
             "RESTORE_BACKUP_SUCCESS": "Die Daten wurden erfolgreich wiederhergestellt!"

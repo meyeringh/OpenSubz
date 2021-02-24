@@ -1,6 +1,7 @@
 {
     "APP": {
-        "NAME": "Subz"
+        "NAME": "Subz",
+        "SHORT_DESCRIPTION": "Privacy-friendly app for managing subscriptions and contracts with notification feature."
     },
     "GENERAL": {
         "CANCEL": "Cancel",
@@ -90,7 +91,11 @@
             "GENERAL_INFORMATION": "General information",
             "LICENSE": "License",
             "ABOUT": "About",
-            "ABOUT_TEXT": "By Christian Flaßkamp<br><br>Privacy-friendly app for managing subscriptions and contracts with notification feature. <br><br>The source code can be found on <a href='https://codeberg.org/epinez/Subz'>Codeberg</a>.",
+            "ABOUT_VERSION": "Version",
+            "ABOUT_AUTHOR": "Author",
+            "ABOUT_SOURCECODE": "Sourcecode",
+            "ABOUT_REPORT_ISSUES": "Report issues",
+            "ABOUT_CONTACT": "Contact",
             "DATA_MANAGEMENT": "Data management",
             "BACKUP": "Backup",
             "BACKUP_ERROR": "Error while creating backup!",
