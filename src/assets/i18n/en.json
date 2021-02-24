@@ -86,6 +86,7 @@
             "CURRENCY": "Currency",
             "DATE_FORMAT": "Date format",
             "SHOW_HELP_TEXTS_IN_OVERVIEW": "Show help in the overview again",
+            "SHOW_HELP_TEXTS_IN_OVERVIEW_HELPER": "Restores help texts and switches to overview",
             "TEMPLATES": "Templates",
             "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Notification before cancelation period in days",
             "GENERAL_INFORMATION": "General information",

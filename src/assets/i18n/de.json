@@ -86,6 +86,7 @@
             "CURRENCY": "Währung",
             "DATE_FORMAT": "Datumsformat",
             "SHOW_HELP_TEXTS_IN_OVERVIEW": "Hilfe in der Übersicht wieder anzeigen",
+            "SHOW_HELP_TEXTS_IN_OVERVIEW_HELPER": "Stellt die Erklärungen wieder her und wechselt zur Übersicht",
             "TEMPLATES": "Vorlagen",
             "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Erinnerung vor Kündigungsfrist in Tagen",
             "GENERAL_INFORMATION": "Generelle Informationen",

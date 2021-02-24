@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 import { currencies } from './CURRENCIES';
 import { dateFormats } from './DATE_FORMATS';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab-settings',
@@ -30,7 +31,8 @@ export class TabSettingsPage {
     public themeService: ThemeService,
     public translateService: TranslateService,
     private platform: Platform,
-    private appVersion: AppVersion) {
+    private appVersion: AppVersion,
+    private router: Router) {
     this.settingsForm = this.formBuilder.group({
       forceDarkMode: false,
       currency: this.currencyList[0],
@@ -314,6 +316,7 @@ export class TabSettingsPage {
     this.retrievedSettings.hideOverviewHelperTextMenuBar = false;
 
     this.storageService.saveSettingsToStorage(this.retrievedSettings);
+    this.router.navigate(['tabs/overview']);
   }
 
 }
