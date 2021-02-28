@@ -73,9 +73,11 @@ export class ModalAddSubscriptionComponent implements OnInit {
   save() {
     if (this.subscriptionForm.valid) {
       const subscription: ISubscription = this.subscriptionForm.value;
-      // Updating entry
+      // Updating entry, keep id, keep created, and update lastEdited
       if (this.existingSubscription) {
         subscription.id = this.existingSubscription.id;
+        subscription.created = this.existingSubscription.created;
+        subscription.lastEdited = Date.now();
       }
 
       this.modalController.dismiss({entry: subscription});

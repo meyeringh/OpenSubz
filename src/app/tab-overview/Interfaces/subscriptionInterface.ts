@@ -16,4 +16,9 @@ export interface ISubscription {
     cancelationPeriodEvery: number;
     cancelationPeriodInterval: 'DAYS' | 'WEEKS' | 'MONTHS' | 'YEARS';
     notificationBeforeCancelationPeriodInDays?: number;
+
+    // The following are optional because they were introduced later
+
+    lastEdited?: number; // Unix millis since 1970 using Date.now()
+    created?: number; // Unix millis since 1970 using Date.now()
 }

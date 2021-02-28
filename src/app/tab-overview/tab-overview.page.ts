@@ -40,7 +40,10 @@ export class TabOverviewPage {
   addEntry(entry: ISubscription): void {
     let id = 1;
     while (this.subscriptions.some(subscription => subscription.id === id)) { id++; }
+  
     entry.id = id;
+    entry.created = Date.now();
+    entry.lastEdited = entry.created;
 
     this.subscriptions.push(entry);
     this.saveSubscriptionsToStorage();
