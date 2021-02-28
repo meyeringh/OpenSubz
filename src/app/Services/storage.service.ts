@@ -140,6 +140,8 @@ export class StorageService {
         if ('notificationBeforeCancelationPeriodInDays' in subscription) {
           this.throwErrorHelper(typeof subscription.notificationBeforeCancelationPeriodInDays !== 'number' && typeof subscription.notificationBeforeCancelationPeriodInDays !== 'object');
         }
+        if ('lastEdited' in subscription) { this.throwErrorHelper(typeof subscription.lastEdited !== 'number' && typeof subscription.lastEdited !== 'object'); }
+        if ('created' in subscription) { this.throwErrorHelper(typeof subscription.created !== 'number' && typeof subscription.created !== 'object'); }
       }
       
       // SETTINGS
