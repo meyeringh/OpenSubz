@@ -104,6 +104,11 @@ export class StorageService {
     }
   }
 
+  /**
+   * Restores passed data
+   * @param backup Backup data which shall be restored like { subscriptions: ISubscription[], settings: ISettings }
+   * @param mergeWithCurrent If true, backup and current subscriptions will be merged by their id, keeps newer subscription if lastEdited property is present, else keeps the backup subscription
+   */
   async restoreAllData(backup: string, mergeWithCurrent?: boolean) {
     let backupObject: { subscriptions: ISubscription[], settings: ISettings };
     try {
@@ -159,11 +164,47 @@ export class StorageService {
       if ('hideOverviewHelperTextGeneral' in settings) { this.throwErrorHelper(typeof settings.hideOverviewHelperTextGeneral !== 'boolean') }
       if ('hideOverviewHelperTextMenuBar' in settings) { this.throwErrorHelper(typeof settings.hideOverviewHelperTextMenuBar !== 'boolean') }
 
-      // Keep current subscriptions and merge them with the backup
-      // ToDo: ID handling
+      // Merge current subscriptions with backup based on id
       if (mergeWithCurrent) {
         const currentSubscriptions = await this.retrieveSubscriptionsFromStorage();
-        // subscriptions = subscriptions.concat(currentSubscriptions);
+
+        for (let currentSubscription of currentSubscriptions) {
+          // Check if subscription with same id is present in backup and current subscriptions
+          let backupSubscriptionIndex = subscriptions.findIndex(sub => sub.id === currentSubscription.id);
+
+          if (backupSubscriptionIndex !== -1) {
+            // Check which subscription will be kept based on lastEdited date (4 cases)
+
+            // 1. Case: Both have lastEdited, so use the one with newer date
+            if (currentSubscription.lastEdited && subscriptions[backupSubscriptionIndex].lastEdited) {
+
+              if (currentSubscription.lastEdited > subscriptions[backupSubscriptionIndex].lastEdited) {
+                subscriptions[backupSubscriptionIndex] = currentSubscription
+              }
+              // Otherwise nothing todo, as backup subscription is used
+
+            }
+            // 2. Case: Only current subscription has lastEdited (= is newer)
+            else if (currentSubscription.lastEdited && !subscriptions[backupSubscriptionIndex].lastEdited) {
+              subscriptions[backupSubscriptionIndex] = currentSubscription;
+            }
+            // 3. Case: Only backup subscription has lastEdited (= is newer)
+            else if (!currentSubscription.lastEdited && subscriptions[backupSubscriptionIndex].lastEdited) {
+              // Nothing todo, as backup subscription is used
+            }
+            // 4. Case: Both don't have lastEdited, use the backup one
+            else if (!currentSubscription.lastEdited && !subscriptions[backupSubscriptionIndex].lastEdited) {
+              // Nothing todo, as backup subscription is used
+            }
+            else {
+              // Invalid case
+              throw Error;
+            }
+          } else {
+            // Current subscription can just be appended
+            subscriptions.push(currentSubscription);
+          }
+        }
       }
 
       this.saveSubscriptionsToStorage(subscriptions);
