@@ -104,9 +104,9 @@
             "COPY_TO_CLIPBOARD": "In Zwischenablage kopieren",
             "RESTORE": "Datenwiederherstellung",
             "BACKUP_DATA": "Backup-Daten",
-            "RESTORE_BACKUP_ALERT_HEADER": "Backup wirklich wiederherstellen?",
-            "RESTORE_BACKUP_ALERT_MESSAGE": "Soll das Backup wirklich wiederhergestellt werden? Dadurch werden alle vorhandenen Daten überschrieben.",
-            "RESTORE_BACKUP": "Backup wiederherstellen",
+            "RESTORE_BACKUP_ALERT_MESSAGE": "Die aktuellen Daten können entweder komplett gelöscht und durch das Backup ersetzt werden oder das Backup kann mit den aktuellen Daten zusammengeführt werden. Bei der Zusammenführung werden die jeweils zuletzt geänderten Abonnements behalten und die Einstellungen aus dem Backup wiederhergestellt.",
+            "RESTORE_BACKUP_REPLACE": "Aktuelle Daten durch Backup ersetzen",
+            "RESTORE_BACKUP_MERGE": "Aktuelle Daten mit Backup zusammenführen",
             "RESTORE_BACKUP_ERROR": "Fehler beim Einlesen der Daten aus dem Backup!",
             "RESTORE_BACKUP_ERROR_ANDROID": "Fehler beim Zurückspielen des Backups. Ist die Backup-Datei Documents/subz-backup.json vorhanden?",
             "RESTORE_BACKUP_SUCCESS": "Die Daten wurden erfolgreich wiederhergestellt!"

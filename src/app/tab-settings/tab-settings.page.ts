@@ -213,17 +213,20 @@ export class TabSettingsPage {
   async restoreAndroid(): Promise<void> {
     const alertStrings: any = {};
 
-    this.translateService.get('GENERAL.CANCEL').subscribe(CANCEL => {
-      alertStrings.cancel = CANCEL;
-    });
-    this.translateService.get('GENERAL.OK').subscribe(OK => {
-      alertStrings.ok = OK;
-    });
-    this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_ALERT_HEADER').subscribe(RESTORE_BACKUP_ALERT_HEADER => {
-      alertStrings.header = RESTORE_BACKUP_ALERT_HEADER;
+    this.translateService.get('TABS.SETTINGS.RESTORE').subscribe(RESTORE => {
+      alertStrings.header = RESTORE;
     });
     this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_ALERT_MESSAGE').subscribe(RESTORE_BACKUP_ALERT_MESSAGE => {
       alertStrings.message = RESTORE_BACKUP_ALERT_MESSAGE;
+    });
+    this.translateService.get('GENERAL.CANCEL').subscribe(CANCEL => {
+      alertStrings.cancel = CANCEL;
+    });
+    this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_REPLACE').subscribe(RESTORE_BACKUP_REPLACE => {
+      alertStrings.restoreBackupReplace = RESTORE_BACKUP_REPLACE;
+    });
+    this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_MERGE').subscribe(RESTORE_BACKUP_MERGE => {
+      alertStrings.restoreBackupMerge = RESTORE_BACKUP_MERGE;
     });
 
     const alert = await this.alertController.create({
@@ -236,9 +239,17 @@ export class TabSettingsPage {
           role: 'cancel',
           cssClass: 'secondary'
         }, {
-          text: alertStrings.ok,
+          text: alertStrings.restoreBackupReplace,
           handler: () => {
             this.storageService.restoreAllDataAndroid().then(() => {
+              this.ionViewWillEnter();
+              this.themeService.applyTheme();
+            });
+          }
+        }, {
+          text: alertStrings.restoreBackupMerge,
+          handler: () => {
+            this.storageService.restoreAllDataAndroid(true).then(() => {
               this.ionViewWillEnter();
               this.themeService.applyTheme();
             });
@@ -253,22 +264,29 @@ export class TabSettingsPage {
   async restoreWeb(): Promise<void> {
     const alertStrings: any = {};
 
-    this.translateService.get('GENERAL.CANCEL').subscribe(CANCEL => {
-      alertStrings.cancel = CANCEL;
-    });
     this.translateService.get('TABS.SETTINGS.RESTORE').subscribe(RESTORE => {
       alertStrings.header = RESTORE;
+    });
+    this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_ALERT_MESSAGE').subscribe(RESTORE_BACKUP_ALERT_MESSAGE => {
+      alertStrings.message = RESTORE_BACKUP_ALERT_MESSAGE;
+    });
+    this.translateService.get('GENERAL.CANCEL').subscribe(CANCEL => {
+      alertStrings.cancel = CANCEL;
     });
     this.translateService.get('TABS.SETTINGS.BACKUP_DATA').subscribe(BACKUP_DATA => {
       alertStrings.backupData = BACKUP_DATA;
     });
-    this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP').subscribe(RESTORE_BACKUP => {
-      alertStrings.restoreBackup = RESTORE_BACKUP;
+    this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_REPLACE').subscribe(RESTORE_BACKUP_REPLACE => {
+      alertStrings.restoreBackupReplace = RESTORE_BACKUP_REPLACE;
+    });
+    this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_MERGE').subscribe(RESTORE_BACKUP_MERGE => {
+      alertStrings.restoreBackupMerge = RESTORE_BACKUP_MERGE;
     });
 
     const alert = await this.alertController.create({
       cssClass: 'alert-full-width',
       header: alertStrings.header,
+      message: alertStrings.message,
       inputs: [
         {
           name: 'restore',
@@ -281,17 +299,26 @@ export class TabSettingsPage {
           text: alertStrings.cancel,
           role: 'cancel',
           cssClass: 'secondary'
-        },
-        {
-        text: alertStrings.restoreBackup,
-        cssClass: 'secondary',
-        handler: async (inputs) => {
-          await this.storageService.restoreAllData(inputs.restore).then(() => {
-            this.ionViewWillEnter();
-            this.themeService.applyTheme();
-          });
+        }, {
+          text: alertStrings.restoreBackupReplace,
+          cssClass: 'secondary',
+          handler: async (inputs) => {
+            await this.storageService.restoreAllData(inputs.restore).then(() => {
+              this.ionViewWillEnter();
+              this.themeService.applyTheme();
+            });
+          }
+        }, {
+          text: alertStrings.restoreBackupMerge,
+          cssClass: 'secondary',
+          handler: async (inputs) => {
+            await this.storageService.restoreAllData(inputs.restore, true).then(() => {
+              this.ionViewWillEnter();
+              this.themeService.applyTheme();
+            });
+          }
         }
-      }]
+      ]
     });
 
     await alert.present();

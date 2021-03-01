@@ -104,9 +104,9 @@
             "COPY_TO_CLIPBOARD": "Copy to clipboard",
             "RESTORE": "Restore",
             "BACKUP_DATA": "Backup-Data",
-            "RESTORE_BACKUP_ALERT_HEADER": "Restore backup?",
-            "RESTORE_BACKUP_ALERT_MESSAGE": "Should the backup really be restored? This would clear all present data.",
-            "RESTORE_BACKUP": "Restore Backup",
+            "RESTORE_BACKUP_ALERT_MESSAGE": "The current data could either be completely deleted and replaced by the backup or the backup can be merged with the current data. While merging each of the last edited subscriptions will be kept and the settings from the backup will be restored.",
+            "RESTORE_BACKUP_REPLACE": "Replace current data by backup",
+            "RESTORE_BACKUP_MERGE": "Merge current data and backup",
             "RESTORE_BACKUP_ERROR": "Error while reading data from backup!",
             "RESTORE_BACKUP_ERROR_ANDROID": "Error while reading data from backup!. Is the backup file Documents/subz-backup.json present?",
             "RESTORE_BACKUP_SUCCESS": "The data has been restored successfully!"
