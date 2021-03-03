@@ -17,19 +17,22 @@ export class NextCancelationPeriodDeadlinePipe implements PipeTransform {
     const contractStart = new Date(subscription.contractStart);
     
     // Calculate at first: contractStart + minimumContractDuration
-    let lastPossibleCancelationDate = this.calculateDates(contractStart, '+', subscription.minimumContractDuration, subscription.minimumContractDurationInterval);
+    let nextContractExtension = this.calculateDates(contractStart, '+', subscription.minimumContractDuration, subscription.minimumContractDurationInterval);
 
-    // If lastPossibleCancelationDate - cancelationPeriod before today we have found our date
-    lastPossibleCancelationDate = this.calculateDates(lastPossibleCancelationDate, '-', subscription.cancelationPeriodEvery, subscription.cancelationPeriodInterval);
-    if (this.dateDiffInDays(today, lastPossibleCancelationDate) > 0) {
+    // If nextContractExtension - cancelationPeriod < today : Then we have found our date!
+    if (this.dateDiffInDays(today, this.calculateDates(nextContractExtension, '-', subscription.cancelationPeriodEvery, subscription.cancelationPeriodInterval)) > 0) {
+      const lastPossibleCancelationDate = this.calculateDates(nextContractExtension, '-', subscription.cancelationPeriodEvery, subscription.cancelationPeriodInterval);
       return { dueDate: lastPossibleCancelationDate, inDaysFromToday: this.dateDiffInDays(today, lastPossibleCancelationDate) }
     }
     else {
       do {
         // Add contract extension to date
-        lastPossibleCancelationDate = this.calculateDates(lastPossibleCancelationDate, '+', subscription.extensionAfterMinimumContractDurationEvery, subscription.extensionAfterMinimumContractDurationInterval);
-      } while(this.dateDiffInDays(today, this.calculateDates(lastPossibleCancelationDate, '-', subscription.cancelationPeriodEvery, subscription.cancelationPeriodInterval)) < 0);
+        nextContractExtension = this.calculateDates(nextContractExtension, '+', subscription.extensionAfterMinimumContractDurationEvery, subscription.extensionAfterMinimumContractDurationInterval);
+      } while(this.dateDiffInDays(today, this.calculateDates(nextContractExtension, '-', subscription.cancelationPeriodEvery, subscription.cancelationPeriodInterval)) < 0);
     }
+
+    // Substract cancellation period from the next contract extension
+    const lastPossibleCancelationDate = this.calculateDates(nextContractExtension, '-', subscription.cancelationPeriodEvery, subscription.cancelationPeriodInterval);
 
     return { dueDate: lastPossibleCancelationDate, inDaysFromToday: this.dateDiffInDays(today, lastPossibleCancelationDate) }
   }
