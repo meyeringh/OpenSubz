@@ -83,14 +83,14 @@ export class StorageService {
     }
   }
 
-  async restoreAllDataAndroid() {
+  async restoreAllDataAndroid(mergeWithCurrent?: boolean) {
     try {
       await Filesystem.readFile({
         path: 'subz-backup.json',
         directory: FilesystemDirectory.Documents,
         encoding: FilesystemEncoding.UTF8
       }).then((fileReadResult) => {
-        this.restoreAllData(fileReadResult.data);
+        this.restoreAllData(fileReadResult.data, mergeWithCurrent);
       });
 
       this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_SUCCESS').subscribe(RESTORE_BACKUP_SUCCESS => {
@@ -104,7 +104,12 @@ export class StorageService {
     }
   }
 
-  async restoreAllData(backup: string) {
+  /**
+   * Restores passed data
+   * @param backup Backup data which shall be restored like { subscriptions: ISubscription[], settings: ISettings }
+   * @param mergeWithCurrent If true, backup and current subscriptions will be merged by their id, keeps newer subscription if lastEdited property is present, else keeps the backup subscription
+   */
+  async restoreAllData(backup: string, mergeWithCurrent?: boolean) {
     let backupObject: { subscriptions: ISubscription[], settings: ISettings };
     try {
       backupObject = JSON.parse(backup);
@@ -114,7 +119,7 @@ export class StorageService {
       }
 
       // SUBSCRIPTIONS
-      const subscriptions: ISubscription[] = backupObject.subscriptions;
+      let subscriptions: ISubscription[] = backupObject.subscriptions;
       let isValid = true;
 
       for (const subscription of subscriptions) {
@@ -140,6 +145,8 @@ export class StorageService {
         if ('notificationBeforeCancelationPeriodInDays' in subscription) {
           this.throwErrorHelper(typeof subscription.notificationBeforeCancelationPeriodInDays !== 'number' && typeof subscription.notificationBeforeCancelationPeriodInDays !== 'object');
         }
+        if ('lastEdited' in subscription) { this.throwErrorHelper(typeof subscription.lastEdited !== 'number' && typeof subscription.lastEdited !== 'object'); }
+        if ('created' in subscription) { this.throwErrorHelper(typeof subscription.created !== 'number' && typeof subscription.created !== 'object'); }
       }
       
       // SETTINGS
@@ -147,6 +154,7 @@ export class StorageService {
 
       if ('forceDarkMode' in settings) { this.throwErrorHelper(typeof settings.forceDarkMode !== 'boolean') }
       if ('currency' in settings) { this.throwErrorHelper(typeof settings.currency !== 'string') }
+      if ('dateFormat' in settings) { this.throwErrorHelper(typeof settings.dateFormat !== 'string') }
       if ('notificationBeforeCancelationPeriodInDays' in settings) {
         // Can be null, so it can be an object
         this.throwErrorHelper(typeof settings.notificationBeforeCancelationPeriodInDays !== 'number' && typeof settings.notificationBeforeCancelationPeriodInDays !== 'object');
@@ -155,6 +163,49 @@ export class StorageService {
       if ('defaultSortBy' in settings) { this.throwErrorHelper(typeof settings.defaultSortBy !== 'string') }
       if ('hideOverviewHelperTextGeneral' in settings) { this.throwErrorHelper(typeof settings.hideOverviewHelperTextGeneral !== 'boolean') }
       if ('hideOverviewHelperTextMenuBar' in settings) { this.throwErrorHelper(typeof settings.hideOverviewHelperTextMenuBar !== 'boolean') }
+
+      // Merge current subscriptions with backup based on id
+      if (mergeWithCurrent) {
+        const currentSubscriptions = await this.retrieveSubscriptionsFromStorage();
+
+        for (let currentSubscription of currentSubscriptions) {
+          // Check if subscription with same id is present in backup and current subscriptions
+          let backupSubscriptionIndex = subscriptions.findIndex(sub => sub.id === currentSubscription.id);
+
+          if (backupSubscriptionIndex !== -1) {
+            // Check which subscription will be kept based on lastEdited date (4 cases)
+
+            // 1. Case: Both have lastEdited, so use the one with newer date
+            if (currentSubscription.lastEdited && subscriptions[backupSubscriptionIndex].lastEdited) {
+
+              if (currentSubscription.lastEdited > subscriptions[backupSubscriptionIndex].lastEdited) {
+                subscriptions[backupSubscriptionIndex] = currentSubscription
+              }
+              // Otherwise nothing todo, as backup subscription is used
+
+            }
+            // 2. Case: Only current subscription has lastEdited (= is newer)
+            else if (currentSubscription.lastEdited && !subscriptions[backupSubscriptionIndex].lastEdited) {
+              subscriptions[backupSubscriptionIndex] = currentSubscription;
+            }
+            // 3. Case: Only backup subscription has lastEdited (= is newer)
+            else if (!currentSubscription.lastEdited && subscriptions[backupSubscriptionIndex].lastEdited) {
+              // Nothing todo, as backup subscription is used
+            }
+            // 4. Case: Both don't have lastEdited, use the backup one
+            else if (!currentSubscription.lastEdited && !subscriptions[backupSubscriptionIndex].lastEdited) {
+              // Nothing todo, as backup subscription is used
+            }
+            else {
+              // Invalid case
+              throw Error;
+            }
+          } else {
+            // Current subscription can just be appended
+            subscriptions.push(currentSubscription);
+          }
+        }
+      }
 
       this.saveSubscriptionsToStorage(subscriptions);
       this.saveSettingsToStorage(settings);

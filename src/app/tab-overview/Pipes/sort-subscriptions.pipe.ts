@@ -6,7 +6,8 @@ import { CostByBillingIntervalPipe } from './cost-by-billing-interval.pipe';
 import { billingIntervals } from '../BILLING_INTERVALS';
 
 @Pipe({
-  name: 'sortSubscriptions'
+  name: 'sortSubscriptions',
+  pure: false
 })
 export class SortSubscriptionsPipe implements PipeTransform {
   availableBillingIntervals = billingIntervals;
@@ -77,6 +78,8 @@ export class SortSubscriptionsPipe implements PipeTransform {
       }
       case 'nextContractExtensionAsc': {
         return subscriptions.sort((a, b) => {
+          if (!this.nextCancelationPeriodDeadlinePipe.transform(a) || !this.nextCancelationPeriodDeadlinePipe.transform(b)) { return 1; }
+
           if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday < this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
             return -1;
           }
@@ -88,6 +91,8 @@ export class SortSubscriptionsPipe implements PipeTransform {
       }
       case 'nextContractExtensionDesc': {
         return subscriptions.sort((a, b) => {
+          if (!this.nextCancelationPeriodDeadlinePipe.transform(a) || !this.nextCancelationPeriodDeadlinePipe.transform(b)) { return 1; }
+
           if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday > this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
             return -1;
           }

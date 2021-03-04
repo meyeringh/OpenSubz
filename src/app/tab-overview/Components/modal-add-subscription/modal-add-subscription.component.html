@@ -39,7 +39,7 @@
 
       <ion-item [color]="subscriptionForm.value.color | lowercase">
         <ion-label>{{ 'TABS.OVERVIEW.TILE_COLOR' | translate }}</ion-label>
-        <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" name="color" formControlName="color" placeholder="Farbe">
+        <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" name="color" formControlName="color">
           <ng-container *ngFor="let color of colors">
             <ion-select-option [value]="color">{{ 'TABS.OVERVIEW.COLORS.'+color | uppercase | translate }}</ion-select-option>
           </ng-container>
@@ -52,7 +52,7 @@
 
       <ion-item>
         <ion-label>{{ 'TABS.OVERVIEW.BILLING_START' | translate }}</ion-label>
-        <ion-datetime cancelText="{{ 'GENERAL.CANCEL' | translate }}" doneText="{{ 'GENERAL.DONE' | translate }}" displayFormat="DD.MM.YYYY" name="billingStart" formControlName="billingStart"></ion-datetime>
+        <ion-datetime cancelText="{{ 'GENERAL.CANCEL' | translate }}" doneText="{{ 'GENERAL.DONE' | translate }}" displayFormat="{{ retrievedSettings?.dateFormat || dateFormatList[0] }}" max="{{ currentYear + 5 }}" name="billingStart" formControlName="billingStart" monthNames="{{ monthNames }}"></ion-datetime>
       </ion-item>
 
       <ion-grid class="ion-no-padding">
@@ -68,7 +68,7 @@
           <ion-col class="ion-no-padding">
 
             <ion-item>
-              <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" class="select-full-width" name="billingInterval" formControlName="billingInterval" placeholder="Intervall">
+              <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" class="select-full-width" name="billingInterval" formControlName="billingInterval">
                 <ng-container *ngFor="let interval of availableBillingIntervals">
                   <ion-select-option [value]="interval">{{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.'+interval | translate }}</ion-select-option>
                 </ng-container>
@@ -85,7 +85,7 @@
 
       <ion-item>
         <ion-label>{{ 'TABS.OVERVIEW.CONTRACT_START' | translate }}</ion-label>
-        <ion-datetime cancelText="{{ 'GENERAL.CANCEL' | translate }}" doneText="{{ 'GENERAL.DONE' | translate }}" displayFormat="DD.MM.YYYY" name="billingStart" formControlName="contractStart"></ion-datetime>
+        <ion-datetime cancelText="{{ 'GENERAL.CANCEL' | translate }}" doneText="{{ 'GENERAL.DONE' | translate }}" displayFormat="{{ retrievedSettings?.dateFormat || dateFormatList[0] }}" max="{{ currentYear + 5 }}" name="contractStart" formControlName="contractStart" monthNames="{{ monthNames }}"></ion-datetime>
       </ion-item>
 
       <ion-grid class="ion-no-padding">
@@ -101,7 +101,7 @@
           <ion-col class="ion-no-padding">
 
             <ion-item>
-              <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" class="select-full-width" name="minimumContractDurationInterval" formControlName="minimumContractDurationInterval" placeholder="Intervall">
+              <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" class="select-full-width" name="minimumContractDurationInterval" formControlName="minimumContractDurationInterval">
                 <ng-container *ngFor="let interval of availableBillingIntervals">
                   <ion-select-option [value]="interval">{{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.'+interval | translate }}</ion-select-option>
                 </ng-container>
@@ -125,7 +125,7 @@
           <ion-col class="ion-no-padding">
 
             <ion-item>
-              <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" class="select-full-width" name="extensionAfterMinimumContractDurationInterval" formControlName="extensionAfterMinimumContractDurationInterval" placeholder="Intervall">
+              <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" class="select-full-width" name="extensionAfterMinimumContractDurationInterval" formControlName="extensionAfterMinimumContractDurationInterval">
                 <ng-container *ngFor="let interval of availableBillingIntervals">
                   <ion-select-option [value]="interval">{{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.'+interval | translate }}</ion-select-option>
                 </ng-container>
@@ -149,7 +149,7 @@
           <ion-col class="ion-no-padding">
 
             <ion-item>
-              <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" class="select-full-width" name="cancelationPeriodInterval" formControlName="cancelationPeriodInterval" placeholder="Intervall">
+              <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" class="select-full-width" name="cancelationPeriodInterval" formControlName="cancelationPeriodInterval">
                 <ng-container *ngFor="let interval of availableBillingIntervals">
                   <ion-select-option [value]="interval">{{ 'TABS.OVERVIEW.CALENDAR_INTERVALS.'+interval | translate }}</ion-select-option>
                 </ng-container>

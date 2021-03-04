@@ -6,6 +6,7 @@ import { TabSettingsPage } from './tab-settings.page';
 import { TabSettingsPageRoutingModule } from './tab-settings-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { AppVersion } from '@ionic-native/app-version/ngx';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ReactiveFormsModule,
     TranslateModule
   ],
-  declarations: [TabSettingsPage]
+  declarations: [TabSettingsPage],
+  providers: [AppVersion]
 })
 export class TabSettingsPageModule {}

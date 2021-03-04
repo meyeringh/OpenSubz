@@ -4,7 +4,6 @@ import { ModalAddSubscriptionComponent } from './Components/modal-add-subscripti
 import { ISubscription } from './Interfaces/subscriptionInterface';
 import { ISettings } from '../tab-settings/Interfaces/settingsInterface';
 import { StorageService } from '../Services/storage.service';
-import * as uuid from 'uuid';
 import { TranslateService } from '@ngx-translate/core';
 import { billingIntervals } from './BILLING_INTERVALS';
 import { NotificationService } from '../Services/notification.service';
@@ -39,9 +38,12 @@ export class TabOverviewPage {
   }
 
   addEntry(entry: ISubscription): void {
-    let id = 1;
-    while (this.subscriptions.some(subscription => subscription.id === id)) { id++; }
+    let id: number;
+    do { id = Math.floor((Math.random() * 999999999999) + 1); } while (this.subscriptions.some(subscription => subscription.id === id));
+    
     entry.id = id;
+    entry.created = Date.now();
+    entry.lastEdited = entry.created;
 
     this.subscriptions.push(entry);
     this.saveSubscriptionsToStorage();

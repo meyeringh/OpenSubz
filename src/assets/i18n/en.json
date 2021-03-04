@@ -1,6 +1,7 @@
 {
     "APP": {
-        "NAME": "Subz"
+        "NAME": "Subz",
+        "SHORT_DESCRIPTION": "Privacy-friendly app for managing subscriptions and contracts with notification feature."
     },
     "GENERAL": {
         "CANCEL": "Cancel",
@@ -59,6 +60,20 @@
                 "YELLOW": "Yellow",
                 "RED": "Red",
                 "GREY": "Grey"
+            },
+            "MONTH_NAMES": {
+                "JANUARY": "January",
+                "FEBRUARY": "February",
+                "MARCH": "March",
+                "APRIL": "April",
+                "MAI": "May",
+                "JUNE": "June",
+                "JULY": "July",
+                "AUGUST": "August",
+                "SEPTEMBER": "September",
+                "OCTOBER": "October",
+                "NOVEMBER": "November",
+                "DECEMBER": "December"
             }
         },
         "SETTINGS": {
@@ -69,13 +84,19 @@
             "DARK_MODE": "Dark-Mode",
             "DARK_MODE_HELPER": "Automatically on some devices",
             "CURRENCY": "Currency",
+            "DATE_FORMAT": "Date format",
             "SHOW_HELP_TEXTS_IN_OVERVIEW": "Show help in the overview again",
+            "SHOW_HELP_TEXTS_IN_OVERVIEW_HELPER": "Restores help texts and switches to overview",
             "TEMPLATES": "Templates",
             "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Notification before cancelation period in days",
             "GENERAL_INFORMATION": "General information",
             "LICENSE": "License",
             "ABOUT": "About",
-            "ABOUT_TEXT": "By Christian Flaßkamp<br><br>Privacy-friendly app for managing subscriptions and contracts with notification feature. <br><br>The source code can be found on <a href='https://codeberg.org/epinez/Subz'>Codeberg</a>.",
+            "ABOUT_VERSION": "Version",
+            "ABOUT_AUTHOR": "Author",
+            "ABOUT_SOURCECODE": "Sourcecode",
+            "ABOUT_REPORT_ISSUES": "Report issues",
+            "ABOUT_CONTACT": "Contact",
             "DATA_MANAGEMENT": "Data management",
             "BACKUP": "Backup",
             "BACKUP_ERROR": "Error while creating backup!",
@@ -83,9 +104,9 @@
             "COPY_TO_CLIPBOARD": "Copy to clipboard",
             "RESTORE": "Restore",
             "BACKUP_DATA": "Backup-Data",
-            "RESTORE_BACKUP_ALERT_HEADER": "Restore backup?",
-            "RESTORE_BACKUP_ALERT_MESSAGE": "Should the backup really be restored? This would clear all present data.",
-            "RESTORE_BACKUP": "Restore Backup",
+            "RESTORE_BACKUP_ALERT_MESSAGE": "The current data could either be completely deleted and replaced by the backup or the backup can be merged with the current data. While merging each of the last edited subscriptions will be kept and the settings from the backup will be restored.",
+            "RESTORE_BACKUP_REPLACE": "Replace current data by backup",
+            "RESTORE_BACKUP_MERGE": "Merge current data and backup",
             "RESTORE_BACKUP_ERROR": "Error while reading data from backup!",
             "RESTORE_BACKUP_ERROR_ANDROID": "Error while reading data from backup!. Is the backup file Documents/subz-backup.json present?",
             "RESTORE_BACKUP_SUCCESS": "The data has been restored successfully!"

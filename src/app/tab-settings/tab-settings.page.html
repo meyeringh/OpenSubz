@@ -23,15 +23,27 @@
 
       <ion-item>
         <ion-label>{{ 'TABS.SETTINGS.CURRENCY' | translate }}</ion-label>
-        <ion-select cancelText="ABBRECHEN" name="currency" formControlName="currency" placeholder="Währung">
+        <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" name="currency" formControlName="currency">
           <ng-container *ngFor="let currency of currencyList">
             <ion-select-option [value]="currency">{{ currency }}</ion-select-option>
           </ng-container>
         </ion-select>
       </ion-item>
 
+      <ion-item>
+        <ion-label>{{ 'TABS.SETTINGS.DATE_FORMAT' | translate }}</ion-label>
+        <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" name="dateFormat" formControlName="dateFormat">
+          <ng-container *ngFor="let dateFormat of dateFormatList">
+            <ion-select-option [value]="dateFormat">{{ dateFormat }}</ion-select-option>
+          </ng-container>
+        </ion-select>
+      </ion-item>
+
       <ion-item button (click)="showHelpTextsInOverview()">
-        <ion-label>{{ 'TABS.SETTINGS.SHOW_HELP_TEXTS_IN_OVERVIEW' | translate }}</ion-label>
+        <ion-label>
+          <h2>{{ 'TABS.SETTINGS.SHOW_HELP_TEXTS_IN_OVERVIEW' | translate }}</h2>
+          <ion-note>{{ 'TABS.SETTINGS.SHOW_HELP_TEXTS_IN_OVERVIEW_HELPER' | translate }}</ion-note>
+        </ion-label>
       </ion-item>
     </ion-list>
 
