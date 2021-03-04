@@ -39,10 +39,6 @@ The app is quite minimal but offers the most important features.
 - Global currency selection
 - Local backup and restore
 
-### Others
-
-- Localization (English, German so far)
-
 ## Building
 
 ### Prerequisites
@@ -77,3 +73,4 @@ Feel free to help me improving Subz in any possible way! These are some examples
 ## Thanks to
 
 - [mondstern](https://codeberg.org/mondstern) for his beautiful acrylic painting of the Subz logo
+- [kingu](https://codeberg.org/kingu) for norwegian translation

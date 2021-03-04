@@ -9,3 +9,4 @@
 * Fix: Nicht übersetzter Abbrechen-Button für Währungsauswahl
 * Fix: Sortierung neu hinzugefügter Abonnements
 * Fix: Falsche Deadline für Kündigungsfristen in manchen Fällen
+* Übersetzung: Norwegisch hinzugefügt

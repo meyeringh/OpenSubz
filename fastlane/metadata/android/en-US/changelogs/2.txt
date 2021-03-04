@@ -9,3 +9,4 @@
 * Fix: Non localized cancel-button within currency selection
 * Fix: Sorting of new added subscriptions
 * Fix: Wrong cancellation period deadline for subscriptions in some cases
+* Translation: Added norwegian language
