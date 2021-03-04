@@ -19,7 +19,7 @@
             "DARK_MODE_HELPER": "Automatisk på noen enheter",
             "DARK_MODE": "Mørk drakt",
             "RESTORE_BACKUP_SUCCESS": "Data gjenopprettet",
-            "RESTORE_BACKUP_ERROR": "Klarte ikke å lese data fra sikkerhetskopi.",
+            "RESTORE_BACKUP_ERROR": "Feil ved lesing av data fra backup!",
             "RESTORE_BACKUP_MERGE": "Flett nåværende data og sikkerhetskopi",
             "BACKUP_DATA": "Sikkerhetskopi-data",
             "RESTORE": "Gjenopprett",
@@ -81,9 +81,9 @@
                 "GREEN": "Grønn",
                 "BLUE": "Blå"
             },
-            "ADD_SUBSCRIPTION_HELPER": "Legg til nye abonnementer",
+            "ADD_SUBSCRIPTION_HELPER": "Legge til nye abonnementer.",
             "MENU_BUTTONS_HELPER_HEADER": "Hjel for menybjelken",
-            "NO_SUBSCRIPTION_HEADER": "Hei på deg.",
+            "NO_SUBSCRIPTION_HEADER": "Hei på deg!",
             "CALENDAR_INTERVALS": {
                 "YEARS": "År",
                 "MONTHS": "Måneder",
