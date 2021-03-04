@@ -42,8 +42,8 @@
         "OVERVIEW": {
             "SORT_HELPER": "Sorter abonnementer etter navn, kostnad, neste fakturering eller neste kontraktsutvidelse.",
             "SEARCH_HELPER": "Vis kun abonnementer der søketekst samsvarer med navn eller beskrivelse.",
-            "CHANGE_CHOOSEN_BILLING_INTERVAL_HELPER": "Endre vist intervallet av abonnement koster mellom årlig, månedlig, ukentlig og daglig.Endre vist intervallet av abonnement koster mellom årlig, månedlig, ukentlig og daglig.",
-            "NO_SUBSCRIPTION_TEXT": "Abonnement kan legges til ved å bruke pluss-knappen i øvre høyre side av skjermen. De andre funksjonene i menyen bar er deaktivert inntil to abonnementer har blitt lagt til. Ha det gøy med Subz!",
+            "CHANGE_CHOOSEN_BILLING_INTERVAL_HELPER": "Endre vist intervall for abonnementskostnader til årlig, månedlig, ukentlig, eller daglig.",
+            "NO_SUBSCRIPTION_TEXT": "Abonnementer kan legges til med «+»-knappen øverst til høyre på skjermen. Andre funksjoner i menybjelken er avskrudd til to abonnementer har blitt lagt til. Til glede med Subz.",
             "DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_ON_HELPER": "dager til siste mulige kansellering i denne perioden på",
             "DAYS_UNTIL_NEXT_BILLING_ON_HELPER": "dager til neste fakturering på",
             "NEXT_SUBSCRIPTION_EXTENSION": "Neste kontraktsutvidelse",
