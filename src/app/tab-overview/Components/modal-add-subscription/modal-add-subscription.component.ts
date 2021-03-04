@@ -52,15 +52,14 @@ export class ModalAddSubscriptionComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.existingSubscription) {
-      this.retrieveSettingsFromStorage().then(() => {
+    this.retrieveSettingsFromStorage().then(() => {
+      if (this.existingSubscription) {
+        // Update form to existing subscription
+        this.fillFormWithExistingEntry();
+      } else {
         this.fillNotificationBeforeCancelationPeriodInDays();
-      });
-    }
-    // Update existing subscription
-    else {
-      this.fillFormWithExistingEntry();
-    }
+      }
+    });
   }
 
   ionViewDidEnter() {
