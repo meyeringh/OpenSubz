@@ -1,1 +1,13 @@
-{}
+{
+    "TABS": {
+        "OVERVIEW": {
+            "SEARCH_FOR_NAME_AND_DESCRIPTION": "Nome o descrizione",
+            "OVERVIEW": "Descending"
+        }
+    },
+    "GENERAL": {
+        "DESC": "Discendente",
+        "DONE": "Fatto",
+        "CANCEL": "Cancella"
+    }
+}
