@@ -2,7 +2,14 @@
     "TABS": {
         "OVERVIEW": {
             "SEARCH_FOR_NAME_AND_DESCRIPTION": "Nome o descrizione",
-            "OVERVIEW": "Descending"
+            "OVERVIEW": "Descending",
+            "MINIMUM_CONTRACT_DURATION": "Durata del contratto",
+            "EXTENSION_AFTER_MINIMUM_CONTRACT_DURATION": "Estensione del contratto",
+            "CANCELATION_PERIOD": "Periodo di cancellazione",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_STARTS_ON": "Notifica prima del periodo di cancellazione il più presto possibile",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Notifica prima del periodo di cancellazione in giorni",
+            "TILE_COLOR": "Colore delle piastrelle",
+            "REMOVE_SUBSCRIPTION": "Rimuovere l'abbonamento"
         }
     },
     "GENERAL": {
