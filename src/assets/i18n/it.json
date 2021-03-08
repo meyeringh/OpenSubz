@@ -2,7 +2,7 @@
     "TABS": {
         "OVERVIEW": {
             "SEARCH_FOR_NAME_AND_DESCRIPTION": "Nome o descrizione",
-            "OVERVIEW": "Descending",
+            "OVERVIEW": "Panoramica",
             "MINIMUM_CONTRACT_DURATION": "Durata del contratto",
             "EXTENSION_AFTER_MINIMUM_CONTRACT_DURATION": "Estensione del contratto",
             "CANCELATION_PERIOD": "Periodo di cancellazione",
@@ -15,6 +15,11 @@
     "GENERAL": {
         "DESC": "Discendente",
         "DONE": "Fatto",
-        "CANCEL": "Cancella"
+        "CANCEL": "Cancella",
+        "OK": "OK"
+    },
+    "APP": {
+        "SHORT_DESCRIPTION": "Applicazione rispettosa della vita privata per la gestione di abbonamenti e contratti con funzionalità di notifica.",
+        "NAME": "Subz"
     }
 }
