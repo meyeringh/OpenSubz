@@ -1,1 +1,1 @@
-export const billingIntervals = ['YEARS', 'MONTHS', 'WEEKS', 'DAYS'];
+export const billingIntervals = ['DAYS', 'WEEKS', 'MONTHS', 'YEARS'];
