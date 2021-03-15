@@ -1,0 +1,25 @@
+{
+    "TABS": {
+        "OVERVIEW": {
+            "SEARCH_FOR_NAME_AND_DESCRIPTION": "Nome o descrizione",
+            "OVERVIEW": "Panoramica",
+            "MINIMUM_CONTRACT_DURATION": "Durata del contratto",
+            "EXTENSION_AFTER_MINIMUM_CONTRACT_DURATION": "Estensione del contratto",
+            "CANCELATION_PERIOD": "Periodo di cancellazione",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_STARTS_ON": "Notifica prima del periodo di cancellazione il più presto possibile",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Notifica prima del periodo di cancellazione in giorni",
+            "TILE_COLOR": "Colore delle piastrelle",
+            "REMOVE_SUBSCRIPTION": "Rimuovere l'abbonamento"
+        }
+    },
+    "GENERAL": {
+        "DESC": "Discendente",
+        "DONE": "Fatto",
+        "CANCEL": "Cancella",
+        "OK": "OK"
+    },
+    "APP": {
+        "SHORT_DESCRIPTION": "Applicazione rispettosa della vita privata per la gestione di abbonamenti e contratti con funzionalità di notifica.",
+        "NAME": "Subz"
+    }
+}
