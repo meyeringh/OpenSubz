@@ -83,4 +83,4 @@ You can also contact me via [E-Mail](mailto:subz@flasskamp.com).
 ## Thanks to
 
 - [mondstern](https://codeberg.org/mondstern) for his beautiful acrylic painting of the Subz logo
-- [kingu](https://codeberg.org/kingu) for norwegian translation
+- All translators which helped localizing Subz via Weblate. I don't mention each one specifically because that's so much work :-)
