@@ -6,8 +6,7 @@ import { CostByBillingIntervalPipe } from './cost-by-billing-interval.pipe';
 import { billingIntervals } from '../BILLING_INTERVALS';
 
 @Pipe({
-  name: 'sortSubscriptions',
-  pure: true
+  name: 'sortSubscriptions'
 })
 export class SortSubscriptionsPipe implements PipeTransform {
   availableBillingIntervals = billingIntervals;
@@ -20,8 +19,6 @@ export class SortSubscriptionsPipe implements PipeTransform {
   transform(subscriptions: ISubscription[], filterBy: string): ISubscription[] {
     if (!subscriptions) { return null; }
     if (!filterBy) { return subscriptions; }
-
-    console.log("sort pipe called");
 
     switch (filterBy) {
       case 'nameAsc': {
