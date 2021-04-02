@@ -79,10 +79,8 @@
         "SETTINGS": {
             "SETTINGS": "Einstellungen",
             "UI": "Benutzeroberfläche",
-            "HIDE_TOTAL_COSTS_IN_OVERVIEW": "Gesamtkosten in Übersicht ausblenden",
-            "HIDE_TOTAL_COSTS_IN_OVERVIEW_HELPER": "Anzeige sonst erst ab zwei Abonnements",
-            "DARK_MODE": "Nachtmodus",
-            "DARK_MODE_HELPER": "Auf manchen Geräten automatisch",
+            "FORCE_DARK_MODE": "Nachtmodus erzwingen",
+            "FORCE_DARK_MODE_HELPER": "Benutzt standardmäßig das System-Theme",
             "CURRENCY": "Währung",
             "DATE_FORMAT": "Datumsformat",
             "SHOW_HELP_TEXTS_IN_OVERVIEW": "Hilfe in der Übersicht wieder anzeigen",

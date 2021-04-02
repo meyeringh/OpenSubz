@@ -79,10 +79,8 @@
         "SETTINGS": {
             "SETTINGS": "Settings",
             "UI": "User interface",
-            "HIDE_TOTAL_COSTS_IN_OVERVIEW": "Hide total costs in the overview",
-            "HIDE_TOTAL_COSTS_IN_OVERVIEW_HELPER": "Otherwise displayed with at least two subscriptions",
-            "DARK_MODE": "Dark-Mode",
-            "DARK_MODE_HELPER": "Automatically on some devices",
+            "FORCE_DARK_MODE": "Force Dark-Mode",
+            "FORCE_DARK_MODE_HELPER": "Uses system theme by default",
             "CURRENCY": "Currency",
             "DATE_FORMAT": "Date format",
             "SHOW_HELP_TEXTS_IN_OVERVIEW": "Show help in the overview again",

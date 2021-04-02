@@ -13,6 +13,8 @@ import localeNb from '@angular/common/locales/nb';
 import localeRu from '@angular/common/locales/ru';
 import { TabHideService } from './Services/tab-hide.service';
 import { Router } from '@angular/router';
+import { ThemeService } from './Services/theme.service';
+import { NotificationService } from './Services/notification.service';
 
 @Component({
   selector: 'app-root',
@@ -26,22 +28,30 @@ export class AppComponent {
     private statusBar: StatusBar,
     private translateService: TranslateService,
     public tabHideService: TabHideService,
-    private router: Router
-  ) {
-    this.setupInternationalisation();
-    this.initializeApp();
-  }
+    private router: Router,
+    public notificationService: NotificationService,
+    public themeService: ThemeService
+  ) { this.initializeApp(); }
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
+
+      this.setupInternationalisation();
+      this.notificationService.scheduleNotifications();
+      this.themeService.applyTheme();
+
       this.splashScreen.hide();
       this.platform.backButton.subscribeWithPriority(0, () => {
         const url = this.router.url;
 
         if (url === '/tabs/overview' || url === '/tabs/settings') {
           navigator['app'].exitApp();
-        } else if (url === '/tabs/settings/ui' || url === '/tabs/settings/region' || url === '/tabs/settings/data-management' || url === '/tabs/settings/license' || url === '/tabs/settings/about') {
+        } else if (url === '/tabs/settings/ui'
+          || url === '/tabs/settings/region'
+          || url === '/tabs/settings/data-management'
+          || url === '/tabs/settings/license'
+          || url === '/tabs/settings/about') {
           this.router.navigate(['/tabs/settings']);
         }
       });

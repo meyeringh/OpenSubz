@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { NotificationService } from '../Services/notification.service';
-import { ThemeService } from '../Services/theme.service';
 
 @Component({
   selector: 'app-tabs',
@@ -9,13 +7,6 @@ import { ThemeService } from '../Services/theme.service';
 })
 export class TabsPage {
 
-  constructor(
-    public notificationService: NotificationService,
-    public themeService: ThemeService) {}
-
-  ionViewWillEnter() {
-    this.notificationService.scheduleNotifications();
-    this.themeService.applyTheme();
-  }
+  constructor() {}
 
 }

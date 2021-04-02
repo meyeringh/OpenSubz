@@ -9,12 +9,20 @@ export class ThemeService {
   constructor(public storageService: StorageService) { }
 
   applyTheme() {
+    if (window.navigator.userAgent.includes('AndroidDarkMode')) {
+      document.body.classList.add('dark');
+    }
+
     this.storageService.retrieveSettingsFromStorage().then(settings => {
       if (settings.hasOwnProperty('forceDarkMode')) {
         if (settings.forceDarkMode) {
           document.body.classList.add('dark');
         } else {
-          document.body.classList.remove('dark');
+          if (window.navigator.userAgent.includes('AndroidDarkMode')) {
+            document.body.classList.add('dark');
+          } else {
+            document.body.classList.remove('dark');
+          }
         }
       }
     });
