@@ -232,4 +232,9 @@ export class TabOverviewPage {
     }
   }
 
+  // Avoids re-rendering of subscriptions after page changes and prevents flickering
+  trackSubscriptionsBy(index: number): number {
+    return index;
+  }
+
 }
