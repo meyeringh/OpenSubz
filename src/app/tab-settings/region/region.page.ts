@@ -18,7 +18,7 @@ export class RegionPage implements OnInit {
   currencyList = currencies;
   dateFormatList = dateFormats;
   settingsFormChangeSubscription: Subscription;
-  
+
   constructor(
     private formBuilder: FormBuilder,
     private storageService: StorageService,

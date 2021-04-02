@@ -40,7 +40,7 @@ export class TabOverviewPage {
   addEntry(entry: ISubscription): void {
     let id: number;
     do { id = Math.floor((Math.random() * 999999999999) + 1); } while (this.subscriptions.some(subscription => subscription.id === id));
-    
+
     entry.id = id;
     entry.created = Date.now();
     entry.lastEdited = entry.created;
@@ -219,9 +219,9 @@ export class TabOverviewPage {
   }
 
   dismissHelperText(attributeName: string): void {
-    if (attributeName === "hideOverviewHelperTextGeneral") { this.settings.hideOverviewHelperTextGeneral = true; }
-    else if (attributeName === "hideOverviewHelperTextMenuBar") { this.settings.hideOverviewHelperTextMenuBar = true; }
-    else return;
+    if (attributeName === 'hideOverviewHelperTextGeneral') { this.settings.hideOverviewHelperTextGeneral = true; }
+    else if (attributeName === 'hideOverviewHelperTextMenuBar') { this.settings.hideOverviewHelperTextMenuBar = true; }
+    else { return; }
 
     this.saveSettingsToStorage();
   }

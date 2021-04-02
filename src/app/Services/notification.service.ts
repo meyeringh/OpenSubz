@@ -29,7 +29,8 @@ export class NotificationService {
 
       LocalNotifications.getPending().then(pending => {
         //
-        // PART 1: DELETE PENDING NOTIFICATION IF THERE ARE NO CORRESPONDING SUBSCRIPTIONS ANYMORE OR THE SUBSCRIPTION HAS NO ALARM SET ANYMORE
+        // PART 1: DELETE PENDING NOTIFICATION IF THERE ARE NO CORRESPONDING SUBSCRIPTIONS ANYMORE
+        // OR THE SUBSCRIPTION HAS NO ALARM SET ANYMORE
         //
 
         if (pending) {
@@ -39,26 +40,26 @@ export class NotificationService {
           for (let pendingNotification of pending.notifications) {
 
             let cancelNotification = false;
-            const correspondingSubscription = this.subscriptions.find(s => s.id === Number(pendingNotification.id))
-  
+            const correspondingSubscription = this.subscriptions.find(s => s.id === Number(pendingNotification.id));
+
             // Case 1: No Subscription with corresponding NotificationID -> Cancel!
             if (!correspondingSubscription) { cancelNotification = true; }
-  
+
             // Case 2: Subscription with corresponding NotificationID has no alarm set anymore -> Cancel!
             else if (!correspondingSubscription.notificationBeforeCancelationPeriodInDays) { cancelNotification = true; }
-  
+
             // Add Notification to PendingList for canceling it later
             if (cancelNotification) {
               notificationsToBeCanceled.notifications.push({ id: pendingNotification.id });
             }
           }
-  
-          if (notificationsToBeCanceled.notifications.length !== 0) { 
+
+          if (notificationsToBeCanceled.notifications.length !== 0) {
             LocalNotifications.cancel(notificationsToBeCanceled);
           }
 
         }
-        
+
         //
         // PART 2: SCHEDULE NOTIFICATIONS
         //
@@ -80,10 +81,12 @@ export class NotificationService {
 
 
           // If scheduleAt is in the past, don't schedule and go check next subscription
-          if (scheduleAtDate < new Date()) { continue }
+          if (scheduleAtDate < new Date()) { continue; }
 
           const NOTIFICATION_TITLE = this.translateService.instant('NOTIFICATIONS.NOTIFICATION_TITLE');
-          const NOTIFICATION_BODY = ((this.translateService.instant('NOTIFICATIONS.NOTIFICATION_BODY')).replace('$NAME$', subscription.name)).replace('$DATE$', nextCancelationPeriodDeadlineDate);
+          const NOTIFICATION_BODY = ((this.translateService.instant('NOTIFICATIONS.NOTIFICATION_BODY'))
+            .replace('$NAME$', subscription.name))
+            .replace('$DATE$', nextCancelationPeriodDeadlineDate);
 
           const notification: LocalNotification = {
             id: subscription.id,

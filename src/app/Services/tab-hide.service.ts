@@ -36,8 +36,8 @@ export class TabHideService {
       } else {
         tabBar.style.display = 'flex';
       }
-    } catch(e) {
+    } catch (e) {
       // Page has no tab bar
-    };
+    }
   }
 }

@@ -70,13 +70,13 @@ export class StorageService {
         data: backup,
         directory: FilesystemDirectory.Documents,
         encoding: FilesystemEncoding.UTF8
-      })
-      
+      });
+
       this.translateService.get('TABS.SETTINGS.BACKUP_SUCCESS').subscribe(BACKUP_SUCCESS => {
         this.toastMessage(BACKUP_SUCCESS + ' Documents/subz-backup.json');
       });
 
-    } catch(e) {
+    } catch (e) {
       this.translateService.get('TABS.SETTINGS.BACKUP_ERROR').subscribe(BACKUP_ERROR => {
         this.toastMessage(BACKUP_ERROR);
       });
@@ -97,7 +97,7 @@ export class StorageService {
         this.toastMessage(RESTORE_BACKUP_SUCCESS);
       });
 
-    } catch(e) {
+    } catch (e) {
       this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_ERROR_ANDROID').subscribe(RESTORE_BACKUP_ERROR_ANDROID => {
         this.toastMessage(RESTORE_BACKUP_ERROR_ANDROID);
       });
@@ -107,7 +107,8 @@ export class StorageService {
   /**
    * Restores passed data
    * @param backup Backup data which shall be restored like { subscriptions: ISubscription[], settings: ISettings }
-   * @param mergeWithCurrent If true, backup and current subscriptions will be merged by their id, keeps newer subscription if lastEdited property is present, else keeps the backup subscription
+   * @param mergeWithCurrent If true, backup and current subscriptions will be merged by their id, keeps newer
+   * subscription if lastEdited property is present, else keeps the backup subscription
    */
   async restoreAllData(backup: string, mergeWithCurrent?: boolean) {
     let backupObject: { subscriptions: ISubscription[], settings: ISettings };
@@ -134,8 +135,10 @@ export class StorageService {
                   'contractStart' in subscription && typeof subscription.contractStart === 'string' &&
                   'minimumContractDuration' in subscription && typeof subscription.minimumContractDuration === 'number' &&
                   'minimumContractDurationInterval' in subscription && typeof subscription.minimumContractDurationInterval === 'string' &&
-                  'extensionAfterMinimumContractDurationEvery' in subscription && typeof subscription.extensionAfterMinimumContractDurationEvery === 'number';
-                  'extensionAfterMinimumContractDurationInterval' in subscription && typeof subscription.extensionAfterMinimumContractDurationInterval === 'string' &&
+                  'extensionAfterMinimumContractDurationEvery' in subscription
+                    && typeof subscription.extensionAfterMinimumContractDurationEvery === 'number' &&
+                  'extensionAfterMinimumContractDurationInterval' in subscription
+                    && typeof subscription.extensionAfterMinimumContractDurationInterval === 'string' &&
                   'cancelationPeriodEvery' in subscription && typeof subscription.cancelationPeriodEvery === 'number' &&
                   'cancelationPeriodInterval' in subscription && typeof subscription.cancelationPeriodInterval === 'string';
         if (!isValid) { throw Error; }
@@ -143,26 +146,32 @@ export class StorageService {
         // Optional fields
         if ('description' in subscription) { this.throwErrorHelper(typeof subscription.description !== 'string'); }
         if ('notificationBeforeCancelationPeriodInDays' in subscription) {
-          this.throwErrorHelper(typeof subscription.notificationBeforeCancelationPeriodInDays !== 'number' && typeof subscription.notificationBeforeCancelationPeriodInDays !== 'object');
+          this.throwErrorHelper(typeof subscription.notificationBeforeCancelationPeriodInDays !== 'number'
+            && typeof subscription.notificationBeforeCancelationPeriodInDays !== 'object');
         }
-        if ('lastEdited' in subscription) { this.throwErrorHelper(typeof subscription.lastEdited !== 'number' && typeof subscription.lastEdited !== 'object'); }
-        if ('created' in subscription) { this.throwErrorHelper(typeof subscription.created !== 'number' && typeof subscription.created !== 'object'); }
+        if ('lastEdited' in subscription) {
+          this.throwErrorHelper(typeof subscription.lastEdited !== 'number' && typeof subscription.lastEdited !== 'object'); }
+        if ('created' in subscription) {
+          this.throwErrorHelper(typeof subscription.created !== 'number' && typeof subscription.created !== 'object'); }
       }
-      
+
       // SETTINGS
       const settings: ISettings = backupObject.settings;
 
-      if ('forceDarkMode' in settings) { this.throwErrorHelper(typeof settings.forceDarkMode !== 'boolean') }
-      if ('currency' in settings) { this.throwErrorHelper(typeof settings.currency !== 'string') }
-      if ('dateFormat' in settings) { this.throwErrorHelper(typeof settings.dateFormat !== 'string') }
+      if ('forceDarkMode' in settings) { this.throwErrorHelper(typeof settings.forceDarkMode !== 'boolean'); }
+      if ('currency' in settings) { this.throwErrorHelper(typeof settings.currency !== 'string'); }
+      if ('dateFormat' in settings) { this.throwErrorHelper(typeof settings.dateFormat !== 'string'); }
       if ('notificationBeforeCancelationPeriodInDays' in settings) {
         // Can be null, so it can be an object
-        this.throwErrorHelper(typeof settings.notificationBeforeCancelationPeriodInDays !== 'number' && typeof settings.notificationBeforeCancelationPeriodInDays !== 'object');
+        this.throwErrorHelper(typeof settings.notificationBeforeCancelationPeriodInDays !== 'number'
+          && typeof settings.notificationBeforeCancelationPeriodInDays !== 'object');
       }
-      if ('defaultBillingInterval' in settings) { this.throwErrorHelper(typeof settings.defaultBillingInterval !== 'string') }
-      if ('defaultSortBy' in settings) { this.throwErrorHelper(typeof settings.defaultSortBy !== 'string') }
-      if ('hideOverviewHelperTextGeneral' in settings) { this.throwErrorHelper(typeof settings.hideOverviewHelperTextGeneral !== 'boolean') }
-      if ('hideOverviewHelperTextMenuBar' in settings) { this.throwErrorHelper(typeof settings.hideOverviewHelperTextMenuBar !== 'boolean') }
+      if ('defaultBillingInterval' in settings) { this.throwErrorHelper(typeof settings.defaultBillingInterval !== 'string'); }
+      if ('defaultSortBy' in settings) { this.throwErrorHelper(typeof settings.defaultSortBy !== 'string'); }
+      if ('hideOverviewHelperTextGeneral' in settings) {
+        this.throwErrorHelper(typeof settings.hideOverviewHelperTextGeneral !== 'boolean'); }
+      if ('hideOverviewHelperTextMenuBar' in settings) {
+        this.throwErrorHelper(typeof settings.hideOverviewHelperTextMenuBar !== 'boolean'); }
 
       // Merge current subscriptions with backup based on id
       if (mergeWithCurrent) {
@@ -179,7 +188,7 @@ export class StorageService {
             if (currentSubscription.lastEdited && subscriptions[backupSubscriptionIndex].lastEdited) {
 
               if (currentSubscription.lastEdited > subscriptions[backupSubscriptionIndex].lastEdited) {
-                subscriptions[backupSubscriptionIndex] = currentSubscription
+                subscriptions[backupSubscriptionIndex] = currentSubscription;
               }
               // Otherwise nothing todo, as backup subscription is used
 

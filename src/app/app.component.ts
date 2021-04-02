@@ -53,35 +53,35 @@ export class AppComponent {
     const browserLang = this.translateService.getBrowserLang();
 
     // Register locales in order for built in pipes to work
-    switch(browserLang) { 
-      case 'de': { 
+    switch (browserLang) {
+      case 'de': {
         registerLocaleData(localeDe);
         this.translateService.use('de');
-        break; 
+        break;
       }
-      case 'fr': { 
+      case 'fr': {
         registerLocaleData(localeFr);
         this.translateService.use('fr');
-        break; 
+        break;
       }
-      case 'it': { 
+      case 'it': {
         registerLocaleData(localeIt);
         this.translateService.use('it');
-        break; 
+        break;
       }
-      case 'nb': { 
+      case 'nb': {
         registerLocaleData(localeNb);
         this.translateService.use('nb_NO');
-        break; 
+        break;
       }
-      case 'ru': { 
+      case 'ru': {
         registerLocaleData(localeRu);
         this.translateService.use('ru');
-        break; 
+        break;
       }
-      default: { 
+      default: {
         this.translateService.use('en');
-        break; 
+        break;
       }
     }
   }

@@ -20,7 +20,7 @@ export class AboutPage implements OnInit {
       if (this.platform.is('android')) {
         this.appVersion.getVersionNumber().then(appVersion => {
           this.version = appVersion;
-        })
+        });
       }
       else if (this.platform.is('mobileweb')) {
         // Don't show version

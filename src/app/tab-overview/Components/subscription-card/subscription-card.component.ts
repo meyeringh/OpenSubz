@@ -39,7 +39,9 @@ export class SubscriptionCardComponent {
     event.stopPropagation();
 
     const nextCancelationPeriodDeadlineInDays = this.nextCancelationPeriodDeadlinePipe.transform(subscription).inDaysFromToday;
-    const nextCancelationPeriodDeadlineDate = new DatePipe(this.translateService.currentLang).transform(this.nextCancelationPeriodDeadlinePipe.transform(subscription).dueDate);
+    const nextCancelationPeriodDeadlineDate = new DatePipe(this.translateService.currentLang)
+      .transform(this.nextCancelationPeriodDeadlinePipe
+      .transform(subscription).dueDate);
 
     this.translateService.get('TABS.OVERVIEW.DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_ON_HELPER').subscribe(
       DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_ON_HELPER => {
@@ -50,7 +52,9 @@ export class SubscriptionCardComponent {
   explainAlarmForNextCancelationPeriodDeadline(event: Event, subscription: ISubscription) {
     event.stopPropagation();
 
-    const alarmForNextCancelationPeriodDeadlineDate = new DatePipe(this.translateService.currentLang).transform(this.notificationTimeForNextCancelationPeriodDeadlinePipe.transform(subscription).dueDate);
+    const alarmForNextCancelationPeriodDeadlineDate = new DatePipe(this.translateService.currentLang)
+      .transform(this.notificationTimeForNextCancelationPeriodDeadlinePipe
+      .transform(subscription).dueDate);
 
     this.translateService.get('TABS.OVERVIEW.NOTIFICATION_BEFORE_CANCELATION_PERIOD_STARTS_ON').subscribe(
       NOTIFICATION_BEFORE_CANCELATION_PERIOD_STARTS_ON => {

@@ -86,10 +86,12 @@ export class SortSubscriptionsPipe implements PipeTransform {
             return this.sortByNameAsc(a, b);
           }
 
-          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday < this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
+          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday
+            < this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
             return -1;
           }
-          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday > this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
+          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday
+            > this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
             return 1;
           }
           return 0;
@@ -108,10 +110,12 @@ export class SortSubscriptionsPipe implements PipeTransform {
             return this.sortByNameAsc(a, b);
           }
 
-          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday > this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
+          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday
+            > this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
             return -1;
           }
-          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday < this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
+          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday
+            < this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
             return 1;
           }
           return 0;
