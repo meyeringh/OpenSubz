@@ -77,8 +77,15 @@ export class SortSubscriptionsPipe implements PipeTransform {
         });
       }
       case 'nextContractExtensionAsc': {
-        return subscriptions.sort((a, b) => {
-          if (!this.nextCancelationPeriodDeadlinePipe.transform(a) || !this.nextCancelationPeriodDeadlinePipe.transform(b)) { return 1; }
+        let subscriptionsWithoutProperty = subscriptions.filter(sub => this.nextCancelationPeriodDeadlinePipe.transform(sub) === null);
+        subscriptionsWithoutProperty = subscriptionsWithoutProperty.sort(this.sortByNameAsc);
+
+        subscriptions = subscriptions.filter(sub => this.nextCancelationPeriodDeadlinePipe.transform(sub) !== null);
+
+        subscriptions = subscriptions.sort((a, b) => {
+          if (!this.nextCancelationPeriodDeadlinePipe.transform(a) || !this.nextCancelationPeriodDeadlinePipe.transform(b)) {
+            return this.sortByNameAsc(a, b);
+          }
 
           if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday < this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
             return -1;
@@ -88,10 +95,19 @@ export class SortSubscriptionsPipe implements PipeTransform {
           }
           return 0;
         });
+
+        return subscriptions.concat(subscriptionsWithoutProperty);
       }
       case 'nextContractExtensionDesc': {
-        return subscriptions.sort((a, b) => {
-          if (!this.nextCancelationPeriodDeadlinePipe.transform(a) || !this.nextCancelationPeriodDeadlinePipe.transform(b)) { return 1; }
+        let subscriptionsWithoutProperty = subscriptions.filter(sub => this.nextCancelationPeriodDeadlinePipe.transform(sub) === null);
+        subscriptionsWithoutProperty = subscriptionsWithoutProperty.sort(this.sortByNameAsc);
+
+        subscriptions = subscriptions.filter(sub => this.nextCancelationPeriodDeadlinePipe.transform(sub) !== null);
+
+        subscriptions = subscriptions.sort((a, b) => {
+          if (!this.nextCancelationPeriodDeadlinePipe.transform(a) || !this.nextCancelationPeriodDeadlinePipe.transform(b)) {
+            return this.sortByNameAsc(a, b);
+          }
 
           if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday > this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
             return -1;
@@ -101,6 +117,8 @@ export class SortSubscriptionsPipe implements PipeTransform {
           }
           return 0;
         });
+
+        return subscriptions.concat(subscriptionsWithoutProperty);
       }
       default: {
         return subscriptions;
