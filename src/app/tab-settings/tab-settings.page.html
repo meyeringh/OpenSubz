@@ -7,81 +7,29 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <form [formGroup]="settingsForm">
-    <ion-list>
-      <ion-list-header class="list-header">
-        {{ 'TABS.SETTINGS.UI' | translate }}
-      </ion-list-header>
-
-      <ion-item>
-        <ion-label>
-          <h2>{{ 'TABS.SETTINGS.DARK_MODE' | translate }}</h2>
-          <ion-note>{{ 'TABS.SETTINGS.DARK_MODE_HELPER' | translate }}</ion-note>
-        </ion-label>
-        <ion-checkbox name="forceDarkMode" formControlName="forceDarkMode" slot="end"></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>{{ 'TABS.SETTINGS.CURRENCY' | translate }}</ion-label>
-        <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" name="currency" formControlName="currency">
-          <ng-container *ngFor="let currency of currencyList">
-            <ion-select-option [value]="currency">{{ currency }}</ion-select-option>
-          </ng-container>
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>{{ 'TABS.SETTINGS.DATE_FORMAT' | translate }}</ion-label>
-        <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" name="dateFormat" formControlName="dateFormat">
-          <ng-container *ngFor="let dateFormat of dateFormatList">
-            <ion-select-option [value]="dateFormat">{{ dateFormat }}</ion-select-option>
-          </ng-container>
-        </ion-select>
-      </ion-item>
-
-      <ion-item button (click)="showHelpTextsInOverview()">
-        <ion-label>
-          <h2>{{ 'TABS.SETTINGS.SHOW_HELP_TEXTS_IN_OVERVIEW' | translate }}</h2>
-          <ion-note>{{ 'TABS.SETTINGS.SHOW_HELP_TEXTS_IN_OVERVIEW_HELPER' | translate }}</ion-note>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-
-    <ion-list>
-      <ion-list-header class="list-header">
-        {{ 'TABS.SETTINGS.TEMPLATES' | translate }}
-      </ion-list-header>
-
-      <ion-item>
-        <ion-label position="floating">{{ 'TABS.SETTINGS.NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS' | translate }}</ion-label>
-        <ion-input type="number" name="notificationBeforeCancelationPeriodInDays" formControlName="notificationBeforeCancelationPeriodInDays"></ion-input>
-      </ion-item>
-    </ion-list>
-
-    <ion-list>
-      <ion-list-header class="list-header">
-        {{ 'TABS.SETTINGS.GENERAL_INFORMATION' | translate }}
-      </ion-list-header>
-
-      <ion-item button (click)="showLicense()">
-        <ion-label>{{ 'TABS.SETTINGS.LICENSE' | translate }}</ion-label>
-      </ion-item>
-      <ion-item button (click)="showAbout()">
-        <ion-label>{{ 'TABS.SETTINGS.ABOUT' | translate }}</ion-label>
-      </ion-item>
-    </ion-list>
-  </form>
-
   <ion-list>
-    <ion-list-header class="list-header">
-      {{ 'TABS.SETTINGS.DATA_MANAGEMENT' | translate }}
-    </ion-list-header>
-
-    <ion-item button (click)="backup()">
-      <ion-label>{{ 'TABS.SETTINGS.BACKUP' | translate }}</ion-label>
+    <ion-item button routerLink="ui">
+      <ion-icon slot="start" name="easel"></ion-icon>
+      <ion-label>{{ 'TABS.SETTINGS.UI' | translate }}</ion-label>
     </ion-item>
-    <ion-item button (click)="restore()">
-      <ion-label>{{ 'TABS.SETTINGS.RESTORE' | translate }}</ion-label>
+
+    <ion-item button routerLink="region">
+      <ion-icon slot="start" name="globe"></ion-icon>
+      <ion-label>{{ 'TABS.SETTINGS.REGION' | translate }}</ion-label>
+    </ion-item>
+
+    <ion-item button routerLink="data-management">
+      <ion-icon slot="start" name="documents"></ion-icon>
+      <ion-label>{{ 'TABS.SETTINGS.DATA_MANAGEMENT' | translate }}</ion-label>
+    </ion-item>
+
+    <ion-item button routerLink="license">
+      <ion-icon slot="start" name="document-text"></ion-icon>
+      <ion-label>{{ 'TABS.SETTINGS.LICENSE' | translate }}</ion-label>
+    </ion-item>
+    <ion-item button routerLink="about">
+      <ion-icon slot="start" name="information-circle"></ion-icon>
+      <ion-label>{{ 'TABS.SETTINGS.ABOUT' | translate }}</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

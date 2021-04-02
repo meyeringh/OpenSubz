@@ -97,6 +97,7 @@
             "ABOUT_SOURCECODE": "Sourcecode",
             "ABOUT_REPORT_ISSUES": "Report issues",
             "ABOUT_CONTACT": "Contact",
+            "REGION": "Region",
             "DATA_MANAGEMENT": "Data management",
             "BACKUP": "Backup",
             "BACKUP_ERROR": "Error while creating backup!",

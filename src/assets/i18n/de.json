@@ -97,6 +97,7 @@
             "ABOUT_SOURCECODE": "Quelltext",
             "ABOUT_REPORT_ISSUES": "Fehler melden",
             "ABOUT_CONTACT": "Kontakt",
+            "REGION": "Region",
             "DATA_MANAGEMENT": "Datenverwaltung",
             "BACKUP": "Datensicherung",
             "BACKUP_ERROR": "Fehler bei der Erstellung des Backups!",

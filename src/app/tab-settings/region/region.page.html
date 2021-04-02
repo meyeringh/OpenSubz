@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="..">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ 'TABS.SETTINGS.REGION' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="settingsForm">
+    <ion-list>
+      <ion-item>
+        <ion-icon slot="start" name="cash"></ion-icon>
+        <ion-label>{{ 'TABS.SETTINGS.CURRENCY' | translate }}</ion-label>
+        <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" name="currency" formControlName="currency">
+          <ng-container *ngFor="let currency of currencyList">
+            <ion-select-option [value]="currency">{{ currency }}</ion-select-option>
+          </ng-container>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon slot="start" name="calendar"></ion-icon>
+        <ion-label>{{ 'TABS.SETTINGS.DATE_FORMAT' | translate }}</ion-label>
+        <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" name="dateFormat" formControlName="dateFormat">
+          <ng-container *ngFor="let dateFormat of dateFormatList">
+            <ion-select-option [value]="dateFormat">{{ dateFormat }}</ion-select-option>
+          </ng-container>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </form>
+
+</ion-content>

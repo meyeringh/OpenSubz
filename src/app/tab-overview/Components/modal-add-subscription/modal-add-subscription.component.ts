@@ -7,7 +7,7 @@ import { StorageService } from 'src/app/Services/storage.service';
 import { TranslateService } from '@ngx-translate/core';
 import { billingIntervals } from '../../BILLING_INTERVALS';
 import { subscriptionColors } from '../../SUBSCRIPTION_COLORS';
-import { dateFormats } from '../../../tab-settings/DATE_FORMATS';
+import { dateFormats } from '../../../tab-settings/region/DATE_FORMATS';
 
 @Component({
   selector: 'app-modal-add-subscription',

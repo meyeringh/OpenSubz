@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TabSettingsPage } from './tab-settings.page';
 
 import { TabSettingsPageRoutingModule } from './tab-settings-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { AppVersion } from '@ionic-native/app-version/ngx';
 
@@ -14,7 +14,6 @@ import { AppVersion } from '@ionic-native/app-version/ngx';
     CommonModule,
     TabSettingsPageRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
     TranslateModule
   ],
   declarations: [TabSettingsPage],
