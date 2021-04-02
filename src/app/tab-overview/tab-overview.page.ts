@@ -47,6 +47,10 @@ export class TabOverviewPage {
 
     this.subscriptions.push(entry);
     this.saveSubscriptionsToStorage();
+
+    // New subscription array with Array.slice() because otherwise the Angular change detection for sorting pipe
+    // wouldn't be called after adding new subscriptions leading to not show the new subscription until page refresh
+    this.subscriptions = this.subscriptions.slice();
   }
 
   updateEntry(entry: ISubscription): void {
