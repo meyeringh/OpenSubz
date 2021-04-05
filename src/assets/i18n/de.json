@@ -98,7 +98,7 @@
             "REGION": "Region",
             "DATA_MANAGEMENT": "Datenverwaltung",
             "BACKUP": "Datensicherung",
-            "BACKUP_ERROR": "Fehler bei der Erstellung des Backups!",
+            "BACKUP_ERROR": "Fehler bei der Erstellung der Datensicherung!",
             "BACKUP_SUCCESS": "Datensicherung gespeichert nach",
             "COPY_TO_CLIPBOARD": "In Zwischenablage kopieren",
             "RESTORE": "Datenwiederherstellung",
