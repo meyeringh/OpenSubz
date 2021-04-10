@@ -93,8 +93,8 @@
     </ion-card-content>
   </ion-card>
 
-  <ng-container *ngFor="let entry of subscriptions | searchSubscriptions:subscriptionSearchFilter | sortSubscriptions:sortSubscriptionsBy; trackBy: trackSubscriptionsBy">
-    <app-subscription-card [subscription]="entry" [selectedBillingInterval]="selectedBillingInterval" [currency]="settings?.currency" (click)="presentUpdateSubscriptionModal(entry)"></app-subscription-card>
+  <ng-container *ngFor="let sub of subscriptions | searchSubscriptions:subscriptionSearchFilter | sortSubscriptions:sortSubscriptionsBy; trackBy: trackSubscriptionsBy">
+    <app-subscription-card [subscription]="sub" [selectedBillingInterval]="selectedBillingInterval" [currency]="settings?.currency" (click)="presentUpdateSubscriptionModal(sub)"></app-subscription-card>
   </ng-container>
 
 </ion-content>

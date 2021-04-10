@@ -15,7 +15,7 @@ import { dateFormats } from '../../../tab-settings/region/DATE_FORMATS';
   styleUrls: ['./modal-add-subscription.component.scss'],
 })
 export class ModalAddSubscriptionComponent implements OnInit {
-  @Input() existingSubscription?: ISubscription; // If passed, the component is used for updating an existing subscription entry
+  @Input() existingSubscription?: ISubscription; // If passed, the component is used for updating an existing subscription
   @ViewChild('nameInput') nameInput: IonInput;
 
   subscriptionForm: FormGroup;
@@ -55,7 +55,7 @@ export class ModalAddSubscriptionComponent implements OnInit {
     this.retrieveSettingsFromStorage().then(() => {
       if (this.existingSubscription) {
         // Update form to existing subscription
-        this.fillFormWithExistingEntry();
+        this.fillFormWithExistingSubscription();
       } else {
         this.fillNotificationBeforeCancelationPeriodInDays();
       }
@@ -68,18 +68,18 @@ export class ModalAddSubscriptionComponent implements OnInit {
     }
   }
 
-  // For new entry and updating existing entry
+  // For new subscription and updating existing one
   save() {
     if (this.subscriptionForm.valid) {
       const subscription: ISubscription = this.subscriptionForm.value;
-      // Updating entry, keep id, keep created, and update lastEdited
+      // Updating subscription, keep id, keep created, and update lastEdited
       if (this.existingSubscription) {
         subscription.id = this.existingSubscription.id;
         subscription.created = this.existingSubscription.created;
         subscription.lastEdited = Date.now();
       }
 
-      this.modalController.dismiss({entry: subscription});
+      this.modalController.dismiss({sub: subscription});
     } else {
       Object.values(this.subscriptionForm.controls).forEach(control => {
         control.markAsTouched();
@@ -88,7 +88,7 @@ export class ModalAddSubscriptionComponent implements OnInit {
   }
 
   delete() {
-    this.modalController.dismiss({delete: true, entry: this.existingSubscription});
+    this.modalController.dismiss({delete: true, sub: this.existingSubscription});
   }
 
   async showDeleteConfirmationModal() {
@@ -136,7 +136,7 @@ export class ModalAddSubscriptionComponent implements OnInit {
     this.retrievedSettings = await this.storageService.retrieveSettingsFromStorage();
   }
 
-  fillFormWithExistingEntry(): void {
+  fillFormWithExistingSubscription(): void {
     Object.keys(this.subscriptionForm.controls).forEach(key => {
       this.subscriptionForm.patchValue({
         [key]: this.existingSubscription[key]
