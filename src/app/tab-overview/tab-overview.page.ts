@@ -57,6 +57,10 @@ export class TabOverviewPage {
     const index = this.subscriptions.findIndex(subscription => subscription.id === entry.id);
     this.subscriptions[index] = entry;
     this.saveSubscriptionsToStorage();
+
+    // New subscription array with Array.slice() because otherwise the Angular change detection for sorting pipe
+    // wouldn't be called after updating subscriptions leading to not show the new subscription until page refresh
+    this.subscriptions = this.subscriptions.slice();
   }
 
   deleteEntry(entry: ISubscription): void {
