@@ -33,7 +33,8 @@ export class NotificationService {
         // OR THE SUBSCRIPTION HAS NO ALARM SET ANYMORE
         //
 
-        if (pending) {
+        // If there are pending notifications
+        if (pending.notifications.length > 0) {
 
           let notificationsToBeCanceled: LocalNotificationPendingList = { notifications: [] };
 
