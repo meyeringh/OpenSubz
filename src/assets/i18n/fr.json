@@ -94,7 +94,11 @@
             "CURRENCY": "Monnaie",
             "HIDE_TOTAL_COSTS_IN_OVERVIEW": "Masquer les coûts totaux dans la vue d’ensemble",
             "UI": "Interface utilisateur",
-            "SETTINGS": "Paramètres"
+            "SETTINGS": "Paramètres",
+            "REGION": "Région",
+            "SHOW_HELP_TEXTS_IN_OVERVIEW_HELPER": "Restaure les textes d'aide et passe à la vue d'ensemble",
+            "FORCE_DARK_MODE_HELPER": "Utilise le thème du système par défaut",
+            "FORCE_DARK_MODE": "Forcer le mode sombre"
         }
     },
     "NOTIFICATIONS": {
