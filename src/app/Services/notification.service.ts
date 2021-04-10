@@ -16,7 +16,6 @@ const { LocalNotifications } = Plugins;
   providedIn: 'root'
 })
 export class NotificationService {
-  subscriptions: ISubscription[];
 
   constructor(
     private storageService: StorageService,
@@ -25,8 +24,8 @@ export class NotificationService {
     private notificationTimeForNextCancelationPeriodDeadline: NotificationTimeForNextCancelationPeriodDeadlinePipe) { }
 
   async scheduleNotifications() {
-    this.subscriptions = await this.storageService.retrieveSubscriptionsFromStorage();
-    if (this.subscriptions) {
+    const subscriptions: ISubscription[] = await this.storageService.retrieveSubscriptionsFromStorage();
+    if (subscriptions) {
 
       LocalNotifications.getPending().then(pending => {
         //
@@ -41,7 +40,7 @@ export class NotificationService {
           for (let pendingNotification of pending.notifications) {
 
             let cancelNotification = false;
-            const correspondingSubscription = this.subscriptions.find(s => s.id === Number(pendingNotification.id));
+            const correspondingSubscription = subscriptions.find(s => s.id === Number(pendingNotification.id));
 
             // Case 1: No Subscription with corresponding NotificationID -> Cancel!
             if (!correspondingSubscription) { cancelNotification = true; }
@@ -67,7 +66,7 @@ export class NotificationService {
 
         let notificationsToSchedule: LocalNotification[] = [];
 
-        for (const subscription of this.subscriptions) {
+        for (const subscription of subscriptions) {
           // Make a number out of it because empty attributes may saved as string
           const notificationBeforeCancelationPeriodInDays = Number(subscription.notificationBeforeCancelationPeriodInDays);
 
