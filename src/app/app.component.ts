@@ -15,6 +15,7 @@ import { TabHideService } from './Services/tab-hide.service';
 import { Router } from '@angular/router';
 import { ThemeService } from './Services/theme.service';
 import { NotificationService } from './Services/notification.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -37,8 +38,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
 
-      this.setupInternationalisation();
-      this.notificationService.scheduleNotifications();
+      this.setupInternationalisation().subscribe(() => { this.notificationService.scheduleNotifications(); });
       this.themeService.applyTheme();
 
       this.splashScreen.hide();
@@ -58,7 +58,7 @@ export class AppComponent {
     });
   }
 
-  setupInternationalisation() {
+  setupInternationalisation(): Observable<any> {
     this.translateService.setDefaultLang('en');
     const browserLang = this.translateService.getBrowserLang();
 
@@ -66,32 +66,26 @@ export class AppComponent {
     switch (browserLang) {
       case 'de': {
         registerLocaleData(localeDe);
-        this.translateService.use('de');
-        break;
+        return this.translateService.use('de');
       }
       case 'fr': {
         registerLocaleData(localeFr);
-        this.translateService.use('fr');
-        break;
+        return this.translateService.use('fr');
       }
       case 'it': {
         registerLocaleData(localeIt);
-        this.translateService.use('it');
-        break;
+        return this.translateService.use('it');
       }
       case 'nb': {
         registerLocaleData(localeNb);
-        this.translateService.use('nb_NO');
-        break;
+        return this.translateService.use('nb_NO');
       }
       case 'ru': {
         registerLocaleData(localeRu);
-        this.translateService.use('ru');
-        break;
+        return this.translateService.use('ru');
       }
       default: {
-        this.translateService.use('en');
-        break;
+        return this.translateService.use('en');
       }
     }
   }

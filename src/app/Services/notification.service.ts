@@ -9,7 +9,7 @@ import { formatDate } from '@angular/common';
 
 const { LocalNotifications } = Plugins;
 
-// Gets triggered on entering the tab screen and persisting subscriptions
+// Gets triggered 1) on entering the app component 2) after persisting subscriptions
 // Max. one scheduled notification for one subscription as they share the same id. Scheduled notifications with same id get overridden
 
 @Injectable({
@@ -80,7 +80,6 @@ export class NotificationService {
           const scheduleAtDate = this.notificationTimeForNextCancelationPeriodDeadline.transform(subscription).dueDate;
           const nextCancelationPeriodDeadlineDate = this.nextCancelationPeriodDeadlinePipe.transform(subscription).dueDate;
 
-
           // If scheduleAt is in the past, don't schedule and go check next subscription
           if (scheduleAtDate < new Date()) { continue; }
 
@@ -102,7 +101,6 @@ export class NotificationService {
         if (notificationsToSchedule.length !== 0) {
           LocalNotifications.schedule({ notifications: notificationsToSchedule });
         }
-
 
       });
     }
