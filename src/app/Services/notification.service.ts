@@ -5,6 +5,7 @@ import { ISubscription } from '../tab-overview/Interfaces/subscriptionInterface'
 import { TranslateService } from '@ngx-translate/core';
 import { NextCancelationPeriodDeadlinePipe } from '../tab-overview/Pipes/next-cancelation-period-deadline.pipe';
 import { NotificationTimeForNextCancelationPeriodDeadlinePipe } from '../tab-overview/Pipes/notification-time-for-next-cancelation-period-deadline.pipe';
+import { formatDate } from '@angular/common';
 
 const { LocalNotifications } = Plugins;
 
@@ -86,7 +87,7 @@ export class NotificationService {
           const NOTIFICATION_TITLE = this.translateService.instant('NOTIFICATIONS.NOTIFICATION_TITLE');
           const NOTIFICATION_BODY = ((this.translateService.instant('NOTIFICATIONS.NOTIFICATION_BODY'))
             .replace('$NAME$', subscription.name))
-            .replace('$DATE$', nextCancelationPeriodDeadlineDate);
+            .replace('$DATE$', formatDate(nextCancelationPeriodDeadlineDate, 'mediumDate', this.translateService.currentLang));
 
           const notification: LocalNotification = {
             id: subscription.id,
