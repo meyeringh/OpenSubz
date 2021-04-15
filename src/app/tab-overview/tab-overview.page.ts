@@ -201,11 +201,13 @@ export class TabOverviewPage {
       buttons: [
         {
           text: alertStrings.asc + ' ↑',
+          cssClass: this.sortSubscriptionsBy.endsWith('Asc')? 'alert-sort-selected button-solid' : '',
           handler: (sortBy) => {
             this.sortSubscriptions(sortBy + 'Asc');
           },
         }, {
           text: alertStrings.desc + ' ↓',
+          cssClass: this.sortSubscriptionsBy.endsWith('Desc')? 'alert-sort-selected' : '',
           handler: (sortBy) => {
             this.sortSubscriptions(sortBy + 'Desc');
           }
@@ -217,9 +219,11 @@ export class TabOverviewPage {
   }
 
   sortSubscriptions(sortBy: string) {
-    this.sortSubscriptionsBy = sortBy;
-    this.settings.defaultSortBy = sortBy;
-    this.saveSettingsToStorage();
+    if (sortBy !== this.sortSubscriptionsBy) {
+      this.sortSubscriptionsBy = sortBy;
+      this.settings.defaultSortBy = sortBy;
+      this.saveSettingsToStorage();
+    }
   }
 
   dismissHelperText(attributeName: string): void {
