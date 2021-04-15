@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LocalNotification, LocalNotificationPendingList, Plugins } from '@capacitor/core';
+import { LocalNotification, Plugins } from '@capacitor/core';
 import { StorageService } from './storage.service';
 import { ISubscription } from '../tab-overview/Interfaces/subscriptionInterface';
 import { TranslateService } from '@ngx-translate/core';
@@ -10,7 +10,6 @@ import { formatDate } from '@angular/common';
 const { LocalNotifications } = Plugins;
 
 // Gets triggered 1) on entering the app component 2) after persisting subscriptions
-// Max. one scheduled notification for one subscription as they share the same id. Scheduled notifications with same id get overridden
 
 @Injectable({
   providedIn: 'root'
@@ -25,46 +24,16 @@ export class NotificationService {
 
   async scheduleNotifications() {
     const subscriptions: ISubscription[] = await this.storageService.retrieveSubscriptionsFromStorage();
-    if (subscriptions) {
 
-      LocalNotifications.getPending().then(pending => {
-        //
-        // PART 1: DELETE PENDING NOTIFICATION IF THERE ARE NO CORRESPONDING SUBSCRIPTIONS ANYMORE
-        // OR THE SUBSCRIPTION HAS NO ALARM SET ANYMORE
-        //
+    LocalNotifications.getPending().then(pending => {
 
-        // If there are pending notifications
-        if (pending.notifications.length > 0) {
+      // Delete all pending notifications
+      if (pending.notifications.length > 0) {
+        LocalNotifications.cancel(pending);
+      }
 
-          let notificationsToBeCanceled: LocalNotificationPendingList = { notifications: [] };
-
-          for (let pendingNotification of pending.notifications) {
-
-            let cancelNotification = false;
-            const correspondingSubscription = subscriptions.find(s => s.id === Number(pendingNotification.id));
-
-            // Case 1: No Subscription with corresponding NotificationID -> Cancel!
-            if (!correspondingSubscription) { cancelNotification = true; }
-
-            // Case 2: Subscription with corresponding NotificationID has no alarm set anymore -> Cancel!
-            else if (!correspondingSubscription.notificationBeforeCancelationPeriodInDays) { cancelNotification = true; }
-
-            // Add Notification to PendingList for canceling it later
-            if (cancelNotification) {
-              notificationsToBeCanceled.notifications.push({ id: pendingNotification.id });
-            }
-          }
-
-          if (notificationsToBeCanceled.notifications.length !== 0) {
-            LocalNotifications.cancel(notificationsToBeCanceled);
-          }
-
-        }
-
-        //
-        // PART 2: SCHEDULE NOTIFICATIONS
-        //
-
+      // If there are subscriptions, (re)schedule the notifications
+      if (subscriptions) {
         let notificationsToSchedule: LocalNotification[] = [];
 
         for (const subscription of subscriptions) {
@@ -74,7 +43,7 @@ export class NotificationService {
           // Go to next subscription if there is no alarm set
           if (!notificationBeforeCancelationPeriodInDays) { continue; }
 
-          // Next iteration if there isn't any deadline
+          // Go to next subscription if there isn't any deadline
           if (!this.nextCancelationPeriodDeadlinePipe.transform(subscription)) { continue; }
 
           const scheduleAtDate = this.notificationTimeForNextCancelationPeriodDeadline.transform(subscription).dueDate;
@@ -83,13 +52,14 @@ export class NotificationService {
           // If scheduleAt is in the past, don't schedule and go check next subscription
           if (scheduleAtDate < new Date()) { continue; }
 
+          // Instants are now safe because this service is called in app.component after i18n initialization
           const NOTIFICATION_TITLE = this.translateService.instant('NOTIFICATIONS.NOTIFICATION_TITLE');
           const NOTIFICATION_BODY = ((this.translateService.instant('NOTIFICATIONS.NOTIFICATION_BODY'))
             .replace('$NAME$', subscription.name))
             .replace('$DATE$', formatDate(nextCancelationPeriodDeadlineDate, 'mediumDate', this.translateService.currentLang));
 
           const notification: LocalNotification = {
-            id: subscription.id,
+            id: Number(subscription.id),
             title: NOTIFICATION_TITLE,
             body: NOTIFICATION_BODY,
             schedule: { at: scheduleAtDate }
@@ -101,15 +71,9 @@ export class NotificationService {
         if (notificationsToSchedule.length !== 0) {
           LocalNotifications.schedule({ notifications: notificationsToSchedule });
         }
+      }
 
-      });
-    }
-    else {
-      // No subscriptions present -> Cancel all pending Notifications!
-      LocalNotifications.getPending().then(pending => {
-        if (pending) { LocalNotifications.cancel(pending); }
-      });
-    }
+    });
   }
 
 }
