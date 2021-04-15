@@ -110,9 +110,5 @@
     "APP": {
         "SHORT_DESCRIPTION": "Applicazione rispettosa della vita privata per la gestione di abbonamenti e contratti con funzionalità di notifica.",
         "NAME": "Subz"
-    },
-    "NOTIFICATIONS": {
-        "NOTIFICATION_BODY": "Il periodo di cancellazione di $NAME$ è aggiunto il $DATE$.",
-        "NOTIFICATION_TITLE": "Il periodo di cancellazione è presto raggiunto"
     }
 }

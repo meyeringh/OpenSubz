@@ -1,8 +1,4 @@
 {
-    "NOTIFICATIONS": {
-        "NOTIFICATION_BODY": "Kanselleringsfrist for $NAME$ utløper $DATE$.",
-        "NOTIFICATION_TITLE": "Snart inne i avbestillingsperioden"
-    },
     "TABS": {
         "SETTINGS": {
             "RESTORE_BACKUP_ALERT_MESSAGE": "Nåværende data kan enten slettes helt, eller erstattes av sikkerhetskopi, eller sikkerhetskopi kan flettes med nåværende data. Under fletting vil hver av de siste redigerte abonnementene bli behold og innstillingene fra sikkerhetskopien gjenopprettet.",

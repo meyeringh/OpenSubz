@@ -101,10 +101,6 @@
             "FORCE_DARK_MODE": "Forcer le mode sombre"
         }
     },
-    "NOTIFICATIONS": {
-        "NOTIFICATION_BODY": "La période d’annulation de $NAME$ est atteinte le $DATE$.",
-        "NOTIFICATION_TITLE": "La période d’annulation est bientôt atteinte"
-    },
     "GENERAL": {
         "DESC": "Descendant",
         "ASC": "Montant",
