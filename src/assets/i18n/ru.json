@@ -5,7 +5,6 @@
             "DESCRIPTION": "Описание",
             "NAME": "Название",
             "GENERAL_INFORMATION": "Основная информация",
-            "UPDATE_SUBSCRIPTION": "Обновить подписку",
             "ADD_SUBSCRIPTION": "Добавить подписку",
             "SEARCH_FOR_NAME_AND_DESCRIPTION": "Название или описание",
             "OVERVIEW": "Обзор"

@@ -62,7 +62,6 @@
             "DESCRIPTION": "Descrizione",
             "NAME": "Nome",
             "GENERAL_INFORMATION": "Informazioni generali",
-            "UPDATE_SUBSCRIPTION": "Aggiorna l'abbonamento",
             "ADD_SUBSCRIPTION": "Aggiungi un abbonamento"
         },
         "SETTINGS": {

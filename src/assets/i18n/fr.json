@@ -59,7 +59,6 @@
             "DESCRIPTION": "Description",
             "NAME": "Nom",
             "GENERAL_INFORMATION": "Informations générales",
-            "UPDATE_SUBSCRIPTION": "Mettre à jour l’abonnement",
             "ADD_SUBSCRIPTION": "Ajouter un abonnement",
             "TOTAL_COSTS": "Coûts totaux",
             "SEARCH_FOR_NAME_AND_DESCRIPTION": "Nom ou description",
