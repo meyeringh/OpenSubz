@@ -95,7 +95,7 @@
             "UI": "Interface utilisateur",
             "SETTINGS": "Paramètres",
             "REGION": "Région",
-            "SHOW_HELP_TEXTS_IN_OVERVIEW_HELPER": "Restaure les textes d'aide et passe à la vue d'ensemble",
+            "SHOW_HELP_TEXTS_IN_OVERVIEW_HELPER": "Restaure les textes d’aide et passe à la vue d’ensemble",
             "FORCE_DARK_MODE_HELPER": "Utilise le thème du système par défaut",
             "FORCE_DARK_MODE": "Forcer le mode sombre"
         }
@@ -110,5 +110,9 @@
     "APP": {
         "SHORT_DESCRIPTION": "Application respectueuse de la vie privée pour la gestion des abonnements et des contrats avec fonction de notification.",
         "NAME": "Subz"
+    },
+    "NOTIFICATIONS": {
+        "NOTIFICATION_BODY": "Le dernier jour pour annuler $NAME$ pendant sa période d’annulation est le $DATE$. Après cela, le contrat sera prolongé.",
+        "NOTIFICATION_TITLE": "Le contrat de $NAME$ sera bientôt prolongé"
     }
 }
