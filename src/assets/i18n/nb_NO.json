@@ -29,7 +29,10 @@
             "DATE_FORMAT": "Datoformat",
             "CURRENCY": "Valuta",
             "UI": "Brukergrensesnitt",
-            "SETTINGS": "Innstillinger"
+            "SETTINGS": "Innstillinger",
+            "REGION": "Region",
+            "FORCE_DARK_MODE": "Force Mørk-Modus",
+            "FORCE_DARK_MODE_HELPER": "Bruker systemet tema som standard"
         },
         "OVERVIEW": {
             "SORT_HELPER": "Sorter abonnementer etter navn, kostnad, neste fakturering eller neste kontraktsutvidelse.",
