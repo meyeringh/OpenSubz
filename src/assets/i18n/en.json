@@ -111,7 +111,7 @@
         }
     },
     "NOTIFICATIONS": {
-        "NOTIFICATION_TITLE": "Contract of $NAME$ will soon be extended",
+        "NOTIFICATION_TITLE": "$NAME$ contract will soon be extended",
         "NOTIFICATION_BODY": "The last day to cancel $NAME$ within its cancelation period is on $DATE$. After that a contract extension will follow."
     }
 }

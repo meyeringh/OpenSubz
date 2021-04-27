@@ -52,10 +52,12 @@ export class NotificationService {
           // If scheduleAt is in the past, don't schedule and go check next subscription
           if (scheduleAtDate < new Date()) { continue; }
 
-          // Instants are now safe because this service is called in app.component after i18n initialization
-          const NOTIFICATION_TITLE = this.translateService.instant('NOTIFICATIONS.NOTIFICATION_TITLE');
-          const NOTIFICATION_BODY = ((this.translateService.instant('NOTIFICATIONS.NOTIFICATION_BODY'))
-            .replace('$NAME$', subscription.name))
+          // Instants are safe because this service is called in app.component after i18n initialization
+          const NOTIFICATION_TITLE = this.translateService.instant('NOTIFICATIONS.NOTIFICATION_TITLE')
+            .replace('$NAME$', subscription.name)
+            .replace('$DATE$', formatDate(nextCancelationPeriodDeadlineDate, 'mediumDate', this.translateService.currentLang));
+          const NOTIFICATION_BODY = this.translateService.instant('NOTIFICATIONS.NOTIFICATION_BODY')
+            .replace('$NAME$', subscription.name)
             .replace('$DATE$', formatDate(nextCancelationPeriodDeadlineDate, 'mediumDate', this.translateService.currentLang));
 
           const notification: LocalNotification = {
