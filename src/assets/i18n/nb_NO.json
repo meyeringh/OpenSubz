@@ -109,5 +109,9 @@
         "DONE": "Ferdig",
         "OK": "OK",
         "CANCEL": "Avbryt"
+    },
+    "NOTIFICATIONS": {
+        "NOTIFICATION_BODY": "Siste dag å avbryte $NAME$ innen kanselleringsfrist er $DATE$. Etter det vil kontrakten bli forlenget.",
+        "NOTIFICATION_TITLE": "$NAME$-kontrakt vil snart bli forlenget"
     }
 }
