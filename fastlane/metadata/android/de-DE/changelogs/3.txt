@@ -1,0 +1,11 @@
+* Verbesserung: Einstellungsmenü komplett überholt
+* Verbesserung: Standardmäßige Benutzung des Systeme-Themes
+* Verbesserung: Sortier-Dialog zeigt nun Sortierungsrichtung
+* Fix: Kleinere UI Fixes
+* Fix: Übersetzungen wurden nicht angewendet
+* Fix: Sortierung nach nächster Vertragsverlängerung
+* Fix: Benachrichtigungen sind nun zuverlässiger
+* Übersetzung: Norwegisch verbessert
+* Übersetzung: Italienisch hinzugefügt
+* Übersetzung: Französisch hinzugefügt
+* Übersetzung: Russisch hinzugefügt
