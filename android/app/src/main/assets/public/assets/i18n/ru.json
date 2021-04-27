@@ -1,0 +1,23 @@
+{
+    "TABS": {
+        "OVERVIEW": {
+            "COSTS": "Стоимость",
+            "DESCRIPTION": "Описание",
+            "NAME": "Название",
+            "GENERAL_INFORMATION": "Основная информация",
+            "ADD_SUBSCRIPTION": "Добавить подписку",
+            "SEARCH_FOR_NAME_AND_DESCRIPTION": "Название или описание",
+            "OVERVIEW": "Обзор"
+        }
+    },
+    "GENERAL": {
+        "DESC": "По убыванию",
+        "ASC": "По возрастанию",
+        "DONE": "Готово",
+        "OK": "ОК",
+        "CANCEL": "Отмена"
+    },
+    "APP": {
+        "NAME": "Subz"
+    }
+}

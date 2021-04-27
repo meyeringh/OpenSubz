@@ -16,7 +16,6 @@
             "SEARCH_FOR_NAME_AND_DESCRIPTION": "Name or description",
             "TOTAL_COSTS": "Total Costs",
             "ADD_SUBSCRIPTION": "Add subscription",
-            "UPDATE_SUBSCRIPTION": "Update subscription",
             "GENERAL_INFORMATION": "General information",
             "NAME": "Name",
             "DESCRIPTION": "Description",
@@ -79,10 +78,8 @@
         "SETTINGS": {
             "SETTINGS": "Settings",
             "UI": "User interface",
-            "HIDE_TOTAL_COSTS_IN_OVERVIEW": "Hide total costs in the overview",
-            "HIDE_TOTAL_COSTS_IN_OVERVIEW_HELPER": "Otherwise displayed with at least two subscriptions",
-            "DARK_MODE": "Dark-Mode",
-            "DARK_MODE_HELPER": "Automatically on some devices",
+            "FORCE_DARK_MODE": "Force Dark-Mode",
+            "FORCE_DARK_MODE_HELPER": "Uses system theme by default",
             "CURRENCY": "Currency",
             "DATE_FORMAT": "Date format",
             "SHOW_HELP_TEXTS_IN_OVERVIEW": "Show help in the overview again",
@@ -97,6 +94,7 @@
             "ABOUT_SOURCECODE": "Sourcecode",
             "ABOUT_REPORT_ISSUES": "Report issues",
             "ABOUT_CONTACT": "Contact",
+            "REGION": "Region",
             "DATA_MANAGEMENT": "Data management",
             "BACKUP": "Backup",
             "BACKUP_ERROR": "Error while creating backup!",
@@ -113,7 +111,7 @@
         }
     },
     "NOTIFICATIONS": {
-        "NOTIFICATION_TITLE": "Cancelation period is soon reached",
-        "NOTIFICATION_BODY": "The cancelation period of $NAME$ is due on $DATE$."
+        "NOTIFICATION_TITLE": "$NAME$ contract will soon be extended",
+        "NOTIFICATION_BODY": "The last day to cancel $NAME$ within its cancelation period is on $DATE$. After that a contract extension will follow."
     }
 }

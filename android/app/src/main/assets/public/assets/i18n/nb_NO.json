@@ -1,24 +1,16 @@
 {
-    "NOTIFICATIONS": {
-        "NOTIFICATION_BODY": "Kanselleringsfrist for $NAME$ utløper $DATE$.",
-        "NOTIFICATION_TITLE": "Snart inne i avbestillingsperioden"
-    },
     "TABS": {
         "SETTINGS": {
             "RESTORE_BACKUP_ALERT_MESSAGE": "Nåværende data kan enten slettes helt, eller erstattes av sikkerhetskopi, eller sikkerhetskopi kan flettes med nåværende data. Under fletting vil hver av de siste redigerte abonnementene bli behold og innstillingene fra sikkerhetskopien gjenopprettet.",
             "RESTORE_BACKUP_ERROR_ANDROID": "Klarte ikke å lese data fra sikkerhetskopi. Finnes sikkerhetskopifilen Documents/subz-backup.json?",
             "ABOUT_AUTHOR": "Utvikler",
-            "HIDE_TOTAL_COSTS_IN_OVERVIEW_HELPER": "Ellers vist med minst to abonnementer",
-            "HIDE_TOTAL_COSTS_IN_OVERVIEW": "Ikke vis totalkostnad i oversikt",
             "RESTORE_BACKUP_REPLACE": "Erstatt nåværende data med sikkerhetskopi",
-            "BACKUP_ERROR": "Klarte ikke å opprette sikkerhetskopi",
+            "BACKUP_ERROR": "Feil under oppretting av backup!",
             "ABOUT_REPORT_ISSUES": "Rapporter feil",
-            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Merknad før avbestillingsfrist i dager",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Melding før avbestilling periode i dager",
             "SHOW_HELP_TEXTS_IN_OVERVIEW_HELPER": "Gjenoppretter tekstene og tar deg til oversikten",
             "SHOW_HELP_TEXTS_IN_OVERVIEW": "Vis hjelp i oversikten igjen",
-            "DARK_MODE_HELPER": "Automatisk på noen enheter",
-            "DARK_MODE": "Mørk drakt",
-            "RESTORE_BACKUP_SUCCESS": "Data gjenopprettet",
+            "RESTORE_BACKUP_SUCCESS": "Dataene har blitt restaurert vellykket!",
             "RESTORE_BACKUP_ERROR": "Feil ved lesing av data fra backup!",
             "RESTORE_BACKUP_MERGE": "Flett nåværende data og sikkerhetskopi",
             "BACKUP_DATA": "Sikkerhetskopi-data",
@@ -37,12 +29,15 @@
             "DATE_FORMAT": "Datoformat",
             "CURRENCY": "Valuta",
             "UI": "Brukergrensesnitt",
-            "SETTINGS": "Innstillinger"
+            "SETTINGS": "Innstillinger",
+            "REGION": "Region",
+            "FORCE_DARK_MODE": "Force Mørk-Modus",
+            "FORCE_DARK_MODE_HELPER": "Bruker systemet tema som standard"
         },
         "OVERVIEW": {
             "SORT_HELPER": "Sorter abonnementer etter navn, kostnad, neste fakturering eller neste kontraktsutvidelse.",
             "SEARCH_HELPER": "Vis kun abonnementer der søketekst samsvarer med navn eller beskrivelse.",
-            "CHANGE_CHOOSEN_BILLING_INTERVAL_HELPER": "Endre vist intervallet av abonnement koster mellom årlig, månedlig, ukentlig og daglig.Endre vist intervallet av abonnement koster mellom årlig, månedlig, ukentlig og daglig.",
+            "CHANGE_CHOOSEN_BILLING_INTERVAL_HELPER": "Endre vist intervall for abonnementskostnader til årlig, månedlig, ukentlig, eller daglig.",
             "NO_SUBSCRIPTION_TEXT": "Abonnement kan legges til ved å bruke pluss-knappen i øvre høyre side av skjermen. De andre funksjonene i menyen bar er deaktivert inntil to abonnementer har blitt lagt til. Ha det gøy med Subz!",
             "DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_ON_HELPER": "dager til siste mulige kansellering i denne perioden på",
             "DAYS_UNTIL_NEXT_BILLING_ON_HELPER": "dager til neste fakturering på",
@@ -98,7 +93,6 @@
             "DESCRIPTION": "Beskrivelse",
             "NAME": "Navn",
             "GENERAL_INFORMATION": "Generell info",
-            "UPDATE_SUBSCRIPTION": "Oppdater abonnement",
             "ADD_SUBSCRIPTION": "Legg til abonnement",
             "TOTAL_COSTS": "Totalkostnad",
             "SEARCH_FOR_NAME_AND_DESCRIPTION": "Navn eller beskrivelse",
