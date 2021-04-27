@@ -6,8 +6,7 @@ import { CostByBillingIntervalPipe } from './cost-by-billing-interval.pipe';
 import { billingIntervals } from '../BILLING_INTERVALS';
 
 @Pipe({
-  name: 'sortSubscriptions',
-  pure: false
+  name: 'sortSubscriptions'
 })
 export class SortSubscriptionsPipe implements PipeTransform {
   availableBillingIntervals = billingIntervals;
@@ -77,30 +76,52 @@ export class SortSubscriptionsPipe implements PipeTransform {
         });
       }
       case 'nextContractExtensionAsc': {
-        return subscriptions.sort((a, b) => {
-          if (!this.nextCancelationPeriodDeadlinePipe.transform(a) || !this.nextCancelationPeriodDeadlinePipe.transform(b)) { return 1; }
+        let subscriptionsWithoutProperty = subscriptions.filter(sub => this.nextCancelationPeriodDeadlinePipe.transform(sub) === null);
+        subscriptionsWithoutProperty = subscriptionsWithoutProperty.sort(this.sortByNameAsc);
 
-          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday < this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
+        subscriptions = subscriptions.filter(sub => this.nextCancelationPeriodDeadlinePipe.transform(sub) !== null);
+
+        subscriptions = subscriptions.sort((a, b) => {
+          if (!this.nextCancelationPeriodDeadlinePipe.transform(a) || !this.nextCancelationPeriodDeadlinePipe.transform(b)) {
+            return this.sortByNameAsc(a, b);
+          }
+
+          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday
+            < this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
             return -1;
           }
-          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday > this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
+          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday
+            > this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
             return 1;
           }
           return 0;
         });
+
+        return subscriptions.concat(subscriptionsWithoutProperty);
       }
       case 'nextContractExtensionDesc': {
-        return subscriptions.sort((a, b) => {
-          if (!this.nextCancelationPeriodDeadlinePipe.transform(a) || !this.nextCancelationPeriodDeadlinePipe.transform(b)) { return 1; }
+        let subscriptionsWithoutProperty = subscriptions.filter(sub => this.nextCancelationPeriodDeadlinePipe.transform(sub) === null);
+        subscriptionsWithoutProperty = subscriptionsWithoutProperty.sort(this.sortByNameAsc);
 
-          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday > this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
+        subscriptions = subscriptions.filter(sub => this.nextCancelationPeriodDeadlinePipe.transform(sub) !== null);
+
+        subscriptions = subscriptions.sort((a, b) => {
+          if (!this.nextCancelationPeriodDeadlinePipe.transform(a) || !this.nextCancelationPeriodDeadlinePipe.transform(b)) {
+            return this.sortByNameAsc(a, b);
+          }
+
+          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday
+            > this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
             return -1;
           }
-          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday < this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
+          if (this.nextCancelationPeriodDeadlinePipe.transform(a).inDaysFromToday
+            < this.nextCancelationPeriodDeadlinePipe.transform(b).inDaysFromToday){
             return 1;
           }
           return 0;
         });
+
+        return subscriptions.concat(subscriptionsWithoutProperty);
       }
       default: {
         return subscriptions;

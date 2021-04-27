@@ -48,7 +48,7 @@ export class NextBillingPipe implements PipeTransform {
       }
     }
 
-    return { dueDate: nextBillingDate, inDaysFromToday: this.dateDiffInDays(today, nextBillingDate) }
+    return { dueDate: nextBillingDate, inDaysFromToday: this.dateDiffInDays(today, nextBillingDate) };
   }
 
   // Difference between two Date objects in days (always positive)

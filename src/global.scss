@@ -24,6 +24,12 @@
     --min-width: 95% !important;
 }
 
+// Must be here because alerts are global components
+.alert-sort-selected {
+    border: 1px solid var(--ion-color-primary, blue) !important;
+    border-radius: 20px !important;
+}
+
 .searchbar-integrate {
     --background: inherit !important;
     --box-shadow: none !important;

@@ -14,7 +14,7 @@ export class NotificationTimeForNextCancelationPeriodDeadlinePipe implements Pip
     if (notifyInDaysPrior) {
       if (!this.nextCancelationPeriodDeadlinePipe.transform(subscription)) { return null; }
       const dueDate = this.nextCancelationPeriodDeadlinePipe.transform(subscription).dueDate;
-      dueDate.setDate(dueDate.getDate() - notifyInDaysPrior)
+      dueDate.setDate(dueDate.getDate() - notifyInDaysPrior);
 
       const inDaysFromToday = this.nextCancelationPeriodDeadlinePipe.transform(subscription).inDaysFromToday - notifyInDaysPrior;
 

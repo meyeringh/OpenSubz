@@ -6,10 +6,10 @@ import { ISubscription } from '../Interfaces/subscriptionInterface';
 })
 export class SearchSubscriptionsPipe implements PipeTransform {
 
-  transform(entries: ISubscription[], filterByNameAndDescription: string): ISubscription[] {
-    if (!filterByNameAndDescription) { return entries; }
-    return entries.filter(entry => entry.name.toLowerCase().includes(
-      filterByNameAndDescription.toLowerCase()) || entry.description?.toLowerCase().includes(filterByNameAndDescription.toLowerCase())
+  transform(subscriptions: ISubscription[], filterByNameAndDescription: string): ISubscription[] {
+    if (!filterByNameAndDescription) { return subscriptions; }
+    return subscriptions.filter(sub => sub.name.toLowerCase().includes(
+      filterByNameAndDescription.toLowerCase()) || sub.description?.toLowerCase().includes(filterByNameAndDescription.toLowerCase())
     );
   }
 

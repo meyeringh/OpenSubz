@@ -9,11 +9,11 @@
       </ng-container>
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button [disabled]="subscriptions.length < 2" color="primary" (click)="toggleSearchbarVisibility()" shape="round" [fill]="isSearchbarEnabled ? 'outline' : 'clear'">
-        <ion-icon slot="icon-only" md="search"></ion-icon>
-      </ion-button>
       <ion-button [disabled]="subscriptions.length < 2" color="primary" (click)="changeChoosenBillingInterval()">
         <ion-icon slot="icon-only" md="swap-horizontal"></ion-icon>
+      </ion-button>
+      <ion-button [disabled]="subscriptions.length < 2" [color]="isSearchbarEnabled ? 'warning' : 'primary'" (click)="toggleSearchbarVisibility()">
+        <ion-icon slot="icon-only" md="search"></ion-icon>
       </ion-button>
       <ion-button [disabled]="subscriptions.length < 2" color="primary" (click)="showSortingAlert()">
         <ion-icon slot="icon-only" md="filter"></ion-icon>
@@ -93,8 +93,8 @@
     </ion-card-content>
   </ion-card>
 
-  <ng-container *ngFor="let entry of subscriptions | searchSubscriptions:subscriptionSearchFilter | sortSubscriptions:sortSubscriptionsBy; let i = index">
-    <app-subscription-card [subscription]="entry" [selectedBillingInterval]="selectedBillingInterval" [currency]="settings?.currency" (click)="presentUpdateSubscriptionModal(entry)"></app-subscription-card>
+  <ng-container *ngFor="let sub of subscriptions | searchSubscriptions:subscriptionSearchFilter | sortSubscriptions:sortSubscriptionsBy; trackBy: trackSubscriptionsBy">
+    <app-subscription-card [subscription]="sub" [selectedBillingInterval]="selectedBillingInterval" [currency]="settings?.currency" (click)="presentUpdateSubscriptionModal(sub)"></app-subscription-card>
   </ng-container>
 
 </ion-content>

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="..">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ 'TABS.SETTINGS.ABOUT' | translate }} {{ 'APP.NAME' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-text>
+    <p>{{ 'APP.SHORT_DESCRIPTION' | translate }}</p>
+
+    <ng-container *ngIf="this.version">
+      <h3>{{ 'TABS.SETTINGS.ABOUT_VERSION' | translate }}</h3>
+      {{ this.version }}
+    </ng-container>
+
+    <h3>{{ 'TABS.SETTINGS.ABOUT_AUTHOR' | translate }}</h3>
+    Christian Flaßkamp
+
+    <h3>{{ 'TABS.SETTINGS.ABOUT_SOURCECODE' | translate }}</h3>
+    <a href="https://codeberg.org/epinez/Subz">https://codeberg.org/epinez/Subz</a>
+
+    <h3>{{ 'TABS.SETTINGS.ABOUT_REPORT_ISSUES' | translate }}</h3>
+    <a href="https://codeberg.org/epinez/Subz/issues">https://codeberg.org/epinez/Subz/issues</a>
+
+    <h3>{{ 'TABS.SETTINGS.ABOUT_CONTACT' | translate }}</h3>
+    <a href="mailto:subz@flasskamp.com">subz@flasskamp.com</a>
+  </ion-text>
+</ion-content>

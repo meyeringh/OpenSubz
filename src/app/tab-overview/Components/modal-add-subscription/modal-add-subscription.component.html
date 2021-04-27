@@ -1,15 +1,17 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" (click)="dismiss()">
+        <ion-icon slot="icon-only" md="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
       <ng-container *ngIf="!existingSubscription; else updateMode">{{ 'TABS.OVERVIEW.ADD_SUBSCRIPTION' | translate }}</ng-container>
-      <ng-template #updateMode>{{ 'TABS.OVERVIEW.UPDATE_SUBSCRIPTION' | translate }}</ng-template>
+      <ng-template #updateMode>{{ this.subscriptionForm.get('name').value }}</ng-template>
     </ion-title>
     <ion-buttons slot="end">
       <ion-button color="primary" (click)="save()">
         <ion-icon slot="icon-only" md="save"></ion-icon>
-      </ion-button>
-      <ion-button color="primary" (click)="dismiss()">
-        <ion-icon slot="icon-only" md="close"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>

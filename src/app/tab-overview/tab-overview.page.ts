@@ -37,26 +37,34 @@ export class TabOverviewPage {
     this.retrieveSubscriptionsFromStorage();
   }
 
-  addEntry(entry: ISubscription): void {
+  addSubscription(sub: ISubscription): void {
     let id: number;
     do { id = Math.floor((Math.random() * 999999999999) + 1); } while (this.subscriptions.some(subscription => subscription.id === id));
-    
-    entry.id = id;
-    entry.created = Date.now();
-    entry.lastEdited = entry.created;
 
-    this.subscriptions.push(entry);
+    sub.id = id;
+    sub.created = Date.now();
+    sub.lastEdited = sub.created;
+
+    this.subscriptions.push(sub);
     this.saveSubscriptionsToStorage();
+
+    // New subscription array with Array.slice() because otherwise the Angular change detection for sorting pipe
+    // wouldn't be called after adding new subscriptions leading to not show the new subscription until page refresh
+    this.subscriptions = this.subscriptions.slice();
   }
 
-  updateEntry(entry: ISubscription): void {
-    const index = this.subscriptions.findIndex(subscription => subscription.id === entry.id);
-    this.subscriptions[index] = entry;
+  updateSubscription(sub: ISubscription): void {
+    const index = this.subscriptions.findIndex(subscription => subscription.id === sub.id);
+    this.subscriptions[index] = sub;
     this.saveSubscriptionsToStorage();
+
+    // New subscription array with Array.slice() because otherwise the Angular change detection for sorting pipe
+    // wouldn't be called after updating subscriptions leading to not show the new subscription until page refresh
+    this.subscriptions = this.subscriptions.slice();
   }
 
-  deleteEntry(entry: ISubscription): void {
-    this.subscriptions = this.subscriptions.filter(subscription => subscription.id !== entry.id);
+  deleteSubscription(sub: ISubscription): void {
+    this.subscriptions = this.subscriptions.filter(subscription => subscription.id !== sub.id);
     this.saveSubscriptionsToStorage();
   }
 
@@ -77,7 +85,7 @@ export class TabOverviewPage {
     modal.onDidDismiss()
         .then((data) => {
           if (data.data) {
-            this.addEntry(data.data.entry);
+            this.addSubscription(data.data.sub);
           }
       });
 
@@ -98,11 +106,11 @@ export class TabOverviewPage {
           if (data.data) {
             // Delete
             if (data.data.delete) {
-              this.deleteEntry(data.data.entry);
+              this.deleteSubscription(data.data.sub);
             }
             // Update
             else {
-              this.updateEntry(data.data.entry);
+              this.updateSubscription(data.data.sub);
             }
           }
       });
@@ -193,11 +201,13 @@ export class TabOverviewPage {
       buttons: [
         {
           text: alertStrings.asc + ' ↑',
+          cssClass: this.sortSubscriptionsBy.endsWith('Asc')? 'alert-sort-selected button-solid' : '',
           handler: (sortBy) => {
             this.sortSubscriptions(sortBy + 'Asc');
           },
         }, {
           text: alertStrings.desc + ' ↓',
+          cssClass: this.sortSubscriptionsBy.endsWith('Desc')? 'alert-sort-selected' : '',
           handler: (sortBy) => {
             this.sortSubscriptions(sortBy + 'Desc');
           }
@@ -209,15 +219,17 @@ export class TabOverviewPage {
   }
 
   sortSubscriptions(sortBy: string) {
-    this.sortSubscriptionsBy = sortBy;
-    this.settings.defaultSortBy = sortBy;
-    this.saveSettingsToStorage();
+    if (sortBy !== this.sortSubscriptionsBy) {
+      this.sortSubscriptionsBy = sortBy;
+      this.settings.defaultSortBy = sortBy;
+      this.saveSettingsToStorage();
+    }
   }
 
   dismissHelperText(attributeName: string): void {
-    if (attributeName === "hideOverviewHelperTextGeneral") { this.settings.hideOverviewHelperTextGeneral = true; }
-    else if (attributeName === "hideOverviewHelperTextMenuBar") { this.settings.hideOverviewHelperTextMenuBar = true; }
-    else return;
+    if (attributeName === 'hideOverviewHelperTextGeneral') { this.settings.hideOverviewHelperTextGeneral = true; }
+    else if (attributeName === 'hideOverviewHelperTextMenuBar') { this.settings.hideOverviewHelperTextMenuBar = true; }
+    else { return; }
 
     this.saveSettingsToStorage();
   }
@@ -230,6 +242,11 @@ export class TabOverviewPage {
         this.searchSubscriptions.setFocus();
       }, 100);
     }
+  }
+
+  // Avoids re-rendering of subscriptions after page changes and prevents flickering
+  trackSubscriptionsBy(index: number): number {
+    return index;
   }
 
 }
