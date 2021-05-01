@@ -112,6 +112,6 @@
     },
     "NOTIFICATIONS": {
         "NOTIFICATION_BODY": "L’ultimo giorno per cancellare $NAME$ entro il suo periodo di cancellazione è il $DATE$. Dopo di che seguirà un’estensione del contratto.",
-        "NOTIFICATION_TITLE": "Il contratto di $NAME$ sarà presto esteso"
+        "NOTIFICATION_TITLE": "$NAME$ contract contratto sarà presto esteso"
     }
 }
