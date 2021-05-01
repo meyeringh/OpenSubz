@@ -113,6 +113,6 @@
     },
     "NOTIFICATIONS": {
         "NOTIFICATION_BODY": "Le dernier jour pour annuler $NAME$ pendant sa période d’annulation est le $DATE$. Après cela, le contrat sera prolongé.",
-        "NOTIFICATION_TITLE": "Le contrat de $NAME$ sera bientôt prolongé"
+        "NOTIFICATION_TITLE": "$NAME$ contract le contrat sera bientôt prolongé"
     }
 }
