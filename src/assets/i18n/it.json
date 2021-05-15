@@ -40,10 +40,10 @@
             "NO_SUBSCRIPTION_TEXT": "Gli abbonamenti possono essere aggiunti usando il pulsante più in alto a destra dello schermo. Le altre funzioni nella barra del menù sono disabilitate finché non sono stati aggiunti due abbonamenti. Buon divertimento con Subz!",
             "NO_SUBSCRIPTION_HEADER": "Ciao!",
             "CALENDAR_INTERVALS": {
-                "YEARS": "Anni",
-                "MONTHS": "Mesi",
-                "WEEKS": "Settimane",
-                "DAYS": "Giorni"
+                "YEARS": "anni",
+                "MONTHS": "mesi",
+                "WEEKS": "settimane",
+                "DAYS": "giorni"
             },
             "DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_ON_HELPER": "giorni fino all'ultima cancellazione possibile entro il suo periodo",
             "DAYS_UNTIL_NEXT_BILLING_ON_HELPER": "giorni fino alla prossima fatturazione",
@@ -112,6 +112,6 @@
     },
     "NOTIFICATIONS": {
         "NOTIFICATION_BODY": "L’ultimo giorno per cancellare $NAME$ entro il suo periodo di cancellazione è il $DATE$. Dopo di che seguirà un’estensione del contratto.",
-        "NOTIFICATION_TITLE": "$NAME$ contract contratto sarà presto esteso"
+        "NOTIFICATION_TITLE": "Il contratto $NAME$ sarà presto esteso"
     }
 }
