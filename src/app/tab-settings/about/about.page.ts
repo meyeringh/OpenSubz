@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppVersion } from '@ionic-native/app-version/ngx';
+import { App } from '@capacitor/app';
 import { Platform } from '@ionic/angular';
 
 @Component({
@@ -11,15 +11,14 @@ export class AboutPage implements OnInit {
   version: string;
 
   constructor(
-    private platform: Platform,
-    private appVersion: AppVersion
+    private platform: Platform
   ) { }
 
   ngOnInit() {
     this.platform.ready().then(() => {
       if (this.platform.is('android')) {
-        this.appVersion.getVersionNumber().then(appVersion => {
-          this.version = appVersion;
+        App.getInfo().then(appInfo => {
+          this.version = appInfo.version;
         });
       }
       else if (this.platform.is('mobileweb')) {

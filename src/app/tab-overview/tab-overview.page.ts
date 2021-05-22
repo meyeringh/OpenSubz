@@ -7,6 +7,7 @@ import { StorageService } from '../Services/storage.service';
 import { TranslateService } from '@ngx-translate/core';
 import { billingIntervals } from './BILLING_INTERVALS';
 import { NotificationService } from '../Services/notification.service';
+import { SplashScreen } from '@capacitor/splash-screen';
 
 @Component({
   selector: 'app-tab-overview',
@@ -17,6 +18,7 @@ export class TabOverviewPage {
   @ViewChild('searchSubscriptions', {static: false}) searchSubscriptions: IonSearchbar;
 
   subscriptions: ISubscription[] = [];
+  areSubscriptionsFetched = false;
   availableBillingIntervals = billingIntervals;
   selectedBillingInterval: string;
   settings: ISettings;
@@ -34,7 +36,10 @@ export class TabOverviewPage {
   // Gets fired every page view so that settings which were made during runtime, etc. are immediately there
   ionViewWillEnter() {
     this.retrieveSettingsFromStorage();
-    this.retrieveSubscriptionsFromStorage();
+    this.retrieveSubscriptionsFromStorage().then(() => {
+      this.areSubscriptionsFetched = true;
+      SplashScreen.hide();
+    });
   }
 
   addSubscription(sub: ISubscription): void {

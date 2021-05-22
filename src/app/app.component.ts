@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TranslateService } from '@ngx-translate/core';
 
 import { registerLocaleData } from '@angular/common';
@@ -16,6 +14,7 @@ import { Router } from '@angular/router';
 import { ThemeService } from './Services/theme.service';
 import { NotificationService } from './Services/notification.service';
 import { Observable } from 'rxjs';
+import { StatusBar, Style } from '@capacitor/status-bar';
 
 @Component({
   selector: 'app-root',
@@ -25,8 +24,6 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   constructor(
     private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
     private translateService: TranslateService,
     public tabHideService: TabHideService,
     private router: Router,
@@ -36,12 +33,11 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
 
+      // statusBar show()
       this.setupInternationalisation().subscribe(() => { this.notificationService.scheduleNotifications(); });
       this.themeService.applyTheme();
 
-      this.splashScreen.hide();
       this.platform.backButton.subscribeWithPriority(0, () => {
         const url = this.router.url;
 

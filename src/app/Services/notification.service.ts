@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import { LocalNotification, Plugins } from '@capacitor/core';
+import { LocalNotifications, LocalNotificationSchema } from '@capacitor/local-notifications';
 import { StorageService } from './storage.service';
 import { ISubscription } from '../tab-overview/Interfaces/subscriptionInterface';
 import { TranslateService } from '@ngx-translate/core';
 import { NextCancelationPeriodDeadlinePipe } from '../tab-overview/Pipes/next-cancelation-period-deadline.pipe';
 import { NotificationTimeForNextCancelationPeriodDeadlinePipe } from '../tab-overview/Pipes/notification-time-for-next-cancelation-period-deadline.pipe';
 import { formatDate } from '@angular/common';
-
-const { LocalNotifications } = Plugins;
 
 // Gets triggered 1) on entering the app component 2) after persisting subscriptions
 
@@ -34,7 +32,7 @@ export class NotificationService {
 
       // If there are subscriptions, (re)schedule the notifications
       if (subscriptions) {
-        let notificationsToSchedule: LocalNotification[] = [];
+        let notificationsToSchedule: LocalNotificationSchema[] = [];
 
         for (const subscription of subscriptions) {
           // Make a number out of it because empty attributes may saved as string
@@ -60,7 +58,7 @@ export class NotificationService {
             .replace('$NAME$', subscription.name)
             .replace('$DATE$', formatDate(nextCancelationPeriodDeadlineDate, 'mediumDate', this.translateService.currentLang));
 
-          const notification: LocalNotification = {
+          const notification: LocalNotificationSchema = {
             id: Number(subscription.id),
             title: NOTIFICATION_TITLE,
             body: NOTIFICATION_BODY,

@@ -33,7 +33,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card *ngIf="!settings?.hideOverviewHelperTextGeneral">
+  <ion-card *ngIf="settings?.hideOverviewHelperTextGeneral === false">
     <ion-item>
       <ion-label>{{ 'TABS.OVERVIEW.NO_SUBSCRIPTION_HEADER' | translate }}</ion-label>
       <ion-button fill="clear" slot="end" (click)="dismissHelperText('hideOverviewHelperTextGeneral')"><ion-icon name="close-outline"></ion-icon></ion-button>
@@ -44,7 +44,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card *ngIf="!settings?.hideOverviewHelperTextMenuBar">
+  <ion-card *ngIf="settings?.hideOverviewHelperTextMenuBar === false">
     <ion-item>
       <ion-label>{{ 'TABS.OVERVIEW.MENU_BUTTONS_HELPER_HEADER' | translate }}</ion-label>
       <ion-button fill="clear" slot="end" (click)="dismissHelperText('hideOverviewHelperTextMenuBar')"><ion-icon name="close-outline"></ion-icon></ion-button>

@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Plugins, FilesystemDirectory, FilesystemEncoding } from '@capacitor/core';
+import { Storage } from '@capacitor/storage';
+import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { ISubscription } from '../tab-overview/Interfaces/subscriptionInterface';
 import { ISettings } from '../tab-settings/Interfaces/settingsInterface';
 import { ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-
-const { Storage } = Plugins;
-const { Filesystem } = Plugins;
 
 @Injectable({
   providedIn: 'root'
@@ -68,8 +66,8 @@ export class StorageService {
       await Filesystem.writeFile({
         path: 'subz-backup.json',
         data: backup,
-        directory: FilesystemDirectory.Documents,
-        encoding: FilesystemEncoding.UTF8
+        directory: Directory.Documents,
+        encoding: Encoding.UTF8
       });
 
       this.translateService.get('TABS.SETTINGS.BACKUP_SUCCESS').subscribe(BACKUP_SUCCESS => {
@@ -87,8 +85,8 @@ export class StorageService {
     try {
       await Filesystem.readFile({
         path: 'subz-backup.json',
-        directory: FilesystemDirectory.Documents,
-        encoding: FilesystemEncoding.UTF8
+        directory: Directory.Documents,
+        encoding: Encoding.UTF8
       }).then((fileReadResult) => {
         this.restoreAllData(fileReadResult.data, mergeWithCurrent);
       });
