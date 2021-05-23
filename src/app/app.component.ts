@@ -14,7 +14,6 @@ import { Router } from '@angular/router';
 import { ThemeService } from './Services/theme.service';
 import { NotificationService } from './Services/notification.service';
 import { Observable } from 'rxjs';
-import { StatusBar, Style } from '@capacitor/status-bar';
 
 @Component({
   selector: 'app-root',
@@ -28,13 +27,11 @@ export class AppComponent {
     public tabHideService: TabHideService,
     private router: Router,
     public notificationService: NotificationService,
-    public themeService: ThemeService
+    public themeService: ThemeService,
   ) { this.initializeApp(); }
 
   initializeApp() {
     this.platform.ready().then(() => {
-
-      // statusBar show()
       this.setupInternationalisation().subscribe(() => { this.notificationService.scheduleNotifications(); });
       this.themeService.applyTheme();
 

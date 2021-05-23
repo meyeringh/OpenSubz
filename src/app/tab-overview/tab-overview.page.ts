@@ -15,7 +15,7 @@ import { SplashScreen } from '@capacitor/splash-screen';
   styleUrls: ['tab-overview.page.scss']
 })
 export class TabOverviewPage {
-  @ViewChild('searchSubscriptions', {static: false}) searchSubscriptions: IonSearchbar;
+  @ViewChild('searchSubscriptions', { static: false }) searchSubscriptions: IonSearchbar;
 
   subscriptions: ISubscription[] = [];
   areSubscriptionsFetched = false;
@@ -38,7 +38,7 @@ export class TabOverviewPage {
     this.retrieveSettingsFromStorage();
     this.retrieveSubscriptionsFromStorage().then(() => {
       this.areSubscriptionsFetched = true;
-      SplashScreen.hide();
+      SplashScreen.hide(); 
     });
   }
 

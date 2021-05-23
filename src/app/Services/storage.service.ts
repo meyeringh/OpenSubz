@@ -10,6 +10,10 @@ import { TranslateService } from '@ngx-translate/core';
   providedIn: 'root'
 })
 export class StorageService {
+  defaultSettings: ISettings = {
+    hideOverviewHelperTextGeneral: false,
+    hideOverviewHelperTextMenuBar: false
+  }
 
   constructor(
     private toastController: ToastController,
@@ -36,7 +40,7 @@ export class StorageService {
     if (settingsString.value) {
       return JSON.parse(settingsString.value);
     } else {
-      return {};
+      return this.defaultSettings;
     }
   }
 

@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      <ng-container *ngIf="subscriptions.length === 0">
+      <ng-container *ngIf="areSubscriptionsFetched && subscriptions.length === 0">
         {{ 'TABS.OVERVIEW.OVERVIEW' | translate }}
       </ng-container>
       <ng-container *ngIf="subscriptions.length !== 0">
