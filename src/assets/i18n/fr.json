@@ -2,18 +2,18 @@
     "TABS": {
         "OVERVIEW": {
             "CALENDAR_INTERVALS": {
-                "YEARS": "Années",
-                "MONTHS": "Mois",
-                "WEEKS": "Semaines",
-                "DAYS": "Jours"
+                "YEARS": "années",
+                "MONTHS": "mois",
+                "WEEKS": "semaines",
+                "DAYS": "jours"
             },
-            "BILLING_EVERY": "Facturation chaque",
+            "BILLING_EVERY": "Facturation tous les",
             "SORT_HELPER": "Trier les abonnements par nom, coûts, prochaine facturation ou prochaine prolongation de contrat.",
             "SEARCH_HELPER": "Afficher seulement les abonnements où le texte de recherche correspond au nom ou à la description.",
-            "CHANGE_CHOOSEN_BILLING_INTERVAL_HELPER": "Modifiez l’intervalle affiché des frais d’abonnement entre annuellement, mensuellement, hebdomadairement et quotidiennement.",
+            "CHANGE_CHOOSEN_BILLING_INTERVAL_HELPER": "Modifier l’intervalle affiché des frais d’abonnement entre annuellement, mensuellement, hebdomadairement et quotidiennement.",
             "MENU_BUTTONS_HELPER_HEADER": "Aide pour la barre de menu",
             "NO_SUBSCRIPTION_TEXT": "Les abonnements peuvent être ajoutés en utilisant le bouton plus en haut à droite de l’écran. Les autres fonctions de la barre de menu sont désactivées jusqu’à ce que deux abonnements aient été ajoutés. Amusez-vous bien avec Subz !",
-            "DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_ON_HELPER": "jours jusqu’à la dernière annulation possible au cours de sa période le",
+            "DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_ON_HELPER": "jours avant la dernière annulation possible au cours de sa période le",
             "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Notification avant la période d’annulation en jours",
             "NOTIFICATION_BEFORE_CANCELATION_PERIOD_STARTS_ON": "Notification avant la période d’annulation au plus tôt le",
             "CONTRACT_START": "Début du traité",
@@ -38,9 +38,9 @@
                 "GREEN": "Vert",
                 "BLUE": "Bleu"
             },
-            "ADD_SUBSCRIPTION_HELPER": "Ajoutez de nouveaux abonnements.",
+            "ADD_SUBSCRIPTION_HELPER": "Ajouter de nouveaux abonnements.",
             "NO_SUBSCRIPTION_HEADER": "Bonjour !",
-            "DAYS_UNTIL_NEXT_BILLING_ON_HELPER": "jours jusqu’à la prochaine facturation",
+            "DAYS_UNTIL_NEXT_BILLING_ON_HELPER": "jours avant la prochaine facturation",
             "NEXT_SUBSCRIPTION_EXTENSION": "Prochaine prolongation de contrat",
             "NEXT_PAYMENT": "Prochain paiement",
             "COSTS_PER_PERIOD": "Coûts par période",
@@ -113,6 +113,6 @@
     },
     "NOTIFICATIONS": {
         "NOTIFICATION_BODY": "Le dernier jour pour annuler $NAME$ pendant sa période d’annulation est le $DATE$. Après cela, le contrat sera prolongé.",
-        "NOTIFICATION_TITLE": "Le contrat de $NAME$ sera bientôt prolongé"
+        "NOTIFICATION_TITLE": "Le contrat $NAME$ sera bientôt prolongé"
     }
 }

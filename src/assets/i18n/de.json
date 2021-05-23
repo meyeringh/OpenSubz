@@ -111,7 +111,7 @@
         }
     },
     "NOTIFICATIONS": {
-        "NOTIFICATION_TITLE": "$NAME$ Vertrag wird bald verlängert",
+        "NOTIFICATION_TITLE": "$NAME$ -Vertrag wird bald verlängert",
         "NOTIFICATION_BODY": "Der letzte Tag um $NAME$ innerhalb der Frist zu kündigen ist am $DATE$. Danach erfolgt eine Vertragsverlängerung."
     }
 }
