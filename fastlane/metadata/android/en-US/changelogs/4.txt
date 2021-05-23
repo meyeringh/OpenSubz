@@ -1,0 +1,3 @@
+* Improvement: Faster loading times and overall app performance
+* Fix: Minor improvements and fixes
+* Translation: Italian, German, French, Norwegian (Bokmål) improved

@@ -1,0 +1,3 @@
+* Verbesserung: Ladezeiten deutlich gesenkt und Performance erhöht
+* Fix: Kleine Verbesserungen an mehreren Stellen
+* Übersetzung: Italienisch, Deutsch, Französisch, Norwegisch (Bokmål) überarbeitet
