@@ -1,1 +1,117 @@
-{}
+{
+    "GENERAL": {
+        "OK": "OK",
+        "DONE": "Klar",
+        "ASC": "Ökande",
+        "DESC": "Fallande",
+        "CANCEL": "Avbryt"
+    },
+    "TABS": {
+        "OVERVIEW": {
+            "OVERVIEW": "Översikt",
+            "SEARCH_FOR_NAME_AND_DESCRIPTION": "Namn ellrer beskrivning",
+            "TOTAL_COSTS": "Totalkostnad",
+            "ADD_SUBSCRIPTION": "Lägg till prenumeration",
+            "GENERAL_INFORMATION": "Generell information",
+            "NAME": "Namn",
+            "COSTS": "Kostnad",
+            "BILLING": "Fakturering",
+            "BILLING_START": "Fakturering startar",
+            "BILLING_EVERY": "Fakturering varje",
+            "CONTRACT": "Kontrakt",
+            "CONTRACT_START": "Kontraktsstart",
+            "MINIMUM_CONTRACT_DURATION": "Kontraktsperiod",
+            "EXTENSION_AFTER_MINIMUM_CONTRACT_DURATION": "Kontraktförnyelse",
+            "CANCELATION_PERIOD": "Avbrottstillfälle",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_STARTS_ON": "Avisering innan avbrottsperiod, senast den",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Avisering innan avbrottsperiod, i dagar",
+            "REMOVE_SUBSCRIPTION": "Tabort prenumeration",
+            "REMOVE_SUBSCRIPTION_ALERT_MESSAGE": "Ska prenumerationen tas bort?",
+            "SORT_BY": "Sortera på",
+            "COSTS_PER_PERIOD": "Kostnad per period",
+            "NEXT_PAYMENT": "Nästa betalning",
+            "NEXT_SUBSCRIPTION_EXTENSION": "Nästa kontraktsförlängning",
+            "DAYS_UNTIL_NEXT_BILLING_ON_HELPER": "dagar innan nästa fakturering för",
+            "DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_ON_HELPER": "dagar innan absolut senaste betalningsdag för",
+            "CALENDAR_INTERVALS": {
+                "DAYS": "Dagar",
+                "MONTHS": "Månader",
+                "YEARS": "År",
+                "WEEKS": "Veckor"
+            },
+            "NO_SUBSCRIPTION_HEADER": "Hejsan!",
+            "MENU_BUTTONS_HELPER_HEADER": "Hjälp med menyraden",
+            "CHANGE_CHOOSEN_BILLING_INTERVAL_HELPER": "Ändra visat intervall för prenumerationskostnader, mellan årligt, månatligt, veckovis eller dagligen.",
+            "SEARCH_HELPER": "Visa enbart prenumerationer där söktexten stämmer överrens med namn eller beskrivning.",
+            "SORT_HELPER": "Sortera prenumerationer på namn, kostnad, nästa betalning eller kontraktsförlängning.",
+            "ADD_SUBSCRIPTION_HELPER": "Lägg till ny prenumeration.",
+            "COLORS": {
+                "BLUE": "Blå",
+                "RED": "Röd",
+                "GREY": "Grå",
+                "YELLOW": "Gul",
+                "GREEN": "Grön"
+            },
+            "MONTH_NAMES": {
+                "FEBRUARY": "Februari",
+                "MARCH": "Mars",
+                "APRIL": "April",
+                "MAI": "Maj",
+                "JUNE": "Juni",
+                "AUGUST": "Augusti",
+                "SEPTEMBER": "September",
+                "OCTOBER": "Oktober",
+                "NOVEMBER": "November",
+                "DECEMBER": "December",
+                "JANUARY": "Januari",
+                "JULY": "Juli"
+            },
+            "DESCRIPTION": "Beskrivning",
+            "TILE_COLOR": "Färg på rutor",
+            "NO_SUBSCRIPTION_TEXT": "Prenumerationer kan läggas till med plusknappen upp till på höger sida. Övriga funktioner i menyn är avaktiverade innan två prenumerationer har lagts till. Ha så kul med Subz!",
+            "REMOVE_SUBSCRIPTION_ALERT_HEADER": "Är du säker?"
+        },
+        "SETTINGS": {
+            "SETTINGS": "Inställningar",
+            "UI": "Användargränssnitt",
+            "FORCE_DARK_MODE": "Tving Mörkt-Läge",
+            "FORCE_DARK_MODE_HELPER": "Använd systemetstema som standard",
+            "CURRENCY": "Valuta",
+            "DATE_FORMAT": "Datumformat",
+            "SHOW_HELP_TEXTS_IN_OVERVIEW": "Visa hjälp i översikten igen",
+            "SHOW_HELP_TEXTS_IN_OVERVIEW_HELPER": "Återställer hjälp itexter och växlar i översiktsvyn",
+            "TEMPLATES": "Mallar",
+            "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Avisering innan kontraktperiodensslut i dagar",
+            "GENERAL_INFORMATION": "Generellinformation",
+            "LICENSE": "Licens",
+            "ABOUT": "Om",
+            "ABOUT_VERSION": "Version",
+            "ABOUT_AUTHOR": "Upphovsman",
+            "ABOUT_SOURCECODE": "Källkod",
+            "ABOUT_REPORT_ISSUES": "Rapporterafel",
+            "ABOUT_CONTACT": "Kontakt",
+            "REGION": "Region",
+            "DATA_MANAGEMENT": "Datahantering",
+            "BACKUP": "Säkerhetskopiering",
+            "BACKUP_ERROR": "Fel vid säkerhetskopiering!",
+            "BACKUP_SUCCESS": "Säkerhetskopiering sparades till",
+            "COPY_TO_CLIPBOARD": "Kopiera till urklipp",
+            "RESTORE": "Återställ",
+            "BACKUP_DATA": "Säkerhetskopieringar",
+            "RESTORE_BACKUP_ALERT_MESSAGE": "Existerandedata kan antingen raderas och ersättas av säkerhetskopieringen eller slås ihop med den. Vid ihopslagning av datan behålls de senaste redigerade prenumerationerna och inställningarna från säkerhetskopian kommer återställas.",
+            "RESTORE_BACKUP_REPLACE": "Återställ nuvarandedata från säkerhetskopiering",
+            "RESTORE_BACKUP_MERGE": "Kombinera nuvarande data med säkerhetskopiering",
+            "RESTORE_BACKUP_ERROR": "Fel vid återläsning av säkerhetskopiering!",
+            "RESTORE_BACKUP_ERROR_ANDROID": "Fel vid återläsning av säkerhetskopiering. Är säkerhetskopieringsfilen Documents/subz-backup.json tillgänglig?",
+            "RESTORE_BACKUP_SUCCESS": "Säkerhetskopieringen lyckades!"
+        }
+    },
+    "APP": {
+        "NAME": "Subz",
+        "SHORT_DESCRIPTION": "Integritets-vänlig app för att hantera prenumerationstjänster och andra åtaganden med påminnelsefunktion."
+    },
+    "NOTIFICATIONS": {
+        "NOTIFICATION_TITLE": "$NAME$prenumerationen förlängs snart",
+        "NOTIFICATION_BODY": "Sista dagen att avbryta prenumerationen för $NAME$, efter det förlängsprenumerationen."
+    }
+}
