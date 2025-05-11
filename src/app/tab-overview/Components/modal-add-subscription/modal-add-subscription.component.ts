@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ModalController, AlertController, IonInput } from '@ionic/angular';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ISettings } from '../../../tab-settings/Interfaces/settingsInterface';
 import { ISubscription } from '../../Interfaces/subscriptionInterface';
 import { StorageService } from 'src/app/Services/storage.service';
@@ -18,7 +18,7 @@ export class ModalAddSubscriptionComponent implements OnInit {
   @Input() existingSubscription?: ISubscription; // If passed, the component is used for updating an existing subscription
   @ViewChild('nameInput') nameInput: IonInput;
 
-  subscriptionForm: FormGroup;
+  subscriptionForm: UntypedFormGroup;
   availableBillingIntervals = billingIntervals;
   colors = subscriptionColors;
   retrievedSettings: ISettings;
@@ -29,7 +29,7 @@ export class ModalAddSubscriptionComponent implements OnInit {
   constructor(
     public alertController: AlertController,
     public modalController: ModalController,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private storageService: StorageService,
     public translateService: TranslateService) {
     this.subscriptionForm = this.formBuilder.group({

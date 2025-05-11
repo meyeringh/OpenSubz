@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { StorageService } from 'src/app/Services/storage.service';
@@ -12,12 +12,12 @@ import { ISettings } from '../Interfaces/settingsInterface';
   styleUrls: ['./ui.page.scss'],
 })
 export class UiPage implements OnInit {
-  settingsForm: FormGroup;
+  settingsForm: UntypedFormGroup;
   retrievedSettings: ISettings;
   settingsFormChangeSubscription: Subscription;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private storageService: StorageService,
     public themeService: ThemeService,
     private router: Router

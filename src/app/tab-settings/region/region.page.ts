@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { StorageService } from 'src/app/Services/storage.service';
 import { ThemeService } from 'src/app/Services/theme.service';
@@ -13,14 +13,14 @@ import { dateFormats } from './DATE_FORMATS';
   styleUrls: ['./region.page.scss'],
 })
 export class RegionPage implements OnInit {
-  settingsForm: FormGroup;
+  settingsForm: UntypedFormGroup;
   retrievedSettings: ISettings;
   currencyList = currencies;
   dateFormatList = dateFormats;
   settingsFormChangeSubscription: Subscription;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private storageService: StorageService,
     public themeService: ThemeService) {
     this.settingsForm = this.formBuilder.group({
