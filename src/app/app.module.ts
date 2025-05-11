@@ -21,29 +21,28 @@ export function HttpLoaderFactory(httpClient: HttpClient): TranslateHttpLoader {
 }
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient]
-      }
-    }),
-    IonicModule.forRoot(),
-    AppRoutingModule,
-  ],
-  providers: [
-    NotificationService,
-    StorageService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    NextCancelationPeriodDeadlinePipe,
-    NotificationTimeForNextCancelationPeriodDeadlinePipe,
-    TabHideService
-  ],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        IonicModule.forRoot(),
+        AppRoutingModule,
+    ],
+    providers: [
+        NotificationService,
+        StorageService,
+        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+        NextCancelationPeriodDeadlinePipe,
+        NotificationTimeForNextCancelationPeriodDeadlinePipe,
+        TabHideService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}

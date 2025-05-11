@@ -18,34 +18,31 @@ import { TotalCostByBillingIntervalPipe } from './Pipes/total-cost-by-billing-in
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
-  imports: [
-    IonicModule,
-    CommonModule,
-    TabOverviewPageRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    TranslateModule
-  ],
-  declarations: [
-    TabOverviewPage,
-    ModalAddSubscriptionComponent,
-    SubscriptionCardComponent,
-    NextBillingPipe,
-    NextCancelationPeriodDeadlinePipe,
-    NotificationTimeForNextCancelationPeriodDeadlinePipe,
-    SearchSubscriptionsPipe,
-    SortSubscriptionsPipe,
-    CostByBillingIntervalPipe,
-    TotalCostByBillingIntervalPipe
-  ],
-  entryComponents: [
-    ModalAddSubscriptionComponent
-  ],
-  providers: [
-    NextBillingPipe,
-    NextCancelationPeriodDeadlinePipe,
-    CostByBillingIntervalPipe,
-    NotificationTimeForNextCancelationPeriodDeadlinePipe
-  ]
+    imports: [
+        IonicModule,
+        CommonModule,
+        TabOverviewPageRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        TranslateModule
+    ],
+    declarations: [
+        TabOverviewPage,
+        ModalAddSubscriptionComponent,
+        SubscriptionCardComponent,
+        NextBillingPipe,
+        NextCancelationPeriodDeadlinePipe,
+        NotificationTimeForNextCancelationPeriodDeadlinePipe,
+        SearchSubscriptionsPipe,
+        SortSubscriptionsPipe,
+        CostByBillingIntervalPipe,
+        TotalCostByBillingIntervalPipe
+    ],
+    providers: [
+        NextBillingPipe,
+        NextCancelationPeriodDeadlinePipe,
+        CostByBillingIntervalPipe,
+        NotificationTimeForNextCancelationPeriodDeadlinePipe
+    ]
 })
 export class TabOverviewPageModule {}
