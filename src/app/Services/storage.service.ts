@@ -68,14 +68,14 @@ export class StorageService {
 
     try {
       await Filesystem.writeFile({
-        path: 'subz-backup.json',
+        path: 'openSubz-backup.json',
         data: backup,
         directory: Directory.Documents,
         encoding: Encoding.UTF8
       });
 
       this.translateService.get('TABS.SETTINGS.BACKUP_SUCCESS').subscribe(BACKUP_SUCCESS => {
-        this.toastMessage(BACKUP_SUCCESS + ' Documents/subz-backup.json');
+        this.toastMessage(BACKUP_SUCCESS + ' Documents/openSubz-backup.json');
       });
 
     } catch (e) {
@@ -88,7 +88,7 @@ export class StorageService {
   async restoreAllDataAndroid(mergeWithCurrent?: boolean) {
     try {
       await Filesystem.readFile({
-        path: 'subz-backup.json',
+        path: 'openSubz-backup.json',
         directory: Directory.Documents,
         encoding: Encoding.UTF8
       }).then((fileReadResult) => {

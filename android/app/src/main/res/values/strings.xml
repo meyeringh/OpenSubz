@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Subz</string>
-    <string name="title_activity_main">Subz</string>
-    <string name="package_name">com.flasskamp.subz</string>
-    <string name="custom_url_scheme">com.flasskamp.subz</string>
+    <string name="app_name">openSubz</string>
+    <string name="title_activity_main">openSubz</string>
+    <string name="package_name">com.flasskamp.openSubz</string>
+    <string name="custom_url_scheme">com.flasskamp.openSubz</string>
 </resources>

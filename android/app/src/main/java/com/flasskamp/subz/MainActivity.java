@@ -1,4 +1,4 @@
-package com.flasskamp.subz;
+package com.flasskamp.openSubz;
 
 import android.content.res.Configuration;
 import android.view.WindowManager;

@@ -1,6 +1,6 @@
 {
     "APP": {
-        "NAME": "Subz",
+        "NAME": "openSubz",
         "SHORT_DESCRIPTION": "Datenschutzfreundliche Verwaltung für Abonnements und Verträge mit Erinnerungsfunktion."
     },
     "GENERAL": {
@@ -47,7 +47,7 @@
                 "YEARS": "Jahre"
             },
             "NO_SUBSCRIPTION_HEADER": "Hallo!",
-            "NO_SUBSCRIPTION_TEXT": "Neue Abonnements können durch Tippen auf das Plus oben rechts auf dem Bildschirm hinzugefügt werden. Die restlichen Funktionen im Menü sind deaktiviert bis mindestens zwei Abos hinzugefügt wurden. Viel Spaß mit Subz!",
+            "NO_SUBSCRIPTION_TEXT": "Neue Abonnements können durch Tippen auf das Plus oben rechts auf dem Bildschirm hinzugefügt werden. Die restlichen Funktionen im Menü sind deaktiviert bis mindestens zwei Abos hinzugefügt wurden. Viel Spaß mit openSubz!",
             "MENU_BUTTONS_HELPER_HEADER": "Hilfe zur Menüleiste",
             "CHANGE_CHOOSEN_BILLING_INTERVAL_HELPER": "Wechsel des Anzeigeintervalls der Abonnementkosten zwischen jährlich, monatlich, wöchentlich und täglich.",
             "SEARCH_HELPER": "Zeige nur Abonnements an, deren Name oder Beschreibung dem Suchtext entsprechen.",
@@ -106,7 +106,7 @@
             "RESTORE_BACKUP_REPLACE": "Aktuelle Daten durch Datensicherung ersetzen",
             "RESTORE_BACKUP_MERGE": "Aktuelle Daten mit Datensicherung zusammenführen",
             "RESTORE_BACKUP_ERROR": "Fehler beim Einlesen der Daten aus der Datensicherung!",
-            "RESTORE_BACKUP_ERROR_ANDROID": "Fehler beim Zurückspielen der Datensicherung. Ist die Datensicherung-Datei Documents/subz-backup.json vorhanden?",
+            "RESTORE_BACKUP_ERROR_ANDROID": "Fehler beim Zurückspielen der Datensicherung. Ist die Datensicherung-Datei Documents/openSubz-backup.json vorhanden?",
             "RESTORE_BACKUP_SUCCESS": "Die Daten wurden erfolgreich wiederhergestellt!"
         }
     },
