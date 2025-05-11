@@ -54,7 +54,7 @@ export class NextCancelationPeriodDeadlinePipe implements PipeTransform {
    * @returns startDate + / - value of intervalType
    */
   calculateDates(startDate: Date, operation: string, value: number, intervalType: string): Date {
-    let date = new Date(startDate);
+    const date = new Date(startDate);
 
     function calculate(a: number, operator: string, b: number): number {
       if (operator === '+') { return a + b; }

@@ -32,7 +32,7 @@ export class NotificationService {
 
       // If there are subscriptions, (re)schedule the notifications
       if (subscriptions) {
-        let notificationsToSchedule: LocalNotificationSchema[] = [];
+        const notificationsToSchedule: LocalNotificationSchema[] = [];
 
         for (const subscription of subscriptions) {
           // Make a number out of it because empty attributes may saved as string

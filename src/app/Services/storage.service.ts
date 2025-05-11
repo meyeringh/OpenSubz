@@ -122,7 +122,7 @@ export class StorageService {
             }
 
             // SUBSCRIPTIONS
-            let subscriptions: ISubscription[] = backupObject.subscriptions;
+            const subscriptions: ISubscription[] = backupObject.subscriptions;
             let isValid = true;
 
             for (const subscription of subscriptions) {
@@ -183,9 +183,9 @@ export class StorageService {
             if (mergeWithCurrent) {
                 const currentSubscriptions = await this.retrieveSubscriptionsFromStorage();
 
-                for (let currentSubscription of currentSubscriptions) {
+                for (const currentSubscription of currentSubscriptions) {
                     // Check if subscription with same id is present in backup and current subscriptions
-                    let backupSubscriptionIndex = subscriptions.findIndex(sub => sub.id === currentSubscription.id);
+                    const backupSubscriptionIndex = subscriptions.findIndex(sub => sub.id === currentSubscription.id);
 
                     if (backupSubscriptionIndex !== -1) {
                         // Check which subscription will be kept based on lastEdited date (4 cases)
