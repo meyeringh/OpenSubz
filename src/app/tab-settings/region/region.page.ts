@@ -14,6 +14,7 @@ import { IonRouterLink } from "@ionic/angular/standalone";
     selector: 'app-region',
     templateUrl: './region.page.html',
     styleUrls: ['./region.page.scss'],
+    standalone: false
 })
 export class RegionPage implements OnInit {
     settingsForm: UntypedFormGroup;

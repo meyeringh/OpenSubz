@@ -3,8 +3,10 @@ import { ISubscription } from '../Interfaces/subscriptionInterface';
 import { CostByBillingIntervalPipe } from './cost-by-billing-interval.pipe';
 
 @Pipe({
-  name: 'totalCostByBillingInterval',
-  pure: false // Otherwise a new added subscription wouldn't get added to the total cost directly
+    name: 'totalCostByBillingInterval',
+    pure: false // Otherwise a new added subscription wouldn't get added to the total cost directly
+    ,
+    standalone: false
 })
 export class TotalCostByBillingIntervalPipe implements PipeTransform {
 

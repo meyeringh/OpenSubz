@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { ISubscription } from '../Interfaces/subscriptionInterface';
 
 @Pipe({
-  name: 'nextCancelationPeriodDeadline'
+    name: 'nextCancelationPeriodDeadline',
+    standalone: false
 })
 export class NextCancelationPeriodDeadlinePipe implements PipeTransform {
   MS_PER_DAY = 1000 * 60 * 60 * 24;

@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { ISubscription } from '../Interfaces/subscriptionInterface';
 
 @Pipe({
-  name: 'searchSubscriptions'
+    name: 'searchSubscriptions',
+    standalone: false
 })
 export class SearchSubscriptionsPipe implements PipeTransform {
 

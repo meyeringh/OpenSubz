@@ -13,6 +13,7 @@ import { IonRouterLink } from "@ionic/angular/standalone";
     selector: 'app-ui',
     templateUrl: './ui.page.html',
     styleUrls: ['./ui.page.scss'],
+    standalone: false
 })
 export class UiPage implements OnInit {
     settingsForm: UntypedFormGroup;

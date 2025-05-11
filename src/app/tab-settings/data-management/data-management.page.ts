@@ -11,6 +11,7 @@ import { IonRouterLink } from "@ionic/angular/standalone";
     selector: 'app-data-management',
     templateUrl: './data-management.page.html',
     styleUrls: ['./data-management.page.scss'],
+    standalone: false
 })
 export class DataManagementPage implements OnInit {
 

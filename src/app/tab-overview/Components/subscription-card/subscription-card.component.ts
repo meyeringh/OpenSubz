@@ -12,7 +12,8 @@ import { card, warning, notifications } from "ionicons/icons";
 @Component({
     selector: 'app-subscription-card',
     templateUrl: './subscription-card.component.html',
-    styleUrls: ['./subscription-card.component.scss']
+    styleUrls: ['./subscription-card.component.scss'],
+    standalone: false
 })
 export class SubscriptionCardComponent {
     @Input() subscription: ISubscription;

@@ -6,7 +6,8 @@ import { CostByBillingIntervalPipe } from './cost-by-billing-interval.pipe';
 import { billingIntervals } from '../BILLING_INTERVALS';
 
 @Pipe({
-  name: 'sortSubscriptions'
+    name: 'sortSubscriptions',
+    standalone: false
 })
 export class SortSubscriptionsPipe implements PipeTransform {
   availableBillingIntervals = billingIntervals;

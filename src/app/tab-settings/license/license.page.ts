@@ -8,6 +8,7 @@ import { IonRouterLink } from "@ionic/angular/standalone";
     selector: 'app-license',
     templateUrl: './license.page.html',
     styleUrls: ['./license.page.scss'],
+    standalone: false
 })
 export class LicensePage implements OnInit {
     licenseText = licenseText;

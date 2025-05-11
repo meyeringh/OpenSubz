@@ -3,7 +3,8 @@ import { NextCancelationPeriodDeadlinePipe } from './next-cancelation-period-dea
 import { ISubscription } from '../Interfaces/subscriptionInterface';
 
 @Pipe({
-  name: 'notificationTimeForNextCancelationPeriodDeadline'
+    name: 'notificationTimeForNextCancelationPeriodDeadline',
+    standalone: false
 })
 export class NotificationTimeForNextCancelationPeriodDeadlinePipe implements PipeTransform {
 

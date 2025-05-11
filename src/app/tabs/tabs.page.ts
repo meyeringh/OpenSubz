@@ -5,7 +5,8 @@ import { list, settings } from "ionicons/icons";
 @Component({
     selector: 'app-tabs',
     templateUrl: 'tabs.page.html',
-    styleUrls: ['tabs.page.scss']
+    styleUrls: ['tabs.page.scss'],
+    standalone: false
 })
 export class TabsPage {
 

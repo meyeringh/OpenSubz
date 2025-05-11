@@ -14,7 +14,8 @@ import { swapHorizontal, search, filter, add, closeOutline } from "ionicons/icon
 @Component({
     selector: 'app-tab-overview',
     templateUrl: 'tab-overview.page.html',
-    styleUrls: ['tab-overview.page.scss']
+    styleUrls: ['tab-overview.page.scss'],
+    standalone: false
 })
 export class TabOverviewPage {
     @ViewChild('searchSubscriptions', { static: false }) searchSubscriptions: IonSearchbar;

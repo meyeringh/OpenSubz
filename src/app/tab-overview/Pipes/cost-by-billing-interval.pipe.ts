@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { ISubscription } from '../Interfaces/subscriptionInterface';
 
 @Pipe({
-  name: 'costByBillingInterval'
+    name: 'costByBillingInterval',
+    standalone: false
 })
 export class CostByBillingIntervalPipe implements PipeTransform {
 

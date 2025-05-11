@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { ISubscription } from '../Interfaces/subscriptionInterface';
 
 @Pipe({
-  name: 'nextBilling'
+    name: 'nextBilling',
+    standalone: false
 })
 export class NextBillingPipe implements PipeTransform {
   MS_PER_DAY = 1000 * 60 * 60 * 24;

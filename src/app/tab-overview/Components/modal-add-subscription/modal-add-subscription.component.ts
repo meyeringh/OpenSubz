@@ -15,6 +15,7 @@ import { arrowBack, save } from "ionicons/icons";
     selector: 'app-modal-add-subscription',
     templateUrl: './modal-add-subscription.component.html',
     styleUrls: ['./modal-add-subscription.component.scss'],
+    standalone: false
 })
 export class ModalAddSubscriptionComponent implements OnInit {
     @Input() existingSubscription?: ISubscription; // If passed, the component is used for updating an existing subscription

@@ -6,7 +6,8 @@ import { IonRouterLink } from "@ionic/angular/standalone";
 @Component({
     selector: 'app-tab-settings',
     templateUrl: 'tab-settings.page.html',
-    styleUrls: ['tab-settings.page.scss']
+    styleUrls: ['tab-settings.page.scss'],
+    standalone: false
 })
 export class TabSettingsPage {
 
