@@ -1,30 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { App } from '@capacitor/app';
-import { Platform } from '@ionic/angular';
+import { Platform } from '@ionic/angular/standalone';
+import { addIcons } from "ionicons";
+import { arrowBack } from "ionicons/icons";
+import { IonRouterLink } from "@ionic/angular/standalone";
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.page.html',
-  styleUrls: ['./about.page.scss'],
+    selector: 'app-about',
+    templateUrl: './about.page.html',
+    styleUrls: ['./about.page.scss'],
 })
 export class AboutPage implements OnInit {
-  version: string;
+    version: string;
 
-  constructor(
-    private platform: Platform
-  ) { }
+    constructor(
+        private platform: Platform
+    ) {
+        addIcons({ arrowBack });
+    }
 
-  ngOnInit() {
-    this.platform.ready().then(() => {
-      if (this.platform.is('android')) {
-        App.getInfo().then(appInfo => {
-          this.version = appInfo.version;
+    ngOnInit() {
+        this.platform.ready().then(() => {
+            if (this.platform.is('android')) {
+                App.getInfo().then(appInfo => {
+                    this.version = appInfo.version;
+                });
+            }
+            else if (this.platform.is('mobileweb')) {
+                // Don't show version
+            }
         });
-      }
-      else if (this.platform.is('mobileweb')) {
-        // Don't show version
-      }
-    });
-  }
+    }
 
 }

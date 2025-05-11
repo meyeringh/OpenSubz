@@ -1,4 +1,3 @@
-import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,15 +15,57 @@ import { SortSubscriptionsPipe } from './Pipes/sort-subscriptions.pipe';
 import { CostByBillingIntervalPipe } from './Pipes/cost-by-billing-interval.pipe';
 import { TotalCostByBillingIntervalPipe } from './Pipes/total-cost-by-billing-interval.pipe';
 import { TranslateModule } from '@ngx-translate/core';
+import { IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonIcon, IonContent, IonCard, IonCardContent, IonSearchbar, IonItem, IonLabel, IonGrid, IonRow, IonCol, IonFabButton, IonList, IonListHeader, IonInput, IonSelect, IonSelectOption, IonDatetime, IonChip } from "@ionic/angular/standalone";
 
 @NgModule({
     imports: [
-        IonicModule,
         CommonModule,
         TabOverviewPageRoutingModule,
         FormsModule,
         ReactiveFormsModule,
-        TranslateModule
+        TranslateModule,
+        IonHeader,
+        IonToolbar,
+        IonTitle,
+        IonButtons,
+        IonButton,
+        IonIcon,
+        IonContent,
+        IonCard,
+        IonCardContent,
+        IonSearchbar,
+        IonItem,
+        IonLabel,
+        IonGrid,
+        IonRow,
+        IonCol,
+        IonFabButton,
+        IonHeader,
+        IonToolbar,
+        IonButtons,
+        IonButton,
+        IonIcon,
+        IonTitle,
+        IonContent,
+        IonList,
+        IonListHeader,
+        IonItem,
+        IonLabel,
+        IonInput,
+        IonSelect,
+        IonSelectOption,
+        IonDatetime,
+        IonGrid,
+        IonRow,
+        IonCol,
+        IonCard,
+        IonCardContent,
+        IonGrid,
+        IonRow,
+        IonCol,
+        IonChip,
+        IonIcon,
+        IonLabel
     ],
     declarations: [
         TabOverviewPage,
@@ -45,4 +86,4 @@ import { TranslateModule } from '@ngx-translate/core';
         NotificationTimeForNextCancelationPeriodDeadlinePipe
     ]
 })
-export class TabOverviewPageModule {}
+export class TabOverviewPageModule { }
