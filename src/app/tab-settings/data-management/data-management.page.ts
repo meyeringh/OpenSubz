@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, Platform } from '@ionic/angular/standalone';
 import { TranslateService } from '@ngx-translate/core';
-import { StorageService } from 'src/app/Services/storage.service';
+import { PreferencesService } from 'src/app/Services/preferences.service';
 import { ThemeService } from 'src/app/Services/theme.service';
 import { addIcons } from "ionicons";
 import { arrowBack, archive, refresh } from "ionicons/icons";
@@ -17,7 +17,7 @@ export class DataManagementPage implements OnInit {
 
     constructor(
         public alertController: AlertController,
-        private storageService: StorageService,
+        private preferencesService: PreferencesService,
         public themeService: ThemeService,
         public translateService: TranslateService,
         private platform: Platform,
@@ -31,7 +31,7 @@ export class DataManagementPage implements OnInit {
     async backup(): Promise<void> {
         this.platform.ready().then(() => {
             if (this.platform.is('android')) {
-                this.storageService.backupAllDataAndroid();
+                this.preferencesService.backupAllDataAndroid();
             }
             else if (this.platform.is('mobileweb')) {
                 this.backupWeb();
@@ -55,7 +55,7 @@ export class DataManagementPage implements OnInit {
         const alert = await this.alertController.create({
             cssClass: 'alert-full-width',
             header: alertStrings.header,
-            message: await this.storageService.getAllData(),
+            message: await this.preferencesService.getAllData(),
             buttons: [
                 {
                     text: alertStrings.cancel,
@@ -66,7 +66,7 @@ export class DataManagementPage implements OnInit {
                     text: alertStrings.copyToClipboard,
                     cssClass: 'secondary',
                     handler: async () => {
-                        this.copyTextToClipboard(await this.storageService.getAllData());
+                        this.copyTextToClipboard(await this.preferencesService.getAllData());
                     }
                 }]
         });
@@ -116,14 +116,14 @@ export class DataManagementPage implements OnInit {
                 }, {
                     text: alertStrings.restoreBackupReplace,
                     handler: () => {
-                        this.storageService.restoreAllDataAndroid().then(() => {
+                        this.preferencesService.restoreAllDataAndroid().then(() => {
                             this.themeService.applyTheme();
                         });
                     }
                 }, {
                     text: alertStrings.restoreBackupMerge,
                     handler: () => {
-                        this.storageService.restoreAllDataAndroid(true).then(() => {
+                        this.preferencesService.restoreAllDataAndroid(true).then(() => {
                             this.themeService.applyTheme();
                         });
                     }
@@ -176,7 +176,7 @@ export class DataManagementPage implements OnInit {
                     text: alertStrings.restoreBackupReplace,
                     cssClass: 'secondary',
                     handler: async (inputs) => {
-                        await this.storageService.restoreAllData(inputs.restore).then(() => {
+                        await this.preferencesService.restoreAllData(inputs.restore).then(() => {
                             this.themeService.applyTheme();
                         });
                     }
@@ -184,7 +184,7 @@ export class DataManagementPage implements OnInit {
                     text: alertStrings.restoreBackupMerge,
                     cssClass: 'secondary',
                     handler: async (inputs) => {
-                        await this.storageService.restoreAllData(inputs.restore, true).then(() => {
+                        await this.preferencesService.restoreAllData(inputs.restore, true).then(() => {
                             this.themeService.applyTheme();
                         });
                     }

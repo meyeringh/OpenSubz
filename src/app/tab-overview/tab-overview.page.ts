@@ -3,7 +3,7 @@ import { ModalController, AlertController, IonSearchbar } from '@ionic/angular/s
 import { ModalAddSubscriptionComponent } from './Components/modal-add-subscription/modal-add-subscription.component';
 import { ISubscription } from './Interfaces/subscriptionInterface';
 import { ISettings } from '../tab-settings/Interfaces/settingsInterface';
-import { StorageService } from '../Services/storage.service';
+import { PreferencesService } from '../Services/preferences.service';
 import { TranslateService } from '@ngx-translate/core';
 import { billingIntervals } from './BILLING_INTERVALS';
 import { NotificationService } from '../Services/notification.service';
@@ -32,7 +32,7 @@ export class TabOverviewPage {
     constructor(
         public alertController: AlertController,
         public modalController: ModalController,
-        public storageService: StorageService,
+        public preferencesService: PreferencesService,
         public translateService: TranslateService,
         public notificationService: NotificationService) {
         addIcons({ swapHorizontal, search, filter, add, closeOutline });
@@ -40,8 +40,8 @@ export class TabOverviewPage {
 
     // Gets fired every page view so that settings which were made during runtime, etc. are immediately there
     ionViewWillEnter() {
-        this.retrieveSettingsFromStorage();
-        this.retrieveSubscriptionsFromStorage().then(() => {
+        this.retrieveSettingsFromPreferences();
+        this.retrieveSubscriptionsFromPreferences().then(() => {
             this.areSubscriptionsFetched = true;
             SplashScreen.hide();
         });
@@ -56,7 +56,7 @@ export class TabOverviewPage {
         sub.lastEdited = sub.created;
 
         this.subscriptions.push(sub);
-        this.saveSubscriptionsToStorage();
+        this.saveSubscriptionsToPreferences();
 
         // New subscription array with Array.slice() because otherwise the Angular change detection for sorting pipe
         // wouldn't be called after adding new subscriptions leading to not show the new subscription until page refresh
@@ -66,7 +66,7 @@ export class TabOverviewPage {
     updateSubscription(sub: ISubscription): void {
         const index = this.subscriptions.findIndex(subscription => subscription.id === sub.id);
         this.subscriptions[index] = sub;
-        this.saveSubscriptionsToStorage();
+        this.saveSubscriptionsToPreferences();
 
         // New subscription array with Array.slice() because otherwise the Angular change detection for sorting pipe
         // wouldn't be called after updating subscriptions leading to not show the new subscription until page refresh
@@ -75,16 +75,16 @@ export class TabOverviewPage {
 
     deleteSubscription(sub: ISubscription): void {
         this.subscriptions = this.subscriptions.filter(subscription => subscription.id !== sub.id);
-        this.saveSubscriptionsToStorage();
+        this.saveSubscriptionsToPreferences();
     }
 
-    async saveSubscriptionsToStorage() {
-        await this.storageService.saveSubscriptionsToStorage(this.subscriptions)
+    async saveSubscriptionsToPreferences() {
+        await this.preferencesService.saveSubscriptionsToPreferences(this.subscriptions)
             .then(() => { this.notificationService.scheduleNotifications(); });
     }
 
-    async retrieveSubscriptionsFromStorage() {
-        this.subscriptions = await this.storageService.retrieveSubscriptionsFromStorage();
+    async retrieveSubscriptionsFromPreferences() {
+        this.subscriptions = await this.preferencesService.retrieveSubscriptionsFromPreferences();
     }
 
     async presentAddSubscriptionModal() {
@@ -137,17 +137,17 @@ export class TabOverviewPage {
             this.selectedBillingInterval = this.availableBillingIntervals[index + 1];
         }
         this.settings.defaultBillingInterval = this.selectedBillingInterval;
-        this.saveSettingsToStorage();
+        this.saveSettingsToPreferences();
     }
 
-    async retrieveSettingsFromStorage() {
-        this.settings = await this.storageService.retrieveSettingsFromStorage();
+    async retrieveSettingsFromPreferences() {
+        this.settings = await this.preferencesService.retrieveSettingsFromPreferences();
         this.selectedBillingInterval = this.settings.defaultBillingInterval || 'MONTHS';
         this.sortSubscriptionsBy = this.settings.defaultSortBy || 'nextBillingAsc';
     }
 
-    async saveSettingsToStorage() {
-        this.storageService.saveSettingsToStorage(this.settings);
+    async saveSettingsToPreferences() {
+        this.preferencesService.saveSettingsToPreferences(this.settings);
     }
 
     async showSortingAlert() {
@@ -232,7 +232,7 @@ export class TabOverviewPage {
         if (sortBy !== this.sortSubscriptionsBy) {
             this.sortSubscriptionsBy = sortBy;
             this.settings.defaultSortBy = sortBy;
-            this.saveSettingsToStorage();
+            this.saveSettingsToPreferences();
         }
     }
 
@@ -241,7 +241,7 @@ export class TabOverviewPage {
         else if (attributeName === 'hideOverviewHelperTextMenuBar') { this.settings.hideOverviewHelperTextMenuBar = true; }
         else { return; }
 
-        this.saveSettingsToStorage();
+        this.saveSettingsToPreferences();
     }
 
     toggleSearchbarVisibility() {

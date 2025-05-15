@@ -7,7 +7,7 @@ import { IonicRouteStrategy, provideIonicAngular, IonApp, IonRouterOutlet } from
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotificationService } from './Services/notification.service';
-import { StorageService } from './Services/storage.service';
+import { PreferencesService } from './Services/preferences.service';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
@@ -35,7 +35,7 @@ export function HttpLoaderFactory(httpClient: HttpClient): TranslateHttpLoader {
         IonRouterOutlet
     ], providers: [
         NotificationService,
-        StorageService,
+        PreferencesService,
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
         NextCancelationPeriodDeadlinePipe,
         NotificationTimeForNextCancelationPeriodDeadlinePipe,

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { StorageService } from 'src/app/Services/storage.service';
+import { PreferencesService } from 'src/app/Services/preferences.service';
 import { ThemeService } from 'src/app/Services/theme.service';
 import { ISettings } from '../Interfaces/settingsInterface';
 import { addIcons } from "ionicons";
@@ -22,7 +22,7 @@ export class UiPage implements OnInit {
 
     constructor(
         private formBuilder: UntypedFormBuilder,
-        private storageService: StorageService,
+        private preferencesService: PreferencesService,
         public themeService: ThemeService,
         private router: Router
     ) {
@@ -37,7 +37,7 @@ export class UiPage implements OnInit {
     }
 
     ionViewWillEnter() {
-        this.retrieveSettingsFromStorage().then(() => {
+        this.retrieveSettingsFromPreferences().then(() => {
             this.listenForSettingsFormChanges();
         });
     }
@@ -48,22 +48,22 @@ export class UiPage implements OnInit {
 
     listenForSettingsFormChanges(): void {
         this.settingsFormChangeSubscription = this.settingsForm.valueChanges.subscribe(() => {
-            this.saveSettingsToStorage();
+            this.saveSettingsToPreferences();
         });
     }
 
-    async saveSettingsToStorage(): Promise<void> {
+    async saveSettingsToPreferences(): Promise<void> {
         if (this.settingsForm.valid) {
             const settings: ISettings = Object.assign(this.retrievedSettings, this.settingsForm.value);
 
-            this.storageService.saveSettingsToStorage(settings).then(() => {
+            this.preferencesService.saveSettingsToPreferences(settings).then(() => {
                 this.themeService.applyTheme();
             });
         }
     }
 
-    async retrieveSettingsFromStorage(): Promise<void> {
-        this.retrievedSettings = await this.storageService.retrieveSettingsFromStorage();
+    async retrieveSettingsFromPreferences(): Promise<void> {
+        this.retrievedSettings = await this.preferencesService.retrieveSettingsFromPreferences();
 
         Object.keys(this.settingsForm.controls).forEach(key => {
             if (this.retrievedSettings.hasOwnProperty(key)) {
@@ -78,7 +78,7 @@ export class UiPage implements OnInit {
         this.retrievedSettings.hideOverviewHelperTextGeneral = false;
         this.retrievedSettings.hideOverviewHelperTextMenuBar = false;
 
-        this.storageService.saveSettingsToStorage(this.retrievedSettings);
+        this.preferencesService.saveSettingsToPreferences(this.retrievedSettings);
         this.router.navigate(['tabs/overview']);
     }
 

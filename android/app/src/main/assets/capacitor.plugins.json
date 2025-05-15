@@ -24,7 +24,7 @@
 		"classpath": "com.capacitorjs.plugins.splashscreen.SplashScreenPlugin"
 	},
 	{
-		"pkg": "@capacitor/storage",
-		"classpath": "com.capacitorjs.plugins.storage.StoragePlugin"
+		"pkg": "@capacitor/preferences",
+		"classpath": "com.capacitorjs.plugins.preferences.PreferencesPlugin"
 	}
 ]

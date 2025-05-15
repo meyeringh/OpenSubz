@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Storage } from '@capacitor/storage';
+import { Preferences } from '@capacitor/preferences';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { ISubscription } from '../tab-overview/Interfaces/subscriptionInterface';
 import { ISettings } from '../tab-settings/Interfaces/settingsInterface';
@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Injectable({
     providedIn: 'root'
 })
-export class StorageService {
+export class PreferencesService {
     defaultSettings: ISettings = {
         hideOverviewHelperTextGeneral: false,
         hideOverviewHelperTextMenuBar: false
@@ -19,8 +19,8 @@ export class StorageService {
         private toastController: ToastController,
         private translateService: TranslateService) { }
 
-    async retrieveSubscriptionsFromStorage(): Promise<ISubscription[]> {
-        const entries = await Storage.get({ key: 'subscriptions' });
+    async retrieveSubscriptionsFromPreferences(): Promise<ISubscription[]> {
+        const entries = await Preferences.get({ key: 'subscriptions' });
         if (entries.value) {
             return JSON.parse(entries.value);
         } else {
@@ -28,15 +28,15 @@ export class StorageService {
         }
     }
 
-    async saveSubscriptionsToStorage(entries: ISubscription[]) {
-        await Storage.set({
+    async saveSubscriptionsToPreferences(entries: ISubscription[]) {
+        await Preferences.set({
             key: 'subscriptions',
             value: JSON.stringify(entries)
         });
     }
 
-    async retrieveSettingsFromStorage(): Promise<ISettings> {
-        const settingsString = await Storage.get({ key: 'settings' });
+    async retrieveSettingsFromPreferences(): Promise<ISettings> {
+        const settingsString = await Preferences.get({ key: 'settings' });
         if (settingsString.value) {
             return JSON.parse(settingsString.value);
         } else {
@@ -44,16 +44,16 @@ export class StorageService {
         }
     }
 
-    async saveSettingsToStorage(settings: ISettings) {
-        await Storage.set({
+    async saveSettingsToPreferences(settings: ISettings) {
+        await Preferences.set({
             key: 'settings',
             value: JSON.stringify(settings)
         });
     }
 
     async getAllData(): Promise<string> {
-        const entries = await this.retrieveSubscriptionsFromStorage();
-        const set = await this.retrieveSettingsFromStorage();
+        const entries = await this.retrieveSubscriptionsFromPreferences();
+        const set = await this.retrieveSettingsFromPreferences();
 
         const backup = {
             subscriptions: entries,
@@ -92,7 +92,15 @@ export class StorageService {
                 directory: Directory.Documents,
                 encoding: Encoding.UTF8
             }).then((fileReadResult) => {
-                this.restoreAllData(fileReadResult.data, mergeWithCurrent);
+                if (typeof fileReadResult.data === 'string') {
+                    this.restoreAllData(fileReadResult.data, mergeWithCurrent);
+                } else {
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                        this.restoreAllData(reader.result as string, mergeWithCurrent);
+                    };
+                    reader.readAsText(fileReadResult.data);
+                }
             });
 
             this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_SUCCESS').subscribe(RESTORE_BACKUP_SUCCESS => {
@@ -181,7 +189,7 @@ export class StorageService {
 
             // Merge current subscriptions with backup based on id
             if (mergeWithCurrent) {
-                const currentSubscriptions = await this.retrieveSubscriptionsFromStorage();
+                const currentSubscriptions = await this.retrieveSubscriptionsFromPreferences();
 
                 for (const currentSubscription of currentSubscriptions) {
                     // Check if subscription with same id is present in backup and current subscriptions
@@ -222,8 +230,8 @@ export class StorageService {
                 }
             }
 
-            this.saveSubscriptionsToStorage(subscriptions);
-            this.saveSettingsToStorage(settings);
+            this.saveSubscriptionsToPreferences(subscriptions);
+            this.saveSettingsToPreferences(settings);
 
             this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_SUCCESS').subscribe(RESTORE_BACKUP_SUCCESS => {
                 this.toastMessage(RESTORE_BACKUP_SUCCESS);

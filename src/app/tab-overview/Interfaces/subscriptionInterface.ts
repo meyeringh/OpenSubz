@@ -1,4 +1,4 @@
-// Don't forget to apply changes to the validation in storage.service.restoreAllData() corresponding to the changes here
+// Don't forget to apply changes to the validation in preferences.service.restoreAllData() corresponding to the changes here
 export interface ISubscription {
     id: number; // unique, 12 char long
     name: string;

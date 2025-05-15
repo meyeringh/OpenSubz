@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LocalNotifications, LocalNotificationSchema } from '@capacitor/local-notifications';
-import { StorageService } from './storage.service';
+import { PreferencesService } from './preferences.service';
 import { ISubscription } from '../tab-overview/Interfaces/subscriptionInterface';
 import { TranslateService } from '@ngx-translate/core';
 import { NextCancelationPeriodDeadlinePipe } from '../tab-overview/Pipes/next-cancelation-period-deadline.pipe';
@@ -15,13 +15,13 @@ import { formatDate } from '@angular/common';
 export class NotificationService {
 
   constructor(
-    private storageService: StorageService,
+    private preferencesService: PreferencesService,
     private translateService: TranslateService,
     private nextCancelationPeriodDeadlinePipe: NextCancelationPeriodDeadlinePipe,
     private notificationTimeForNextCancelationPeriodDeadline: NotificationTimeForNextCancelationPeriodDeadlinePipe) { }
 
   async scheduleNotifications() {
-    const subscriptions: ISubscription[] = await this.storageService.retrieveSubscriptionsFromStorage();
+    const subscriptions: ISubscription[] = await this.preferencesService.retrieveSubscriptionsFromPreferences();
 
     LocalNotifications.getPending().then(pending => {
 

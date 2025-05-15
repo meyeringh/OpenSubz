@@ -3,7 +3,7 @@ import { ModalController, AlertController, IonInput } from '@ionic/angular/stand
 import { Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ISettings } from '../../../tab-settings/Interfaces/settingsInterface';
 import { ISubscription } from '../../Interfaces/subscriptionInterface';
-import { StorageService } from 'src/app/Services/storage.service';
+import { PreferencesService } from 'src/app/Services/preferences.service';
 import { TranslateService } from '@ngx-translate/core';
 import { billingIntervals } from '../../BILLING_INTERVALS';
 import { subscriptionColors } from '../../SUBSCRIPTION_COLORS';
@@ -33,7 +33,7 @@ export class ModalAddSubscriptionComponent implements OnInit {
         public alertController: AlertController,
         public modalController: ModalController,
         private formBuilder: UntypedFormBuilder,
-        private storageService: StorageService,
+        private preferencesService: PreferencesService,
         public translateService: TranslateService) {
         this.subscriptionForm = this.formBuilder.group({
             name: ['', Validators.required],
@@ -56,7 +56,7 @@ export class ModalAddSubscriptionComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.retrieveSettingsFromStorage().then(() => {
+        this.retrieveSettingsFromPreferences().then(() => {
             if (this.existingSubscription) {
                 // Update form to existing subscription
                 this.fillFormWithExistingSubscription();
@@ -136,8 +136,8 @@ export class ModalAddSubscriptionComponent implements OnInit {
         this.modalController.dismiss();
     }
 
-    async retrieveSettingsFromStorage() {
-        this.retrievedSettings = await this.storageService.retrieveSettingsFromStorage();
+    async retrieveSettingsFromPreferences() {
+        this.retrievedSettings = await this.preferencesService.retrieveSettingsFromPreferences();
     }
 
     fillFormWithExistingSubscription(): void {

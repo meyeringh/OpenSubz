@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { StorageService } from 'src/app/Services/storage.service';
+import { PreferencesService } from 'src/app/Services/preferences.service';
 import { ThemeService } from 'src/app/Services/theme.service';
 import { ISettings } from '../Interfaces/settingsInterface';
 import { currencies } from './CURRENCIES';
@@ -25,7 +25,7 @@ export class RegionPage implements OnInit {
 
     constructor(
         private formBuilder: UntypedFormBuilder,
-        private storageService: StorageService,
+        private preferencesService: PreferencesService,
         public themeService: ThemeService) {
         this.settingsForm = this.formBuilder.group({
             currency: this.currencyList[0],
@@ -38,7 +38,7 @@ export class RegionPage implements OnInit {
     }
 
     ionViewWillEnter() {
-        this.retrieveSettingsFromStorage().then(() => {
+        this.retrieveSettingsFromPreferences().then(() => {
             this.listenForSettingsFormChanges();
         });
     }
@@ -49,22 +49,22 @@ export class RegionPage implements OnInit {
 
     listenForSettingsFormChanges(): void {
         this.settingsFormChangeSubscription = this.settingsForm.valueChanges.subscribe(() => {
-            this.saveSettingsToStorage();
+            this.saveSettingsToPreferences();
         });
     }
 
-    async saveSettingsToStorage(): Promise<void> {
+    async saveSettingsToPreferences(): Promise<void> {
         if (this.settingsForm.valid) {
             const settings: ISettings = Object.assign(this.retrievedSettings, this.settingsForm.value);
 
-            this.storageService.saveSettingsToStorage(settings).then(() => {
+            this.preferencesService.saveSettingsToPreferences(settings).then(() => {
                 this.themeService.applyTheme();
             });
         }
     }
 
-    async retrieveSettingsFromStorage(): Promise<void> {
-        this.retrievedSettings = await this.storageService.retrieveSettingsFromStorage();
+    async retrieveSettingsFromPreferences(): Promise<void> {
+        this.retrievedSettings = await this.preferencesService.retrieveSettingsFromPreferences();
 
         Object.keys(this.settingsForm.controls).forEach(key => {
             if (this.retrievedSettings.hasOwnProperty(key)) {
