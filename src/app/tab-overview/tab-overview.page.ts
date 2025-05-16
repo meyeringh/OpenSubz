@@ -9,7 +9,7 @@ import { billingIntervals } from './BILLING_INTERVALS';
 import { NotificationService } from '../Services/notification.service';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { addIcons } from "ionicons";
-import { swapHorizontal, search, filter, add, closeOutline } from "ionicons/icons";
+import { swapHorizontal, swapVertical, search, filter, add, closeOutline } from "ionicons/icons";
 
 @Component({
     selector: 'app-tab-overview',
@@ -35,7 +35,14 @@ export class TabOverviewPage {
         public preferencesService: PreferencesService,
         public translateService: TranslateService,
         public notificationService: NotificationService) {
-        addIcons({ swapHorizontal, search, filter, add, closeOutline });
+        addIcons({
+            'swap-horizontal': swapHorizontal,
+            'swap-vertical': swapVertical,
+            'search':        search,
+            'filter':        filter,
+            'add':           add,
+            'close-outline': closeOutline
+        });
     }
 
     // Gets fired every page view so that settings which were made during runtime, etc. are immediately there

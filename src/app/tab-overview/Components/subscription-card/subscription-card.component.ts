@@ -26,7 +26,11 @@ export class SubscriptionCardComponent {
         private nextCancelationPeriodDeadlinePipe: NextCancelationPeriodDeadlinePipe,
         private notificationTimeForNextCancelationPeriodDeadlinePipe: NotificationTimeForNextCancelationPeriodDeadlinePipe,
         public translateService: TranslateService) {
-        addIcons({ card, warning, notifications });
+        addIcons({
+            'card':          card,
+            'warning':       warning,
+            'notifications': notifications
+        });
     }
 
     explainNextBilling(event: Event, subscription: ISubscription) {

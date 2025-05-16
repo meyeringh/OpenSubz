@@ -11,7 +11,10 @@ import { list, settings } from "ionicons/icons";
 export class TabsPage {
 
     constructor() {
-        addIcons({ list, settings });
+        addIcons({
+            'list':     list,
+            'settings': settings
+        });
     }
 
 }

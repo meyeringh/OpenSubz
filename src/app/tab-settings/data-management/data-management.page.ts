@@ -22,7 +22,11 @@ export class DataManagementPage implements OnInit {
         public translateService: TranslateService,
         private platform: Platform,
     ) {
-        addIcons({ arrowBack, archive, refresh });
+        addIcons({
+            'arrow-back': arrowBack,
+            'archive':    archive,
+            'refresh':    refresh
+        });
     }
 
     ngOnInit() {

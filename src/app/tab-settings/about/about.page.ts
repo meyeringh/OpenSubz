@@ -17,7 +17,7 @@ export class AboutPage implements OnInit {
     constructor(
         private platform: Platform
     ) {
-        addIcons({ arrowBack });
+        addIcons({ 'arrow-back': arrowBack });
     }
 
     ngOnInit() {

@@ -31,7 +31,11 @@ export class RegionPage implements OnInit {
             currency: this.currencyList[0],
             dateFormat: this.dateFormatList[0],
         });
-        addIcons({ arrowBack, cash, calendar });
+        addIcons({
+            'arrow-back': arrowBack,
+            'cash':       cash,
+            'calendar':   calendar
+        });
     }
 
     ngOnInit() {

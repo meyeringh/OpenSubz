@@ -14,7 +14,7 @@ export class LicensePage implements OnInit {
     licenseText = licenseText;
 
     constructor() {
-        addIcons({ arrowBack });
+        addIcons({ 'arrow-back': arrowBack });
     }
 
     ngOnInit() {

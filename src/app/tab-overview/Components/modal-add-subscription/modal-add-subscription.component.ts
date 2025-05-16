@@ -52,7 +52,10 @@ export class ModalAddSubscriptionComponent implements OnInit {
             cancelationPeriodInterval: ['MONTHS'],
             notificationBeforeCancelationPeriodInDays: [null]
         });
-        addIcons({ arrowBack, save });
+        addIcons({
+            'arrow-back': arrowBack,
+            'save':       save
+        });
     }
 
     ngOnInit() {

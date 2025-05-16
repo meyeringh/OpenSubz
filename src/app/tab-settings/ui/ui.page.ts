@@ -30,7 +30,12 @@ export class UiPage implements OnInit {
             forceDarkMode: false,
             notificationBeforeCancelationPeriodInDays: null
         });
-        addIcons({ arrowBack, moon, calendar, helpBuoy });
+        addIcons({
+            'arrow-back': arrowBack,
+            'moon':       moon,
+            'calendar':   calendar,
+            'help-buoy':  helpBuoy
+        });
     }
 
     ngOnInit() {

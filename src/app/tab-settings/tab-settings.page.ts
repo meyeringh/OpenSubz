@@ -12,7 +12,13 @@ import { IonRouterLink } from "@ionic/angular/standalone";
 export class TabSettingsPage {
 
     constructor() {
-        addIcons({ easel, globe, documents, documentText, informationCircle });
+        addIcons({
+            'easel':              easel,
+            'globe':              globe,
+            'documents':          documents,
+            'document-text':      documentText,
+            'information-circle': informationCircle
+        });
     }
 
 }
