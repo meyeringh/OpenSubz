@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TabOverviewPage } from './tab-overview.page';
@@ -84,6 +84,7 @@ import { IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonIcon, IonCon
         NextCancelationPeriodDeadlinePipe,
         CostByBillingIntervalPipe,
         NotificationTimeForNextCancelationPeriodDeadlinePipe
-    ]
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class TabOverviewPageModule { }
