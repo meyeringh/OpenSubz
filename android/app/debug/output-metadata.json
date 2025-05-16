@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.flasskamp.openSubz",
+  "applicationId": "com.flasskamp.OpenSubz",
   "variantName": "debug",
   "elements": [
     {

@@ -1,6 +1,6 @@
 {
-	"appId": "com.flasskamp.openSubz",
-	"appName": "openSubz",
+	"appId": "com.flasskamp.OpenSubz",
+	"appName": "OpenSubz",
 	"bundledWebRuntime": false,
 	"npmClient": "npm",
 	"webDir": "www",

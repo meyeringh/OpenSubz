@@ -37,7 +37,7 @@
             },
             "ADD_SUBSCRIPTION_HELPER": "Aggiungi nuovi abbonamenti.",
             "MENU_BUTTONS_HELPER_HEADER": "Aiuto per la barra di menù",
-            "NO_SUBSCRIPTION_TEXT": "Gli abbonamenti possono essere aggiunti usando il pulsante più in alto a destra dello schermo. Le altre funzioni nella barra del menù sono disabilitate finché non sono stati aggiunti due abbonamenti. Buon divertimento con openSubz!",
+            "NO_SUBSCRIPTION_TEXT": "Gli abbonamenti possono essere aggiunti usando il pulsante più in alto a destra dello schermo. Le altre funzioni nella barra del menù sono disabilitate finché non sono stati aggiunti due abbonamenti. Buon divertimento con OpenSubz!",
             "NO_SUBSCRIPTION_HEADER": "Ciao!",
             "CALENDAR_INTERVALS": {
                 "YEARS": "anni",
@@ -66,7 +66,7 @@
         },
         "SETTINGS": {
             "RESTORE_BACKUP_SUCCESS": "I dati sono stati ripristinati con successo!",
-            "RESTORE_BACKUP_ERROR_ANDROID": "Errore durante la lettura dei dati dal backup! Il file di backup Documents/openSubz-backup.json è presente?",
+            "RESTORE_BACKUP_ERROR_ANDROID": "Errore durante la lettura dei dati dal backup! Il file di backup Documents/OpenSubz-backup.json è presente?",
             "RESTORE_BACKUP_ERROR": "Errore durante la lettura dei dati dal backup!",
             "RESTORE_BACKUP_MERGE": "Unisci i dati attuali e il backup",
             "RESTORE_BACKUP_REPLACE": "Sostituisci i dati attuali con il backup",
@@ -108,7 +108,7 @@
     },
     "APP": {
         "SHORT_DESCRIPTION": "Applicazione rispettosa della vita privata per la gestione di abbonamenti e contratti con funzionalità di notifica.",
-        "NAME": "openSubz"
+        "NAME": "OpenSubz"
     },
     "NOTIFICATIONS": {
         "NOTIFICATION_BODY": "L’ultimo giorno per cancellare $NAME$ entro il suo periodo di cancellazione è il $DATE$. Dopo di che seguirà un’estensione del contratto.",

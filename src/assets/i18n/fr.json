@@ -12,7 +12,7 @@
             "SEARCH_HELPER": "Afficher seulement les abonnements où le texte de recherche correspond au nom ou à la description.",
             "CHANGE_CHOOSEN_BILLING_INTERVAL_HELPER": "Modifier l’intervalle affiché des frais d’abonnement entre annuellement, mensuellement, hebdomadairement et quotidiennement.",
             "MENU_BUTTONS_HELPER_HEADER": "Aide pour la barre de menu",
-            "NO_SUBSCRIPTION_TEXT": "Les abonnements peuvent être ajoutés en utilisant le bouton plus en haut à droite de l’écran. Les autres fonctions de la barre de menu sont désactivées jusqu’à ce que deux abonnements aient été ajoutés. Amusez-vous bien avec openSubz !",
+            "NO_SUBSCRIPTION_TEXT": "Les abonnements peuvent être ajoutés en utilisant le bouton plus en haut à droite de l’écran. Les autres fonctions de la barre de menu sont désactivées jusqu’à ce que deux abonnements aient été ajoutés. Amusez-vous bien avec OpenSubz !",
             "DAYS_UNTIL_NEXT_CANCELATION_PERIOD_DEADLINE_ON_HELPER": "jours avant la dernière annulation possible au cours de sa période le",
             "NOTIFICATION_BEFORE_CANCELATION_PERIOD_IN_DAYS": "Notification avant la période d’annulation en jours",
             "NOTIFICATION_BEFORE_CANCELATION_PERIOD_STARTS_ON": "Notification avant la période d’annulation au plus tôt le",
@@ -66,7 +66,7 @@
         },
         "SETTINGS": {
             "RESTORE_BACKUP_SUCCESS": "Les données ont été restaurées avec succès !",
-            "RESTORE_BACKUP_ERROR_ANDROID": "Erreur lors de la lecture des données de sauvegarde ! Le fichier de sauvegarde Documents/openSubz-backup.json est-il présent ?",
+            "RESTORE_BACKUP_ERROR_ANDROID": "Erreur lors de la lecture des données de sauvegarde ! Le fichier de sauvegarde Documents/OpenSubz-backup.json est-il présent ?",
             "RESTORE_BACKUP_ERROR": "Erreur lors de la lecture des données de la sauvegarde !",
             "RESTORE_BACKUP_MERGE": "Fusionner les données actuelles et la sauvegarde",
             "RESTORE_BACKUP_REPLACE": "Remplacer les données actuelles par une sauvegarde",
@@ -108,7 +108,7 @@
     },
     "APP": {
         "SHORT_DESCRIPTION": "Application respectueuse de la vie privée pour la gestion des abonnements et des contrats avec fonction de notification.",
-        "NAME": "openSubz"
+        "NAME": "OpenSubz"
     },
     "NOTIFICATIONS": {
         "NOTIFICATION_BODY": "Le dernier jour pour annuler $NAME$ pendant sa période d’annulation est le $DATE$. Après cela, le contrat sera prolongé.",

@@ -1,6 +1,6 @@
 {
     "APP": {
-        "NAME": "openSubz",
+        "NAME": "OpenSubz",
         "SHORT_DESCRIPTION": "Privacy-friendly app for managing subscriptions and contracts with notification feature."
     },
     "GENERAL": {
@@ -47,7 +47,7 @@
                 "YEARS": "Years"
             },
             "NO_SUBSCRIPTION_HEADER": "Hello there!",
-            "NO_SUBSCRIPTION_TEXT": "Subscriptions can be added using the plus button on the upper right side of the display. The other features in the menu bar are disabled until two subscriptions have been added. Have fun with openSubz!",
+            "NO_SUBSCRIPTION_TEXT": "Subscriptions can be added using the plus button on the upper right side of the display. The other features in the menu bar are disabled until two subscriptions have been added. Have fun with OpenSubz!",
             "MENU_BUTTONS_HELPER_HEADER": "Help for menu bar",
             "CHANGE_CHOOSEN_BILLING_INTERVAL_HELPER": "Change the displayed interval of subscription costs between yearly, monthly, weekly and daily.",
             "SEARCH_HELPER": "Show only subscriptions where the search text matches with name or description.",
@@ -106,7 +106,7 @@
             "RESTORE_BACKUP_REPLACE": "Replace current data by backup",
             "RESTORE_BACKUP_MERGE": "Merge current data and backup",
             "RESTORE_BACKUP_ERROR": "Error while reading data from backup!",
-            "RESTORE_BACKUP_ERROR_ANDROID": "Error while reading data from backup!. Is the backup file Documents/openSubz-backup.json present?",
+            "RESTORE_BACKUP_ERROR_ANDROID": "Error while reading data from backup!. Is the backup file Documents/OpenSubz-backup.json present?",
             "RESTORE_BACKUP_SUCCESS": "The data has been restored successfully!"
         }
     },

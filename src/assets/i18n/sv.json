@@ -68,7 +68,7 @@
             },
             "DESCRIPTION": "Beskrivning",
             "TILE_COLOR": "Färg på rutor",
-            "NO_SUBSCRIPTION_TEXT": "Prenumerationer kan läggas till med plusknappen upp till på höger sida. Övriga funktioner i menyn är avaktiverade innan två prenumerationer har lagts till. Ha så kul med openSubz!",
+            "NO_SUBSCRIPTION_TEXT": "Prenumerationer kan läggas till med plusknappen upp till på höger sida. Övriga funktioner i menyn är avaktiverade innan två prenumerationer har lagts till. Ha så kul med OpenSubz!",
             "REMOVE_SUBSCRIPTION_ALERT_HEADER": "Är du säker?"
         },
         "SETTINGS": {
@@ -102,12 +102,12 @@
             "RESTORE_BACKUP_REPLACE": "Återställ nuvarandedata från säkerhetskopiering",
             "RESTORE_BACKUP_MERGE": "Kombinera nuvarande data med säkerhetskopiering",
             "RESTORE_BACKUP_ERROR": "Fel vid återläsning av säkerhetskopiering!",
-            "RESTORE_BACKUP_ERROR_ANDROID": "Fel vid återläsning av säkerhetskopiering. Är säkerhetskopieringsfilen Documents/openSubz-backup.json tillgänglig?",
+            "RESTORE_BACKUP_ERROR_ANDROID": "Fel vid återläsning av säkerhetskopiering. Är säkerhetskopieringsfilen Documents/OpenSubz-backup.json tillgänglig?",
             "RESTORE_BACKUP_SUCCESS": "Säkerhetskopieringen lyckades!"
         }
     },
     "APP": {
-        "NAME": "openSubz",
+        "NAME": "OpenSubz",
         "SHORT_DESCRIPTION": "Integritets-vänlig app för att hantera prenumerationstjänster och andra åtaganden med påminnelsefunktion."
     },
     "NOTIFICATIONS": {

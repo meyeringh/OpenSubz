@@ -1,14 +1,14 @@
-# openSubz
+# OpenSubz
 
 Subscription and contract management app for Android based on Ionic and Angular. Written in TypeScript.
 
-<a href="https://hosted.weblate.org/engage/openSubz/">
-  <img src="https://hosted.weblate.org/widgets/openSubz/-/openSubz/svg-badge.svg" alt="Übersetzungsstatus" />
+<a href="https://hosted.weblate.org/engage/OpenSubz/">
+  <img src="https://hosted.weblate.org/widgets/OpenSubz/-/OpenSubz/svg-badge.svg" alt="Übersetzungsstatus" />
 </a>
 
 <p align="center">
-  <a href="https://epinez.codeberg.page/projects/openSubz/index.html"><img src="https://codeberg.org/epinez/pages/raw/branch/main/try_on_codeberg_pages.png" alt="Try it on Codeberg Pages" height="75"></a>
-  <a href="https://f-droid.org/packages/com.flasskamp.openSubz"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="75"></a>
+  <a href="https://epinez.codeberg.page/projects/OpenSubz/index.html"><img src="https://codeberg.org/epinez/pages/raw/branch/main/try_on_codeberg_pages.png" alt="Try it on Codeberg Pages" height="75"></a>
+  <a href="https://f-droid.org/packages/com.flasskamp.OpenSubz"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="75"></a>
 </p>
 
 <p align="center">
@@ -49,8 +49,8 @@ Subscription and contract management app for Android based on Ionic and Angular.
 ### Build the app
 
 ```
-git clone https://codeberg.org/epinez/openSubz.git
-cd openSubz
+git clone https://codeberg.org/epinez/OpenSubz.git
+cd OpenSubz
 npm i
 ionic build --prod
 npx cap sync
@@ -61,25 +61,25 @@ Now you can run a build within Android Studio. You could also run it in a browse
 
 ## Contributing
 
-Feel free to help me improving openSubz in any possible way! These are some examples of how you could help:
+Feel free to help me improving OpenSubz in any possible way! These are some examples of how you could help:
 
-- **File an issue**: Did you notice a bug while using openSubz or do you have some ideas of how we could enhance it? [File an issue](https://codeberg.org/epinez/openSubz/issues) and I will notice it!
-- **Tell others about openSubz**: I wanted to create something which not only helps me but also others. Everybody knows the struggle of forgetting to cancel a contract in time. I want that to be a problem of the past, so please help me to help others and tell them about openSubz!
-- **Translate**: openSubz is not (fully) localized in your language? You are welcome to help. Localization is handled on [Weblate](https://hosted.weblate.org/projects/openSubz/openSubz).
+- **File an issue**: Did you notice a bug while using OpenSubz or do you have some ideas of how we could enhance it? [File an issue](https://codeberg.org/epinez/OpenSubz/issues) and I will notice it!
+- **Tell others about OpenSubz**: I wanted to create something which not only helps me but also others. Everybody knows the struggle of forgetting to cancel a contract in time. I want that to be a problem of the past, so please help me to help others and tell them about OpenSubz!
+- **Translate**: OpenSubz is not (fully) localized in your language? You are welcome to help. Localization is handled on [Weblate](https://hosted.weblate.org/projects/OpenSubz/OpenSubz).
 - **Start coding**: Are you familiar with Typescript, HTML, SCSS, Angular and or Ionic? Nice! Please file issues first and reference to them in the commit like `Fixes bad behaviour xy, closes #1`. If you want to contribute new features please wait for my response because I want to keep the app as clean and straightforward as possible. :-)
 
 ## Donate
 
-If you want to support the development by a donation, you are very welcome to do so. That would allow me to invest more time into the development as I'm a student and working on openSubz in my free time.
+If you want to support the development by a donation, you are very welcome to do so. That would allow me to invest more time into the development as I'm a student and working on OpenSubz in my free time.
 
 <a href="https://liberapay.com/epinez/donate">
   <img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg">
 </a>
 
-You can also contact me via [E-Mail](mailto:openSubz@flasskamp.com).
+You can also contact me via [E-Mail](mailto:OpenSubz@flasskamp.com).
 
 ## Thanks to
 
-- [mondstern](https://codeberg.org/mondstern) for his beautiful acrylic painting of the openSubz logo
-- All translators which helped localizing openSubz via Weblate. I don't mention each one specifically because that's so much work :-)
+- [mondstern](https://codeberg.org/mondstern) for his beautiful acrylic painting of the OpenSubz logo
+- All translators which helped localizing OpenSubz via Weblate. I don't mention each one specifically because that's so much work :-)
 - All donators!

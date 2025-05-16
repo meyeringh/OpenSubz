@@ -13,7 +13,7 @@ about: "This template is only for preparing new releases."
 - [ ] (Optional) Update Readme
 - [ ] Updated version in `package.json` and `android/app/build.gradle` (versionCode + versionName)
 - [ ] Create a tagged release for *main* like `vX.X.X`
-- [ ] Build openSubz locally
+- [ ] Build OpenSubz locally
 - [ ] Update https://epinez.codeberg.page/
 
 ## F-Droid
