@@ -52,7 +52,6 @@
     "@types/jasmine": "~5.1.8",
     "@types/jasminewd2": "~2.0.9",
     "@types/node": "^15.6.0",
-    "codelyzer": "^6.0.2",
     "eslint": "^9.26.0",
     "jasmine-core": "^5.7.1",
     "jasmine-spec-reporter": "~7.0.0",
