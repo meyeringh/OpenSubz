@@ -1,0 +1,14 @@
+{
+  "files": [
+    { "pattern": "src/**/*.spec.ts", "type": "module" }
+  ],
+  "helpers": [
+    { "pattern": "src/test.ts", "type": "module" },
+    { "pattern": "src/polyfills.ts", "type": "module" }
+  ],
+  "extensions": {
+    "ts": "ts-node/register"
+  },
+  "open": false,
+  "watch": false
+}
