@@ -3,7 +3,7 @@
 	"appName": "OpenSubz",
 	"bundledWebRuntime": false,
 	"npmClient": "npm",
-	"webDir": "www",
+	"webDir": "www/browser",
 	"plugins": {
 		"SplashScreen": {
 			"backgroundColor": "#1f1f1f",
