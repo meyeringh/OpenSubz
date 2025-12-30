@@ -5,7 +5,7 @@ import { UiPageRoutingModule } from './ui-routing.module';
 
 import { UiPage } from './ui.page';
 import { TranslateModule } from '@ngx-translate/core';
-import { IonHeader, IonToolbar, IonButtons, IonButton, IonIcon, IonTitle, IonContent, IonList, IonItem, IonLabel, IonNote, IonCheckbox, IonInput } from "@ionic/angular/standalone";
+import { IonHeader, IonToolbar, IonButtons, IonButton, IonIcon, IonTitle, IonContent, IonList, IonItem, IonLabel, IonNote, IonCheckbox, IonInput, IonSelect, IonSelectOption } from "@ionic/angular/standalone";
 
 @NgModule({
     imports: [
@@ -26,7 +26,9 @@ import { IonHeader, IonToolbar, IonButtons, IonButton, IonIcon, IonTitle, IonCon
         IonLabel,
         IonNote,
         IonCheckbox,
-        IonInput
+        IonInput,
+        IonSelect,
+        IonSelectOption
     ],
     declarations: [UiPage]
 })

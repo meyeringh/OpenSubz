@@ -15,22 +15,12 @@
     <ion-list>
       <ion-item>
         <ion-icon slot="start" name="moon"></ion-icon>
-        <ion-label>
-          <h2>{{ 'TABS.SETTINGS.THEME_PREFERENCE' | translate }}</h2>
-        </ion-label>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-segment formControlName="themePreference" value="system">
-          <ion-segment-button value="system">
-            <ion-label>{{ 'TABS.SETTINGS.THEME_SYSTEM' | translate }}</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="light">
-            <ion-label>{{ 'TABS.SETTINGS.THEME_LIGHT' | translate }}</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="dark">
-            <ion-label>{{ 'TABS.SETTINGS.THEME_DARK' | translate }}</ion-label>
-          </ion-segment-button>
-        </ion-segment>
+        <ion-label>{{ 'TABS.SETTINGS.THEME_PREFERENCE' | translate }}</ion-label>
+        <ion-select cancelText="{{ 'GENERAL.CANCEL' | translate }}" okText="{{ 'GENERAL.OK' | translate }}" formControlName="themePreference">
+          <ion-select-option value="system">{{ 'TABS.SETTINGS.THEME_SYSTEM' | translate }}</ion-select-option>
+          <ion-select-option value="light">{{ 'TABS.SETTINGS.THEME_LIGHT' | translate }}</ion-select-option>
+          <ion-select-option value="dark">{{ 'TABS.SETTINGS.THEME_DARK' | translate }}</ion-select-option>
+        </ion-select>
       </ion-item>
 
       <ion-item>
