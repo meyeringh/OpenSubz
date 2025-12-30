@@ -1,6 +1,6 @@
 {
   "name": "OpenSubz",
-  "version": "1.4.0",
+  "version": "1.6.0",
   "author": "Richard Meyeringh",
   "scripts": {
     "ng": "ng",
