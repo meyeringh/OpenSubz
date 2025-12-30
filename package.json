@@ -7,8 +7,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "jasmine-browser-runner run --config jasmine-browser-runner.config.json",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -31,9 +30,7 @@
     "@ngx-translate/core": "^16.0.4",
     "@ngx-translate/http-loader": "^16.0.1",
     "@types/uuid": "^8.3.0",
-    "higher": "^1.0.5",
     "ionicons": "^6.0.0",
-    "or": "^0.2.0",
     "rxjs": "^7.5.0",
     "tslib": "^2.0.0",
     "typescript-eslint": "^8.32.0",
@@ -50,7 +47,6 @@
     "@ionic/angular-toolkit": "^12.2.0",
     "@ionic/cli": "^7.2.1",
     "@types/jasmine": "~5.1.8",
-    "@types/jasminewd2": "~2.0.9",
     "@types/node": "^15.6.0",
     "eslint": "^9.26.0",
     "jasmine-core": "^5.7.1",
