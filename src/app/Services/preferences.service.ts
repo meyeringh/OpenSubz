@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
+import { FilePicker } from '@capawesome/capacitor-file-picker';
+import { Share } from '@capacitor/share';
 import { ISubscription } from '../tab-overview/Interfaces/subscriptionInterface';
 import { ISettings } from '../tab-settings/Interfaces/settingsInterface';
 import { ToastController } from '@ionic/angular/standalone';
@@ -65,17 +67,25 @@ export class PreferencesService {
 
     async backupAllDataAndroid() {
         const backup = await this.getAllData();
+        const timestamp = new Date().toISOString().slice(0, 10);
+        const filename = `OpenSubz-backup-${timestamp}.json`;
 
         try {
-            await Filesystem.writeFile({
-                path: 'OpenSubz-backup.json',
+            const tempFile = await Filesystem.writeFile({
+                path: filename,
                 data: backup,
-                directory: Directory.Documents,
+                directory: Directory.Cache,
                 encoding: Encoding.UTF8
             });
 
+            await Share.share({
+                title: filename,
+                url: tempFile.uri,
+                dialogTitle: 'Save backup'
+            });
+
             this.translateService.get('TABS.SETTINGS.BACKUP_SUCCESS').subscribe(BACKUP_SUCCESS => {
-                this.toastMessage(BACKUP_SUCCESS + ' Documents/OpenSubz-backup.json');
+                this.toastMessage(BACKUP_SUCCESS);
             });
 
         } catch (e) {
@@ -85,32 +95,37 @@ export class PreferencesService {
         }
     }
 
-    async restoreAllDataAndroid(mergeWithCurrent?: boolean) {
+    async pickBackupFile(): Promise<string | null> {
         try {
-            await Filesystem.readFile({
-                path: 'OpenSubz-backup.json',
-                directory: Directory.Documents,
-                encoding: Encoding.UTF8
-            }).then((fileReadResult) => {
-                if (typeof fileReadResult.data === 'string') {
-                    this.restoreAllData(fileReadResult.data, mergeWithCurrent);
-                } else {
-                    const reader = new FileReader();
-                    reader.onload = () => {
-                        this.restoreAllData(reader.result as string, mergeWithCurrent);
-                    };
-                    reader.readAsText(fileReadResult.data);
-                }
+            const result = await FilePicker.pickFiles({
+                types: ['application/json'],
+                limit: 1,
+                readData: true
             });
 
-            this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_SUCCESS').subscribe(RESTORE_BACKUP_SUCCESS => {
-                this.toastMessage(RESTORE_BACKUP_SUCCESS);
-            });
+            if (result.files.length === 0) {
+                return null;
+            }
 
+            const file = result.files[0];
+
+            if (file.data) {
+                return atob(file.data);
+            } else if (file.path) {
+                const fileReadResult = await Filesystem.readFile({
+                    path: file.path,
+                    encoding: Encoding.UTF8
+                });
+                return typeof fileReadResult.data === 'string'
+                    ? fileReadResult.data
+                    : await new Response(fileReadResult.data).text();
+            }
+            return null;
         } catch (e) {
-            this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_ERROR_ANDROID').subscribe(RESTORE_BACKUP_ERROR_ANDROID => {
-                this.toastMessage(RESTORE_BACKUP_ERROR_ANDROID);
-            });
+            if ((e as Error).message?.includes('canceled') || (e as Error).message?.includes('cancelled')) {
+                return null;
+            }
+            throw e;
         }
     }
 

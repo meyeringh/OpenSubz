@@ -90,6 +90,20 @@ export class DataManagementPage implements OnInit {
     }
 
     async restoreAndroid(): Promise<void> {
+        let backupContent: string | null;
+        try {
+            backupContent = await this.preferencesService.pickBackupFile();
+        } catch (e) {
+            this.translateService.get('TABS.SETTINGS.RESTORE_BACKUP_ERROR_ANDROID').subscribe(msg => {
+                this.preferencesService.toastMessage(msg);
+            });
+            return;
+        }
+
+        if (!backupContent) {
+            return;
+        }
+
         const alertStrings: any = {};
 
         this.translateService.get('TABS.SETTINGS.RESTORE').subscribe(RESTORE => {
@@ -120,14 +134,14 @@ export class DataManagementPage implements OnInit {
                 }, {
                     text: alertStrings.restoreBackupReplace,
                     handler: () => {
-                        this.preferencesService.restoreAllDataAndroid().then(() => {
+                        this.preferencesService.restoreAllData(backupContent!).then(() => {
                             this.themeService.applyTheme();
                         });
                     }
                 }, {
                     text: alertStrings.restoreBackupMerge,
                     handler: () => {
-                        this.preferencesService.restoreAllDataAndroid(true).then(() => {
+                        this.preferencesService.restoreAllData(backupContent!, true).then(() => {
                             this.themeService.applyTheme();
                         });
                     }
