@@ -74,8 +74,10 @@
         "SETTINGS": {
             "SETTINGS": "Inställningar",
             "UI": "Användargränssnitt",
-            "FORCE_DARK_MODE": "Tving Mörkt-Läge",
-            "FORCE_DARK_MODE_HELPER": "Använd systemetstema som standard",
+            "THEME_PREFERENCE": "Tema",
+            "THEME_SYSTEM": "System",
+            "THEME_LIGHT": "Ljus",
+            "THEME_DARK": "Mörk",
             "CURRENCY": "Valuta",
             "DATE_FORMAT": "Datumformat",
             "SHOW_HELP_TEXTS_IN_OVERVIEW": "Visa hjälp i översikten igen",

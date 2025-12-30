@@ -9,21 +9,24 @@ export class ThemeService {
   constructor(public preferencesService: PreferencesService) { }
 
   applyTheme() {
-    if (window.navigator.userAgent.includes('AndroidDarkMode')) {
-      document.body.classList.add('dark');
-    }
-
     this.preferencesService.retrieveSettingsFromPreferences().then(settings => {
-      if (settings.hasOwnProperty('forceDarkMode')) {
-        if (settings.forceDarkMode) {
+      const themePreference = settings.themePreference || 'system';
+
+      switch (themePreference) {
+        case 'dark':
           document.body.classList.add('dark');
-        } else {
+          break;
+        case 'light':
+          document.body.classList.remove('dark');
+          break;
+        case 'system':
+        default:
           if (window.navigator.userAgent.includes('AndroidDarkMode')) {
             document.body.classList.add('dark');
           } else {
             document.body.classList.remove('dark');
           }
-        }
+          break;
       }
     });
   }

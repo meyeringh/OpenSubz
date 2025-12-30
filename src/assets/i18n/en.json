@@ -78,8 +78,10 @@
         "SETTINGS": {
             "SETTINGS": "Settings",
             "UI": "User interface",
-            "FORCE_DARK_MODE": "Force Dark-Mode",
-            "FORCE_DARK_MODE_HELPER": "Uses system theme by default",
+            "THEME_PREFERENCE": "Theme",
+            "THEME_SYSTEM": "System",
+            "THEME_LIGHT": "Light",
+            "THEME_DARK": "Dark",
             "CURRENCY": "Currency",
             "DATE_FORMAT": "Date format",
             "SHOW_HELP_TEXTS_IN_OVERVIEW": "Show help in the overview again",

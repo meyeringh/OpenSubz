@@ -93,8 +93,10 @@
             "SHOW_HELP_TEXTS_IN_OVERVIEW": "Mostra di nuovo l'aiuto nella panoramica",
             "DATE_FORMAT": "Formato della data",
             "CURRENCY": "Valuta",
-            "FORCE_DARK_MODE_HELPER": "Usa il tema di sistema per impostazione predefinita",
-            "FORCE_DARK_MODE": "Forza la modalità scura",
+            "THEME_PREFERENCE": "Tema",
+            "THEME_SYSTEM": "Sistema",
+            "THEME_LIGHT": "Chiaro",
+            "THEME_DARK": "Scuro",
             "UI": "Interfaccia utente",
             "SETTINGS": "Impostazioni"
         }

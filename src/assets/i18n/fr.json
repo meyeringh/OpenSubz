@@ -95,8 +95,10 @@
             "SETTINGS": "Paramètres",
             "REGION": "Région",
             "SHOW_HELP_TEXTS_IN_OVERVIEW_HELPER": "Restaure les textes d’aide et passe à la vue d’ensemble",
-            "FORCE_DARK_MODE_HELPER": "Utilise le thème du système par défaut",
-            "FORCE_DARK_MODE": "Forcer le mode sombre"
+            "THEME_PREFERENCE": "Thème",
+            "THEME_SYSTEM": "Système",
+            "THEME_LIGHT": "Clair",
+            "THEME_DARK": "Sombre"
         }
     },
     "GENERAL": {

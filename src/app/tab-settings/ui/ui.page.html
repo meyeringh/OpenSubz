@@ -16,10 +16,21 @@
       <ion-item>
         <ion-icon slot="start" name="moon"></ion-icon>
         <ion-label>
-          <h2>{{ 'TABS.SETTINGS.FORCE_DARK_MODE' | translate }}</h2>
-          <ion-note>{{ 'TABS.SETTINGS.FORCE_DARK_MODE_HELPER' | translate }}</ion-note>
+          <h2>{{ 'TABS.SETTINGS.THEME_PREFERENCE' | translate }}</h2>
         </ion-label>
-        <ion-checkbox name="forceDarkMode" formControlName="forceDarkMode" slot="end"></ion-checkbox>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-segment formControlName="themePreference" value="system">
+          <ion-segment-button value="system">
+            <ion-label>{{ 'TABS.SETTINGS.THEME_SYSTEM' | translate }}</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="light">
+            <ion-label>{{ 'TABS.SETTINGS.THEME_LIGHT' | translate }}</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="dark">
+            <ion-label>{{ 'TABS.SETTINGS.THEME_DARK' | translate }}</ion-label>
+          </ion-segment-button>
+        </ion-segment>
       </ion-item>
 
       <ion-item>

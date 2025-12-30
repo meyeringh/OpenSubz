@@ -78,8 +78,10 @@
         "SETTINGS": {
             "SETTINGS": "Einstellungen",
             "UI": "Benutzeroberfläche",
-            "FORCE_DARK_MODE": "Nachtmodus erzwingen",
-            "FORCE_DARK_MODE_HELPER": "Benutzt standardmäßig das System-Theme",
+            "THEME_PREFERENCE": "Design",
+            "THEME_SYSTEM": "System",
+            "THEME_LIGHT": "Hell",
+            "THEME_DARK": "Dunkel",
             "CURRENCY": "Währung",
             "DATE_FORMAT": "Datumsformat",
             "SHOW_HELP_TEXTS_IN_OVERVIEW": "Hilfe in der Übersicht wieder anzeigen",

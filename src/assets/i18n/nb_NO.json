@@ -31,8 +31,10 @@
             "UI": "Brukergrensesnitt",
             "SETTINGS": "Innstillinger",
             "REGION": "Region",
-            "FORCE_DARK_MODE": "Påtving mørk drakt",
-            "FORCE_DARK_MODE_HELPER": "Bruker systemdrakt som forvalg"
+            "THEME_PREFERENCE": "Drakt",
+            "THEME_SYSTEM": "System",
+            "THEME_LIGHT": "Lys",
+            "THEME_DARK": "Mørk"
         },
         "OVERVIEW": {
             "SORT_HELPER": "Sorter abonnementer etter navn, kostnad, neste fakturering eller neste kontraktsutvidelse.",

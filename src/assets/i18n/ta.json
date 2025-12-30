@@ -76,10 +76,12 @@
             }
         },
         "SETTINGS": {
-            "FORCE_DARK_MODE_HELPER": "இயல்பாக கணினி கருப்பொருளைப் பயன்படுத்துகிறது",
             "SETTINGS": "அமைப்புகள்",
             "UI": "பயனர் இடைமுகம்",
-            "FORCE_DARK_MODE": "இருண்ட-பயன்முறையை கட்டாயப்படுத்துங்கள்",
+            "THEME_PREFERENCE": "கருப்பொருள்",
+            "THEME_SYSTEM": "அமைப்பு",
+            "THEME_LIGHT": "ஒளி",
+            "THEME_DARK": "இருண்ட",
             "CURRENCY": "நாணயம்",
             "DATE_FORMAT": "தேதி வடிவம்",
             "SHOW_HELP_TEXTS_IN_OVERVIEW": "கண்ணோட்டத்தில் மீண்டும் உதவியைக் காட்டு",

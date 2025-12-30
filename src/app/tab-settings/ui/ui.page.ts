@@ -27,7 +27,7 @@ export class UiPage implements OnInit {
         private router: Router
     ) {
         this.settingsForm = this.formBuilder.group({
-            forceDarkMode: false,
+            themePreference: 'system',
             notificationBeforeCancelationPeriodInDays: null
         });
         addIcons({
