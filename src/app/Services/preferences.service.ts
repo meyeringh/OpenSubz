@@ -110,7 +110,9 @@ export class PreferencesService {
             const file = result.files[0];
 
             if (file.data) {
-                return atob(file.data);
+                const binary = atob(file.data);
+                const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+                return new TextDecoder().decode(bytes);
             } else if (file.path) {
                 const fileReadResult = await Filesystem.readFile({
                     path: file.path,
