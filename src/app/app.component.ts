@@ -13,6 +13,7 @@ import { TabHideService } from './Services/tab-hide.service';
 import { Router } from '@angular/router';
 import { ThemeService } from './Services/theme.service';
 import { NotificationService } from './Services/notification.service';
+import { NextcloudService } from './Services/nextcloud.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -29,12 +30,14 @@ export class AppComponent {
         private router: Router,
         public notificationService: NotificationService,
         public themeService: ThemeService,
+        private nextcloudService: NextcloudService,
     ) { this.initializeApp(); }
 
     initializeApp() {
         this.platform.ready().then(() => {
             this.setupInternationalisation().subscribe(() => { this.notificationService.scheduleNotifications(); });
             this.themeService.applyTheme();
+            this.syncWithNextcloud();
 
             this.platform.backButton.subscribeWithPriority(0, () => {
                 const url = this.router.url;
@@ -45,11 +48,24 @@ export class AppComponent {
                     || url === '/tabs/settings/region'
                     || url === '/tabs/settings/data-management'
                     || url === '/tabs/settings/license'
-                    || url === '/tabs/settings/about') {
+                    || url === '/tabs/settings/about'
+                    || url === '/tabs/settings/nextcloud') {
                     this.router.navigate(['/tabs/settings']);
                 }
             });
         });
+    }
+
+    async syncWithNextcloud() {
+        console.log('App startup: checking Nextcloud sync...');
+        await this.nextcloudService.loadConfig();
+        if (this.nextcloudService.isConfigured()) {
+            console.log('App startup: Nextcloud configured, syncing...');
+            await this.nextcloudService.sync();
+            console.log('App startup: Nextcloud sync complete');
+        } else {
+            console.log('App startup: Nextcloud not configured');
+        }
     }
 
     setupInternationalisation(): Observable<any> {

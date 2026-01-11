@@ -109,7 +109,31 @@
             "RESTORE_BACKUP_MERGE": "Aktuelle Daten mit Datensicherung zusammenführen",
             "RESTORE_BACKUP_ERROR": "Fehler beim Einlesen der Daten aus der Datensicherung!",
             "RESTORE_BACKUP_ERROR_ANDROID": "Fehler beim Zurückspielen der Datensicherung. Ist die Datensicherung-Datei Documents/OpenSubz-backup.json vorhanden?",
-            "RESTORE_BACKUP_SUCCESS": "Die Daten wurden erfolgreich wiederhergestellt!"
+            "RESTORE_BACKUP_SUCCESS": "Die Daten wurden erfolgreich wiederhergestellt!",
+            "NEXTCLOUD": {
+                "TITLE": "Nextcloud Sync",
+                "SERVER_URL": "Server URL",
+                "REMOTE_PATH": "Ordnerpfad",
+                "REMOTE_PATH_HINT": "Der Ordner auf Nextcloud, in dem deine Sicherung gespeichert wird. Wird erstellt, falls nicht vorhanden.",
+                "CONNECT": "Mit Nextcloud verbinden",
+                "DISCONNECT": "Trennen",
+                "DISCONNECTED": "Von Nextcloud getrennt",
+                "CONNECTED_TO": "Verbunden mit",
+                "LAST_SYNC": "Letzte Synchronisation",
+                "SYNC_NOW": "Jetzt synchronisieren",
+                "UPLOAD": "Zu Nextcloud hochladen",
+                "DOWNLOAD": "Von Nextcloud herunterladen",
+                "LOGIN_SUCCESS": "Erfolgreich mit Nextcloud verbunden",
+                "LOGIN_TIMEOUT": "Anmeldung abgelaufen. Bitte erneut versuchen.",
+                "CONNECTION_ERROR": "Verbindung zum Nextcloud-Server fehlgeschlagen",
+                "UPLOAD_SUCCESS": "Sicherung erfolgreich hochgeladen",
+                "UPLOAD_ERROR": "Hochladen der Sicherung fehlgeschlagen",
+                "DOWNLOAD_SUCCESS": "Sicherung erfolgreich wiederhergestellt",
+                "DOWNLOAD_ERROR": "Herunterladen der Sicherung fehlgeschlagen",
+                "SYNC_SUCCESS": "Bereits synchronisiert",
+                "SYNC_DOWNLOADED": "Neuere Daten von Nextcloud heruntergeladen",
+                "SYNC_ERROR": "Synchronisation fehlgeschlagen"
+            }
         }
     },
     "NOTIFICATIONS": {

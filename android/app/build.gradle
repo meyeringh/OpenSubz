@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "com.flasskamp.OpenSubz"
+    namespace "org.meyeringh.OpenSubz"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.flasskamp.OpenSubz"
+        applicationId "org.meyeringh.OpenSubz"
         minSdk rootProject.ext.minSdkVersion
         targetSdk rootProject.ext.targetSdkVersion
         versionCode 8

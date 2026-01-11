@@ -109,7 +109,31 @@
             "RESTORE_BACKUP_MERGE": "Merge current data and backup",
             "RESTORE_BACKUP_ERROR": "Error while reading data from backup!",
             "RESTORE_BACKUP_ERROR_ANDROID": "Error while reading data from backup!. Is the backup file Documents/OpenSubz-backup.json present?",
-            "RESTORE_BACKUP_SUCCESS": "The data has been restored successfully!"
+            "RESTORE_BACKUP_SUCCESS": "The data has been restored successfully!",
+            "NEXTCLOUD": {
+                "TITLE": "Nextcloud Sync",
+                "SERVER_URL": "Server URL",
+                "REMOTE_PATH": "Remote folder path",
+                "REMOTE_PATH_HINT": "The folder on Nextcloud where your backup will be stored. Will be created if it doesn't exist.",
+                "CONNECT": "Connect to Nextcloud",
+                "DISCONNECT": "Disconnect",
+                "DISCONNECTED": "Disconnected from Nextcloud",
+                "CONNECTED_TO": "Connected to",
+                "LAST_SYNC": "Last sync",
+                "SYNC_NOW": "Sync now",
+                "UPLOAD": "Upload to Nextcloud",
+                "DOWNLOAD": "Download from Nextcloud",
+                "LOGIN_SUCCESS": "Successfully connected to Nextcloud",
+                "LOGIN_TIMEOUT": "Login timed out. Please try again.",
+                "CONNECTION_ERROR": "Could not connect to Nextcloud server",
+                "UPLOAD_SUCCESS": "Backup uploaded successfully",
+                "UPLOAD_ERROR": "Failed to upload backup",
+                "DOWNLOAD_SUCCESS": "Backup restored successfully",
+                "DOWNLOAD_ERROR": "Failed to download backup",
+                "SYNC_SUCCESS": "Already in sync",
+                "SYNC_DOWNLOADED": "Downloaded newer data from Nextcloud",
+                "SYNC_ERROR": "Sync failed"
+            }
         }
     },
     "NOTIFICATIONS": {

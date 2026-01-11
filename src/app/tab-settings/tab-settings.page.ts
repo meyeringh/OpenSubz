@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { addIcons } from "ionicons";
-import { easel, globe, documents, documentText, informationCircle } from "ionicons/icons";
+import { easel, globe, documents, documentText, informationCircle, cloud } from "ionicons/icons";
 import { IonRouterLink } from "@ionic/angular/standalone";
 
 @Component({
@@ -17,7 +17,8 @@ export class TabSettingsPage {
             'globe':              globe,
             'documents':          documents,
             'document-text':      documentText,
-            'information-circle': informationCircle
+            'information-circle': informationCircle,
+            'cloud':              cloud
         });
     }
 

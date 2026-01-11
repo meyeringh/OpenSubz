@@ -1,5 +1,5 @@
 {
-  "appId": "com.flasskamp.OpenSubz",
+  "appId": "org.meyeringh.OpenSubz",
   "appName": "OpenSubz",
   "bundledWebRuntime": false,
   "npmClient": "npm",

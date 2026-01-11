@@ -25,6 +25,10 @@ const routes: Routes = [
   {
     path: 'about',
     loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
+  },
+  {
+    path: 'nextcloud',
+    loadChildren: () => import('./nextcloud/nextcloud.module').then( m => m.NextcloudPageModule)
   }
 
 ];
