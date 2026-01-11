@@ -1,3 +1,3 @@
 # OpenSubz
 
-Just a personal fork with more modern dependencies.
+Fork of Android App "Subz", with more modern dependencies and Nextcloud Sync.
